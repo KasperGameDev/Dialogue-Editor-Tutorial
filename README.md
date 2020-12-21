@@ -1,3 +1,8 @@
 # Dialogue-Editor-Tutorial
 A Unity Dialogue Editor
-Hello my Good ppl
+
+### Setup
+- Models and Animations for Npc and Player.
+- Basic you are dialogue.
+- Player movement.
+![](https://imgur.com/YnXOSSw.png)
