@@ -44,4 +44,9 @@ public class EndNode : BaseNode
 
         mainContainer.Add(enumField);
     }
+
+    public override void LoadValueInToField()
+    {
+        enumField.SetValueWithoutNotify(endNodeType);
+    }
 }

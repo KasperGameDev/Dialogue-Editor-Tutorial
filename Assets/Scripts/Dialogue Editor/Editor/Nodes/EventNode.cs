@@ -45,4 +45,9 @@ public class EventNode : BaseNode
 
         mainContainer.Add(objectField);
     }
+
+    public override void LoadValueInToField()
+    {
+        objectField.SetValueWithoutNotify(dialogueEvent);
+    }
 }

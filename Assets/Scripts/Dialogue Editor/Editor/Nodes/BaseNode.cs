@@ -37,4 +37,9 @@ public class BaseNode : Node
     {
         return InstantiatePort(Orientation.Horizontal, nodeDirection, capacity, typeof(float));
     }
+
+    public virtual void LoadValueInToField()
+    {
+
+    }
 }
