@@ -22,14 +22,14 @@ public class BaseNode : Node
     public void AddOutputPort(string name, Port.Capacity capacity = Port.Capacity.Single)
     {
         Port outputPort = GetPortInstance(Direction.Output,capacity);
-        outputPort.name = name;
+        outputPort.portName = name;
         outputContainer.Add(outputPort);
     }
 
     public void AddInputPort(string name, Port.Capacity capacity = Port.Capacity.Multi)
     {
         Port inputPort = GetPortInstance(Direction.Input, capacity);
-        inputPort.name = name;
+        inputPort.portName = name;
         inputContainer.Add(inputPort);
     }
 

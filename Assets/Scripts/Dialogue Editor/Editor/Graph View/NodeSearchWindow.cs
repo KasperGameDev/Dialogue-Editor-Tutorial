@@ -9,11 +9,16 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
     private DialogueEditorWindow editorWindow;
     private DialogueGraphView graphView;
 
+    private Texture2D pic;
+
     public void Configure(DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
     {
         editorWindow = _editorWindow;
         graphView = _graphView;
 
+        pic = new Texture2D(1,1);
+        pic.SetPixel(0, 0, new Color(0, 0, 0, 0));
+        pic.Apply();
     }
 
 
@@ -35,7 +40,7 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
 
     private SearchTreeEntry AddNodeSearch(string _name, BaseNode _baseNode)
     {
-        SearchTreeEntry tmp = new SearchTreeEntry(new GUIContent(_name))
+        SearchTreeEntry tmp = new SearchTreeEntry(new GUIContent(_name, pic))
         {
             level = 2,
             userData = _baseNode

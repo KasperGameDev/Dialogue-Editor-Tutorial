@@ -84,7 +84,7 @@ public class DialogueNode : BaseNode
         {
             faceImageType = (DialogueFaceImageType)value.newValue;
         });
-        mainContainer.Add(faceImage_Field);
+        mainContainer.Add(faceImageType_Field);
 
         // Audio Chilp
         audioClips_Field = new ObjectField()
