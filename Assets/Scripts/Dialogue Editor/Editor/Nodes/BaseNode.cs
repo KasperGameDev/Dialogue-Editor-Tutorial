@@ -11,7 +11,7 @@ public class BaseNode : Node
     protected DialogueEditorWindow editorWindow;
     protected Vector2 defaultNodeSide = new Vector2(200, 250);
 
-    protected string NodeGuid { get => nodeGuid; set => nodeGuid = value; }
+    public string NodeGuid { get => nodeGuid; set => nodeGuid = value; }
 
     public BaseNode()
     {
