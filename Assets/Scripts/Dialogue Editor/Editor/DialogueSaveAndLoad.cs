@@ -43,4 +43,53 @@ public class DialogueSaveAndLoad
             });
         }
     }
+
+    private void SaveNodes(DialogueContainerSO _dialogueContainerSO)
+    {
+        _dialogueContainerSO.DialogueNodeDatas.Clear();
+        _dialogueContainerSO.EventNodeDatas.Clear();
+        _dialogueContainerSO.EndNodeDatas.Clear();
+        _dialogueContainerSO.StartNodeDatas.Clear();
+
+        nodes.ForEach(node =>
+        {
+            switch (node)
+            {
+                case DialogueNode dialogueNode:
+                    _dialogueContainerSO.DialogueNodeDatas.Add(SaveNodeData(dialogueNode));
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+
+    private DialogueNodeData SaveNodeData(DialogueNode _node)
+    {
+        DialogueNodeData dialogueNodeData = new DialogueNodeData
+        {
+            NodeGuid = _node.NodeGuid,
+            Position = _node.GetPosition().position,
+            TextType = _node.Texts,
+            Name = _node.name,
+            AudioClips = _node.AudioClips,
+            DialogueFaceImageType = _node.FaceImageType,
+            Sprite = _node.FaceImage,
+            DialogueNodePorts = _node.DialogueNodePorts
+        };
+
+        foreach (DialogueNodePort nodePort in dialogueNodeData.DialogueNodePorts)
+        {
+            foreach (Edge edge in edges)
+            {
+                if(edge.output == nodePort.MyPort)
+                {
+                    nodePort.OutputGuid = (edge.output.node as BaseNode).NodeGuid;
+                    nodePort.InputGuid = (edge.input.node as BaseNode).NodeGuid;
+                }
+            }
+        }
+
+        return dialogueNodeData;
+    }
 }
