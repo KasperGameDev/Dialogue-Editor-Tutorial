@@ -244,6 +244,7 @@ public class DialogueSaveAndLoad
                     BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
                     LinkNodesTogether(nodePort.MyPort, (Port)targetNode.inputContainer[0]);
                 }
+
             }
         }
     }

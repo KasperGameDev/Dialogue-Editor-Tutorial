@@ -13,26 +13,50 @@ MonoBehaviour:
   m_Name: New Dialogue Container SO
   m_EditorClassIdentifier: 
   NodeLinkDatas:
-  - BaseNodeGuid: 5e412f60-5d8e-4060-9b73-10c3ddc29faf
-    TargetNodeGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
-  - BaseNodeGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
-    TargetNodeGuid: c8d82e16-e882-4759-8ba7-8728f157040c
-  - BaseNodeGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
-    TargetNodeGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
+  - BaseNodeGuid: 4bf3fb12-7f8f-461c-819b-5bf8ee0f043b
+    TargetNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+  - BaseNodeGuid: b80d92dd-821b-4942-b32f-0a417172e76e
+    TargetNodeGuid: 2ff1705d-fc46-4673-bacd-9e4eeb5b0489
+  - BaseNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+    TargetNodeGuid: 063c7384-d02f-4304-8adc-4108bb6be1c6
+  - BaseNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+    TargetNodeGuid: f2a5d096-9c51-41b6-92a2-ad962379a05f
+  - BaseNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+    TargetNodeGuid: b80d92dd-821b-4942-b32f-0a417172e76e
+  - BaseNodeGuid: 063c7384-d02f-4304-8adc-4108bb6be1c6
+    TargetNodeGuid: 2ff1705d-fc46-4673-bacd-9e4eeb5b0489
   DialogueNodeDatas:
-  - NodeGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
-    Position: {x: 389.33334, y: 278.66666}
+  - NodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+    Position: {x: 439.33334, y: 320}
     DialogueNodePorts:
-    - InputGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
-      OutputGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
+    - InputGuid: 063c7384-d02f-4304-8adc-4108bb6be1c6
+      OutputGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
       TextLanguages:
       - LanguageType: 0
-        LanguageGenericType: Eng part
+        LanguageGenericType: e
       - LanguageType: 1
-        LanguageGenericType: jamne
+        LanguageGenericType: g
       - LanguageType: 2
-        LanguageGenericType: hello
-    Sprite: {fileID: 0}
+        LanguageGenericType: dk
+    - InputGuid: f2a5d096-9c51-41b6-92a2-ad962379a05f
+      OutputGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: e2
+      - LanguageType: 1
+        LanguageGenericType: g
+      - LanguageType: 2
+        LanguageGenericType: dk
+    - InputGuid: b80d92dd-821b-4942-b32f-0a417172e76e
+      OutputGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: e4
+      - LanguageType: 1
+        LanguageGenericType: g
+      - LanguageType: 2
+        LanguageGenericType: dkkk
+    Sprite: {fileID: 21300000, guid: 4e4d158ec31be0b4b97fe0fe44d64bc4, type: 3}
     DialogueFaceImageType: 0
     AudioClips:
     - LanguageType: 0
@@ -41,22 +65,54 @@ MonoBehaviour:
       LanguageGenericType: {fileID: 0}
     - LanguageType: 2
       LanguageGenericType: {fileID: 0}
-    Name: hey
+    Name: name
     TextType:
     - LanguageType: 0
       LanguageGenericType: eng
     - LanguageType: 1
-      LanguageGenericType: ger
+      LanguageGenericType: gggg
     - LanguageType: 2
-      LanguageGenericType: dk
+      LanguageGenericType: ddddddddddddddddd
+  - NodeGuid: 063c7384-d02f-4304-8adc-4108bb6be1c6
+    Position: {x: 756.6667, y: 138}
+    DialogueNodePorts:
+    - InputGuid: 2ff1705d-fc46-4673-bacd-9e4eeb5b0489
+      OutputGuid: 063c7384-d02f-4304-8adc-4108bb6be1c6
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: hhh
+      - LanguageType: 1
+        LanguageGenericType: Choice 1
+      - LanguageType: 2
+        LanguageGenericType: ddd
+    Sprite: {fileID: 21300000, guid: b0c359d006fc51542bf9ed466f6e824f, type: 3}
+    DialogueFaceImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    Name: john
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: eng
+    - LanguageType: 1
+      LanguageGenericType: gggrgrgrgrg
+    - LanguageType: 2
+      LanguageGenericType: dkdkd
   EndNodeDatas:
-  - NodeGuid: c8d82e16-e882-4759-8ba7-8728f157040c
-    Position: {x: 942, y: 332.66666}
+  - NodeGuid: 2ff1705d-fc46-4673-bacd-9e4eeb5b0489
+    Position: {x: 1172, y: 290.66666}
     EndNodeType: 0
+  - NodeGuid: f2a5d096-9c51-41b6-92a2-ad962379a05f
+    Position: {x: 971.3333, y: 320.66666}
+    EndNodeType: 1
   StartNodeDatas:
-  - NodeGuid: 5e412f60-5d8e-4060-9b73-10c3ddc29faf
-    Position: {x: 261.33334, y: 266.66666}
+  - NodeGuid: 4bf3fb12-7f8f-461c-819b-5bf8ee0f043b
+    Position: {x: 158.66667, y: 324}
   EventNodeDatas:
-  - NodeGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
-    Position: {x: 652, y: 282.66666}
+  - NodeGuid: b80d92dd-821b-4942-b32f-0a417172e76e
+    Position: {x: 746, y: 445.3333}
     DialogueEventSO: {fileID: 0}
