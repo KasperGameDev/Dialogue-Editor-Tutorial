@@ -11,6 +11,7 @@ public class DialogueEditorWindow : EditorWindow
 {
     private DialogueContainerSO currentDialogueContainer;
     private DialogueGraphView graphView;
+    private DialogueSaveAndLoad saveAndLoad;
 
     private LanguageType languageType = LanguageType.English;
     private ToolbarMenu toolbarMenu;
@@ -23,7 +24,7 @@ public class DialogueEditorWindow : EditorWindow
     {
         UnityEngine.Object item = EditorUtility.InstanceIDToObject(_instanceId);
 
-        if(item is DialogueContainerSO)
+        if (item is DialogueContainerSO)
         {
             DialogueEditorWindow window = (DialogueEditorWindow)GetWindow(typeof(DialogueEditorWindow));
             window.titleContent = new GUIContent("Dialogue Editor");
@@ -53,6 +54,8 @@ public class DialogueEditorWindow : EditorWindow
         graphView = new DialogueGraphView(this);
         graphView.StretchToParentSize();
         rootVisualElement.Add(graphView);
+
+        saveAndLoad = new DialogueSaveAndLoad(graphView);
     }
 
     private void GenerateToolbar()
@@ -89,7 +92,7 @@ public class DialogueEditorWindow : EditorWindow
         toolbarMenu = new ToolbarMenu();
         foreach (LanguageType language in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
         {
-            toolbarMenu.menu.AppendAction(language.ToString(),new Action<DropdownMenuAction>(x => Language(language,toolbarMenu)));
+            toolbarMenu.menu.AppendAction(language.ToString(), new Action<DropdownMenuAction>(x => Language(language, toolbarMenu)));
         }
         toolbar.Add(toolbarMenu);
 
@@ -103,19 +106,20 @@ public class DialogueEditorWindow : EditorWindow
 
     private void Load()
     {
-        // TODO: load it
-        Debug.Log("Load");
-        if(currentDialogueContainer != null)
+        if (currentDialogueContainer != null)
         {
             Language(LanguageType.English, toolbarMenu);
             nameOfDialougeContainer.text = "Name:   " + currentDialogueContainer.name;
+            saveAndLoad.Load(currentDialogueContainer);
         }
     }
 
     private void Save()
     {
-        // TODO: save it
-        Debug.Log("Save");
+        if (currentDialogueContainer != null)
+        {
+            saveAndLoad.Save(currentDialogueContainer);
+        }
     }
 
     private void Language(LanguageType _language, ToolbarMenu _toolbarMenu)
