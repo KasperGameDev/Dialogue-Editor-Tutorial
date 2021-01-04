@@ -89,7 +89,7 @@ public class DialogueSaveAndLoad
             NodeGuid = _node.NodeGuid,
             Position = _node.GetPosition().position,
             TextType = _node.Texts,
-            Name = _node.name,
+            Name = _node.Name,
             AudioClips = _node.AudioClips,
             DialogueFaceImageType = _node.FaceImageType,
             Sprite = _node.FaceImage,
@@ -98,9 +98,11 @@ public class DialogueSaveAndLoad
 
         foreach (DialogueNodePort nodePort in dialogueNodeData.DialogueNodePorts)
         {
+            nodePort.OutputGuid = string.Empty;
+            nodePort.InputGuid = string.Empty;
             foreach (Edge edge in edges)
             {
-                if(edge.output == nodePort.MyPort)
+                if (edge.output == nodePort.MyPort)
                 {
                     nodePort.OutputGuid = (edge.output.node as BaseNode).NodeGuid;
                     nodePort.InputGuid = (edge.input.node as BaseNode).NodeGuid;
@@ -197,7 +199,7 @@ public class DialogueSaveAndLoad
         {
             DialogueNode tempNode = graphView.CreateDialogueNode(node.Position);
             tempNode.NodeGuid = node.NodeGuid;
-            tempNode.name = node.Name;
+            tempNode.Name = node.Name;
             tempNode.Texts = node.TextType;
             tempNode.FaceImage = node.Sprite;
             tempNode.FaceImageType = node.DialogueFaceImageType;
@@ -224,7 +226,7 @@ public class DialogueSaveAndLoad
                 string targetNodeGuid = connections[j].TargetNodeGuid;
                 BaseNode targetNode = nodes.First(node => node.NodeGuid == targetNodeGuid);
 
-                if((nodes[i] is DialogueNode) == false)
+                if ((nodes[i] is DialogueNode) == false)
                 {
                     LinkNodesTogether(nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
                 }
@@ -237,8 +239,11 @@ public class DialogueSaveAndLoad
         {
             foreach (DialogueNodePort nodePort in dialogueNode.DialogueNodePorts)
             {
-                BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
-                LinkNodesTogether(nodePort.MyPort, (Port)targetNode.inputContainer[0]);
+                if (nodePort.InputGuid != string.Empty)
+                {
+                    BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
+                    LinkNodesTogether(nodePort.MyPort, (Port)targetNode.inputContainer[0]);
+                }
             }
         }
     }

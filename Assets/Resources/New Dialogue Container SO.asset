@@ -12,22 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a69ff5ed214494b835d86b8438ac53, type: 3}
   m_Name: New Dialogue Container SO
   m_EditorClassIdentifier: 
-  NodeLinkDatas:
-  - BaseNodeGuid: 37d7c1ab-981a-49ad-97b3-6afdf02df2fd
-    TargetNodeGuid: ee09f872-01d5-42eb-880a-bae02da11f14
+  NodeLinkDatas: []
   DialogueNodeDatas:
-  - NodeGuid: ee09f872-01d5-42eb-880a-bae02da11f14
-    Position: {x: 382, y: 234}
-    DialogueNodePorts:
-    - InputGuid: 
-      OutputGuid: 
-    - InputGuid: 
-      OutputGuid: 
+  - NodeGuid: 0c1fb693-4872-4040-b1d4-ee02d6f5b648
+    Position: {x: 387, y: 289}
+    DialogueNodePorts: []
     Sprite: {fileID: 0}
     DialogueFaceImageType: 0
-    Name: 
+    Name: dfgdfg
   EndNodeDatas: []
-  StartNodeDatas:
-  - NodeGuid: 37d7c1ab-981a-49ad-97b3-6afdf02df2fd
-    Position: {x: 142, y: 234}
+  StartNodeDatas: []
   EventNodeDatas: []
