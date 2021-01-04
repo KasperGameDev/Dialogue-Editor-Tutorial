@@ -12,14 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a69ff5ed214494b835d86b8438ac53, type: 3}
   m_Name: New Dialogue Container SO
   m_EditorClassIdentifier: 
-  NodeLinkDatas: []
+  NodeLinkDatas:
+  - BaseNodeGuid: 5e412f60-5d8e-4060-9b73-10c3ddc29faf
+    TargetNodeGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
+  - BaseNodeGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
+    TargetNodeGuid: c8d82e16-e882-4759-8ba7-8728f157040c
+  - BaseNodeGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
+    TargetNodeGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
   DialogueNodeDatas:
-  - NodeGuid: 0c1fb693-4872-4040-b1d4-ee02d6f5b648
-    Position: {x: 387, y: 289}
-    DialogueNodePorts: []
+  - NodeGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
+    Position: {x: 389.33334, y: 278.66666}
+    DialogueNodePorts:
+    - InputGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
+      OutputGuid: cd0228e9-64be-4f3f-8b6a-e43712ae45b9
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Eng part
+      - LanguageType: 1
+        LanguageGenericType: jamne
+      - LanguageType: 2
+        LanguageGenericType: hello
     Sprite: {fileID: 0}
     DialogueFaceImageType: 0
-    Name: dfgdfg
-  EndNodeDatas: []
-  StartNodeDatas: []
-  EventNodeDatas: []
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    Name: hey
+    TextType:
+    - LanguageType: 0
+      LanguageGenericType: eng
+    - LanguageType: 1
+      LanguageGenericType: ger
+    - LanguageType: 2
+      LanguageGenericType: dk
+  EndNodeDatas:
+  - NodeGuid: c8d82e16-e882-4759-8ba7-8728f157040c
+    Position: {x: 942, y: 332.66666}
+    EndNodeType: 0
+  StartNodeDatas:
+  - NodeGuid: 5e412f60-5d8e-4060-9b73-10c3ddc29faf
+    Position: {x: 261.33334, y: 266.66666}
+  EventNodeDatas:
+  - NodeGuid: 7ed46501-78e7-4fb7-aaeb-7f94966e3f31
+    Position: {x: 652, y: 282.66666}
+    DialogueEventSO: {fileID: 0}
