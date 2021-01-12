@@ -41,7 +41,7 @@ public class DialogueNode : BaseNode
         graphView = _graphView;
 
         title = "Dialogue";
-        SetPosition(new Rect(_position, defaultNodeSide));
+        SetPosition(new Rect(_position, defaultNodeSize));
         nodeGuid = Guid.NewGuid().ToString();
 
         AddInputPort("Input", Port.Capacity.Multi);

@@ -18,7 +18,7 @@ public class StartNode : BaseNode
         graphView = _graphView;
 
         title = "Start";
-        SetPosition(new Rect(_position, defaultNodeSide));
+        SetPosition(new Rect(_position, defaultNodeSize));
         nodeGuid = Guid.NewGuid().ToString();
 
         AddOutputPort("Output",Port.Capacity.Single);

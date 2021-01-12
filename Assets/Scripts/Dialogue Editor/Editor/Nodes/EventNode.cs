@@ -24,7 +24,7 @@ public class EventNode : BaseNode
         graphView = _graphView;
 
         title = "Event";
-        SetPosition(new Rect(_position, defaultNodeSide));
+        SetPosition(new Rect(_position, defaultNodeSize));
         nodeGuid = Guid.NewGuid().ToString();
 
         AddInputPort("Input", Port.Capacity.Multi);

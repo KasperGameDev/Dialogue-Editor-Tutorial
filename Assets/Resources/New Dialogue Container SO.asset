@@ -16,7 +16,7 @@ MonoBehaviour:
   - BaseNodeGuid: 4bf3fb12-7f8f-461c-819b-5bf8ee0f043b
     TargetNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
   - BaseNodeGuid: b80d92dd-821b-4942-b32f-0a417172e76e
-    TargetNodeGuid: 2ff1705d-fc46-4673-bacd-9e4eeb5b0489
+    TargetNodeGuid: ccd95c80-094d-4218-9b05-a981b92f1a51
   - BaseNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
     TargetNodeGuid: 063c7384-d02f-4304-8adc-4108bb6be1c6
   - BaseNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
@@ -25,6 +25,10 @@ MonoBehaviour:
     TargetNodeGuid: b80d92dd-821b-4942-b32f-0a417172e76e
   - BaseNodeGuid: 063c7384-d02f-4304-8adc-4108bb6be1c6
     TargetNodeGuid: 2ff1705d-fc46-4673-bacd-9e4eeb5b0489
+  - BaseNodeGuid: b732d507-1b35-4460-a374-77f422763a20
+    TargetNodeGuid: 38ce8edc-e00d-451b-832a-5bbaa4809ebe
+  - BaseNodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+    TargetNodeGuid: b732d507-1b35-4460-a374-77f422763a20
   DialogueNodeDatas:
   - NodeGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
     Position: {x: 439.33334, y: 320}
@@ -51,11 +55,20 @@ MonoBehaviour:
       OutputGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
       TextLanguages:
       - LanguageType: 0
-        LanguageGenericType: e4
+        LanguageGenericType: Color Me
       - LanguageType: 1
         LanguageGenericType: g
       - LanguageType: 2
         LanguageGenericType: dkkk
+    - InputGuid: b732d507-1b35-4460-a374-77f422763a20
+      OutputGuid: 7dedb696-bce5-422c-817a-3d13246a5afd
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Color NPC
+      - LanguageType: 1
+        LanguageGenericType: Choice 4
+      - LanguageType: 2
+        LanguageGenericType: Choice 4
     Sprite: {fileID: 21300000, guid: 4e4d158ec31be0b4b97fe0fe44d64bc4, type: 3}
     DialogueFaceImageType: 0
     AudioClips:
@@ -109,10 +122,19 @@ MonoBehaviour:
   - NodeGuid: f2a5d096-9c51-41b6-92a2-ad962379a05f
     Position: {x: 971.3333, y: 320.66666}
     EndNodeType: 1
+  - NodeGuid: ccd95c80-094d-4218-9b05-a981b92f1a51
+    Position: {x: 1061.3334, y: 446.66666}
+    EndNodeType: 1
+  - NodeGuid: 38ce8edc-e00d-451b-832a-5bbaa4809ebe
+    Position: {x: 1049.3334, y: 691.3334}
+    EndNodeType: 1
   StartNodeDatas:
   - NodeGuid: 4bf3fb12-7f8f-461c-819b-5bf8ee0f043b
     Position: {x: 158.66667, y: 324}
   EventNodeDatas:
   - NodeGuid: b80d92dd-821b-4942-b32f-0a417172e76e
     Position: {x: 746, y: 445.3333}
-    DialogueEventSO: {fileID: 0}
+    DialogueEventSO: {fileID: 11400000, guid: 4f55845f90e16d54b9ad6c3d5549d141, type: 2}
+  - NodeGuid: b732d507-1b35-4460-a374-77f422763a20
+    Position: {x: 746.6667, y: 628}
+    DialogueEventSO: {fileID: 11400000, guid: 13f0abbae245b86438998d95e12d7bd2, type: 2}

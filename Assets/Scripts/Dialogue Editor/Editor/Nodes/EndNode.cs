@@ -24,7 +24,7 @@ public class EndNode : BaseNode
         graphView = _graphView;
 
         title = "End";
-        SetPosition(new Rect(_position, defaultNodeSide));
+        SetPosition(new Rect(_position, defaultNodeSize));
         nodeGuid = Guid.NewGuid().ToString();
 
         AddInputPort("Input", Port.Capacity.Multi);
