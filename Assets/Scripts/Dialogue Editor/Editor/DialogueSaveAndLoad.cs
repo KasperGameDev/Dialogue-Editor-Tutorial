@@ -93,7 +93,7 @@ public class DialogueSaveAndLoad
             AudioClips = _node.AudioClips,
             DialogueFaceImageType = _node.FaceImageType,
             Sprite = _node.FaceImage,
-            DialogueNodePorts = _node.DialogueNodePorts
+            DialogueNodePorts = new List<DialogueNodePort>(_node.DialogueNodePorts)
         };
 
         foreach (DialogueNodePort nodePort in dialogueNodeData.DialogueNodePorts)
@@ -200,10 +200,18 @@ public class DialogueSaveAndLoad
             DialogueNode tempNode = graphView.CreateDialogueNode(node.Position);
             tempNode.NodeGuid = node.NodeGuid;
             tempNode.Name = node.Name;
-            tempNode.Texts = node.TextType;
             tempNode.FaceImage = node.Sprite;
             tempNode.FaceImageType = node.DialogueFaceImageType;
-            tempNode.AudioClips = node.AudioClips;
+
+            foreach (LanguageGeneric<string> languageGeneric in node.TextType)
+            {
+                tempNode.Texts.Find(language => language.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+            }
+
+            foreach (LanguageGeneric<AudioClip> languageGeneric in node.AudioClips)
+            {
+                tempNode.AudioClips.Find(language => language.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+            }
 
             foreach (DialogueNodePort nodePort in node.DialogueNodePorts)
             {

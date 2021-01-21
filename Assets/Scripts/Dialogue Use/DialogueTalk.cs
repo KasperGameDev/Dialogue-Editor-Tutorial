@@ -51,8 +51,11 @@ public class DialogueTalk : DialogueGetData
 
     private void RunNode(DialogueNodeData _nodeData)
     {
-        lastDialogueNodeData = currentDialogueNodeData;
-        currentDialogueNodeData = _nodeData;
+        if (currentDialogueNodeData != _nodeData)
+        {
+            lastDialogueNodeData = currentDialogueNodeData;
+            currentDialogueNodeData = _nodeData;
+        }
 
         dialogueController.SetText(_nodeData.Name, _nodeData.TextType.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
         dialogueController.SetImage(_nodeData.Sprite, _nodeData.DialogueFaceImageType);
@@ -65,7 +68,7 @@ public class DialogueTalk : DialogueGetData
 
     private void RunNode(EventNodeData _nodeData)
     {
-        if(_nodeData.DialogueEventSO != null)
+        if (_nodeData.DialogueEventSO != null)
         {
             _nodeData.DialogueEventSO.RunEvent();
         }

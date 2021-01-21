@@ -6,5 +6,9 @@ public enum LanguageType
 {
     English,
     German,
-    Danish
+    Danish,
+    Spanish,
+    French,
+    Italian,
+    Latin
 }

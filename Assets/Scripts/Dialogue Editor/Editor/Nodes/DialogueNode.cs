@@ -182,7 +182,7 @@ public class DialogueNode : BaseNode
         Port port = GetPortInstance(Direction.Output);
 
         int outputPortCount = _baseNode.outputContainer.Query("connector").ToList().Count();
-        string outputPortName = $"Choice {outputPortCount + 1}";
+        string outputPortName = $"Continue";
 
         DialogueNodePort dialogueNodePort = new DialogueNodePort();
 
