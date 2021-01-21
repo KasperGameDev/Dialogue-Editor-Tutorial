@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class CustomTools : MonoBehaviour
+public class CustomTools 
 {
-    // Start is called before the first frame update
-    void Start()
+    [MenuItem("Custom Tools/Dialogue/Update Dialogue Languages")]
+    public static void UpdataDialogueLanguage()
     {
-        
-    }
+        UpdateLanguageType updateLanguageType = new UpdateLanguageType();
+        updateLanguageType.UpdateLanguage();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        EditorApplication.Beep();
+        Debug.Log("<color=green> Update languages successfully! </color>");
     }
 }

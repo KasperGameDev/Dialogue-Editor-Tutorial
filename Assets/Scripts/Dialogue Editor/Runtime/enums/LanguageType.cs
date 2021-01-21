@@ -10,5 +10,5 @@ public enum LanguageType
     Spanish,
     French,
     Italian,
-    Latin
+    Latin,
 }
