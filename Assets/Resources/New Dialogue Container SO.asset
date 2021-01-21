@@ -15,43 +15,44 @@ MonoBehaviour:
   NodeLinkDatas:
   - BaseNodeGuid: 556f7e36-40b3-490b-908c-9700de7d1941
     TargetNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
-  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
-    TargetNodeGuid: 67829c44-53db-4979-bba3-aa4c5c40bcdc
-  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
-    TargetNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
   - BaseNodeGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
     TargetNodeGuid: 175d57fe-59b0-4d71-b7e4-af37adc1e8ae
   - BaseNodeGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
     TargetNodeGuid: 1e28142a-7905-4312-ab25-0d59c95e67ef
-  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
-    TargetNodeGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
-  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
-    TargetNodeGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
-  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
-    TargetNodeGuid: ae8a1b6c-7a77-4d81-aee5-dc643439ece1
-  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
-    TargetNodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
-  - BaseNodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
-    TargetNodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
-  - BaseNodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
-    TargetNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
-  - BaseNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
-    TargetNodeGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
-  - BaseNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
-    TargetNodeGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+  - BaseNodeGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
+    TargetNodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+  - BaseNodeGuid: 74b508a4-9386-4bcf-af55-fb972891157d
+    TargetNodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
   - BaseNodeGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
     TargetNodeGuid: 74b508a4-9386-4bcf-af55-fb972891157d
   - BaseNodeGuid: f00fc392-5041-460f-8075-e6e68d758ae6
     TargetNodeGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
-  - BaseNodeGuid: 74b508a4-9386-4bcf-af55-fb972891157d
-    TargetNodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
-  - BaseNodeGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
-    TargetNodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+  - BaseNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+    TargetNodeGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+  - BaseNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+    TargetNodeGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
+  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    TargetNodeGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
+  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    TargetNodeGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
+  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    TargetNodeGuid: ae8a1b6c-7a77-4d81-aee5-dc643439ece1
+  - BaseNodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+    TargetNodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+    TargetNodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+    TargetNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+    TargetNodeGuid: 67829c44-53db-4979-bba3-aa4c5c40bcdc
+  - BaseNodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+    TargetNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
   DialogueNodeDatas:
   - NodeGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
     Position: {x: 1913.3334, y: -270}
     DialogueNodePorts:
-    - InputGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+    - PortGuid: f1b89cfc-a503-47b3-8e0d-eb7e0709a151
+      InputGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
       OutputGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
       TextLanguages:
       - LanguageType: 0
@@ -102,9 +103,10 @@ MonoBehaviour:
     - LanguageType: 6
       LanguageGenericType: 
   - NodeGuid: 74b508a4-9386-4bcf-af55-fb972891157d
-    Position: {x: 1912, y: 120.666664}
+    Position: {x: 1912, y: 119.99999}
     DialogueNodePorts:
-    - InputGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+    - PortGuid: 53a42b3c-c857-4982-a20c-a3253f917cb0
+      InputGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
       OutputGuid: 74b508a4-9386-4bcf-af55-fb972891157d
       TextLanguages:
       - LanguageType: 0
@@ -157,7 +159,8 @@ MonoBehaviour:
   - NodeGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
     Position: {x: 1609.3334, y: 128.66667}
     DialogueNodePorts:
-    - InputGuid: 74b508a4-9386-4bcf-af55-fb972891157d
+    - PortGuid: 0d4bffe1-3674-4e92-8094-4ba26bf53b3c
+      InputGuid: 74b508a4-9386-4bcf-af55-fb972891157d
       OutputGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
       TextLanguages:
       - LanguageType: 0
@@ -210,7 +213,8 @@ MonoBehaviour:
   - NodeGuid: f00fc392-5041-460f-8075-e6e68d758ae6
     Position: {x: 1610.6666, y: -265.33334}
     DialogueNodePorts:
-    - InputGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
+    - PortGuid: 28b8b171-5303-470c-9bb0-ebcd95880fbc
+      InputGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
       OutputGuid: f00fc392-5041-460f-8075-e6e68d758ae6
       TextLanguages:
       - LanguageType: 0
@@ -261,9 +265,10 @@ MonoBehaviour:
     - LanguageType: 6
       LanguageGenericType: 
   - NodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
-    Position: {x: 1306.6666, y: -43.333336}
+    Position: {x: 1306.6666, y: -44}
     DialogueNodePorts:
-    - InputGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+    - PortGuid: c43e230a-0bab-4cb9-b760-2dd48557740e
+      InputGuid: f00fc392-5041-460f-8075-e6e68d758ae6
       OutputGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
       TextLanguages:
       - LanguageType: 0
@@ -280,7 +285,8 @@ MonoBehaviour:
         LanguageGenericType: Continue
       - LanguageType: 6
         LanguageGenericType: Continue
-    - InputGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
+    - PortGuid: 9a732f10-6dba-48dd-aed0-4d32128a93fd
+      InputGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
       OutputGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
       TextLanguages:
       - LanguageType: 0
@@ -333,7 +339,8 @@ MonoBehaviour:
   - NodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
     Position: {x: 770, y: 304.66666}
     DialogueNodePorts:
-    - InputGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
+    - PortGuid: ec42d52f-53c4-40e7-980a-f418f6240ee1
+      InputGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
       OutputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
       TextLanguages:
       - LanguageType: 0
@@ -350,7 +357,8 @@ MonoBehaviour:
         LanguageGenericType: Continue
       - LanguageType: 6
         LanguageGenericType: Continue
-    - InputGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
+    - PortGuid: 10062937-82db-43ef-b465-9743a85d39c3
+      InputGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
       OutputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
       TextLanguages:
       - LanguageType: 0
@@ -367,7 +375,8 @@ MonoBehaviour:
         LanguageGenericType: Continue
       - LanguageType: 6
         LanguageGenericType: Continue
-    - InputGuid: ae8a1b6c-7a77-4d81-aee5-dc643439ece1
+    - PortGuid: 8ececed3-9ee1-4af6-a9b9-a1ef4f914b30
+      InputGuid: ae8a1b6c-7a77-4d81-aee5-dc643439ece1
       OutputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
       TextLanguages:
       - LanguageType: 0
@@ -418,9 +427,10 @@ MonoBehaviour:
     - LanguageType: 6
       LanguageGenericType: 
   - NodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
-    Position: {x: 806, y: -38.666668}
+    Position: {x: 806, y: -40}
     DialogueNodePorts:
-    - InputGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+    - PortGuid: 25586e4e-9179-49f2-bd60-d9d0dedb4b97
+      InputGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
       OutputGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
       TextLanguages:
       - LanguageType: 0
@@ -475,7 +485,8 @@ MonoBehaviour:
   - NodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
     Position: {x: 464, y: 272.66666}
     DialogueNodePorts:
-    - InputGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+    - PortGuid: 3628d0d6-d65a-468e-8bf7-93cd54dbbf3b
+      InputGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
       OutputGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
       TextLanguages:
       - LanguageType: 0
@@ -492,7 +503,8 @@ MonoBehaviour:
         LanguageGenericType: Continue
       - LanguageType: 6
         LanguageGenericType: Continue
-    - InputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    - PortGuid: 4b5795d1-914f-4b25-b9e5-de511ff13671
+      InputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
       OutputGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
       TextLanguages:
       - LanguageType: 0
@@ -509,7 +521,8 @@ MonoBehaviour:
         LanguageGenericType: Continue
       - LanguageType: 6
         LanguageGenericType: Continue
-    - InputGuid: 67829c44-53db-4979-bba3-aa4c5c40bcdc
+    - PortGuid: da240a29-9f0d-4016-a079-f96e997f13be
+      InputGuid: 67829c44-53db-4979-bba3-aa4c5c40bcdc
       OutputGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
       TextLanguages:
       - LanguageType: 0
@@ -560,9 +573,10 @@ MonoBehaviour:
     - LanguageType: 6
       LanguageGenericType: 
   - NodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
-    Position: {x: 1054.6666, y: -40.666668}
+    Position: {x: 1054.6666, y: -42}
     DialogueNodePorts:
-    - InputGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+    - PortGuid: 5e13bcb9-6496-4366-aebb-746fcaf71758
+      InputGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
       OutputGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
       TextLanguages:
       - LanguageType: 0
@@ -626,14 +640,14 @@ MonoBehaviour:
     Position: {x: 1026.6666, y: 524}
     EndNodeType: 2
   - NodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
-    Position: {x: 2318, y: -37.333336}
+    Position: {x: 2318, y: -38}
     EndNodeType: 3
   StartNodeDatas:
   - NodeGuid: 556f7e36-40b3-490b-908c-9700de7d1941
     Position: {x: 245.33333, y: 272.66666}
   EventNodeDatas:
   - NodeGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
-    Position: {x: 1037.3334, y: 277.3333}
+    Position: {x: 1037.3334, y: 276.66666}
     DialogueEventSO: {fileID: 11400000, guid: 4f55845f90e16d54b9ad6c3d5549d141, type: 2}
   - NodeGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
     Position: {x: 1040.6666, y: 400}

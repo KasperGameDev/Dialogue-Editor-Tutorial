@@ -185,6 +185,7 @@ public class DialogueNode : BaseNode
         string outputPortName = $"Continue";
 
         DialogueNodePort dialogueNodePort = new DialogueNodePort();
+        dialogueNodePort.PortGuid = Guid.NewGuid().ToString();
 
         foreach (LanguageType language in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
         {
@@ -199,6 +200,7 @@ public class DialogueNode : BaseNode
         {
             dialogueNodePort.InputGuid = _dialogueNodePort.InputGuid;
             dialogueNodePort.OutputGuid = _dialogueNodePort.OutputGuid;
+            dialogueNodePort.PortGuid = _dialogueNodePort.PortGuid;
 
             foreach (LanguageGeneric<string> languageGeneric in _dialogueNodePort.TextLanguages)
             {
