@@ -12,7 +12,7 @@ public class DialogueNode : BaseNode
     private List<LanguageGeneric<string>> texts = new List<LanguageGeneric<string>>();
     private List<LanguageGeneric<AudioClip>> audioClips = new List<LanguageGeneric<AudioClip>>();
     private Sprite faceImage;
-    private string name = "";
+    private string nameText = "";
     private DialogueFaceImageType faceImageType;
 
     private List<DialogueNodePort> dialogueNodePorts = new List<DialogueNodePort>();
@@ -20,7 +20,7 @@ public class DialogueNode : BaseNode
     public List<LanguageGeneric<string>> Texts { get => texts; set => texts = value; }
     public List<LanguageGeneric<AudioClip>> AudioClips { get => audioClips; set => audioClips = value; }
     public Sprite FaceImage { get => faceImage; set => faceImage = value; }
-    public string Name { get => name; set => name = value; }
+    public string NameText { get => nameText; set => nameText = value; }
     public DialogueFaceImageType FaceImageType { get => faceImageType; set => faceImageType = value; }
     public List<DialogueNodePort> DialogueNodePorts { get => dialogueNodePorts; set => dialogueNodePorts = value; }
 
@@ -109,9 +109,9 @@ public class DialogueNode : BaseNode
         name_Feild = new TextField("");
         name_Feild.RegisterValueChangedCallback(value =>
         {
-            name = value.newValue;
+            nameText = value.newValue;
         });
-        name_Feild.SetValueWithoutNotify(name);
+        name_Feild.SetValueWithoutNotify(nameText);
         name_Feild.AddToClassList("TextName");
         mainContainer.Add(name_Feild);
 
@@ -174,7 +174,7 @@ public class DialogueNode : BaseNode
         audioClips_Field.SetValueWithoutNotify(audioClips.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType);
         faceImage_Field.SetValueWithoutNotify(faceImage);
         faceImageType_Field.SetValueWithoutNotify(faceImageType);
-        name_Feild.SetValueWithoutNotify(name);
+        name_Feild.SetValueWithoutNotify(nameText);
     }
 
     public Port AddChoicePort(BaseNode _baseNode, DialogueNodePort _dialogueNodePort = null)

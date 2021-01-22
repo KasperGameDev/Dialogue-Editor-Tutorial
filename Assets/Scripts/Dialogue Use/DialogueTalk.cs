@@ -57,7 +57,7 @@ public class DialogueTalk : DialogueGetData
             currentDialogueNodeData = _nodeData;
         }
 
-        dialogueController.SetText(_nodeData.Name, _nodeData.TextType.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
+        dialogueController.SetText(_nodeData.Name, _nodeData.TextLanguages.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
         dialogueController.SetImage(_nodeData.Sprite, _nodeData.DialogueFaceImageType);
 
         MakeButtons(_nodeData.DialogueNodePorts);

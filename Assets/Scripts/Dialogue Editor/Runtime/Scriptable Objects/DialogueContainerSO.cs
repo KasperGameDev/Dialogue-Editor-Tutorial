@@ -52,7 +52,7 @@ public class DialogueNodeData : BaseNodeData
     public DialogueFaceImageType DialogueFaceImageType;
     public List<LanguageGeneric<AudioClip>> AudioClips;
     public string Name;
-    public List<LanguageGeneric<string>> TextType;
+    public List<LanguageGeneric<string>> TextLanguages;
 }
 
 [System.Serializable]

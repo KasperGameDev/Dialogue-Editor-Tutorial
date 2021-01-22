@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SaveCSV 
 {
-    private string csvDirectoryName = "Resources/Dialouge/CSV File";
+    private string csvDirectoryName = "Resources/Dialogue/CSV File";
     private string csvFileName = "DialogueCSV_Save.csv";
     private string csvSeparator = ",";
     private List<string> csvHeader;
@@ -28,7 +28,7 @@ public class SaveCSV
 
                 foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
                 {
-                    string tmp = nodeData.TextType.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
+                    string tmp = nodeData.TextLanguages.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
                     texts.Add($"\"{tmp}\"");
                 }
 
@@ -52,12 +52,12 @@ public class SaveCSV
         }
     }
 
-    private void AppendToFile(List<string> strings)
+    private void AppendToFile(List<string> _strings)
     {
         using(StreamWriter sw = File.AppendText(GetFilePath()))
         {
             string finalString = "";
-            foreach (string text in strings)
+            foreach (string text in _strings)
             {
                 if (finalString != "")
                 {

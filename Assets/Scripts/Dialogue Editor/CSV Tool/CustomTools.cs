@@ -15,6 +15,15 @@ public class CustomTools
         Debug.Log("<color=green> Save CSV File successfully! </color>");
     }
 
+    [MenuItem("Custom Tools/Dialogue/Load from CSV")]
+    public static void LoadFromCSV()
+    {
+        LoadCSV loadCSV = new LoadCSV();
+        loadCSV.Load();
+
+        EditorApplication.Beep();
+        Debug.Log("<color=green> Loading CSV File successfully! </color>");
+    }
 
     [MenuItem("Custom Tools/Dialogue/Update Dialogue Languages")]
     public static void UpdataDialogueLanguage()

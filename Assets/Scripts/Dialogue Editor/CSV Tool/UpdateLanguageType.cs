@@ -13,7 +13,7 @@ public class UpdateLanguageType
         {
             foreach (DialogueNodeData nodeData in DialogueContainer.DialogueNodeDatas)
             {
-                nodeData.TextType = UpdateLanguageGeneric(nodeData.TextType);
+                nodeData.TextLanguages = UpdateLanguageGeneric(nodeData.TextLanguages);
                 nodeData.AudioClips = UpdateLanguageGeneric(nodeData.AudioClips);
 
                 foreach (DialogueNodePort nodePort in nodeData.DialogueNodePorts)
