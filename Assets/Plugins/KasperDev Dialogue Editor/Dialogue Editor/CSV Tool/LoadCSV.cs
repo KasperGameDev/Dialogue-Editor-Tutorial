@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class LoadCSV
 {
-    private string csvDirectoryName = "Resources/Dialogue/CSV File";
+    private string csvDirectoryName = "Resources/Dialogue Editor/CSV File";
     private string csvFileName = "DialogueCSV_Load.csv";
 
     public void Load()

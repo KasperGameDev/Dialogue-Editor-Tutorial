@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SaveCSV 
 {
-    private string csvDirectoryName = "Resources/Dialogue/CSV File";
+    private string csvDirectoryName = "Resources/Dialogue Editor/CSV File";
     private string csvFileName = "DialogueCSV_Save.csv";
     private string csvSeparator = ",";
     private List<string> csvHeader;
