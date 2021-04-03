@@ -91,13 +91,13 @@ public class DialogueNode : BaseNode
         {
             objectType = typeof(AudioClip),
             allowSceneObjects = false,
-            value = audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType,
+            value = audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType,
         };
         audioClips_Field.RegisterValueChangedCallback(value =>
         {
-            audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue as AudioClip;
+            audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType = value.newValue as AudioClip;
         });
-        audioClips_Field.SetValueWithoutNotify(audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        audioClips_Field.SetValueWithoutNotify(audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
         mainContainer.Add(audioClips_Field);
 
         // Text Name
@@ -124,9 +124,9 @@ public class DialogueNode : BaseNode
         texts_Field = new TextField("");
         texts_Field.RegisterValueChangedCallback(value =>
         {
-            texts.Find(text => text.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue;
+            texts.Find(text => text.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType = value.newValue;
         });
-        texts_Field.SetValueWithoutNotify(texts.Find(text => text.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        texts_Field.SetValueWithoutNotify(texts.Find(text => text.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
         texts_Field.multiline = true;
 
         texts_Field.AddToClassList("TextBox");
@@ -148,30 +148,30 @@ public class DialogueNode : BaseNode
     {
         texts_Field.RegisterValueChangedCallback(value =>
         {
-            texts.Find(text => text.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue;
+            texts.Find(text => text.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType = value.newValue;
         });
-        texts_Field.SetValueWithoutNotify(texts.Find(text => text.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        texts_Field.SetValueWithoutNotify(texts.Find(text => text.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
 
         audioClips_Field.RegisterValueChangedCallback(value =>
         {
-            audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue as AudioClip;
+            audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType = value.newValue as AudioClip;
         });
-        audioClips_Field.SetValueWithoutNotify(audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        audioClips_Field.SetValueWithoutNotify(audioClips.Find(audioClip => audioClip.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
 
         foreach (DialogueNodePort nodePort in dialogueNodePorts)
         {
             nodePort.TextField.RegisterValueChangedCallback(value =>
             {
-                nodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue;
+                nodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType = value.newValue;
             });
-            nodePort.TextField.SetValueWithoutNotify(nodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+            nodePort.TextField.SetValueWithoutNotify(nodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
         }
     }
 
     public override void LoadValueInToField()
     {
-        texts_Field.SetValueWithoutNotify(texts.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType);
-        audioClips_Field.SetValueWithoutNotify(audioClips.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        texts_Field.SetValueWithoutNotify(texts.Find(language => language.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
+        audioClips_Field.SetValueWithoutNotify(audioClips.Find(language => language.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
         faceImage_Field.SetValueWithoutNotify(faceImage);
         faceImageType_Field.SetValueWithoutNotify(faceImageType);
         name_Feild.SetValueWithoutNotify(nameText);
@@ -212,9 +212,9 @@ public class DialogueNode : BaseNode
         dialogueNodePort.TextField = new TextField();
         dialogueNodePort.TextField.RegisterValueChangedCallback(value =>
         {
-            dialogueNodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType = value.newValue;
+            dialogueNodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType = value.newValue;
         });
-        dialogueNodePort.TextField.SetValueWithoutNotify(dialogueNodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.LanguageType).LanguageGenericType);
+        dialogueNodePort.TextField.SetValueWithoutNotify(dialogueNodePort.TextLanguages.Find(language => language.LanguageType == editorWindow.SelectedLanguage).LanguageGenericType);
         port.contentContainer.Add(dialogueNodePort.TextField);
 
         // Delete button
