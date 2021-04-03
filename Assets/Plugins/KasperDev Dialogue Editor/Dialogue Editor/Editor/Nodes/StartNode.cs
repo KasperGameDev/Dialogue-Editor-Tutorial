@@ -4,26 +4,29 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class StartNode : BaseNode
+namespace KasperDev.DialogueEditor
 {
-
-    public StartNode()
+    public class StartNode : BaseNode
     {
 
-    }
+        public StartNode()
+        {
 
-    public StartNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
-    {
-        editorWindow = _editorWindow;
-        graphView = _graphView;
+        }
 
-        title = "Start";
-        SetPosition(new Rect(_position, defaultNodeSize));
-        nodeGuid = Guid.NewGuid().ToString();
+        public StartNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
+        {
+            editorWindow = _editorWindow;
+            graphView = _graphView;
 
-        AddOutputPort("Output",Port.Capacity.Single);
+            title = "Start";
+            SetPosition(new Rect(_position, defaultNodeSize));
+            nodeGuid = Guid.NewGuid().ToString();
 
-        RefreshExpandedState();
-        RefreshPorts();
+            AddOutputPort("Output", Port.Capacity.Single);
+
+            RefreshExpandedState();
+            RefreshPorts();
+        }
     }
 }

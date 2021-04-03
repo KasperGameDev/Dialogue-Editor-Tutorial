@@ -3,42 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueTalkZone : MonoBehaviour
+namespace KasperDev.DialogueEditor
 {
-    [SerializeField] private GameObject speechBubble;
-    [SerializeField] private KeyCode talkKey = KeyCode.E;
-    [SerializeField] private Text keyInputText;
-
-    private DialogueTalk dialogueTalk;
-
-    private void Awake()
+    public class DialogueTalkZone : MonoBehaviour
     {
-        speechBubble.SetActive(false);
-        keyInputText.text = talkKey.ToString();
-        dialogueTalk = GetComponent<DialogueTalk>();
-    }
+        [SerializeField] private GameObject speechBubble;
+        [SerializeField] private KeyCode talkKey = KeyCode.E;
+        [SerializeField] private Text keyInputText;
 
-    void Update()
-    {
-        if(Input.GetKeyDown(talkKey) && speechBubble.activeSelf)
-        {
-            dialogueTalk.StartDialogue();
-        }
-    }
+        private DialogueTalk dialogueTalk;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            speechBubble.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
+        private void Awake()
         {
             speechBubble.SetActive(false);
+            keyInputText.text = talkKey.ToString();
+            dialogueTalk = GetComponent<DialogueTalk>();
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(talkKey) && speechBubble.activeSelf)
+            {
+                dialogueTalk.StartDialogue();
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Player")
+            {
+                speechBubble.SetActive(true);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "Player")
+            {
+                speechBubble.SetActive(false);
+            }
         }
     }
 }

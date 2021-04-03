@@ -4,30 +4,35 @@ using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
-public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
+namespace KasperDev.DialogueEditor
 {
-    private DialogueEditorWindow editorWindow;
-    private DialogueGraphView graphView;
-
-    private Texture2D pic;
-
-    public void Configure(DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
+    public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
     {
-        editorWindow = _editorWindow;
-        graphView = _graphView;
+        private DialogueEditorWindow editorWindow;
+        private DialogueGraphView graphView;
 
-        pic = new Texture2D(1,1);
-        pic.SetPixel(0, 0, new Color(0, 0, 0, 0));
-        pic.Apply();
-    }
+        private Texture2D iconImage;
 
-
-    public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
-    {
-        List<SearchTreeEntry> tree = new List<SearchTreeEntry>
+        public void Configure(DialogueEditorWindow editorWindow, DialogueGraphView graphView)
         {
-            new SearchTreeGroupEntry(new GUIContent("Dialogue Node"),0),
-            new SearchTreeGroupEntry(new GUIContent("Dialogue"),1),
+            this.editorWindow = editorWindow;
+            this.graphView = graphView;
+
+            // Icon image that we kinda don't use.
+            // However use it to create space left of the text.
+            // TODO: find a better way.
+            iconImage = new Texture2D(1, 1);
+            iconImage.SetPixel(0, 0, new Color(0, 0, 0, 0));
+            iconImage.Apply();
+        }
+
+
+        public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
+        {
+            List<SearchTreeEntry> tree = new List<SearchTreeEntry>
+        {
+            new SearchTreeGroupEntry(new GUIContent("Dialogue Editor"),0),
+            new SearchTreeGroupEntry(new GUIContent("Dialogue Node"),1),
 
             AddNodeSearch("Start Node",new StartNode()),
             AddNodeSearch("Dialogue Node",new DialogueNode()),
@@ -35,51 +40,52 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
             AddNodeSearch("End Node",new EndNode()),
         };
 
-        return tree;
-    }
-
-    private SearchTreeEntry AddNodeSearch(string _name, BaseNode _baseNode)
-    {
-        SearchTreeEntry tmp = new SearchTreeEntry(new GUIContent(_name, pic))
-        {
-            level = 2,
-            userData = _baseNode
-        };
-
-        return tmp;
-    }
-
-    public bool OnSelectEntry(SearchTreeEntry _SearchTreeEntry, SearchWindowContext _context)
-    {
-        Vector2 mousePosition = editorWindow.rootVisualElement.ChangeCoordinatesTo
-            (
-            editorWindow.rootVisualElement.parent,_context.screenMousePosition - editorWindow.position.position
-            );
-
-        Vector2 graphMousePosition = graphView.contentViewContainer.WorldToLocal(mousePosition);
-
-        return CheckForNodeType(_SearchTreeEntry, graphMousePosition) ;
-    }
-
-    private bool CheckForNodeType(SearchTreeEntry _searchTreeEntry,Vector2 _pos)
-    {
-        switch (_searchTreeEntry.userData)
-        {
-            case StartNode node:
-                graphView.AddElement(graphView.CreateStartNode(_pos));
-                return true;
-            case DialogueNode node:
-                graphView.AddElement(graphView.CreateDialogueNode(_pos));
-                return true;
-            case EventNode node:
-                graphView.AddElement(graphView.CreateEventNode(_pos));
-                return true;
-            case EndNode node:
-                graphView.AddElement(graphView.CreateEndNode(_pos));
-                return true;
-            default:
-                break;
+            return tree;
         }
-        return false;
+
+        private SearchTreeEntry AddNodeSearch(string name, BaseNode baseNode)
+        {
+            SearchTreeEntry tmp = new SearchTreeEntry(new GUIContent(name, iconImage))
+            {
+                level = 2,
+                userData = baseNode
+            };
+
+            return tmp;
+        }
+
+        public bool OnSelectEntry(SearchTreeEntry searchTreeEntry, SearchWindowContext context)
+        {
+            // Get mouse position on the screen.
+            Vector2 mousePosition = editorWindow.rootVisualElement.ChangeCoordinatesTo(
+                editorWindow.rootVisualElement.parent, context.screenMousePosition - editorWindow.position.position);
+
+            // Now we use mouse position to calculator where it is in the graph view.
+            Vector2 graphMousePosition = graphView.contentViewContainer.WorldToLocal(mousePosition);
+
+            return CheckForNodeType(searchTreeEntry, graphMousePosition);
+        }
+
+        private bool CheckForNodeType(SearchTreeEntry searchTreeEntry, Vector2 position)
+        {
+            switch (searchTreeEntry.userData)
+            {
+                case StartNode node:
+                    graphView.AddElement(graphView.CreateStartNode(position));
+                    return true;
+                case DialogueNode node:
+                    graphView.AddElement(graphView.CreateDialogueNode(position));
+                    return true;
+                case EventNode node:
+                    graphView.AddElement(graphView.CreateEventNode(position));
+                    return true;
+                case EndNode node:
+                    graphView.AddElement(graphView.CreateEndNode(position));
+                    return true;
+                default:
+                    break;
+            }
+            return false;
+        }
     }
 }

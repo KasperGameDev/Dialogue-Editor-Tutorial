@@ -3,35 +3,38 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class CustomTools 
+namespace KasperDev.DialogueEditor
 {
-    [MenuItem("Custom Tools/Dialogue/Save to CSV")]
-    public static void SaveToCSV()
+    public class CustomTools
     {
-        SaveCSV saveCSV = new SaveCSV();
-        saveCSV.Save();
+        [MenuItem("Custom Tools/Dialogue/Save to CSV")]
+        public static void SaveToCSV()
+        {
+            SaveCSV saveCSV = new SaveCSV();
+            saveCSV.Save();
 
-        EditorApplication.Beep();
-        Debug.Log("<color=green> Save CSV File successfully! </color>");
-    }
+            EditorApplication.Beep();
+            Debug.Log("<color=green> Save CSV File successfully! </color>");
+        }
 
-    [MenuItem("Custom Tools/Dialogue/Load from CSV")]
-    public static void LoadFromCSV()
-    {
-        LoadCSV loadCSV = new LoadCSV();
-        loadCSV.Load();
+        [MenuItem("Custom Tools/Dialogue/Load from CSV")]
+        public static void LoadFromCSV()
+        {
+            LoadCSV loadCSV = new LoadCSV();
+            loadCSV.Load();
 
-        EditorApplication.Beep();
-        Debug.Log("<color=green> Loading CSV File successfully! </color>");
-    }
+            EditorApplication.Beep();
+            Debug.Log("<color=green> Loading CSV File successfully! </color>");
+        }
 
-    [MenuItem("Custom Tools/Dialogue/Update Dialogue Languages")]
-    public static void UpdataDialogueLanguage()
-    {
-        UpdateLanguageType updateLanguageType = new UpdateLanguageType();
-        updateLanguageType.UpdateLanguage();
+        [MenuItem("Custom Tools/Dialogue/Update Dialogue Languages")]
+        public static void UpdataDialogueLanguage()
+        {
+            UpdateLanguageType updateLanguageType = new UpdateLanguageType();
+            updateLanguageType.UpdateLanguage();
 
-        EditorApplication.Beep();
-        Debug.Log("<color=green> Update languages successfully! </color>");
+            EditorApplication.Beep();
+            Debug.Log("<color=green> Update languages successfully! </color>");
+        }
     }
 }

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EndNodeType 
+namespace KasperDev.DialogueEditor
 {
-    End,
-    Repeat,
-    Goback,
-    RetrunToStart
+    public enum EndNodeType
+    {
+        End,
+        Repeat,
+        Goback,
+        RetrunToStart
+    }
 }

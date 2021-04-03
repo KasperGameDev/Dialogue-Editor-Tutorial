@@ -2,47 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace KasperDev.DialogueEditor
 {
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float rotaSpeed = 5f;
-
-    private Animator animator;
-    private Rigidbody rb;
-    private float vertical;
-    private float horizontal;
-
-    private void Awake()
+    public class Player : MonoBehaviour
     {
-        animator = GetComponentInChildren<Animator>();
-        rb = GetComponent<Rigidbody>();
-    }
+        [SerializeField] private float moveSpeed = 10f;
+        [SerializeField] private float rotaSpeed = 5f;
 
-    void Update()
-    {
-        InputHander();
-    }
+        private Animator animator;
+        private Rigidbody rb;
+        private float vertical;
+        private float horizontal;
 
-    private void FixedUpdate()
-    {
-        Movement();
-    }
+        private void Awake()
+        {
+            animator = GetComponentInChildren<Animator>();
+            rb = GetComponent<Rigidbody>();
+        }
 
-    private void InputHander()
-    {
-        vertical = Input.GetAxis("Vertical");
-        horizontal = Input.GetAxis("Horizontal");
-    }
+        void Update()
+        {
+            InputHander();
+        }
 
-    private void Movement()
-    {
-        Vector3 movement = new Vector3(horizontal, 0, vertical) * moveSpeed;
-        rb.velocity = movement;
+        private void FixedUpdate()
+        {
+            Movement();
+        }
 
-        Vector3 direction = Vector3.RotateTowards(transform.forward, movement, rotaSpeed * Time.fixedDeltaTime, 0.0f);
-        transform.rotation = Quaternion.LookRotation(direction);
+        private void InputHander()
+        {
+            vertical = Input.GetAxis("Vertical");
+            horizontal = Input.GetAxis("Horizontal");
+        }
 
-        float animMove = Vector3.Magnitude(movement.normalized);
-        animator.SetFloat("moveSpeed", animMove);
+        private void Movement()
+        {
+            Vector3 movement = new Vector3(horizontal, 0, vertical) * moveSpeed;
+            rb.velocity = movement;
+
+            Vector3 direction = Vector3.RotateTowards(transform.forward, movement, rotaSpeed * Time.fixedDeltaTime, 0.0f);
+            transform.rotation = Quaternion.LookRotation(direction);
+
+            float animMove = Vector3.Magnitude(movement.normalized);
+            animator.SetFloat("moveSpeed", animMove);
+        }
     }
 }

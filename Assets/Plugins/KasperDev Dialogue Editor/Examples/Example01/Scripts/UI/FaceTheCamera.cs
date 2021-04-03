@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FaceTheCamera : MonoBehaviour
+namespace KasperDev.DialogueEditor
 {
-    private Camera mainCamera;
-
-    private void Awake()
+    public class FaceTheCamera : MonoBehaviour
     {
-        mainCamera = Camera.main;
-    }
+        private Camera mainCamera;
 
-    void Update()
-    {
-        transform.LookAt(mainCamera.transform);
-        transform.Rotate(0, 180, 0);
+        private void Awake()
+        {
+            mainCamera = Camera.main;
+        }
+
+        void Update()
+        {
+            transform.LookAt(mainCamera.transform);
+            transform.Rotate(0, 180, 0);
+        }
     }
 }

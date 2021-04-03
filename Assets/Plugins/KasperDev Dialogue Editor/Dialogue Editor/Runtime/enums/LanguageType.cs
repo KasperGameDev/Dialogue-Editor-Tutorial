@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum LanguageType 
+namespace KasperDev.DialogueEditor
 {
-    English,
-    German,
-    Danish,
-    Spanish,
-    French,
-    Italian,
-    Latin,
+    public enum LanguageType
+    {
+        English,
+        German,
+        Danish,
+        Spanish,
+        French,
+        Italian,
+        Latin,
+    }
 }

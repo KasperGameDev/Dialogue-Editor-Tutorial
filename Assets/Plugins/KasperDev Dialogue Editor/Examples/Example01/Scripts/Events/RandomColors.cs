@@ -2,44 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomColors : MonoBehaviour
+namespace KasperDev.DialogueEditor
 {
-    [SerializeField] private int myNumber;
-    private List<Material> materials = new List<Material>();
-
-    private void Awake()
+    public class RandomColors : MonoBehaviour
     {
-        SkinnedMeshRenderer[] skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        [SerializeField] private int myNumber;
+        private List<Material> materials = new List<Material>();
 
-        foreach (SkinnedMeshRenderer smr in skinnedMeshRenderers)
+        private void Awake()
         {
-            foreach (Material mat in smr.materials)
+            SkinnedMeshRenderer[] skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+            foreach (SkinnedMeshRenderer smr in skinnedMeshRenderers)
             {
-                materials.Add(mat);
+                foreach (Material mat in smr.materials)
+                {
+                    materials.Add(mat);
+                }
             }
         }
-    }
 
-    private void Start()
-    {
-        GameEvents.Instance.RandomColorModel += DoRandomColorModel;
-    }
-
-    private void OnDestroy()
-    {
-        GameEvents.Instance.RandomColorModel -= DoRandomColorModel;
-    }
-
-    private void DoRandomColorModel(int _number)
-    {
-        if (myNumber == _number)
+        private void Start()
         {
-            foreach (Material material in materials)
+            GameEvents.Instance.RandomColorModel += DoRandomColorModel;
+        }
+
+        private void OnDestroy()
+        {
+            GameEvents.Instance.RandomColorModel -= DoRandomColorModel;
+        }
+
+        private void DoRandomColorModel(int _number)
+        {
+            if (myNumber == _number)
             {
-                material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                foreach (Material material in materials)
+                {
+                    material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                }
             }
         }
+
+
     }
-
-
 }

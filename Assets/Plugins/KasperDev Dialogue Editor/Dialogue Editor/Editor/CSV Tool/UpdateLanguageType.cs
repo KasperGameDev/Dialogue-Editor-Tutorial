@@ -3,47 +3,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpdateLanguageType
+namespace KasperDev.DialogueEditor
 {
-    public void UpdateLanguage()
+    public class UpdateLanguageType
     {
-        List<DialogueContainerSO> dialogueContainers = Helper.FindAllObjectFromResources<DialogueContainerSO>();
-
-        foreach (DialogueContainerSO DialogueContainer in dialogueContainers)
+        public void UpdateLanguage()
         {
-            foreach (DialogueNodeData nodeData in DialogueContainer.DialogueNodeDatas)
-            {
-                nodeData.TextLanguages = UpdateLanguageGeneric(nodeData.TextLanguages);
-                nodeData.AudioClips = UpdateLanguageGeneric(nodeData.AudioClips);
+            List<DialogueContainerSO> dialogueContainers = Helper.FindAllDialogueContainerSO(); 
 
-                foreach (DialogueNodePort nodePort in nodeData.DialogueNodePorts)
+            foreach (DialogueContainerSO DialogueContainer in dialogueContainers)
+            {
+                foreach (DialogueNodeData nodeData in DialogueContainer.DialogueNodeDatas)
                 {
-                    nodePort.TextLanguages = UpdateLanguageGeneric(nodePort.TextLanguages);
+                    nodeData.TextLanguages = UpdateLanguageGeneric(nodeData.TextLanguages);
+                    nodeData.AudioClips = UpdateLanguageGeneric(nodeData.AudioClips);
+
+                    foreach (DialogueNodePort nodePort in nodeData.DialogueNodePorts)
+                    {
+                        nodePort.TextLanguages = UpdateLanguageGeneric(nodePort.TextLanguages);
+                    }
                 }
             }
         }
-    }
 
-    private List<LanguageGeneric<T>> UpdateLanguageGeneric<T>(List<LanguageGeneric<T>> languageGenerics)
-    {
-        List<LanguageGeneric<T>> tmp = new List<LanguageGeneric<T>>();
-
-        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+        private List<LanguageGeneric<T>> UpdateLanguageGeneric<T>(List<LanguageGeneric<T>> languageGenerics)
         {
-            tmp.Add(new LanguageGeneric<T>
-            {
-                LanguageType = languageType
-            });
-        }
+            List<LanguageGeneric<T>> tmp = new List<LanguageGeneric<T>>();
 
-        foreach (LanguageGeneric<T> languageGeneric in languageGenerics)
-        {
-            if(tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType) != null)
+            foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
             {
-                tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+                tmp.Add(new LanguageGeneric<T>
+                {
+                    LanguageType = languageType
+                });
             }
-        }
 
-        return tmp;
+            foreach (LanguageGeneric<T> languageGeneric in languageGenerics)
+            {
+                if (tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType) != null)
+                {
+                    tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+                }
+            }
+
+            return tmp;
+        }
     }
 }

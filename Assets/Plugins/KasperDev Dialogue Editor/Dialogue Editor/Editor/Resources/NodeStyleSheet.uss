@@ -11,3 +11,13 @@
 	margin-left:4px;
 	font-size: 15px;
 }
+
+.PortName{
+	display:none;
+}
+
+.faceImagePreview{
+	height:	100px;
+	width:	100px;
+	margin: auto;
+}

@@ -6,268 +6,290 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class DialogueSaveAndLoad
+namespace KasperDev.DialogueEditor
 {
-    private List<Edge> edges => graphView.edges.ToList();
-    private List<BaseNode> nodes => graphView.nodes.ToList().Where(node => node is BaseNode).Cast<BaseNode>().ToList();
-
-    private DialogueGraphView graphView;
-
-    public DialogueSaveAndLoad(DialogueGraphView _graphView)
+    public class DialogueSaveAndLoad
     {
-        graphView = _graphView;
-    }
+        private List<Edge> edges => graphView.edges.ToList();
+        private List<BaseNode> nodes => graphView.nodes.ToList().Where(node => node is BaseNode).Cast<BaseNode>().ToList();
 
-    public void Save(DialogueContainerSO _dialogueContainerSO)
-    {
-        SaveEdges(_dialogueContainerSO);
-        SaveNodes(_dialogueContainerSO);
+        private DialogueGraphView graphView;
 
-        EditorUtility.SetDirty(_dialogueContainerSO);
-        AssetDatabase.SaveAssets();
-    }
-
-    public void Load(DialogueContainerSO _dialogueContainerSO)
-    {
-        ClearGraph();
-        GenerateNodes(_dialogueContainerSO);
-        ConnectNodes(_dialogueContainerSO);
-    }
-
-    #region Save
-    private void SaveEdges(DialogueContainerSO _dialogueContainerSO)
-    {
-        _dialogueContainerSO.NodeLinkDatas.Clear();
-
-        Edge[] connectedEdges = edges.Where(edge => edge.input.node != null).ToArray();
-        for (int i = 0; i < connectedEdges.Count(); i++)
+        public DialogueSaveAndLoad(DialogueGraphView _graphView)
         {
-            BaseNode outputNode = (BaseNode)connectedEdges[i].output.node;
-            BaseNode inputNode = connectedEdges[i].input.node as BaseNode;
+            graphView = _graphView;
+        }
 
-            _dialogueContainerSO.NodeLinkDatas.Add(new NodeLinkData
+        public void Save(DialogueContainerSO _dialogueContainerSO)
+        {
+            SaveEdges(_dialogueContainerSO);
+            SaveNodes(_dialogueContainerSO);
+
+            EditorUtility.SetDirty(_dialogueContainerSO);
+            AssetDatabase.SaveAssets();
+        }
+
+        public void Load(DialogueContainerSO _dialogueContainerSO)
+        {
+            ClearGraph();
+            GenerateNodes(_dialogueContainerSO);
+            ConnectNodes(_dialogueContainerSO);
+        }
+
+        #region Save
+        private void SaveEdges(DialogueContainerSO _dialogueContainerSO)
+        {
+            _dialogueContainerSO.NodeLinkDatas.Clear();
+
+            Edge[] connectedEdges = edges.Where(edge => edge.input.node != null).ToArray();
+            for (int i = 0; i < connectedEdges.Count(); i++)
             {
-                BaseNodeGuid = outputNode.NodeGuid,
-                TargetNodeGuid = inputNode.NodeGuid
+                BaseNode outputNode = (BaseNode)connectedEdges[i].output.node;
+                BaseNode inputNode = connectedEdges[i].input.node as BaseNode;
+
+                _dialogueContainerSO.NodeLinkDatas.Add(new NodeLinkData
+                {
+                    BaseNodeGuid = outputNode.NodeGuid,
+                    TargetNodeGuid = inputNode.NodeGuid
+                });
+            }
+        }
+
+        private void SaveNodes(DialogueContainerSO _dialogueContainerSO)
+        {
+            _dialogueContainerSO.DialogueNodeDatas.Clear();
+            _dialogueContainerSO.EventNodeDatas.Clear();
+            _dialogueContainerSO.EndNodeDatas.Clear();
+            _dialogueContainerSO.StartNodeDatas.Clear();
+
+            nodes.ForEach(node =>
+            {
+                switch (node)
+                {
+                    case DialogueNode dialogueNode:
+                        _dialogueContainerSO.DialogueNodeDatas.Add(SaveNodeData(dialogueNode));
+                        break;
+                    case StartNode startNode:
+                        _dialogueContainerSO.StartNodeDatas.Add(SaveNodeData(startNode));
+                        break;
+                    case EndNode endNode:
+                        _dialogueContainerSO.EndNodeDatas.Add(SaveNodeData(endNode));
+                        break;
+                    case EventNode eventNode:
+                        _dialogueContainerSO.EventNodeDatas.Add(SaveNodeData(eventNode));
+                        break;
+                    default:
+                        break;
+                }
             });
         }
-    }
 
-    private void SaveNodes(DialogueContainerSO _dialogueContainerSO)
-    {
-        _dialogueContainerSO.DialogueNodeDatas.Clear();
-        _dialogueContainerSO.EventNodeDatas.Clear();
-        _dialogueContainerSO.EndNodeDatas.Clear();
-        _dialogueContainerSO.StartNodeDatas.Clear();
-
-        nodes.ForEach(node =>
+        private DialogueNodeData SaveNodeData(DialogueNode _node)
         {
-            switch (node)
+            DialogueNodeData dialogueNodeData = new DialogueNodeData
             {
-                case DialogueNode dialogueNode:
-                    _dialogueContainerSO.DialogueNodeDatas.Add(SaveNodeData(dialogueNode));
-                    break;
-                case StartNode startNode:
-                    _dialogueContainerSO.StartNodeDatas.Add(SaveNodeData(startNode));
-                    break;
-                case EndNode endNode:
-                    _dialogueContainerSO.EndNodeDatas.Add(SaveNodeData(endNode));
-                    break;
-                case EventNode eventNode:
-                    _dialogueContainerSO.EventNodeDatas.Add(SaveNodeData(eventNode));
-                    break;
-                default:
-                    break;
-            }
-        });
-    }
+                NodeGuid = _node.NodeGuid,
+                Position = _node.GetPosition().position,
+                TextLanguages = _node.TextLanguages,
+                CharacterName = _node.CharacterName,
+                AudioClips = _node.AudioClips,
+                DialogueFaceImageType = _node.DialogueFaceImageType,
+                FaceImage = _node.FaceImage,
+                DialogueNodePorts = new List<DialogueNodePort>(_node.DialogueNodePorts)
+            };
 
-    private DialogueNodeData SaveNodeData(DialogueNode _node)
-    {
-        DialogueNodeData dialogueNodeData = new DialogueNodeData
-        {
-            NodeGuid = _node.NodeGuid,
-            Position = _node.GetPosition().position,
-            TextLanguages = _node.Texts,
-            Name = _node.NameText,
-            AudioClips = _node.AudioClips,
-            DialogueFaceImageType = _node.FaceImageType,
-            Sprite = _node.FaceImage,
-            DialogueNodePorts = new List<DialogueNodePort>(_node.DialogueNodePorts)
-        };
-
-        foreach (DialogueNodePort nodePort in dialogueNodeData.DialogueNodePorts)
-        {
-            nodePort.OutputGuid = string.Empty;
-            nodePort.InputGuid = string.Empty;
-            foreach (Edge edge in edges)
+            foreach (DialogueNodePort nodePort in dialogueNodeData.DialogueNodePorts)
             {
-                if (edge.output == nodePort.MyPort)
+                nodePort.OutputGuid = string.Empty;
+                nodePort.InputGuid = string.Empty;
+                foreach (Edge edge in edges)
                 {
-                    nodePort.OutputGuid = (edge.output.node as BaseNode).NodeGuid;
-                    nodePort.InputGuid = (edge.input.node as BaseNode).NodeGuid;
+                    if (edge.output.portName == nodePort.PortGuid)
+                    {
+                        nodePort.OutputGuid = (edge.output.node as BaseNode).NodeGuid;
+                        nodePort.InputGuid = (edge.input.node as BaseNode).NodeGuid;
+                    }
+                }
+            }
+
+            return dialogueNodeData;
+        }
+
+        private StartNodeData SaveNodeData(StartNode _node)
+        {
+            StartNodeData nodeData = new StartNodeData()
+            {
+                NodeGuid = _node.NodeGuid,
+                Position = _node.GetPosition().position,
+            };
+
+            return nodeData;
+        }
+
+        private EndNodeData SaveNodeData(EndNode _node)
+        {
+            EndNodeData nodeData = new EndNodeData()
+            {
+                NodeGuid = _node.NodeGuid,
+                Position = _node.GetPosition().position,
+                EndNodeType = _node.EndNodeType
+            };
+
+            return nodeData;
+        }
+
+        private EventNodeData SaveNodeData(EventNode _node)
+        {
+            EventNodeData nodeData = new EventNodeData()
+            {
+                NodeGuid = _node.NodeGuid,
+                Position = _node.GetPosition().position,
+                DialogueEventSO = _node.DialogueEvent
+            };
+
+            return nodeData;
+        }
+        #endregion
+
+        #region Load
+
+        private void ClearGraph()
+        {
+            edges.ForEach(edge => graphView.RemoveElement(edge));
+
+            foreach (BaseNode node in nodes)
+            {
+                graphView.RemoveElement(node);
+            }
+        }
+
+        private void GenerateNodes(DialogueContainerSO _dialogueContainer)
+        {
+            // Start
+            foreach (StartNodeData node in _dialogueContainer.StartNodeDatas)
+            {
+                StartNode tempNode = graphView.CreateStartNode(node.Position);
+                tempNode.NodeGuid = node.NodeGuid;
+
+                graphView.AddElement(tempNode);
+            }
+
+            // End Node 
+            foreach (EndNodeData node in _dialogueContainer.EndNodeDatas)
+            {
+                EndNode tempNode = graphView.CreateEndNode(node.Position);
+                tempNode.NodeGuid = node.NodeGuid;
+                tempNode.EndNodeType = node.EndNodeType;
+
+                tempNode.LoadValueInToField();
+                graphView.AddElement(tempNode);
+            }
+
+            // Event Node
+            foreach (EventNodeData node in _dialogueContainer.EventNodeDatas)
+            {
+                EventNode tempNode = graphView.CreateEventNode(node.Position);
+                tempNode.NodeGuid = node.NodeGuid;
+                tempNode.DialogueEvent = node.DialogueEventSO;
+
+                tempNode.LoadValueInToField();
+                graphView.AddElement(tempNode);
+            }
+
+            // Dialogue Node
+            foreach (DialogueNodeData node in _dialogueContainer.DialogueNodeDatas)
+            {
+                DialogueNode tempNode = graphView.CreateDialogueNode(node.Position);
+                tempNode.NodeGuid = node.NodeGuid;
+                tempNode.CharacterName = node.CharacterName;
+                tempNode.FaceImage = node.FaceImage;
+                tempNode.DialogueFaceImageType = node.DialogueFaceImageType;
+
+                foreach (LanguageGeneric<string> languageGeneric in node.TextLanguages)
+                {
+                    tempNode.TextLanguages.Find(language => language.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+                }
+
+                foreach (LanguageGeneric<AudioClip> languageGeneric in node.AudioClips)
+                {
+                    tempNode.AudioClips.Find(language => language.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+                }
+
+                foreach (DialogueNodePort nodePort in node.DialogueNodePorts)
+                {
+                    tempNode.AddChoicePort(tempNode, nodePort);
+                }
+
+                tempNode.LoadValueInToField();
+                graphView.AddElement(tempNode);
+            }
+        }
+
+        private void ConnectNodes(DialogueContainerSO _dialogueContainer)
+        {
+            // Make connection for all node.
+            // Except for dialogue nodes.
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                List<NodeLinkData> connections = _dialogueContainer.NodeLinkDatas.Where(edge => edge.BaseNodeGuid == nodes[i].NodeGuid).ToList();
+
+                for (int j = 0; j < connections.Count; j++)
+                {
+                    string targetNodeGuid = connections[j].TargetNodeGuid;
+                    BaseNode targetNode = nodes.First(node => node.NodeGuid == targetNodeGuid);
+
+                    if ((nodes[i] is DialogueNode) == false)
+                    {
+                        LinkNodesTogether(nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
+                    }
+                }
+            }
+
+            // Make connection for dialogue nodes.
+            List<DialogueNode> dialogueNodes = nodes.FindAll(node => node is DialogueNode).Cast<DialogueNode>().ToList();
+
+            foreach (DialogueNode dialogueNode in dialogueNodes)
+            {
+                foreach (DialogueNodePort nodePort in dialogueNode.DialogueNodePorts)
+                {
+                    // Check if port has a connection.
+                    if (nodePort.InputGuid != string.Empty)
+                    {
+                        // Find target node with ID.
+                        BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
+
+                        Port myPort = null;
+
+                        // Check all ports in nodes outputContainer.
+                        for (int i = 0; i < dialogueNode.outputContainer.childCount; i++)
+                        {
+                            // Find port with same ID, we use portName as ID.
+                            if (dialogueNode.outputContainer[i].Q<Port>().portName == nodePort.PortGuid)
+                            {
+                                myPort = dialogueNode.outputContainer[i].Q<Port>();
+                            }
+                        }
+
+                        // Make a connection between the ports.
+                        LinkNodesTogether(myPort, (Port)targetNode.inputContainer[0]);
+                    }
+
                 }
             }
         }
 
-        return dialogueNodeData;
-    }
-
-    private StartNodeData SaveNodeData(StartNode _node)
-    {
-        StartNodeData nodeData = new StartNodeData()
+        private void LinkNodesTogether(Port _outputPort, Port _inputPort)
         {
-            NodeGuid = _node.NodeGuid,
-            Position = _node.GetPosition().position,
-        };
-
-        return nodeData;
-    }
-
-    private EndNodeData SaveNodeData(EndNode _node)
-    {
-        EndNodeData nodeData = new EndNodeData()
-        {
-            NodeGuid = _node.NodeGuid,
-            Position = _node.GetPosition().position,
-            EndNodeType = _node.EndNodeType
-        };
-
-        return nodeData;
-    }
-
-    private EventNodeData SaveNodeData(EventNode _node)
-    {
-        EventNodeData nodeData = new EventNodeData()
-        {
-            NodeGuid = _node.NodeGuid,
-            Position = _node.GetPosition().position,
-            DialogueEventSO = _node.DialogueEvent
-        };
-
-        return nodeData;
-    }
-    #endregion
-
-    #region Load
-
-    private void ClearGraph()
-    {
-        edges.ForEach(edge => graphView.RemoveElement(edge));
-
-        foreach (BaseNode node in nodes)
-        {
-            graphView.RemoveElement(node);
-        }
-    }
-
-    private void GenerateNodes(DialogueContainerSO _dialogueContainer)
-    {
-        // Start
-        foreach (StartNodeData node in _dialogueContainer.StartNodeDatas)
-        {
-            StartNode tempNode = graphView.CreateStartNode(node.Position);
-            tempNode.NodeGuid = node.NodeGuid;
-
-            graphView.AddElement(tempNode);
-        }
-
-        // End Node 
-        foreach (EndNodeData node in _dialogueContainer.EndNodeDatas)
-        {
-            EndNode tempNode = graphView.CreateEndNode(node.Position);
-            tempNode.NodeGuid = node.NodeGuid;
-            tempNode.EndNodeType = node.EndNodeType;
-
-            tempNode.LoadValueInToField();
-            graphView.AddElement(tempNode);
-        }
-
-        // Event Node
-        foreach (EventNodeData node in _dialogueContainer.EventNodeDatas)
-        {
-            EventNode tempNode = graphView.CreateEventNode(node.Position);
-            tempNode.NodeGuid = node.NodeGuid;
-            tempNode.DialogueEvent = node.DialogueEventSO;
-
-            tempNode.LoadValueInToField();
-            graphView.AddElement(tempNode);
-        }
-
-        // Dialogue Node
-        foreach (DialogueNodeData node in _dialogueContainer.DialogueNodeDatas)
-        {
-            DialogueNode tempNode = graphView.CreateDialogueNode(node.Position);
-            tempNode.NodeGuid = node.NodeGuid;
-            tempNode.NameText = node.Name;
-            tempNode.FaceImage = node.Sprite;
-            tempNode.FaceImageType = node.DialogueFaceImageType;
-
-            foreach (LanguageGeneric<string> languageGeneric in node.TextLanguages)
+            Edge tempEdge = new Edge()
             {
-                tempNode.Texts.Find(language => language.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
-            }
-
-            foreach (LanguageGeneric<AudioClip> languageGeneric in node.AudioClips)
-            {
-                tempNode.AudioClips.Find(language => language.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
-            }
-
-            foreach (DialogueNodePort nodePort in node.DialogueNodePorts)
-            {
-                tempNode.AddChoicePort(tempNode, nodePort);
-            }
-
-            tempNode.LoadValueInToField();
-            graphView.AddElement(tempNode);
-        }
-    }
-
-    private void ConnectNodes(DialogueContainerSO _dialogueContainer)
-    {
-        for (int i = 0; i < nodes.Count; i++)
-        {
-            List<NodeLinkData> connections = _dialogueContainer.NodeLinkDatas.Where(edge => edge.BaseNodeGuid == nodes[i].NodeGuid).ToList();
-
-            for (int j = 0; j < connections.Count; j++)
-            {
-                string targetNodeGuid = connections[j].TargetNodeGuid;
-                BaseNode targetNode = nodes.First(node => node.NodeGuid == targetNodeGuid);
-
-                if ((nodes[i] is DialogueNode) == false)
-                {
-                    LinkNodesTogether(nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
-                }
-            }
+                output = _outputPort,
+                input = _inputPort
+            };
+            tempEdge.input.Connect(tempEdge);
+            tempEdge.output.Connect(tempEdge);
+            graphView.Add(tempEdge);
         }
 
-        List<DialogueNode> dialogueNodes = nodes.FindAll(node => node is DialogueNode).Cast<DialogueNode>().ToList();
-
-        foreach (DialogueNode dialogueNode in dialogueNodes)
-        {
-            foreach (DialogueNodePort nodePort in dialogueNode.DialogueNodePorts)
-            {
-                if (nodePort.InputGuid != string.Empty)
-                {
-                    BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
-                    LinkNodesTogether(nodePort.MyPort, (Port)targetNode.inputContainer[0]);
-                }
-
-            }
-        }
+        #endregion
     }
-
-    private void LinkNodesTogether(Port _outputPort, Port _inputPort)
-    {
-        Edge tempEdge = new Edge()
-        {
-            output = _outputPort,
-            input = _inputPort
-        };
-        tempEdge.input.Connect(tempEdge);
-        tempEdge.output.Connect(tempEdge);
-        graphView.Add(tempEdge);
-    }
-
-    #endregion
 }

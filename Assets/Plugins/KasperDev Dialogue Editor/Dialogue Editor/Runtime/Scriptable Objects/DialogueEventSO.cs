@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class DialogueEventSO : ScriptableObject
+namespace KasperDev.DialogueEditor
 {
-    public virtual void RunEvent()
+    [System.Serializable]
+    public class DialogueEventSO : ScriptableObject
     {
-        Debug.Log("Event was Call");
+        public virtual void RunEvent()
+        {
+            Debug.Log("Event was Call");
+        }
     }
 }

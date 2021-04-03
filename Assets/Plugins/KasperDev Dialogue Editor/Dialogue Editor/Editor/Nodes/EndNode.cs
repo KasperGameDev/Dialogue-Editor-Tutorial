@@ -6,47 +6,50 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EndNode : BaseNode
+namespace KasperDev.DialogueEditor
 {
-    private EndNodeType endNodeType = EndNodeType.End;
-    private EnumField enumField;
-
-    public EndNodeType EndNodeType { get => endNodeType; set => endNodeType = value; }
-
-    public EndNode()
+    public class EndNode : BaseNode
     {
+        private EndNodeType endNodeType = EndNodeType.End;
+        private EnumField enumField;
 
-    }
+        public EndNodeType EndNodeType { get => endNodeType; set => endNodeType = value; }
 
-    public EndNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
-    {
-        editorWindow = _editorWindow;
-        graphView = _graphView;
-
-        title = "End";
-        SetPosition(new Rect(_position, defaultNodeSize));
-        nodeGuid = Guid.NewGuid().ToString();
-
-        AddInputPort("Input", Port.Capacity.Multi);
-
-        enumField = new EnumField()
+        public EndNode()
         {
-            value = endNodeType
-        };
 
-        enumField.Init(endNodeType);
+        }
 
-        enumField.RegisterValueChangedCallback((value) =>
+        public EndNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
         {
-            endNodeType = (EndNodeType)value.newValue;
-        });
-        enumField.SetValueWithoutNotify(endNodeType);
+            editorWindow = _editorWindow;
+            graphView = _graphView;
 
-        mainContainer.Add(enumField);
-    }
+            title = "End";
+            SetPosition(new Rect(_position, defaultNodeSize));
+            nodeGuid = Guid.NewGuid().ToString();
 
-    public override void LoadValueInToField()
-    {
-        enumField.SetValueWithoutNotify(endNodeType);
+            AddInputPort("Input", Port.Capacity.Multi);
+
+            enumField = new EnumField()
+            {
+                value = endNodeType
+            };
+
+            enumField.Init(endNodeType);
+
+            enumField.RegisterValueChangedCallback((value) =>
+            {
+                endNodeType = (EndNodeType)value.newValue;
+            });
+            enumField.SetValueWithoutNotify(endNodeType);
+
+            mainContainer.Add(enumField);
+        }
+
+        public override void LoadValueInToField()
+        {
+            enumField.SetValueWithoutNotify(endNodeType);
+        }
     }
 }

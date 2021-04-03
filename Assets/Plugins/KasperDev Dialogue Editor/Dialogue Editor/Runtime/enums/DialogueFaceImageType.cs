@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DialogueFaceImageType 
+namespace KasperDev.DialogueEditor
 {
-    Left,
-    Rigth
+    public enum DialogueFaceImageType
+    {
+        Left,
+        Rigth
+    }
 }

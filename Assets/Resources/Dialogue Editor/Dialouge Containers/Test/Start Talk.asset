@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a69ff5ed214494b835d86b8438ac53, type: 3}
-  m_Name: New Dialogue Container SO
+  m_Name: Start Talk
   m_EditorClassIdentifier: 
   NodeLinkDatas:
   - BaseNodeGuid: 556f7e36-40b3-490b-908c-9700de7d1941
