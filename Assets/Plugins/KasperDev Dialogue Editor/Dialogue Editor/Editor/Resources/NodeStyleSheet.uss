@@ -21,3 +21,23 @@
 	width:	100px;
 	margin: auto;
 }
+
+.EventBox{
+	flex-direction: row;
+}
+
+.EvnetText{
+	min-width:150px;
+}
+
+.EvnetInt{
+	min-width:40px;
+}
+
+.EventObject{
+
+}
+
+.EventBtn{
+
+}

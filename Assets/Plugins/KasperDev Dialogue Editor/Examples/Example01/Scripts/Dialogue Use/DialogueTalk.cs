@@ -70,9 +70,12 @@ namespace KasperDev.DialogueEditor
 
         private void RunNode(EventNodeData _nodeData)
         {
-            if (_nodeData.DialogueEventSO != null)
+            foreach (var item in _nodeData.EventScriptableObjectDatas)
             {
-                _nodeData.DialogueEventSO.RunEvent();
+                if (item.DialogueEventSO != null)
+                {
+                    item.DialogueEventSO.RunEvent();
+                }
             }
             CheckNodeType(GetNextNode(_nodeData));
         }
