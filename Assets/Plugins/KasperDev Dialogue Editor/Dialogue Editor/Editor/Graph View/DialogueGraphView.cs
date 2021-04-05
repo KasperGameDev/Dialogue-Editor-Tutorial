@@ -102,5 +102,10 @@ namespace KasperDev.DialogueEditor
         {
             return new DialogueNode(position, editorWindow, this);
         }
+
+        public BranchNode CreateBranchNode(Vector2 position)
+        {
+            return new BranchNode(position, editorWindow, this);
+        }
     }
 }

@@ -22,6 +22,7 @@
 	margin: auto;
 }
 
+/* ----- Event ----- */
 .EventBox{
 	flex-direction: row;
 }
@@ -39,5 +40,22 @@
 }
 
 .EventBtn{
+
+}
+
+/* ----- Branc ----- */
+.BrancBox{
+	flex-direction: row;
+}
+
+.BrancText{
+	min-width:150px;
+}
+
+.BrancID{
+	min-width:40px;
+}
+
+.BrancBtn{
 
 }

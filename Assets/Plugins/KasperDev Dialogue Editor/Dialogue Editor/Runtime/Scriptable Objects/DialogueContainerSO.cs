@@ -15,6 +15,7 @@ namespace KasperDev.DialogueEditor
         public List<EndNodeData> EndNodeDatas = new List<EndNodeData>();
         public List<StartNodeData> StartNodeDatas = new List<StartNodeData>();
         public List<EventNodeData> EventNodeDatas = new List<EventNodeData>();
+        public List<BranchNodeData> BranchNodeDatas = new List<BranchNodeData>();
 
         public List<BaseNodeData> AllNodes {
             get {
@@ -23,6 +24,7 @@ namespace KasperDev.DialogueEditor
                 tmp.AddRange(EndNodeDatas);
                 tmp.AddRange(StartNodeDatas);
                 tmp.AddRange(EventNodeDatas);
+                tmp.AddRange(BranchNodeDatas);
 
                 return tmp;
             }
@@ -33,7 +35,9 @@ namespace KasperDev.DialogueEditor
     public class NodeLinkData
     {
         public string BaseNodeGuid;
+        public string BasePortName;
         public string TargetNodeGuid;
+        public string TargetPortName;
     }
 
     [System.Serializable]
@@ -65,6 +69,22 @@ namespace KasperDev.DialogueEditor
     {
 
     }
+
+    #region Branch Node
+    [System.Serializable]
+    public class BranchNodeData : BaseNodeData
+    {
+        public string trueGuidNode;
+        public string falseGuidNode;
+        public List<BrancStringIdData> BrancStringIdDatas;
+    }
+    [System.Serializable]
+    public class BrancStringIdData
+    {
+        public string stringEvent;
+        public int idNumber;
+    }
+    #endregion
 
     #region Event Node
     [System.Serializable]

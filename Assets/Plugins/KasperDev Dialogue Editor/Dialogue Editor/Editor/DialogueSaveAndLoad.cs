@@ -50,7 +50,9 @@ namespace KasperDev.DialogueEditor
                 dialogueContainerSO.NodeLinkDatas.Add(new NodeLinkData
                 {
                     BaseNodeGuid = outputNode.NodeGuid,
-                    TargetNodeGuid = inputNode.NodeGuid
+                    BasePortName = connectedEdges[i].output.portName,
+                    TargetNodeGuid = inputNode.NodeGuid,
+                    TargetPortName = connectedEdges[i].input.portName,
                 });
             }
         }
@@ -61,6 +63,7 @@ namespace KasperDev.DialogueEditor
             dialogueContainerSO.EventNodeDatas.Clear();
             dialogueContainerSO.EndNodeDatas.Clear();
             dialogueContainerSO.StartNodeDatas.Clear();
+            dialogueContainerSO.BranchNodeDatas.Clear();
 
             nodes.ForEach(node =>
             {
@@ -77,6 +80,9 @@ namespace KasperDev.DialogueEditor
                         break;
                     case EventNode eventNode:
                         dialogueContainerSO.EventNodeDatas.Add(SaveNodeData(eventNode));
+                        break;
+                    case BranchNode branchNode:
+                        dialogueContainerSO.BranchNodeDatas.Add(SaveNodeData(branchNode));
                         break;
                     default:
                         break;
@@ -150,6 +156,25 @@ namespace KasperDev.DialogueEditor
 
             return nodeData;
         }
+
+        private BranchNodeData SaveNodeData(BranchNode node)
+        {
+            List<Edge> tmpEdges = edges.Where(x => x.output.node == node).Cast<Edge>().ToList();
+
+            Edge trueOutput = edges.FirstOrDefault(x => x.output.node == node && x.output.portName == "True");
+            Edge flaseOutput = edges.FirstOrDefault(x => x.output.node == node && x.output.portName == "False");
+
+            BranchNodeData nodeData = new BranchNodeData()
+            {
+                NodeGuid = node.NodeGuid,
+                Position = node.GetPosition().position,
+                BrancStringIdDatas = node.BrancStringIdData,
+                trueGuidNode = (trueOutput != null ? (trueOutput.input.node as BaseNode).NodeGuid : string.Empty),
+                falseGuidNode = (flaseOutput != null ? (flaseOutput.input.node as BaseNode).NodeGuid : string.Empty),
+            };
+
+            return nodeData;
+        }
         #endregion
 
         #region Load
@@ -205,6 +230,22 @@ namespace KasperDev.DialogueEditor
                 graphView.AddElement(tempNode);
             }
 
+            // Breach Node
+            foreach (BranchNodeData node in dialogueContainer.BranchNodeDatas)
+            {
+                BranchNode tempNode = graphView.CreateBranchNode(node.Position);
+                tempNode.NodeGuid = node.NodeGuid;
+
+                foreach (BrancStringIdData item in node.BrancStringIdDatas)
+                {
+                    tempNode.AddCondition(item);
+                }
+
+                tempNode.LoadValueInToField();
+                tempNode.ReloadLanguage();
+                graphView.AddElement(tempNode);
+            }
+
             // Dialogue Node
             foreach (DialogueNodeData node in dialogueContainer.DialogueNodeDatas)
             {
@@ -242,47 +283,23 @@ namespace KasperDev.DialogueEditor
             {
                 List<NodeLinkData> connections = dialogueContainer.NodeLinkDatas.Where(edge => edge.BaseNodeGuid == nodes[i].NodeGuid).ToList();
 
+                List<Port> allOutputPorts = nodes[i].outputContainer.Children().Where(x => x is Port).Cast<Port>().ToList();                
+
                 for (int j = 0; j < connections.Count; j++)
                 {
                     string targetNodeGuid = connections[j].TargetNodeGuid;
                     BaseNode targetNode = nodes.First(node => node.NodeGuid == targetNodeGuid);
 
-                    if ((nodes[i] is DialogueNode) == false)
+                    if (targetNode == null)
+                        continue;
+
+                    foreach (Port item in allOutputPorts)
                     {
-                        LinkNodesTogether(nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
-                    }
-                }
-            }
-
-            // Make connection for dialogue nodes.
-            List<DialogueNode> dialogueNodes = nodes.FindAll(node => node is DialogueNode).Cast<DialogueNode>().ToList();
-
-            foreach (DialogueNode dialogueNode in dialogueNodes)
-            {
-                foreach (DialogueNodePort nodePort in dialogueNode.DialogueNodePorts)
-                {
-                    // Check if port has a connection.
-                    if (nodePort.InputGuid != string.Empty)
-                    {
-                        // Find target node with ID.
-                        BaseNode targetNode = nodes.First(Node => Node.NodeGuid == nodePort.InputGuid);
-
-                        Port myPort = null;
-
-                        // Check all ports in nodes outputContainer.
-                        for (int i = 0; i < dialogueNode.outputContainer.childCount; i++)
+                        if(item.portName == connections[j].BasePortName)
                         {
-                            // Find port with same ID, we use portName as ID.
-                            if (dialogueNode.outputContainer[i].Q<Port>().portName == nodePort.PortGuid)
-                            {
-                                myPort = dialogueNode.outputContainer[i].Q<Port>();
-                            }
+                            LinkNodesTogether(item, (Port)targetNode.inputContainer[0]);
                         }
-
-                        // Make a connection between the ports.
-                        LinkNodesTogether(myPort, (Port)targetNode.inputContainer[0]);
                     }
-
                 }
             }
         }
