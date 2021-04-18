@@ -1,0 +1,659 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a69ff5ed214494b835d86b8438ac53, type: 3}
+  m_Name: Talk to NPC
+  m_EditorClassIdentifier: 
+  NodeLinkDatas:
+  - BaseNodeGuid: 556f7e36-40b3-490b-908c-9700de7d1941
+    TargetNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+  - BaseNodeGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
+    TargetNodeGuid: 175d57fe-59b0-4d71-b7e4-af37adc1e8ae
+  - BaseNodeGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
+    TargetNodeGuid: 1e28142a-7905-4312-ab25-0d59c95e67ef
+  - BaseNodeGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
+    TargetNodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+  - BaseNodeGuid: 74b508a4-9386-4bcf-af55-fb972891157d
+    TargetNodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+  - BaseNodeGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
+    TargetNodeGuid: 74b508a4-9386-4bcf-af55-fb972891157d
+  - BaseNodeGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+    TargetNodeGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
+  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+    TargetNodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+    TargetNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+  - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+    TargetNodeGuid: 67829c44-53db-4979-bba3-aa4c5c40bcdc
+  - BaseNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+    TargetNodeGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+  - BaseNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+    TargetNodeGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
+  - BaseNodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+    TargetNodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+  - BaseNodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+    TargetNodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    TargetNodeGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
+  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    TargetNodeGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
+  - BaseNodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    TargetNodeGuid: ae8a1b6c-7a77-4d81-aee5-dc643439ece1
+  DialogueNodeDatas:
+  - NodeGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
+    Position: {x: 1913.3334, y: -270}
+    DialogueNodePorts:
+    - PortGuid: f1b89cfc-a503-47b3-8e0d-eb7e0709a151
+      InputGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+      OutputGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: End
+      - LanguageType: 1
+        LanguageGenericType: Ende
+      - LanguageType: 2
+        LanguageGenericType: Ende
+      - LanguageType: 3
+        LanguageGenericType: Fin
+      - LanguageType: 4
+        LanguageGenericType: Fin
+      - LanguageType: 5
+        LanguageGenericType: Fine
+      - LanguageType: 6
+        LanguageGenericType: finis
+    FaceImage: {fileID: 0}
+    DialogueFaceImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: 
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: wow i hope one day I can become the player.
+    - LanguageType: 1
+      LanguageGenericType: wow ich hoffe, einen Tag kann ich die Spieler werden.
+    - LanguageType: 2
+      LanguageGenericType: "wow Jeg h\xE5ber en dag jeg kan blive spilleren."
+    - LanguageType: 3
+      LanguageGenericType: "wow espero que alg\xFAn d\xEDa pueda convertirse en el
+        jugador."
+    - LanguageType: 4
+      LanguageGenericType: "wow, je l'esp\xE8re un jour, je peux devenir le joueur."
+    - LanguageType: 5
+      LanguageGenericType: wow Spero che un giorno io possa diventare il giocatore.
+    - LanguageType: 6
+      LanguageGenericType: Spero autem die wow ludio ludius et possunt facti sunt.
+  - NodeGuid: 74b508a4-9386-4bcf-af55-fb972891157d
+    Position: {x: 1912, y: 119.99999}
+    DialogueNodePorts:
+    - PortGuid: 53a42b3c-c857-4982-a20c-a3253f917cb0
+      InputGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+      OutputGuid: 74b508a4-9386-4bcf-af55-fb972891157d
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: End
+      - LanguageType: 1
+        LanguageGenericType: Ende
+      - LanguageType: 2
+        LanguageGenericType: Ende
+      - LanguageType: 3
+        LanguageGenericType: Fin
+      - LanguageType: 4
+        LanguageGenericType: Fin
+      - LanguageType: 5
+        LanguageGenericType: Fine
+      - LanguageType: 6
+        LanguageGenericType: finis
+    FaceImage: {fileID: 0}
+    DialogueFaceImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: 
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: Sucks to be you...
+    - LanguageType: 1
+      LanguageGenericType: Kotzen Sie zu sein ...
+    - LanguageType: 2
+      LanguageGenericType: "Sucks at v\xE6re dig ..."
+    - LanguageType: 3
+      LanguageGenericType: Chupa para ser usted ...
+    - LanguageType: 4
+      LanguageGenericType: Suce pour vous ...
+    - LanguageType: 5
+      LanguageGenericType: Fa schifo essere te ...
+    - LanguageType: 6
+      LanguageGenericType: Ut sint vobis sugit ...
+  - NodeGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
+    Position: {x: 1609.3334, y: 128.66667}
+    DialogueNodePorts:
+    - PortGuid: 0d4bffe1-3674-4e92-8094-4ba26bf53b3c
+      InputGuid: 74b508a4-9386-4bcf-af55-fb972891157d
+      OutputGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Continue
+      - LanguageType: 1
+        LanguageGenericType: Fortsetzen
+      - LanguageType: 2
+        LanguageGenericType: Blive ved
+      - LanguageType: 3
+        LanguageGenericType: Seguir
+      - LanguageType: 4
+        LanguageGenericType: Continuer
+      - LanguageType: 5
+        LanguageGenericType: Continua
+      - LanguageType: 6
+        LanguageGenericType: continue
+    FaceImage: {fileID: 0}
+    DialogueFaceImageType: 0
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: 
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: No not really...
+    - LanguageType: 1
+      LanguageGenericType: Nein nicht wirklich...
+    - LanguageType: 2
+      LanguageGenericType: Nej ikke rigtigt...
+    - LanguageType: 3
+      LanguageGenericType: No en realidad no...
+    - LanguageType: 4
+      LanguageGenericType: Non, pas vraiment...
+    - LanguageType: 5
+      LanguageGenericType: No, non proprio...
+    - LanguageType: 6
+      LanguageGenericType: Non realiter...
+  - NodeGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+    Position: {x: 1610.6666, y: -265.33334}
+    DialogueNodePorts:
+    - PortGuid: 28b8b171-5303-470c-9bb0-ebcd95880fbc
+      InputGuid: 8d0dc565-ee2b-4647-a2b6-15f092477e03
+      OutputGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Continue
+      - LanguageType: 1
+        LanguageGenericType: Fortsetzen
+      - LanguageType: 2
+        LanguageGenericType: Blive ved
+      - LanguageType: 3
+        LanguageGenericType: Seguir
+      - LanguageType: 4
+        LanguageGenericType: Continuer
+      - LanguageType: 5
+        LanguageGenericType: Continua
+      - LanguageType: 6
+        LanguageGenericType: continue
+    FaceImage: {fileID: 0}
+    DialogueFaceImageType: 0
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: 
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: Yes it is really fun!
+    - LanguageType: 1
+      LanguageGenericType: "Ja, es ist wirklich Spa\xDF!"
+    - LanguageType: 2
+      LanguageGenericType: Ja, det er virkelig sjovt!
+    - LanguageType: 3
+      LanguageGenericType: "S\xED, es muy divertido!"
+    - LanguageType: 4
+      LanguageGenericType: Oui, il est vraiment amusant!
+    - LanguageType: 5
+      LanguageGenericType: "S\xEC, \xE8 davvero divertente!"
+    - LanguageType: 6
+      LanguageGenericType: Ita est vere fun!
+  - NodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+    Position: {x: 464, y: 272.66666}
+    DialogueNodePorts:
+    - PortGuid: 3628d0d6-d65a-468e-8bf7-93cd54dbbf3b
+      InputGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+      OutputGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Who are you?
+      - LanguageType: 1
+        LanguageGenericType: Wer bist du?
+      - LanguageType: 2
+        LanguageGenericType: Hvem er du?
+      - LanguageType: 3
+        LanguageGenericType: "\xBFQui\xE9n eres t\xFA?"
+      - LanguageType: 4
+        LanguageGenericType: "Qui \xEAtes vous?"
+      - LanguageType: 5
+        LanguageGenericType: Tu chi sei?
+      - LanguageType: 6
+        LanguageGenericType: Quis es?
+    - PortGuid: 4b5795d1-914f-4b25-b9e5-de511ff13671
+      InputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+      OutputGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: I want to color stuff
+      - LanguageType: 1
+        LanguageGenericType: Ich will Farbe Sachen
+      - LanguageType: 2
+        LanguageGenericType: "Jeg \xF8nsker at farve ting"
+      - LanguageType: 3
+        LanguageGenericType: Quiero cosas de color
+      - LanguageType: 4
+        LanguageGenericType: Je veux des trucs couleur
+      - LanguageType: 5
+        LanguageGenericType: Voglio roba colore
+      - LanguageType: 6
+        LanguageGenericType: Volo color supellectilem
+    - PortGuid: da240a29-9f0d-4016-a079-f96e997f13be
+      InputGuid: 67829c44-53db-4979-bba3-aa4c5c40bcdc
+      OutputGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Bye
+      - LanguageType: 1
+        LanguageGenericType: "Tsch\xFCss"
+      - LanguageType: 2
+        LanguageGenericType: Farvel
+      - LanguageType: 3
+        LanguageGenericType: "Adi\xF3s"
+      - LanguageType: 4
+        LanguageGenericType: Au revoir
+      - LanguageType: 5
+        LanguageGenericType: Ciao
+      - LanguageType: 6
+        LanguageGenericType: vale
+    FaceImage: {fileID: 21300000, guid: 4e4d158ec31be0b4b97fe0fe44d64bc4, type: 3}
+    DialogueFaceImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: Female
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: Yes?
+    - LanguageType: 1
+      LanguageGenericType: Ja?
+    - LanguageType: 2
+      LanguageGenericType: Ja?
+    - LanguageType: 3
+      LanguageGenericType: "\xBFSi?"
+    - LanguageType: 4
+      LanguageGenericType: Oui?
+    - LanguageType: 5
+      LanguageGenericType: "S\xEC?"
+    - LanguageType: 6
+      LanguageGenericType: Ita?
+  - NodeGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+    Position: {x: 1304, y: -74.666664}
+    DialogueNodePorts:
+    - PortGuid: c43e230a-0bab-4cb9-b760-2dd48557740e
+      InputGuid: f00fc392-5041-460f-8075-e6e68d758ae6
+      OutputGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Yes!
+      - LanguageType: 1
+        LanguageGenericType: Ja!
+      - LanguageType: 2
+        LanguageGenericType: Ja!
+      - LanguageType: 3
+        LanguageGenericType: "\xA1Si!"
+      - LanguageType: 4
+        LanguageGenericType: Oui!
+      - LanguageType: 5
+        LanguageGenericType: "S\xEC!"
+      - LanguageType: 6
+        LanguageGenericType: Ita!
+    - PortGuid: 9a732f10-6dba-48dd-aed0-4d32128a93fd
+      InputGuid: 84477b71-1df7-40fe-99be-e4daaa1dc4c0
+      OutputGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: No..
+      - LanguageType: 1
+        LanguageGenericType: Nein..
+      - LanguageType: 2
+        LanguageGenericType: Ingen..
+      - LanguageType: 3
+        LanguageGenericType: No..
+      - LanguageType: 4
+        LanguageGenericType: Non..
+      - LanguageType: 5
+        LanguageGenericType: No..
+      - LanguageType: 6
+        LanguageGenericType: Non ..
+    FaceImage: {fileID: 0}
+    DialogueFaceImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: 
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: Is it any fun to be the player?
+    - LanguageType: 1
+      LanguageGenericType: "Ist es ein Spa\xDF die Spieler zu sein?"
+    - LanguageType: 2
+      LanguageGenericType: "Er det noget sjovt at v\xE6re den spiller?"
+    - LanguageType: 3
+      LanguageGenericType: No es de divertido ser el jugador?
+    - LanguageType: 4
+      LanguageGenericType: "Est-il amusant d'\xEAtre le joueur?"
+    - LanguageType: 5
+      LanguageGenericType: "C'\xE8 da divertirsi ad essere il giocatore?"
+    - LanguageType: 6
+      LanguageGenericType: An ulla sit amet ludio ludius esse?
+  - NodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+    Position: {x: 803.3333, y: -70.666664}
+    DialogueNodePorts:
+    - PortGuid: 25586e4e-9179-49f2-bd60-d9d0dedb4b97
+      InputGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+      OutputGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Continue
+      - LanguageType: 1
+        LanguageGenericType: Fortsetzen
+      - LanguageType: 2
+        LanguageGenericType: Blive ved
+      - LanguageType: 3
+        LanguageGenericType: Seguir
+      - LanguageType: 4
+        LanguageGenericType: Continuer
+      - LanguageType: 5
+        LanguageGenericType: Continua
+      - LanguageType: 6
+        LanguageGenericType: continue
+    FaceImage: {fileID: 21300000, guid: 4e4d158ec31be0b4b97fe0fe44d64bc4, type: 3}
+    DialogueFaceImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: Female
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: 'I am a random Npc.
+
+        You?'
+    - LanguageType: 1
+      LanguageGenericType: "Ich bin ein zuf\xE4lliges Npc.\r\nDu?"
+    - LanguageType: 2
+      LanguageGenericType: "Jeg er en tilf\xE6ldig NPC.\r\nDu?"
+    - LanguageType: 3
+      LanguageGenericType: "Soy un NPC al azar.\r\n\xBFUsted?"
+    - LanguageType: 4
+      LanguageGenericType: "Je suis un Npc al\xE9atoire.\r\nToi?"
+    - LanguageType: 5
+      LanguageGenericType: 'Sono un Npc casuale.
+
+        Tu?'
+    - LanguageType: 6
+      LanguageGenericType: 'Temere a me Anime.
+
+        Vos?'
+  - NodeGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+    Position: {x: 770, y: 304.66666}
+    DialogueNodePorts:
+    - PortGuid: ec42d52f-53c4-40e7-980a-f418f6240ee1
+      InputGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
+      OutputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Color Player
+      - LanguageType: 1
+        LanguageGenericType: Farbe Spieler
+      - LanguageType: 2
+        LanguageGenericType: Farve-afspiller
+      - LanguageType: 3
+        LanguageGenericType: color del jugador
+      - LanguageType: 4
+        LanguageGenericType: couleur Joueur
+      - LanguageType: 5
+        LanguageGenericType: Colore del giocatore
+      - LanguageType: 6
+        LanguageGenericType: Ludio ludius color
+    - PortGuid: 10062937-82db-43ef-b465-9743a85d39c3
+      InputGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
+      OutputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Color Npc
+      - LanguageType: 1
+        LanguageGenericType: Farbe Npc
+      - LanguageType: 2
+        LanguageGenericType: Farve Npc
+      - LanguageType: 3
+        LanguageGenericType: color de NPC
+      - LanguageType: 4
+        LanguageGenericType: couleur Npc
+      - LanguageType: 5
+        LanguageGenericType: Colore Npc
+      - LanguageType: 6
+        LanguageGenericType: color Anime
+    - PortGuid: 8ececed3-9ee1-4af6-a9b9-a1ef4f914b30
+      InputGuid: ae8a1b6c-7a77-4d81-aee5-dc643439ece1
+      OutputGuid: 67523bb2-295d-4a46-af05-06f441ee243d
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Go back
+      - LanguageType: 1
+        LanguageGenericType: "Geh zur\xFCck"
+      - LanguageType: 2
+        LanguageGenericType: "G\xE5 tilbage"
+      - LanguageType: 3
+        LanguageGenericType: Regresa
+      - LanguageType: 4
+        LanguageGenericType: Retourner
+      - LanguageType: 5
+        LanguageGenericType: Torna indietro
+      - LanguageType: 6
+        LanguageGenericType: Revertere
+    FaceImage: {fileID: 21300000, guid: b0c359d006fc51542bf9ed466f6e824f, type: 3}
+    DialogueFaceImageType: 1
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: Makle
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: What do you want to color?
+    - LanguageType: 1
+      LanguageGenericType: "Was m\xF6chten Sie Farbe?"
+    - LanguageType: 2
+      LanguageGenericType: "Hvad \xF8nsker du at farve?"
+    - LanguageType: 3
+      LanguageGenericType: "\xBFQu\xE9 desea a color?"
+    - LanguageType: 4
+      LanguageGenericType: Que voulez-vous de la couleur?
+    - LanguageType: 5
+      LanguageGenericType: Che cosa vuoi di colore?
+    - LanguageType: 6
+      LanguageGenericType: Quid vis ut color?
+  - NodeGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+    Position: {x: 1052, y: -72.666664}
+    DialogueNodePorts:
+    - PortGuid: 5e13bcb9-6496-4366-aebb-746fcaf71758
+      InputGuid: 2ecf71f3-64ab-4f8c-a670-1240d7080670
+      OutputGuid: 92ed6804-2031-4fc4-88fe-38377ae88dd5
+      TextLanguages:
+      - LanguageType: 0
+        LanguageGenericType: Continue
+      - LanguageType: 1
+        LanguageGenericType: Fortsetzen
+      - LanguageType: 2
+        LanguageGenericType: Blive ved
+      - LanguageType: 3
+        LanguageGenericType: Seguir
+      - LanguageType: 4
+        LanguageGenericType: Continuer
+      - LanguageType: 5
+        LanguageGenericType: Continua
+      - LanguageType: 6
+        LanguageGenericType: continue
+    FaceImage: {fileID: 21300000, guid: b0c359d006fc51542bf9ed466f6e824f, type: 3}
+    DialogueFaceImageType: 0
+    AudioClips:
+    - LanguageType: 0
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    CharacterName: Male
+    TextLanguages:
+    - LanguageType: 0
+      LanguageGenericType: I am supposed to be the player!
+    - LanguageType: 1
+      LanguageGenericType: Ich sollte der Spieler sein!
+    - LanguageType: 2
+      LanguageGenericType: "Jeg skulle v\xE6re den spiller!"
+    - LanguageType: 3
+      LanguageGenericType: Se supone que debo ser el jugador!
+    - LanguageType: 4
+      LanguageGenericType: "Je suis cens\xE9 \xEAtre le joueur!"
+    - LanguageType: 5
+      LanguageGenericType: Dovrei essere il giocatore!
+    - LanguageType: 6
+      LanguageGenericType: Mihi creditum et id ludio ludius?
+  EndNodeDatas:
+  - NodeGuid: 175d57fe-59b0-4d71-b7e4-af37adc1e8ae
+    Position: {x: 1326.6666, y: 278}
+    EndNodeType: 1
+  - NodeGuid: 1e28142a-7905-4312-ab25-0d59c95e67ef
+    Position: {x: 1316, y: 399.3333}
+    EndNodeType: 1
+  - NodeGuid: ae8a1b6c-7a77-4d81-aee5-dc643439ece1
+    Position: {x: 1026.6666, y: 524}
+    EndNodeType: 2
+  - NodeGuid: 0c1a142e-2da0-4af5-86ed-64ecb9b0334e
+    Position: {x: 2318, y: -38}
+    EndNodeType: 3
+  - NodeGuid: 67829c44-53db-4979-bba3-aa4c5c40bcdc
+    Position: {x: 734.6667, y: 708.6667}
+    EndNodeType: 0
+  StartNodeDatas:
+  - NodeGuid: 556f7e36-40b3-490b-908c-9700de7d1941
+    Position: {x: 245.33333, y: 272.66666}
+  EventNodeDatas:
+  - NodeGuid: fe91763a-7222-4574-92e6-ccc3bc49055c
+    Position: {x: 1037.3334, y: 276.66666}
+    DialogueEventSO: {fileID: 11400000, guid: 4f55845f90e16d54b9ad6c3d5549d141, type: 2}
+  - NodeGuid: e31adc83-9f84-4b85-986e-f2e70f8c4620
+    Position: {x: 1040.6666, y: 400}
+    DialogueEventSO: {fileID: 11400000, guid: 13f0abbae245b86438998d95e12d7bd2, type: 2}
