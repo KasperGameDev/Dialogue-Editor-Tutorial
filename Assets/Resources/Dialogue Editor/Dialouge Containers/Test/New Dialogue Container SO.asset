@@ -21,10 +21,6 @@ MonoBehaviour:
     BasePortName: Output
     TargetNodeGuid: 1e28142a-7905-4312-ab25-0d59c95e67ef
     TargetPortName: Input
-  - BaseNodeGuid: bdd43b3c-d360-4da8-990b-e5222f270b0a
-    BasePortName: True
-    TargetNodeGuid: 378c9ae9-5183-47ab-a1a5-fa922c8809da
-    TargetPortName: Input
   - BaseNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
     BasePortName: 3628d0d6-d65a-468e-8bf7-93cd54dbbf3b
     TargetNodeGuid: 35aafad0-9832-4ac9-9a48-dcac7b65029a
@@ -84,6 +80,18 @@ MonoBehaviour:
   - BaseNodeGuid: 53495ebc-c3e1-4a49-83e5-13e4b16ab87b
     BasePortName: d02f9e32-cbfb-4dee-aa81-6fc38f5c0201
     TargetNodeGuid: bdd43b3c-d360-4da8-990b-e5222f270b0a
+    TargetPortName: Input
+  - BaseNodeGuid: bdd43b3c-d360-4da8-990b-e5222f270b0a
+    BasePortName: True
+    TargetNodeGuid: ca3886cd-62ab-47b0-857d-769ce0777136
+    TargetPortName: Input
+  - BaseNodeGuid: bdd43b3c-d360-4da8-990b-e5222f270b0a
+    BasePortName: False
+    TargetNodeGuid: 378c9ae9-5183-47ab-a1a5-fa922c8809da
+    TargetPortName: Input
+  - BaseNodeGuid: 556f7e36-40b3-490b-908c-9700de7d1941
+    BasePortName: Output
+    TargetNodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
     TargetPortName: Input
   DialogueNodeDatas:
   - NodeGuid: 9aaf650d-8a46-4bcd-9a5b-36c35ea2896b
@@ -781,14 +789,16 @@ MonoBehaviour:
     - stringEvent: Jamen
       idNumber: 123
   - NodeGuid: 378c9ae9-5183-47ab-a1a5-fa922c8809da
-    Position: {x: 1858, y: 756}
-    EventScriptableObjectDatas: []
+    Position: {x: 1900.6666, y: 743.3334}
+    EventScriptableObjectDatas:
+    - DialogueEventSO: {fileID: 11400000, guid: 4f55845f90e16d54b9ad6c3d5549d141,
+        type: 2}
     EventStringIdDatas: []
   BranchNodeDatas:
   - NodeGuid: bdd43b3c-d360-4da8-990b-e5222f270b0a
     Position: {x: 1590, y: 672.6667}
-    trueGuidNode: 378c9ae9-5183-47ab-a1a5-fa922c8809da
-    falseGuidNode: 
+    trueGuidNode: ca3886cd-62ab-47b0-857d-769ce0777136
+    falseGuidNode: 378c9ae9-5183-47ab-a1a5-fa922c8809da
     BrancStringIdDatas:
     - stringEvent: sdfsdf
       idNumber: 343
