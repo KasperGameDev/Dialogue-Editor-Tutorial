@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace KasperDev.Dialogue
 {
-    [System.Serializable]
-    public class StartData : BaseData
+    public enum ChoiceStateType
     {
-
+        Hide = 1,
+        GrayOut = 2,
     }
 }

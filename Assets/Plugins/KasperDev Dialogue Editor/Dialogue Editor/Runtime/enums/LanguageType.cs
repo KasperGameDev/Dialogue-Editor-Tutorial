@@ -6,12 +6,12 @@ namespace KasperDev.Dialogue
 {
     public enum LanguageType
     {
-        English,
-        German,
-        Danish,
-        Spanish,
-        French,
-        Italian,
-        Latin,
+        English = 1,
+        German = 2,
+        Danish = 3,
+        Spanish = 4,
+        French = 5,
+        Italian = 6,
+        Latin = 7,
     }
 }

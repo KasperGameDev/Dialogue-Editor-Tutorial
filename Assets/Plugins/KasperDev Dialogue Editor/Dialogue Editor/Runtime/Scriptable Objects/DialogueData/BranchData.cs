@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace KasperDev.Dialogue
 {
-    public class BranchData
+    [System.Serializable]
+    public class BranchData : BaseData
     {
-
+        public string trueGuidNode;
+        public string falseGuidNode;
+        public List<EventData_StringCondition> EventData_StringConditions = new List<EventData_StringCondition>();
     }
 }

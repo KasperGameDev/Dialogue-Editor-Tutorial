@@ -6,9 +6,8 @@ namespace KasperDev.Dialogue
 {
     public enum EndNodeType
     {
-        End,
-        Repeat,
-        Goback,
-        RetrunToStart
+        End = 1,
+        Repeat = 2,
+        RetrunToStart = 4
     }
 }

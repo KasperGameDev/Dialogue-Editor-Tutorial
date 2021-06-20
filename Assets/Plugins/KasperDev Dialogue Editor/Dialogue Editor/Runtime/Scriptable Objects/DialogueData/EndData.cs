@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace KasperDev.Dialogue
 {
-    public class EndData
+    [System.Serializable]
+    public class EndData : BaseData
     {
-
+        public Container_EndNodeType EndNodeType = new Container_EndNodeType();
     }
 }

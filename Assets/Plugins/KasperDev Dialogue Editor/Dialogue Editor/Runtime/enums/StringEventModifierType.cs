@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace KasperDev.Dialogue
 {
-    [System.Serializable]
-    public class StartData : BaseData
+    public enum StringEventModifierType
     {
-
+        SetTrue = 1,
+        SetFalse = 2,
+        Add = 3,
+        Subtract = 4,
     }
 }
