@@ -17,44 +17,44 @@ namespace KasperDev.DialogueEditor
 
         public void Save()
         {
-            List<DialogueContainerSO> dialogueContainers = Helper.FindAllDialogueContainerSO();
+            //List<DialogueContainerSO> dialogueContainers = Helper.FindAllDialogueContainerSO();
 
-            CreateFile();
+            //CreateFile();
 
-            foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
-            {
-                foreach (DialogueNodeData nodeData in dialogueContainer.DialogueNodeDatas)
-                {
-                    List<string> texts = new List<string>();
+            //foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
+            //{
+            //    foreach (DialogueNodeData nodeData in dialogueContainer.DialogueNodeDatas)
+            //    {
+            //        List<string> texts = new List<string>();
 
-                    texts.Add(nodeData.NodeGuid);
-                    texts.Add(dialogueContainer.name);
+            //        texts.Add(nodeData.NodeGuid);
+            //        texts.Add(dialogueContainer.name);
 
-                    foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-                    {
-                        string tmp = nodeData.TextLanguages.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
-                        texts.Add($"\"{tmp}\"");
-                    }
+            //        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+            //        {
+            //            string tmp = nodeData.TextLanguages.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
+            //            texts.Add($"\"{tmp}\"");
+            //        }
 
-                    AppendToFile(texts);
+            //        AppendToFile(texts);
 
-                    foreach (DialogueNodePort nodePorts in nodeData.DialogueNodePorts)
-                    {
-                        texts = new List<string>();
+            //        foreach (DialogueNodePort nodePorts in nodeData.DialogueNodePorts)
+            //        {
+            //            texts = new List<string>();
 
-                        texts.Add(nodePorts.PortGuid);
-                        texts.Add(dialogueContainer.name);
+            //            texts.Add(nodePorts.PortGuid);
+            //            texts.Add(dialogueContainer.name);
 
-                        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-                        {
-                            string tmp = nodePorts.TextLanguages.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
-                            texts.Add($"\"{tmp}\"");
-                        }
+            //            foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+            //            {
+            //                string tmp = nodePorts.TextLanguages.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
+            //                texts.Add($"\"{tmp}\"");
+            //            }
 
-                        AppendToFile(texts);
-                    }
-                }
-            }
+            //            AppendToFile(texts);
+            //        }
+            //    }
+            //}
         }
 
         private void AppendToFile(List<string> strings)

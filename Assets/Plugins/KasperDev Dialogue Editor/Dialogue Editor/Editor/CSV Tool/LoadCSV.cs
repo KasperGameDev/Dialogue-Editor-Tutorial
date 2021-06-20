@@ -15,66 +15,66 @@ namespace KasperDev.DialogueEditor
 
         public void Load()
         {
-            string text = File.ReadAllText($"{Application.dataPath}/{csvDirectoryName}/{csvFileName}");
-            List<List<string>> result = ParseCSV(text);
+            //string text = File.ReadAllText($"{Application.dataPath}/{csvDirectoryName}/{csvFileName}");
+            //List<List<string>> result = ParseCSV(text);
 
-            List<string> headers = result[0];
+            //List<string> headers = result[0];
 
-            List<DialogueContainerSO> dialogueContainers = Helper.FindAllDialogueContainerSO();
+            //List<DialogueContainerSO> dialogueContainers = Helper.FindAllDialogueContainerSO();
 
-            foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
-            {
-                foreach (DialogueNodeData nodeData in dialogueContainer.DialogueNodeDatas)
-                {
-                    LoadInToNode(result, headers, nodeData);
-                    foreach (DialogueNodePort nodePort in nodeData.DialogueNodePorts)
-                    {
-                        LoadInToNodePort(result, headers, nodePort);
-                    }
-                }
-                EditorUtility.SetDirty(dialogueContainer);
-                AssetDatabase.SaveAssets();
-            }
+            //foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
+            //{
+            //    foreach (DialogueNodeData nodeData in dialogueContainer.DialogueNodeDatas)
+            //    {
+            //        LoadInToNode(result, headers, nodeData);
+            //        foreach (DialogueNodePort nodePort in nodeData.DialogueNodePorts)
+            //        {
+            //            LoadInToNodePort(result, headers, nodePort);
+            //        }
+            //    }
+            //    EditorUtility.SetDirty(dialogueContainer);
+            //    AssetDatabase.SaveAssets();
+            //}
         }
 
         private void LoadInToNode(List<List<string>> result, List<string> headers, DialogueNodeData nodeData)
         {
-            foreach (List<string> line in result)
-            {
-                if (line[0] == nodeData.NodeGuid)
-                {
-                    for (int i = 0; i < line.Count; i++)
-                    {
-                        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-                        {
-                            if (headers[i] == languageType.ToString())
-                            {
-                                nodeData.TextLanguages.Find(x => x.LanguageType == languageType).LanguageGenericType = line[i];
-                            }
-                        }
-                    }
-                }
-            }
+            //foreach (List<string> line in result)
+            //{
+            //    if (line[0] == nodeData.NodeGuid)
+            //    {
+            //        for (int i = 0; i < line.Count; i++)
+            //        {
+            //            foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+            //            {
+            //                if (headers[i] == languageType.ToString())
+            //                {
+            //                    nodeData.TextLanguages.Find(x => x.LanguageType == languageType).LanguageGenericType = line[i];
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void LoadInToNodePort(List<List<string>> result, List<string> headers, DialogueNodePort nodePort)
         {
-            foreach (List<string> line in result)
-            {
-                if (line[0] == nodePort.PortGuid)
-                {
-                    for (int i = 0; i < line.Count; i++)
-                    {
-                        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-                        {
-                            if (headers[i] == languageType.ToString())
-                            {
-                                nodePort.TextLanguages.Find(x => x.LanguageType == languageType).LanguageGenericType = line[i];
-                            }
-                        }
-                    }
-                }
-            }
+            //foreach (List<string> line in result)
+            //{
+            //    if (line[0] == nodePort.PortGuid)
+            //    {
+            //        for (int i = 0; i < line.Count; i++)
+            //        {
+            //            foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+            //            {
+            //                if (headers[i] == languageType.ToString())
+            //                {
+            //                    nodePort.TextLanguages.Find(x => x.LanguageType == languageType).LanguageGenericType = line[i];
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         // Made By furukazu 
