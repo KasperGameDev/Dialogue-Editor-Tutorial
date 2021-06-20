@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Example01
 {
     public class DialogueTalk : DialogueGetData
     {
         [SerializeField] private DialogueController dialogueController;
         [SerializeField] private AudioSource audioSource;
 
-        private DialogueNodeData currentDialogueNodeData;
-        private DialogueNodeData lastDialogueNodeData;
+        //private DialogueNodeData currentDialogueNodeData;
+        //private DialogueNodeData lastDialogueNodeData;
 
         private void Awake()
         {
@@ -25,26 +25,26 @@ namespace KasperDev.DialogueEditor
             //dialogueController.ShowDialogueUI(true);
         }
 
-        private void CheckNodeType(BaseNodeData _baseNodeData)
-        {
-            //switch (_baseNodeData)
-            //{
-            //    case StartNodeData nodeData:
-            //        RunNode(nodeData);
-            //        break;
-            //    case DialogueNodeData nodeData:
-            //        RunNode(nodeData);
-            //        break;
-            //    case EventNodeData nodeData:
-            //        RunNode(nodeData);
-            //        break;
-            //    case EndNodeData nodeData:
-            //        RunNode(nodeData);
-            //        break;
-            //    default:
-            //        break;
-            //}
-        }
+        //private void CheckNodeType(BaseNodeData _baseNodeData)
+        //{
+        //    switch (_baseNodeData)
+        //    {
+        //        case StartNodeData nodeData:
+        //            RunNode(nodeData);
+        //            break;
+        //        case DialogueNodeData nodeData:
+        //            RunNode(nodeData);
+        //            break;
+        //        case EventNodeData nodeData:
+        //            RunNode(nodeData);
+        //            break;
+        //        case EndNodeData nodeData:
+        //            RunNode(nodeData);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
 
 
 

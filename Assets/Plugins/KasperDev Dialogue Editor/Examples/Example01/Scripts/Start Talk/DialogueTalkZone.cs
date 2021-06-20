@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Example01
 {
     public class DialogueTalkZone : MonoBehaviour
     {

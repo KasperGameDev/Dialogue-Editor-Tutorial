@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Editor
 {
     public class SaveCSV
     {

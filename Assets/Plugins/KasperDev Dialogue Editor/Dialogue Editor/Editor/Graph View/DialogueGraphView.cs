@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Editor
 {
     public class DialogueGraphView : GraphView
     {

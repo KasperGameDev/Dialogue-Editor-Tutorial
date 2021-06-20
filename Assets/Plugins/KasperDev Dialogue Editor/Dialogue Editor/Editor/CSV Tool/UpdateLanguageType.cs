@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Editor
 {
     public class UpdateLanguageType
     {
@@ -26,27 +26,27 @@ namespace KasperDev.DialogueEditor
             //}
         }
 
-        private List<LanguageGeneric<T>> UpdateLanguageGeneric<T>(List<LanguageGeneric<T>> languageGenerics)
-        {
-            List<LanguageGeneric<T>> tmp = new List<LanguageGeneric<T>>();
+        //private List<LanguageGeneric<T>> UpdateLanguageGeneric<T>(List<LanguageGeneric<T>> languageGenerics)
+        //{
+        //    List<LanguageGeneric<T>> tmp = new List<LanguageGeneric<T>>();
 
-            //foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-            //{
-            //    tmp.Add(new LanguageGeneric<T>
-            //    {
-            //        LanguageType = languageType
-            //    });
-            //}
+        //    foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+        //    {
+        //        tmp.Add(new LanguageGeneric<T>
+        //        {
+        //            LanguageType = languageType
+        //        });
+        //    }
 
-            //foreach (LanguageGeneric<T> languageGeneric in languageGenerics)
-            //{
-            //    if (tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType) != null)
-            //    {
-            //        tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
-            //    }
-            //}
+        //    foreach (LanguageGeneric<T> languageGeneric in languageGenerics)
+        //    {
+        //        if (tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType) != null)
+        //        {
+        //            tmp.Find(languag => languag.LanguageType == languageGeneric.LanguageType).LanguageGenericType = languageGeneric.LanguageGenericType;
+        //        }
+        //    }
 
-            return tmp;
-        }
+        //    return tmp;
+        //}
     }
 }

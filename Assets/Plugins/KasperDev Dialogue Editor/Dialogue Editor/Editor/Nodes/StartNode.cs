@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Editor
 {
     public class StartNode : BaseNode
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Editor
 {
     public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
     {

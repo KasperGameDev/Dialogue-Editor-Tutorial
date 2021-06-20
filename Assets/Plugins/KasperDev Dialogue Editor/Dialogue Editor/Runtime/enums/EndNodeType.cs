@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue
 {
     public enum EndNodeType
     {

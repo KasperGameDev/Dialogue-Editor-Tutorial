@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Editor
 {
     public class DialogueEditorWindow : EditorWindow
     {
@@ -67,7 +67,7 @@ namespace KasperDev.DialogueEditor
             graphView.StretchToParentSize();
             rootVisualElement.Add(graphView);
 
-            saveAndLoad = new DialogueSaveAndLoad(graphView);
+            //saveAndLoad = new DialogueSaveAndLoad(graphView);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace KasperDev.DialogueEditor
             {
                 Language(LanguageType.English);
                 nameOfDialougeContainer.text = "Name:   " + currentDialogueContainer.name;
-                saveAndLoad.Load(currentDialogueContainer);
+                //saveAndLoad.Load(currentDialogueContainer);
             }
         }
 
@@ -151,7 +151,7 @@ namespace KasperDev.DialogueEditor
         {
             if (currentDialogueContainer != null)
             {
-                saveAndLoad.Save(currentDialogueContainer);
+                //saveAndLoad.Save(currentDialogueContainer);
             }
         }
 

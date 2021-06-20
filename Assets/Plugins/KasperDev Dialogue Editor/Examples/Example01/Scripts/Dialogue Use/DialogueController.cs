@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Example01
 {
     public class DialogueController : MonoBehaviour
     {

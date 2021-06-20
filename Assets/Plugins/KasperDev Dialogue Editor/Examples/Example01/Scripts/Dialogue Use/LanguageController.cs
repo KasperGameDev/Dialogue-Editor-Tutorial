@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KasperDev.DialogueEditor
+namespace KasperDev.Dialogue.Example01
 {
     public class LanguageController : MonoBehaviour
     {
