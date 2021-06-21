@@ -20,6 +20,9 @@ namespace KasperDev.Dialogue.Editor
             editorWindow = _editorWindow;
             graphView = _graphView;
 
+            StyleSheet styleSheet = Resources.Load<StyleSheet>("USS/Nodes/EndNodeStyleSheet");
+            styleSheets.Add(styleSheet);
+
             title = "End";
             SetPosition(new Rect(_position, defaultNodeSize));
             nodeGuid = Guid.NewGuid().ToString();

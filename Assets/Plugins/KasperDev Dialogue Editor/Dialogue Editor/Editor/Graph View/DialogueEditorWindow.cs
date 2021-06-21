@@ -11,14 +11,14 @@ namespace KasperDev.Dialogue.Editor
 {
     public class DialogueEditorWindow : EditorWindow
     {
-        private DialogueContainerSO currentDialogueContainer;           // Current open dialouge container in dialogue editor window.
-        private DialogueGraphView graphView;                            // Reference to GraphView Class.
-        private DialogueSaveAndLoad saveAndLoad;                        // Reference to SaveAndLoad Class.
+        private DialogueContainerSO currentDialogueContainer;                           // Current open dialouge container in dialogue editor window.
+        private DialogueGraphView graphView;                                            // Reference to GraphView Class.
+        private DialogueSaveAndLoad saveAndLoad;                                        // Reference to SaveAndLoad Class.
 
-        private LanguageType selectedLanguage = LanguageType.English;   // Current selected language in the dialogue editor window.
-        private ToolbarMenu languagesDropdownMenu;                      // Languages toolbar menu in the top of dialogue editor window.
-        private Label nameOfDialougeContainer;                          // Name of the current open dialouge container.
-        private string graphViewStyleSheet = "GraphViewStyleSheet";     // Name of the graph view style sheet.
+        private LanguageType selectedLanguage = LanguageType.English;                   // Current selected language in the dialogue editor window.
+        private ToolbarMenu languagesDropdownMenu;                                      // Languages toolbar menu in the top of dialogue editor window.
+        private Label nameOfDialougeContainer;                                          // Name of the current open dialouge container.
+        private string graphViewStyleSheet = "USS/EditorWindow/EditorWindowStyleSheet"; // Name of the graph view style sheet.
 
         /// <summary>
         /// Current selected language in the dialogue editor window.

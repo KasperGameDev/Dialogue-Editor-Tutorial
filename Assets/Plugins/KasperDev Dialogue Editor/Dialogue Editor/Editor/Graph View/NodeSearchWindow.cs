@@ -34,10 +34,11 @@ namespace KasperDev.Dialogue.Editor
             new SearchTreeGroupEntry(new GUIContent("Dialogue Editor"),0),
             new SearchTreeGroupEntry(new GUIContent("Dialogue Node"),1),
 
-            AddNodeSearch("Start",new StartNode()),
             AddNodeSearch("Dialogue",new DialogueNode()),
+            AddNodeSearch("ChoiceNode",new ChoiceNode()),
             AddNodeSearch("Branch",new BranchNode()),
             AddNodeSearch("Event",new EventNode()),
+            AddNodeSearch("Start",new StartNode()),
             AddNodeSearch("End",new EndNode()),
         };
 
@@ -85,6 +86,9 @@ namespace KasperDev.Dialogue.Editor
                     return true;
                 case BranchNode node:
                     graphView.AddElement(graphView.CreateBranchNode(position));
+                    return true;
+                case ChoiceNode node:
+                    graphView.AddElement(graphView.CreateChoiceNode(position));
                     return true;
                 default:
                     break;

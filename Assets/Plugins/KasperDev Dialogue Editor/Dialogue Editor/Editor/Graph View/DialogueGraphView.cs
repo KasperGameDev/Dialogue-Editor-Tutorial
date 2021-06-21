@@ -9,7 +9,7 @@ namespace KasperDev.Dialogue.Editor
 {
     public class DialogueGraphView : GraphView
     {
-        private string graphViewStyleSheet = "GraphViewStyleSheet";     // Name of the graph view style sheet.
+        private string graphViewStyleSheet = "USS/GraphView/GraphViewStyleSheet";   // Name of the graph view style sheet.
         private DialogueEditorWindow editorWindow;
         private NodeSearchWindow searchWindow;
 
@@ -83,29 +83,66 @@ namespace KasperDev.Dialogue.Editor
             }
         }
 
+        // Make Node's -----------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Make new Start Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>Start Node</returns>
         public StartNode CreateStartNode(Vector2 position)
         {
             return new StartNode(position, editorWindow, this);
         }
 
+        /// <summary>
+        /// Make new End Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>End Node</returns>
         public EndNode CreateEndNode(Vector2 position)
         {
             return new EndNode(position, editorWindow, this);
         }
 
+        /// <summary>
+        /// Make new Event Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>Event Node</returns>
         public EventNode CreateEventNode(Vector2 position)
         {
             return new EventNode(position, editorWindow, this);
         }
 
+        /// <summary>
+        /// Make new Dialogue Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>Dialogue Node</returns>
         public DialogueNode CreateDialogueNode(Vector2 position)
         {
             return new DialogueNode(position, editorWindow, this);
         }
 
+        /// <summary>
+        /// Make new Branch Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>Branch Node</returns>
         public BranchNode CreateBranchNode(Vector2 position)
         {
             return new BranchNode(position, editorWindow, this);
+        }
+
+        /// <summary>
+        /// Make new Choice Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>Choice Node</returns>
+        public ChoiceNode CreateChoiceNode(Vector2 position)
+        {
+            return new ChoiceNode(position, editorWindow, this);
         }
     }
 }

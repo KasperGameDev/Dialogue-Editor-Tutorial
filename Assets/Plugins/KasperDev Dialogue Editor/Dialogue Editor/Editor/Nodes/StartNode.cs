@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace KasperDev.Dialogue.Editor
 {
@@ -18,6 +17,10 @@ namespace KasperDev.Dialogue.Editor
         {
             editorWindow = _editorWindow;
             graphView = _graphView;
+
+
+            StyleSheet styleSheet = Resources.Load<StyleSheet>("USS/Nodes/StartNodeStyleSheet");
+            styleSheets.Add(styleSheet);
 
             title = "Start";
             SetPosition(new Rect(_position, defaultNodeSize));
