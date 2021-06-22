@@ -7,23 +7,18 @@ namespace KasperDev.Dialogue.Editor
 {
     public class StartNode : BaseNode
     {
+        public StartNode() { }
 
-        public StartNode()
+        public StartNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
         {
-
-        }
-
-        public StartNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
-        {
-            editorWindow = _editorWindow;
-            graphView = _graphView;
-
+            base.editorWindow = editorWindow;
+            base.graphView = graphView;
 
             StyleSheet styleSheet = Resources.Load<StyleSheet>("USS/Nodes/StartNodeStyleSheet");
             styleSheets.Add(styleSheet);
 
             title = "Start";
-            SetPosition(new Rect(_position, defaultNodeSize));
+            SetPosition(new Rect(position, defaultNodeSize));
             nodeGuid = Guid.NewGuid().ToString();
 
             AddOutputPort("Output", Port.Capacity.Single);

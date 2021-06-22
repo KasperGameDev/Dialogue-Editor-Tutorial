@@ -10,16 +10,18 @@ namespace KasperDev.Dialogue.Editor
 {
     public class BranchNode : BaseNode
     {
+        private BranchData branchData = new BranchData();
+        public BranchData BranchData { get => branchData; set => branchData = value; }
 
-        public BranchNode()
-        {
-
-        }
+        public BranchNode() { }
 
         public BranchNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
         {
             base.editorWindow = editorWindow;
             base.graphView = graphView;
+
+            StyleSheet styleSheet = Resources.Load<StyleSheet>("USS/Nodes/BranchNodeStyleSheet");
+            styleSheets.Add(styleSheet);
 
             title = "Branch";                                   // Set Name
             SetPosition(new Rect(position, defaultNodeSize));   // Set Position
@@ -37,15 +39,14 @@ namespace KasperDev.Dialogue.Editor
             ToolbarMenu Menu = new ToolbarMenu();
             Menu.text = "Add Condition";
 
-            //Menu.menu.AppendAction("String Condition", new Action<DropdownMenuAction>(x => AddCondition()));
+            Menu.menu.AppendAction("String Event Condition", new Action<DropdownMenuAction>(x => AddCondition()));
 
             titleButtonContainer.Add(Menu);
         }
 
-        //public void AddCondition(BrancStringIdData paramidaBrancStringIdData = null)
-        //{
-
-        //}
-
+        public void AddCondition(EventData_StringCondition stringEvent = null)
+        {
+            AddStringConditionEventBuild(branchData.EventData_StringConditions, stringEvent);
+        }
     }
 }

@@ -1,1 +1,15 @@
-VisualElement {}
+.EventBox{
+	flex-direction: row;
+}
+
+.EventObject{
+
+}
+
+.node #title{
+	background-color: #00008C;
+}
+
+.node #title #title-label{
+	color: white;
+}

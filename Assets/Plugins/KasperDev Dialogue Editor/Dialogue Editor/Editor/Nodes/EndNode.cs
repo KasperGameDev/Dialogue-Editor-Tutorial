@@ -10,10 +10,10 @@ namespace KasperDev.Dialogue.Editor
 {
     public class EndNode : BaseNode
     {
-        public EndNode()
-        {
+        private EndData endData = new EndData();
+        public EndData EndData { get => endData; set => endData = value; }
 
-        }
+        public EndNode() { }
 
         public EndNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
         {
@@ -28,6 +28,21 @@ namespace KasperDev.Dialogue.Editor
             nodeGuid = Guid.NewGuid().ToString();
 
             AddInputPort("Input", Port.Capacity.Multi);
+
+            MakeMainContainer();
+        }
+
+        private void MakeMainContainer()
+        {
+            EnumField enumField = GetNewEnumField_EndNodeType(endData.EndNodeType);
+
+            mainContainer.Add(enumField);
+        }
+
+        public override void LoadValueInToField()
+        {
+            if (EndData.EndNodeType.EnumField != null)
+                EndData.EndNodeType.EnumField.SetValueWithoutNotify(EndData.EndNodeType.Value);
         }
     }
 }
