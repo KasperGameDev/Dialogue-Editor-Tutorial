@@ -61,7 +61,7 @@ namespace KasperDev.Dialogue.Editor
             // First we tell that it cannot connect to itself.
             // Then we tell it it cannot connect to a port on the same node.
             // Lastly we tell it a input note cannot connect to another input node and an output node cannot connect to output node.
-            if (startPortView != portView && startPortView.node != portView.node && startPortView.direction != port.direction)
+            if (startPortView != portView && startPortView.node != portView.node && startPortView.direction != port.direction && startPortView.portColor == portView.portColor)
                 {
                     compatiblePorts.Add(port);
                 }

@@ -15,16 +15,16 @@ namespace KasperDev.Dialogue.Editor
 
         public EndNode() { }
 
-        public EndNode(Vector2 _position, DialogueEditorWindow _editorWindow, DialogueGraphView _graphView)
+        public EndNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
         {
-            editorWindow = _editorWindow;
-            graphView = _graphView;
+            base.editorWindow = editorWindow;
+            base.graphView = graphView;
 
             StyleSheet styleSheet = Resources.Load<StyleSheet>("USS/Nodes/EndNodeStyleSheet");
             styleSheets.Add(styleSheet);
 
             title = "End";
-            SetPosition(new Rect(_position, defaultNodeSize));
+            SetPosition(new Rect(position, defaultNodeSize));
             nodeGuid = Guid.NewGuid().ToString();
 
             AddInputPort("Input", Port.Capacity.Multi);
