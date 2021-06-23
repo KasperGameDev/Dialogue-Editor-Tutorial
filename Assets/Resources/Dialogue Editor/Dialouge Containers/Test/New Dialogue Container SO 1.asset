@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a69ff5ed214494b835d86b8438ac53, type: 3}
+  m_Name: New Dialogue Container SO 1
+  m_EditorClassIdentifier: 
+  NodeLinkDatas:
+  - BaseNodeGuid: 348eae8e-cd72-4d51-877d-93d1e6e141bd
+    BasePortName: Output
+    TargetNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    TargetPortName: Input
+  - BaseNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    BasePortName: Continue
+    TargetNodeGuid: 66c7fc87-1ffe-4ecd-b28d-9b1a4e99f695
+    TargetPortName: Input
+  EndDatas: []
+  StartDatas:
+  - NodeGuid: 348eae8e-cd72-4d51-877d-93d1e6e141bd
+    Position: {x: 821.3333, y: 322}
+  EventDatas:
+  - NodeGuid: 66c7fc87-1ffe-4ecd-b28d-9b1a4e99f695
+    Position: {x: 1893.3334, y: 208.66667}
+    EventData_StringModifiers:
+    - StringEventText:
+        Value: dfg
+      Number:
+        Value: 0
+      StringEventModifierType:
+        Value: 1
+    Container_DialogueEventSOs: []
+  BranchDatas: []
+  DialogueDatas:
+  - NodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    Position: {x: 1058, y: 245.33333}
+    DialogueData_Names:
+    - ID:
+        Value: 0
+      CharacterName:
+        Value: dfgdfg
+    DialogueData_Texts:
+    - ID:
+        Value: 1
+      GuidID:
+        Value: 7cf84c97-2efb-47a0-a69b-cbd69d359da4
+      Text:
+      - LanguageType: 1
+        LanguageGenericType: 
+      - LanguageType: 2
+        LanguageGenericType: 
+      - LanguageType: 3
+        LanguageGenericType: 
+      - LanguageType: 4
+        LanguageGenericType: 
+      - LanguageType: 5
+        LanguageGenericType: 
+      - LanguageType: 6
+        LanguageGenericType: 
+      - LanguageType: 7
+        LanguageGenericType: 
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+    - ID:
+        Value: 2
+      GuidID:
+        Value: 5642dd4b-3aba-47a0-8fbc-e8953dd7884a
+      Text:
+      - LanguageType: 1
+        LanguageGenericType: fsdf
+      - LanguageType: 2
+        LanguageGenericType: 
+      - LanguageType: 3
+        LanguageGenericType: 
+      - LanguageType: 4
+        LanguageGenericType: 
+      - LanguageType: 5
+        LanguageGenericType: 
+      - LanguageType: 6
+        LanguageGenericType: 
+      - LanguageType: 7
+        LanguageGenericType: 
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+    - ID:
+        Value: 3
+      GuidID:
+        Value: 3454948b-0bfb-4b67-a648-0f2fd4ca5144
+      Text:
+      - LanguageType: 1
+        LanguageGenericType: dsf
+      - LanguageType: 2
+        LanguageGenericType: 
+      - LanguageType: 3
+        LanguageGenericType: 
+      - LanguageType: 4
+        LanguageGenericType: 
+      - LanguageType: 5
+        LanguageGenericType: 
+      - LanguageType: 6
+        LanguageGenericType: 
+      - LanguageType: 7
+        LanguageGenericType: 
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+    - ID:
+        Value: 4
+      GuidID:
+        Value: 2882e5e2-d8e7-4495-a6e3-c361e9129ec8
+      Text:
+      - LanguageType: 1
+        LanguageGenericType: dfsdf
+      - LanguageType: 2
+        LanguageGenericType: 
+      - LanguageType: 3
+        LanguageGenericType: 
+      - LanguageType: 4
+        LanguageGenericType: 
+      - LanguageType: 5
+        LanguageGenericType: 
+      - LanguageType: 6
+        LanguageGenericType: 
+      - LanguageType: 7
+        LanguageGenericType: 
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+    DialogueData_Imagess: []
+    DialogueData_Ports:
+    - PortGuid: f92b5dcd-cd38-49c5-a9fe-a6b6e9704a38
+      InputGuid: 
+      OutputGuid: 
+  ChoiceDatas: []

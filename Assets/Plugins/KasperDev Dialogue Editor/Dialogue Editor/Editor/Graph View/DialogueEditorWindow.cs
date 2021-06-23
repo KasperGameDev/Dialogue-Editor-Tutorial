@@ -67,7 +67,7 @@ namespace KasperDev.Dialogue.Editor
             graphView.StretchToParentSize();
             rootVisualElement.Add(graphView);
 
-            //saveAndLoad = new DialogueSaveAndLoad(graphView);
+            saveAndLoad = new DialogueSaveAndLoad(graphView);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace KasperDev.Dialogue.Editor
             {
                 Language(LanguageType.English);
                 nameOfDialougeContainer.text = "Name:   " + currentDialogueContainer.name;
-                //saveAndLoad.Load(currentDialogueContainer);
+                saveAndLoad.Load(currentDialogueContainer);
             }
         }
 
@@ -151,7 +151,7 @@ namespace KasperDev.Dialogue.Editor
         {
             if (currentDialogueContainer != null)
             {
-                //saveAndLoad.Save(currentDialogueContainer);
+                saveAndLoad.Save(currentDialogueContainer);
             }
         }
 
