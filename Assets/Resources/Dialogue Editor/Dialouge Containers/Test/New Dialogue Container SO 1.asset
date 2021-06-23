@@ -21,6 +21,18 @@ MonoBehaviour:
     BasePortName: Continue
     TargetNodeGuid: 66c7fc87-1ffe-4ecd-b28d-9b1a4e99f695
     TargetPortName: Input
+  - BaseNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    BasePortName: f92b5dcd-cd38-49c5-a9fe-a6b6e9704a38
+    TargetNodeGuid: aaa27fd9-8f34-4cd7-9ad8-d590502775e8
+    TargetPortName: Input
+  - BaseNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    BasePortName: 65771994-d0af-4cec-8ab4-9c803c33663d
+    TargetNodeGuid: b2f88fdd-7095-4b95-a980-91742320316b
+    TargetPortName: Input
+  - BaseNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    BasePortName: 70cfb545-de16-476f-ac1f-6788ace39037
+    TargetNodeGuid: a2b78ec0-6725-45f8-909e-625a5f615635
+    TargetPortName: Input
   EndDatas: []
   StartDatas:
   - NodeGuid: 348eae8e-cd72-4d51-877d-93d1e6e141bd
@@ -39,7 +51,7 @@ MonoBehaviour:
   BranchDatas: []
   DialogueDatas:
   - NodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
-    Position: {x: 1058, y: 245.33333}
+    Position: {x: 1058, y: 244.66667}
     DialogueData_Names:
     - ID:
         Value: 0
@@ -52,11 +64,11 @@ MonoBehaviour:
         Value: 7cf84c97-2efb-47a0-a69b-cbd69d359da4
       Text:
       - LanguageType: 1
-        LanguageGenericType: 
+        LanguageGenericType: dsfgdfg
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: hej 1
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -90,7 +102,7 @@ MonoBehaviour:
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: hej 2
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -124,7 +136,7 @@ MonoBehaviour:
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: hej 3
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -158,7 +170,7 @@ MonoBehaviour:
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: hej 4
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -185,6 +197,117 @@ MonoBehaviour:
     DialogueData_Imagess: []
     DialogueData_Ports:
     - PortGuid: f92b5dcd-cd38-49c5-a9fe-a6b6e9704a38
-      InputGuid: 
-      OutputGuid: 
-  ChoiceDatas: []
+      InputGuid: aaa27fd9-8f34-4cd7-9ad8-d590502775e8
+      OutputGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    - PortGuid: 65771994-d0af-4cec-8ab4-9c803c33663d
+      InputGuid: b2f88fdd-7095-4b95-a980-91742320316b
+      OutputGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    - PortGuid: 70cfb545-de16-476f-ac1f-6788ace39037
+      InputGuid: a2b78ec0-6725-45f8-909e-625a5f615635
+      OutputGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+  ChoiceDatas:
+  - NodeGuid: aaa27fd9-8f34-4cd7-9ad8-d590502775e8
+    Position: {x: 1539.3334, y: 322}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: 1111
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: hej 5
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+  - NodeGuid: a2b78ec0-6725-45f8-909e-625a5f615635
+    Position: {x: 1503.3334, y: 594}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: 3333
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: hej 6
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+  - NodeGuid: b2f88fdd-7095-4b95-a980-91742320316b
+    Position: {x: 1530.6666, y: 444}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: 2222
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: hej 7
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []

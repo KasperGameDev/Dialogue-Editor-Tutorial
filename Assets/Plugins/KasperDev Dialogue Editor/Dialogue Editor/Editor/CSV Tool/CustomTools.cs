@@ -7,7 +7,7 @@ namespace KasperDev.Dialogue.Editor
 {
     public class CustomTools
     {
-        [MenuItem("Custom Tools/Dialogue/Save to CSV")]
+        [MenuItem("Tools/Dialogue Editor/Save to CSV")]
         public static void SaveToCSV()
         {
             SaveCSV saveCSV = new SaveCSV();
@@ -17,7 +17,7 @@ namespace KasperDev.Dialogue.Editor
             Debug.Log("<color=green> Save CSV File successfully! </color>");
         }
 
-        [MenuItem("Custom Tools/Dialogue/Load from CSV")]
+        [MenuItem("Tools/Dialogue Editor/Load from CSV")]
         public static void LoadFromCSV()
         {
             LoadCSV loadCSV = new LoadCSV();
@@ -25,16 +25,6 @@ namespace KasperDev.Dialogue.Editor
 
             EditorApplication.Beep();
             Debug.Log("<color=green> Loading CSV File successfully! </color>");
-        }
-
-        [MenuItem("Custom Tools/Dialogue/Update Dialogue Languages")]
-        public static void UpdataDialogueLanguage()
-        {
-            UpdateLanguageType updateLanguageType = new UpdateLanguageType();
-            updateLanguageType.UpdateLanguage();
-
-            EditorApplication.Beep();
-            Debug.Log("<color=green> Update languages successfully! </color>");
         }
     }
 }

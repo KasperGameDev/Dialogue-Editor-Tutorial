@@ -12,49 +12,55 @@ namespace KasperDev.Dialogue.Editor
         private string csvFileName = "DialogueCSV_Save.csv";
         private string csvSeparator = ",";
         private List<string> csvHeader;
-        private string idName = "Guid ID";
+        private string node_ID = "Node Guid ID";
+        private string text_ID = "Text Guid ID";
         private string dialogueName = "Dialogue Name";
 
         public void Save()
         {
-            //List<DialogueContainerSO> dialogueContainers = Helper.FindAllDialogueContainerSO();
+            List<DialogueContainerSO> dialogueContainers = Helper.FindAllDialogueContainerSO();
 
-            //CreateFile();
+            CreateFile();
 
-            //foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
-            //{
-            //    foreach (DialogueNodeData nodeData in dialogueContainer.DialogueNodeDatas)
-            //    {
-            //        List<string> texts = new List<string>();
+            foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
+            {
+                foreach (DialogueData nodeData in dialogueContainer.DialogueDatas)
+                {
+                    foreach (DialogueData_Text textData in nodeData.DialogueData_Texts)
+                    {
+                        List<string> texts = new List<string>();
 
-            //        texts.Add(nodeData.NodeGuid);
-            //        texts.Add(dialogueContainer.name);
+                        texts.Add(dialogueContainer.name);
+                        texts.Add(nodeData.NodeGuid);
+                        texts.Add(textData.GuidID.Value);
 
-            //        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-            //        {
-            //            string tmp = nodeData.TextLanguages.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
-            //            texts.Add($"\"{tmp}\"");
-            //        }
+                        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+                        {
+                            string tmp = textData.Text.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
+                            texts.Add($"\"{tmp}\"");
+                        }
 
-            //        AppendToFile(texts);
+                        AppendToFile(texts);
+                    }
+                }
 
-            //        foreach (DialogueNodePort nodePorts in nodeData.DialogueNodePorts)
-            //        {
-            //            texts = new List<string>();
+                foreach (ChoiceData nodeData in dialogueContainer.ChoiceDatas)
+                {
+                    List<string> texts = new List<string>();
 
-            //            texts.Add(nodePorts.PortGuid);
-            //            texts.Add(dialogueContainer.name);
+                    texts.Add(dialogueContainer.name);
+                    texts.Add(nodeData.NodeGuid);
+                    texts.Add("Choice Dont have Text ID");
 
-            //            foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-            //            {
-            //                string tmp = nodePorts.TextLanguages.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
-            //                texts.Add($"\"{tmp}\"");
-            //            }
+                    foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
+                    {
+                        string tmp = nodeData.Text.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
+                        texts.Add($"\"{tmp}\"");
+                    }
 
-            //            AppendToFile(texts);
-            //        }
-            //    }
-            //}
+                    AppendToFile(texts);
+                }
+            }
         }
 
         private void AppendToFile(List<string> strings)
@@ -98,8 +104,9 @@ namespace KasperDev.Dialogue.Editor
         private void MakeHeader()
         {
             List<string> headerText = new List<string>();
-            headerText.Add(idName);
             headerText.Add(dialogueName);
+            headerText.Add(node_ID);
+            headerText.Add(text_ID);
 
             foreach (LanguageType language in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
             {

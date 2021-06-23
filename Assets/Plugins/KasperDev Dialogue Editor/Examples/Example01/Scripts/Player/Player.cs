@@ -13,6 +13,7 @@ namespace KasperDev.Dialogue.Example01
         private Rigidbody rb;
         private float vertical;
         private float horizontal;
+        private float horizontalaadadaa;
 
         private void Awake()
         {

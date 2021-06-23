@@ -51,7 +51,7 @@ MonoBehaviour:
     TargetPortName: Input
   EndDatas:
   - NodeGuid: 536162ec-5661-4755-8ea0-45ebc88a15ee
-    Position: {x: 2188, y: 210}
+    Position: {x: 2193.3333, y: 230.66667}
     EndNodeType:
       Value: 2
   StartDatas:
@@ -70,7 +70,7 @@ MonoBehaviour:
     Container_DialogueEventSOs: []
   BranchDatas:
   - NodeGuid: f54155d7-cebb-421a-9b55-e4c1ff0cfe86
-    Position: {x: 1358, y: 68.666664}
+    Position: {x: 1330.6666, y: 85.33333}
     trueGuidNode: 536162ec-5661-4755-8ea0-45ebc88a15ee
     falseGuidNode: 66c7fc87-1ffe-4ecd-b28d-9b1a4e99f695
     EventData_StringConditions:
@@ -103,7 +103,7 @@ MonoBehaviour:
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: jamen 1
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -137,7 +137,7 @@ MonoBehaviour:
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: jamen 2
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -171,7 +171,7 @@ MonoBehaviour:
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: jamen 3
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -205,7 +205,7 @@ MonoBehaviour:
       - LanguageType: 2
         LanguageGenericType: 
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: jamen 4
       - LanguageType: 4
         LanguageGenericType: 
       - LanguageType: 5
@@ -251,7 +251,7 @@ MonoBehaviour:
       OutputGuid: 
   ChoiceDatas:
   - NodeGuid: 044fd5b2-847c-4b44-b024-5ad4d9cf6b9a
-    Position: {x: 1358, y: 256.66666}
+    Position: {x: 1330.6666, y: 244.66667}
     ChoiceStateTypes:
       Value: 1
     Text:
@@ -260,7 +260,7 @@ MonoBehaviour:
     - LanguageType: 2
       LanguageGenericType: 
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: jamen 5
     - LanguageType: 4
       LanguageGenericType: 
     - LanguageType: 5
@@ -292,16 +292,16 @@ MonoBehaviour:
       StringEventConditionType:
         Value: 1
   - NodeGuid: d84b1d18-ed13-4f98-9401-b937311fdd37
-    Position: {x: 1516.6666, y: 570.6667}
+    Position: {x: 1352.6666, y: 466.66666}
     ChoiceStateTypes:
       Value: 1
     Text:
     - LanguageType: 1
-      LanguageGenericType: 
+      LanguageGenericType: jamen
     - LanguageType: 2
       LanguageGenericType: 
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: jamen 6
     - LanguageType: 4
       LanguageGenericType: 
     - LanguageType: 5
