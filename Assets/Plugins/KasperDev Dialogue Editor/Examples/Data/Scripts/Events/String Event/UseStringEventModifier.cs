@@ -4,18 +4,36 @@ using UnityEngine;
 
 namespace KasperDev.Dialogue.Example
 {
-    public class UseStringEventModifier : MonoBehaviour
+    public class UseStringEventModifier 
     {
-        // Start is called before the first frame update
-        void Start()
+        public bool ModifierBoolCheck(StringEventModifierType stringEventModifierType)
         {
+            switch (stringEventModifierType)
+            {
+                case StringEventModifierType.SetTrue:
+                    return true;
 
+                case StringEventModifierType.SetFalse:
+                    return false;
+
+                default:
+                    return false;
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        public float ModifierFloatCheck(float inputValue, StringEventModifierType stringEventModifierType)
         {
+            switch (stringEventModifierType)
+            {
+                case StringEventModifierType.Add:
+                    return inputValue;
 
+                case StringEventModifierType.Subtract:
+                    return -inputValue;
+
+                default:
+                    return 0;
+            }
         }
     }
 }
