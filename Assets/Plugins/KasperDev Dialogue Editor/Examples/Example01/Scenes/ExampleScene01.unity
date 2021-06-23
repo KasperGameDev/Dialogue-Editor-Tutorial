@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 49905540}
   - component: {fileID: 49905539}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Continue Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 54071952}
   - component: {fileID: 54071951}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Continue Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,6 +442,8 @@ GameObject:
   m_Component:
   - component: {fileID: 321609314}
   - component: {fileID: 321609315}
+  - component: {fileID: 321609317}
+  - component: {fileID: 321609316}
   m_Layer: 5
   m_Name: Dialogue Controller
   m_TagString: Untagged
@@ -489,13 +491,45 @@ MonoBehaviour:
   button01: {fileID: 334566846}
   buttonText01: {fileID: 1231360179}
   button02: {fileID: 956571182}
-  buttonText02: {fileID: 1231360179}
+  buttonText02: {fileID: 1273622607}
   button03: {fileID: 474678162}
   buttonText03: {fileID: 1634686272}
   buttonContinue: {fileID: 1091119442}
   textDisableColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
   buttonDisableColor: {r: 0, g: 0, b: 0, a: 0}
   textInteractableColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &321609316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321609313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720e9a6ef5ee06d49989f2ece7f6c794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 1091119442}
+  continueKey01: 32
+--- !u!114 &321609317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321609313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e28d38732b2c3468fd95d4a3442a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceButton01: {fileID: 334566846}
+  choiceButton02: {fileID: 956571182}
+  choiceButton03: {fileID: 474678162}
+  choiceButtonKey01: 49
+  choiceButtonKey02: 50
+  choiceButtonKey03: 51
 --- !u!1 &334566844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,9 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b374279be5765df4599cd3d016916590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 0}
-  dialogueController: {fileID: 0}
-  audioSource: {fileID: 0}
+  dialogueContainer: {fileID: 11400000, guid: cb224784feffe7c4ea7b5e15962ffa30, type: 2}
 --- !u!82 &758426116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1887,7 +1919,7 @@ GameObject:
   - component: {fileID: 1091119443}
   - component: {fileID: 1091119442}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Continue Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2230,7 +2262,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1157624232
 Canvas:
   m_ObjectHideFlags: 0
@@ -2329,7 +2361,7 @@ GameObject:
   - component: {fileID: 1231360180}
   - component: {fileID: 1231360179}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Button Text 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2524,7 +2556,7 @@ GameObject:
   - component: {fileID: 1273622608}
   - component: {fileID: 1273622607}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Button Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2920,7 +2952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c02504ef5ca4f846ac1ee627f66db43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 3
   rotaSpeed: 5
   money: 10
   health: 70
@@ -3040,7 +3072,7 @@ GameObject:
   - component: {fileID: 1634686273}
   - component: {fileID: 1634686272}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Button Text 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3212,7 +3244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18c7d3ada195cd46a831982f8f1ae86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  language: 0
+  language: 1
 --- !u!4 &1718620650
 Transform:
   m_ObjectHideFlags: 0
@@ -3399,7 +3431,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2048100712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a420d4bc6f692542a4003c226f4a28f, type: 3}
+  m_Script: {fileID: 11500000, guid: 56ccf16f0bb5d4249bd15b823039c9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2048889050

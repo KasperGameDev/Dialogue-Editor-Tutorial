@@ -16,7 +16,7 @@ namespace KasperDev.Dialogue.Example.Ex01
                 case "health":
                     return useStringEventCondition.ConditionFloatCheck(FindObjectOfType<Player>().Health, value, stringEventConditionType);
 
-                case "didaskforhelp":
+                case "didwetalk":
                     return useStringEventCondition.ConditionBoolCheck(FindObjectOfType<Player>().DidWeTalk, stringEventConditionType);
 
                 default:
@@ -35,7 +35,7 @@ namespace KasperDev.Dialogue.Example.Ex01
                 case "health":
                     FindObjectOfType<Player>().ModifyHealth((int)useStringEventModifier.ModifierFloatCheck(value, stringEventModifierType));
                     break;
-                case "didaskforhelp":
+                case "didwetalk":
                     FindObjectOfType<Player>().DidWeTalk = (stringEventModifierType == StringEventModifierType.SetTrue ? true : false);
                     FindObjectOfType<Player>().DidWeTalk = useStringEventModifier.ModifierBoolCheck(stringEventModifierType);
                     break;

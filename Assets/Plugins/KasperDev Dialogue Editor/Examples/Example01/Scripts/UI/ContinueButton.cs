@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KasperDev.Dialogue.Example.Ex01
 {
-public class ContinueButton : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+    public class ContinueButton : MonoBehaviour
     {
-        
-    }
+        [Header("Button")]
+        [SerializeField] private Button continueButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [Header("KeyCode")]
+        [SerializeField] private KeyCode continueKey01 = KeyCode.Space;
+
+        void Update()
+        {
+            if (Input.GetKeyDown(continueKey01) && continueButton.gameObject.activeSelf)
+            {
+                continueButton.onClick.Invoke();
+            }
+        }
     }
 }
-    }

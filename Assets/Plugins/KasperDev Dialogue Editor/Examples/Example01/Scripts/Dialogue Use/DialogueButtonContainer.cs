@@ -1,21 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace KasperDev.Dialogue.Example.Ex01
 {
-    public class DialogueButtonContainer : MonoBehaviour
+    public class DialogueButtonContainer 
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public UnityAction UnityAction { get; set; }
+        public string Text { get; set; }
+        public bool ConditionCheck { get; set; }
+        public ChoiceStateType ChoiceState { get; set; }
     }
 }
