@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a69ff5ed214494b835d86b8438ac53, type: 3}
-  m_Name: New Dialogue Container SO 1
+  m_Name: Dialogue Container SO - Example01
   m_EditorClassIdentifier: 
   NodeLinkDatas:
   - BaseNodeGuid: 348eae8e-cd72-4d51-877d-93d1e6e141bd
@@ -85,6 +85,10 @@ MonoBehaviour:
     BasePortName: Continue
     TargetNodeGuid: 155f7435-f9a6-43d7-be86-6e40be063e4c
     TargetPortName: Input
+  - BaseNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    BasePortName: Continue
+    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
+    TargetPortName: Input
   - BaseNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
     BasePortName: ebe3aad5-27e5-4b54-af0e-3ffbbeb5a747
     TargetNodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
@@ -96,10 +100,6 @@ MonoBehaviour:
   - BaseNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
     BasePortName: d7d4887f-a48e-4fa2-a9ca-698674802f3f
     TargetNodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
-    TargetPortName: Input
-  - BaseNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
-    BasePortName: Continue
-    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
     TargetPortName: Input
   EndDatas:
   - NodeGuid: a1fbdda5-3873-4e3a-9c97-aed0b7cafa32
@@ -201,20 +201,21 @@ MonoBehaviour:
       - LanguageType: 1
         LanguageGenericType: anything else?
       - LanguageType: 2
-        LanguageGenericType: 
+        LanguageGenericType: noch etwas?
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: Ellers andet?
       - LanguageType: 4
-        LanguageGenericType: 
+        LanguageGenericType: aliud?
       - LanguageType: 5
-        LanguageGenericType: 
+        LanguageGenericType: rien d'autre?
       - LanguageType: 6
-        LanguageGenericType: 
+        LanguageGenericType: qualunque altra cosa?
       - LanguageType: 7
-        LanguageGenericType: 
+        LanguageGenericType: jebkas cits?
       AudioClips:
       - LanguageType: 1
-        LanguageGenericType: {fileID: 0}
+        LanguageGenericType: {fileID: 8300000, guid: 4bcc68014dcd37345adf772e2f9c3d08,
+          type: 3}
       - LanguageType: 2
         LanguageGenericType: {fileID: 0}
       - LanguageType: 3
@@ -235,20 +236,21 @@ MonoBehaviour:
       - LanguageType: 1
         LanguageGenericType: I don't think so
       - LanguageType: 2
-        LanguageGenericType: 
+        LanguageGenericType: Ich glaube nicht
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: Jeg tror det ikke
       - LanguageType: 4
-        LanguageGenericType: 
+        LanguageGenericType: Et non puto
       - LanguageType: 5
-        LanguageGenericType: 
+        LanguageGenericType: Je ne pense pas
       - LanguageType: 6
-        LanguageGenericType: 
+        LanguageGenericType: "Io non la penso cos\xEC"
       - LanguageType: 7
-        LanguageGenericType: 
+        LanguageGenericType: "Es t\u0101 nedom\u0101ju"
       AudioClips:
       - LanguageType: 1
-        LanguageGenericType: {fileID: 0}
+        LanguageGenericType: {fileID: 8300000, guid: f330c62d9d6f9b547afa0d5f20118d7c,
+          type: 3}
       - LanguageType: 2
         LanguageGenericType: {fileID: 0}
       - LanguageType: 3
@@ -285,20 +287,21 @@ MonoBehaviour:
       - LanguageType: 1
         LanguageGenericType: so?
       - LanguageType: 2
-        LanguageGenericType: 
+        LanguageGenericType: so?
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: "s\xE5?"
       - LanguageType: 4
-        LanguageGenericType: 
+        LanguageGenericType: sic?
       - LanguageType: 5
-        LanguageGenericType: 
+        LanguageGenericType: donc?
       - LanguageType: 6
-        LanguageGenericType: 
+        LanguageGenericType: "cos\xEC?"
       - LanguageType: 7
-        LanguageGenericType: 
+        LanguageGenericType: "t\u0101?"
       AudioClips:
       - LanguageType: 1
-        LanguageGenericType: {fileID: 0}
+        LanguageGenericType: {fileID: 8300000, guid: 95e9174f17f549742a897b82f075b58c,
+          type: 3}
       - LanguageType: 2
         LanguageGenericType: {fileID: 0}
       - LanguageType: 3
@@ -344,20 +347,21 @@ MonoBehaviour:
       - LanguageType: 1
         LanguageGenericType: Hey male
       - LanguageType: 2
-        LanguageGenericType: 
+        LanguageGenericType: "Hey m\xE4nnlich"
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: Hey mandlige
       - LanguageType: 4
-        LanguageGenericType: 
+        LanguageGenericType: heu masculinum
       - LanguageType: 5
-        LanguageGenericType: 
+        LanguageGenericType: "Hey m\xE2le"
       - LanguageType: 6
-        LanguageGenericType: 
+        LanguageGenericType: Hey maschio
       - LanguageType: 7
-        LanguageGenericType: 
+        LanguageGenericType: "Hey v\u012Brietis"
       AudioClips:
       - LanguageType: 1
-        LanguageGenericType: {fileID: 0}
+        LanguageGenericType: {fileID: 8300000, guid: 41515997d1c507e4ba9900c8973dd9d7,
+          type: 3}
       - LanguageType: 2
         LanguageGenericType: {fileID: 0}
       - LanguageType: 3
@@ -376,22 +380,23 @@ MonoBehaviour:
         Value: c788b87d-b53c-469b-80df-c856fcedf62e
       Text:
       - LanguageType: 1
-        LanguageGenericType: good you to see you
+        LanguageGenericType: good to see you
       - LanguageType: 2
-        LanguageGenericType: 
+        LanguageGenericType: gut, Sie zu sehen
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: god du at se dig
       - LanguageType: 4
-        LanguageGenericType: 
+        LanguageGenericType: bonum tibi est ad te
       - LanguageType: 5
-        LanguageGenericType: 
+        LanguageGenericType: bien que vous vous voyez
       - LanguageType: 6
-        LanguageGenericType: 
+        LanguageGenericType: buona di vedere voi
       - LanguageType: 7
-        LanguageGenericType: 
+        LanguageGenericType: "labi, lai j\u016Bs redz\u0113t"
       AudioClips:
       - LanguageType: 1
-        LanguageGenericType: {fileID: 0}
+        LanguageGenericType: {fileID: 8300000, guid: 4066a4063ede24240b178420fb40b832,
+          type: 3}
       - LanguageType: 2
         LanguageGenericType: {fileID: 0}
       - LanguageType: 3
@@ -424,20 +429,21 @@ MonoBehaviour:
       - LanguageType: 1
         LanguageGenericType: ok?
       - LanguageType: 2
-        LanguageGenericType: 
+        LanguageGenericType: OK?
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: Okay?
       - LanguageType: 4
-        LanguageGenericType: 
+        LanguageGenericType: ok?
       - LanguageType: 5
-        LanguageGenericType: 
+        LanguageGenericType: d'accord?
       - LanguageType: 6
-        LanguageGenericType: 
+        LanguageGenericType: ok?
       - LanguageType: 7
-        LanguageGenericType: 
+        LanguageGenericType: labi?
       AudioClips:
       - LanguageType: 1
-        LanguageGenericType: {fileID: 0}
+        LanguageGenericType: {fileID: 8300000, guid: a285a6fd2104b50499aca3a110f6a74c,
+          type: 3}
       - LanguageType: 2
         LanguageGenericType: {fileID: 0}
       - LanguageType: 3
@@ -474,20 +480,21 @@ MonoBehaviour:
       - LanguageType: 1
         LanguageGenericType: so what up?
       - LanguageType: 2
-        LanguageGenericType: 
+        LanguageGenericType: was geht?
       - LanguageType: 3
-        LanguageGenericType: 
+        LanguageGenericType: "s\xE5 hvad s\xE5?"
       - LanguageType: 4
-        LanguageGenericType: 
+        LanguageGenericType: Quid ergo est?
       - LanguageType: 5
-        LanguageGenericType: 
+        LanguageGenericType: "si ce jusqu'\xE0?"
       - LanguageType: 6
-        LanguageGenericType: 
+        LanguageGenericType: "cos\xEC quanto sopra?"
       - LanguageType: 7
-        LanguageGenericType: 
+        LanguageGenericType: "lai k\u0101di up?"
       AudioClips:
       - LanguageType: 1
-        LanguageGenericType: {fileID: 0}
+        LanguageGenericType: {fileID: 8300000, guid: 101f84e0f51c073479fc781e0433b758,
+          type: 3}
       - LanguageType: 2
         LanguageGenericType: {fileID: 0}
       - LanguageType: 3
@@ -526,17 +533,17 @@ MonoBehaviour:
     - LanguageType: 1
       LanguageGenericType: i pay to color you
     - LanguageType: 2
-      LanguageGenericType: 
+      LanguageGenericType: "i zahlen Sie zu f\xE4rben"
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: Jeg betaler at farve dig
     - LanguageType: 4
-      LanguageGenericType: 
+      LanguageGenericType: i Tu colorando redde ei
     - LanguageType: 5
-      LanguageGenericType: 
+      LanguageGenericType: je paie pour vous couleur
     - LanguageType: 6
-      LanguageGenericType: 
+      LanguageGenericType: ho pagato per colorare voi
     - LanguageType: 7
-      LanguageGenericType: 
+      LanguageGenericType: "man ir j\u0101maks\u0101, lai kr\u0101su jums"
     AudioClips:
     - LanguageType: 1
       LanguageGenericType: {fileID: 0}
@@ -567,17 +574,17 @@ MonoBehaviour:
     - LanguageType: 1
       LanguageGenericType: i pay to color me!
     - LanguageType: 2
-      LanguageGenericType: 
+      LanguageGenericType: "i bezahlen mich zu f\xE4rben!"
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: Jeg betaler til at farve mig!
     - LanguageType: 4
-      LanguageGenericType: 
+      LanguageGenericType: I ad lanas redde mihi!
     - LanguageType: 5
-      LanguageGenericType: 
+      LanguageGenericType: je paie pour moi la couleur!
     - LanguageType: 6
-      LanguageGenericType: 
+      LanguageGenericType: ho pagato per colorare me!
     - LanguageType: 7
-      LanguageGenericType: 
+      LanguageGenericType: "man ir j\u0101maks\u0101, lai kr\u0101su mani!"
     AudioClips:
     - LanguageType: 1
       LanguageGenericType: {fileID: 0}
@@ -608,17 +615,17 @@ MonoBehaviour:
     - LanguageType: 1
       LanguageGenericType: not most
     - LanguageType: 2
-      LanguageGenericType: 
+      LanguageGenericType: nicht die meisten
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: ikke de fleste
     - LanguageType: 4
-      LanguageGenericType: 
+      LanguageGenericType: nec plus
     - LanguageType: 5
-      LanguageGenericType: 
+      LanguageGenericType: pas plus
     - LanguageType: 6
-      LanguageGenericType: 
+      LanguageGenericType: non la maggior parte
     - LanguageType: 7
-      LanguageGenericType: 
+      LanguageGenericType: ne pats
     AudioClips:
     - LanguageType: 1
       LanguageGenericType: {fileID: 0}
@@ -643,17 +650,17 @@ MonoBehaviour:
     - LanguageType: 1
       LanguageGenericType: bye
     - LanguageType: 2
-      LanguageGenericType: 
+      LanguageGenericType: "Tsch\xFCss"
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: farvel
     - LanguageType: 4
-      LanguageGenericType: 
+      LanguageGenericType: vale
     - LanguageType: 5
-      LanguageGenericType: 
+      LanguageGenericType: au revoir
     - LanguageType: 6
-      LanguageGenericType: 
+      LanguageGenericType: addio
     - LanguageType: 7
-      LanguageGenericType: 
+      LanguageGenericType: "at\u0101"
     AudioClips:
     - LanguageType: 1
       LanguageGenericType: {fileID: 0}
@@ -678,17 +685,17 @@ MonoBehaviour:
     - LanguageType: 1
       LanguageGenericType: can we start over?
     - LanguageType: 2
-      LanguageGenericType: 
+      LanguageGenericType: "K\xF6nnen wir vom neuen anfangen?"
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: kan vi starte forfra?
     - LanguageType: 4
-      LanguageGenericType: 
+      LanguageGenericType: can satus super nos?
     - LanguageType: 5
-      LanguageGenericType: 
+      LanguageGenericType: peut-on recommencer?
     - LanguageType: 6
-      LanguageGenericType: 
+      LanguageGenericType: possiamo ricominciare da capo?
     - LanguageType: 7
-      LanguageGenericType: 
+      LanguageGenericType: "m\u0113s varam s\u0101kt no jauna?"
     AudioClips:
     - LanguageType: 1
       LanguageGenericType: {fileID: 0}
@@ -713,17 +720,17 @@ MonoBehaviour:
     - LanguageType: 1
       LanguageGenericType: Color os and giv me money and health!
     - LanguageType: 2
-      LanguageGenericType: 
+      LanguageGenericType: Farbe os und GIV mir Geld und Gesundheit!
     - LanguageType: 3
-      LanguageGenericType: 
+      LanguageGenericType: Farve os og giv mig penge og sundhed!
     - LanguageType: 4
-      LanguageGenericType: 
+      LanguageGenericType: Cla os meum colo pecuniae salutem!
     - LanguageType: 5
-      LanguageGenericType: 
+      LanguageGenericType: "os couleur et GIV-moi l'argent et la sant\xE9!"
     - LanguageType: 6
-      LanguageGenericType: 
+      LanguageGenericType: os Colore e GIV me i soldi e la salute!
     - LanguageType: 7
-      LanguageGenericType: 
+      LanguageGenericType: "Kr\u0101su os un giv man naudu un vesel\u012Bbu!"
     AudioClips:
     - LanguageType: 1
       LanguageGenericType: {fileID: 0}

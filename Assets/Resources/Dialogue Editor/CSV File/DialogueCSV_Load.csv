@@ -1,14 +1,20 @@
 Dialogue Name,Node Guid ID,Text Guid ID,English,German,Danish,Spanish,French,Italian,Latin
-New Dialogue Container SO 1,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,7cf84c97-2efb-47a0-a69b-cbd69d359da4,dsfgdfg,,hej 1,,,,
-New Dialogue Container SO 1,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,5642dd4b-3aba-47a0-8fbc-e8953dd7884a,fsdf,,hej 2,,,,
-New Dialogue Container SO 1,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,3454948b-0bfb-4b67-a648-0f2fd4ca5144,dsf,,hej 3,,,,
-New Dialogue Container SO 1,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,2882e5e2-d8e7-4495-a6e3-c361e9129ec8,dfsdf,,hej 4,,,,
-New Dialogue Container SO 1,aaa27fd9-8f34-4cd7-9ad8-d590502775e8,Choice Dont have Text ID,1111,,hej 5,,,,
-New Dialogue Container SO 1,a2b78ec0-6725-45f8-909e-625a5f615635,Choice Dont have Text ID,3333,,hej 6,,,,
-New Dialogue Container SO 1,b2f88fdd-7095-4b95-a980-91742320316b,Choice Dont have Text ID,2222,,hej 7,,,,
-New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,161a0080-fbb5-4ee1-af8c-4df719dc99bc,dfg,,jamen 1,,,,
-New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,20edac4c-d4f6-491d-b268-a307cc4dd6cc,,,jamen 2,,,,
-New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,b8b4e938-512c-4a97-bcde-d789a10b727f,,,jamen 3,,,,
-New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,6397c232-c40c-4c3b-b3b8-653de86b0c5c,,,jamen 4,,,,
-New Dialogue Container SO,044fd5b2-847c-4b44-b024-5ad4d9cf6b9a,Choice Dont have Text ID,dfgdfg,,jamen 5,,,,
-New Dialogue Container SO,d84b1d18-ed13-4f98-9401-b937311fdd37,Choice Dont have Text ID,jamen,,jamen 6,,,,
+New Dialogue Container SO 1,8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd,6829a8f7-69be-4e59-834d-89abcd40d57a,anything else?,noch etwas?,Ellers andet?,aliud?,rien d'autre?,qualunque altra cosa?,jebkas cits?
+New Dialogue Container SO 1,8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd,7523018b-8c72-42c9-8653-4db76eafbb65,I don't think so,Ich glaube nicht,Jeg tror det ikke,Et non puto,Je ne pense pas,Io non la penso così,Es tā nedomāju
+New Dialogue Container SO 1,0fc53153-dcad-401d-9481-460266414f5e,7abf190c-548d-4f61-a795-e87adfb11fa7,so?,so?,så?,sic?,donc?,così?,tā?
+New Dialogue Container SO 1,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,580a18bb-f1cc-483a-932b-94084edd9b7b,Hey male,Hey männlich,Hey mandlige,heu masculinum,Hey mâle,Hey maschio,Hey vīrietis
+New Dialogue Container SO 1,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,c788b87d-b53c-469b-80df-c856fcedf62e,good you to see you,"gut, Sie zu sehen",god du at se dig,bonum tibi est ad te,bien que vous vous voyez,buona di vedere voi,"labi, lai jūs redzēt"
+New Dialogue Container SO 1,309d3731-a3a8-4b30-9311-4ea4dc432769,a23c8bba-57e1-42db-8a3c-312dee24b71f,ok?,OK?,Okay?,ok?,d'accord?,ok?,labi?
+New Dialogue Container SO 1,b02411ed-29f8-4b8a-862b-12176fb6db81,c41cda58-e79b-4936-8930-eb6ff42393ee,so what up?,was geht?,så hvad så?,Quid ergo est?,si ce jusqu'à?,così quanto sopra?,lai kādi up?
+New Dialogue Container SO 1,9916fa84-30a7-4b60-9c52-6aa0264e336e,Choice Dont have Text ID,i pay to color you,i zahlen Sie zu färben,Jeg betaler at farve dig,i Tu colorando redde ei,je paie pour vous couleur,ho pagato per colorare voi,"man ir jāmaksā, lai krāsu jums"
+New Dialogue Container SO 1,0d97e2a0-d28f-4b66-93f6-f5ebf29720ad,Choice Dont have Text ID,i pay to color me!,i bezahlen mich zu färben!,Jeg betaler til at farve mig!,I ad lanas redde mihi!,je paie pour moi la couleur!,ho pagato per colorare me!,"man ir jāmaksā, lai krāsu mani!"
+New Dialogue Container SO 1,985560e3-1e02-4acd-9740-c26a89534ac6,Choice Dont have Text ID,not most,nicht die meisten,ikke de fleste,nec plus,pas plus,non la maggior parte,ne pats
+New Dialogue Container SO 1,0e9b3253-8198-4c09-816e-612014060fe5,Choice Dont have Text ID,bye,Tschüss,farvel,vale,au revoir,addio,atā
+New Dialogue Container SO 1,bdc51d75-f299-450e-86b2-654652124953,Choice Dont have Text ID,can we start over?,Können wir vom neuen anfangen?,kan vi starte forfra?,can satus super nos?,peut-on recommencer?,possiamo ricominciare da capo?,mēs varam sākt no jauna?
+New Dialogue Container SO 1,4e9241e4-627e-4b6f-96e3-9d28795b6a3a,Choice Dont have Text ID,Color os and giv me money and health!,Farbe os und GIV mir Geld und Gesundheit!,Farve os og giv mig penge og sundhed!,Cla os meum colo pecuniae salutem!,os couleur et GIV-moi l'argent et la santé!,os Colore e GIV me i soldi e la salute!,Krāsu os un giv man naudu un veselību!
+New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,161a0080-fbb5-4ee1-af8c-4df719dc99bc,dfg,dfg,DFG,dfg,DFG,DFG,DFG
+New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,20edac4c-d4f6-491d-b268-a307cc4dd6cc,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,b8b4e938-512c-4a97-bcde-d789a10b727f,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+New Dialogue Container SO,e0caaab2-0d0a-439f-948e-3a8a0c5312e0,6397c232-c40c-4c3b-b3b8-653de86b0c5c,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+New Dialogue Container SO,044fd5b2-847c-4b44-b024-5ad4d9cf6b9a,Choice Dont have Text ID,dfgdfg,dfgdfg,dfgdfg,dfgdfg,dfgdfg,dfgdfg,dfgdfg
+New Dialogue Container SO,d84b1d18-ed13-4f98-9401-b937311fdd37,Choice Dont have Text ID,jamen,jamen,jamen,jamen,jamen,Jamen,jamen
