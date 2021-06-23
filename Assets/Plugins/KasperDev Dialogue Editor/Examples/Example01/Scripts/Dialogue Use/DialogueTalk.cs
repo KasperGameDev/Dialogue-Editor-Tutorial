@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace KasperDev.Dialogue.Example01
+namespace KasperDev.Dialogue.Example.Ex01
 {
     public class DialogueTalk : DialogueGetData
     {

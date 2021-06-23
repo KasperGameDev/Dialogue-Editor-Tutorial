@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KasperDev.Dialogue.Example01
+namespace KasperDev.Dialogue.Example
 {
     public class FaceTheCamera : MonoBehaviour
     {

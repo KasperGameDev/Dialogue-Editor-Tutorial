@@ -1,52 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace KasperDev.Dialogue.Example01
+namespace KasperDev.Dialogue.Example.Ex01
 {
-    public class Player : MonoBehaviour
+    public class Player : BasePlayer
     {
-        [SerializeField] private float moveSpeed = 10f;
-        [SerializeField] private float rotaSpeed = 5f;
+        [SerializeField] private int money = 10;
+        [SerializeField] private int health = 70;
+        [SerializeField] private bool didWeTalk = false;
 
-        private Animator animator;
-        private Rigidbody rb;
-        private float vertical;
-        private float horizontal;
-        private float horizontalaadadaa;
+        public int Money { get => money; }
+        public int Health { get => health; }
+        public bool DidWeTalk { get => didWeTalk; set => didWeTalk = value; }
 
-        private void Awake()
+        public UnityAction OnChangedMoney;
+        public UnityAction OnChangedHealth;
+
+        protected new void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
-            rb = GetComponent<Rigidbody>();
+            base.Awake();  
         }
 
-        void Update()
+        private void Start()
         {
-            InputHander();
+            OnChangedMoney?.Invoke();
+            OnChangedHealth?.Invoke();
         }
 
-        private void FixedUpdate()
+        protected new void Update()
         {
-            Movement();
+            base.Update();   
         }
 
-        private void InputHander()
+        protected new void FixedUpdate()
         {
-            vertical = Input.GetAxis("Vertical");
-            horizontal = Input.GetAxis("Horizontal");
+            base.FixedUpdate();
         }
 
-        private void Movement()
+        public void ModifyMoeny(int value)
         {
-            Vector3 movement = new Vector3(horizontal, 0, vertical) * moveSpeed;
-            rb.velocity = movement;
+            money += value;
+            OnChangedMoney?.Invoke();
+        }
 
-            Vector3 direction = Vector3.RotateTowards(transform.forward, movement, rotaSpeed * Time.fixedDeltaTime, 0.0f);
-            transform.rotation = Quaternion.LookRotation(direction);
-
-            float animMove = Vector3.Magnitude(movement.normalized);
-            animator.SetFloat("moveSpeed", animMove);
+        public void ModifyHealth(int value)
+        {
+            health += value;
+            OnChangedHealth?.Invoke();
         }
     }
 }

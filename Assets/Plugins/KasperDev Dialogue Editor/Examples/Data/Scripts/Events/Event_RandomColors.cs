@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KasperDev.Dialogue.Example01
+namespace KasperDev.Dialogue.Example
 {
     [CreateAssetMenu(menuName = "Dialogue/New Color Event")]
     [System.Serializable]
