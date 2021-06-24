@@ -28,6 +28,8 @@
 
 .removeBtn{
 	margin-left:auto;
+
+
 }
 
 .unity-text-field__placeholder > .unity-base-text-field__input {

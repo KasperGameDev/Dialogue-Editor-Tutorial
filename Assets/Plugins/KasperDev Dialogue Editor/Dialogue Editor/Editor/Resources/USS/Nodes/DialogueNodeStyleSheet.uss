@@ -15,9 +15,24 @@
 	font-size: 18px;
 }
 
-.TextBtn{
+.TextRemoveBtn{
 	margin-left:auto;
 }
+
+.MoveUpBtn{
+	margin-left:auto;
+	background-image: resource("Icons/arrowUp");
+}
+
+.MoveDownBtn{
+	margin-left:auto;
+	background-image: resource("Icons/arrowDown");
+}
+
+.BtnBox{
+	flex-direction: row;
+}
+
 
 .BoxRow{
 	flex-direction: row;

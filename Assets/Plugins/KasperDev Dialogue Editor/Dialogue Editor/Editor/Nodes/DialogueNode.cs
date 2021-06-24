@@ -14,6 +14,8 @@ namespace KasperDev.Dialogue.Editor
         private DialogueData dialogueData = new DialogueData();
         public DialogueData DialogueData { get => dialogueData; set => dialogueData = value; }
 
+        private List<Box> boxs = new List<Box>();
+
         public DialogueNode() { }
 
         public DialogueNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
@@ -242,16 +244,39 @@ namespace KasperDev.Dialogue.Editor
             // Label Name
             Label label_texts = GetNewLabel(labelName, "LabelText", uniqueUSS);
 
+            Box buttonsBox = new Box();
+            buttonsBox.AddToClassList("BtnBox");
+
+            // Move Up button.
+            Button btnMoveUpBtn = GetNewButton("", "MoveUpBtn");
+            btnMoveUpBtn.clicked += () =>
+            {
+                MoveBox(container, true);
+            };
+
+            // Move Down button.
+            Button btnMoveDownBtn = GetNewButton("", "MoveDownBtn");
+            btnMoveDownBtn.clicked += () =>
+            {
+                MoveBox(container, false);
+            };
+
             // Remove button.
-            Button btn = GetNewButton("X", "TextBtn");
-            btn.clicked += () =>
+            Button btnRemove = GetNewButton("X", "TextRemoveBtn");
+            btnRemove.clicked += () =>
             {
                 DeleteBox(boxContainer);
+                boxs.Remove(boxContainer);
                 DialogueData.Dialogue_BaseContainers.Remove(container);
             };
 
+            boxs.Add(boxContainer);
+
+            buttonsBox.Add(btnMoveUpBtn);
+            buttonsBox.Add(btnMoveDownBtn);
+            buttonsBox.Add(btnRemove);
             topBoxContainer.Add(label_texts);
-            topBoxContainer.Add(btn);
+            topBoxContainer.Add(buttonsBox);
 
             boxContainer.Add(topBoxContainer);
         }
@@ -309,6 +334,61 @@ namespace KasperDev.Dialogue.Editor
         }
 
         // ------------------------------------------------------------------------------------------
+
+        private void MoveBox(DialogueData_BaseContainer container, bool moveUp)
+        {
+            List<DialogueData_BaseContainer> tmpDialogue_BaseContainers = new List<DialogueData_BaseContainer>();
+            tmpDialogue_BaseContainers.AddRange(dialogueData.Dialogue_BaseContainers);
+
+            foreach (Box item in boxs)
+            {
+                mainContainer.Remove(item);
+            }
+
+            boxs.Clear();
+
+            for (int i = 0; i < tmpDialogue_BaseContainers.Count; i++)
+            {
+                tmpDialogue_BaseContainers[i].ID.Value = i;
+            }
+
+            if (container.ID.Value > 0 && moveUp)
+            {
+                DialogueData_BaseContainer tmp01 = tmpDialogue_BaseContainers[container.ID.Value];
+                DialogueData_BaseContainer tmp02 = tmpDialogue_BaseContainers[container.ID.Value - 1];
+
+                tmpDialogue_BaseContainers[container.ID.Value] = tmp02;
+                tmpDialogue_BaseContainers[container.ID.Value - 1] = tmp01;
+            }
+            else if (container.ID.Value < tmpDialogue_BaseContainers.Count - 1 && !moveUp)
+            {
+                DialogueData_BaseContainer tmp01 = tmpDialogue_BaseContainers[container.ID.Value];
+                DialogueData_BaseContainer tmp02 = tmpDialogue_BaseContainers[container.ID.Value + 1];
+
+                tmpDialogue_BaseContainers[container.ID.Value] = tmp02;
+                tmpDialogue_BaseContainers[container.ID.Value + 1] = tmp01;
+            }
+
+            dialogueData.Dialogue_BaseContainers.Clear();
+
+            foreach (DialogueData_BaseContainer data in tmpDialogue_BaseContainers)
+            {
+                switch (data)
+                {
+                    case DialogueData_Name Name:
+                        CharacterName(Name);
+                        break;
+                    case DialogueData_Text Text:
+                        TextLine(Text);
+                        break;
+                    case DialogueData_Images image:
+                        ImagePic(image);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         public override void ReloadLanguage()
         {
