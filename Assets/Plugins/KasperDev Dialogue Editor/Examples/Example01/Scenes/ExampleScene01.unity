@@ -524,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e28d38732b2c3468fd95d4a3442a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 798255603}
   choiceButton01: {fileID: 334566846}
   choiceButton02: {fileID: 956571182}
   choiceButton03: {fileID: 474678162}

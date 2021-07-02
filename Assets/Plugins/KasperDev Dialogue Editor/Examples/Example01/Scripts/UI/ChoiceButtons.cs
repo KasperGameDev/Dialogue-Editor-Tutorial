@@ -7,6 +7,7 @@ namespace KasperDev.Dialogue.Example.Ex01
 {
     public class ChoiceButtons : MonoBehaviour
     {
+        [SerializeField] private GameObject dialogueUI;
         [Header("Buttons")]
         [SerializeField] private Button choiceButton01;
         [SerializeField] private Button choiceButton02;
@@ -19,17 +20,20 @@ namespace KasperDev.Dialogue.Example.Ex01
 
         void Update()
         {
-            if (Input.GetKeyDown(choiceButtonKey01) && choiceButton01.gameObject.activeSelf)
+            if (dialogueUI.gameObject.activeSelf)
             {
-                choiceButton01.onClick.Invoke();
-            }
-            if (Input.GetKeyDown(choiceButtonKey02) && choiceButton02.gameObject.activeSelf)
-            {
-                choiceButton02.onClick.Invoke();
-            }
-            if (Input.GetKeyDown(choiceButtonKey03) && choiceButton03.gameObject.activeSelf)
-            {
-                choiceButton03.onClick.Invoke();
+                if (Input.GetKeyDown(choiceButtonKey01) && choiceButton01.gameObject.activeSelf)
+                {
+                    choiceButton01.onClick.Invoke();
+                }
+                if (Input.GetKeyDown(choiceButtonKey02) && choiceButton02.gameObject.activeSelf)
+                {
+                    choiceButton02.onClick.Invoke();
+                }
+                if (Input.GetKeyDown(choiceButtonKey03) && choiceButton03.gameObject.activeSelf)
+                {
+                    choiceButton03.onClick.Invoke();
+                }
             }
         }
     }
