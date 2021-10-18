@@ -21,10 +21,6 @@ MonoBehaviour:
     BasePortName: Output
     TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
     TargetPortName: Input
-  - BaseNodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
-    BasePortName: Output
-    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
-    TargetPortName: Input
   - BaseNodeGuid: b507bbd4-0cd8-4f81-8fed-0e28b85cdfa7
     BasePortName: Output
     TargetNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
@@ -33,6 +29,14 @@ MonoBehaviour:
     BasePortName: Output
     TargetNodeGuid: 201f2ac7-bcd2-4c9a-bd48-38d9c9729e99
     TargetPortName: Input
+  - BaseNodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
+    BasePortName: Output
+    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
+    TargetPortName: Input
+  - BaseNodeGuid: 3d163431-873c-4d83-aaa0-4aab2feb36f5
+    BasePortName: Output
+    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
+    TargetPortName: Input
   - BaseNodeGuid: 24ee1e21-b7b8-479e-8c23-e007e52d075c
     BasePortName: True
     TargetNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
@@ -40,18 +44,6 @@ MonoBehaviour:
   - BaseNodeGuid: 24ee1e21-b7b8-479e-8c23-e007e52d075c
     BasePortName: False
     TargetNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
-    TargetPortName: Input
-  - BaseNodeGuid: 9916fa84-30a7-4b60-9c52-6aa0264e336e
-    BasePortName: Output
-    TargetNodeGuid: c7be0cb3-c5d5-4206-b41d-51cfb3128920
-    TargetPortName: Input
-  - BaseNodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
-    BasePortName: Output
-    TargetNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
-    TargetPortName: Input
-  - BaseNodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
-    BasePortName: Output
-    TargetNodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
     TargetPortName: Input
   - BaseNodeGuid: 4e9241e4-627e-4b6f-96e3-9d28795b6a3a
     BasePortName: Output
@@ -65,6 +57,18 @@ MonoBehaviour:
     BasePortName: Output
     TargetNodeGuid: 075041e5-2a81-4dd7-98c6-bc26fc9f368b
     TargetPortName: Input
+  - BaseNodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
+    BasePortName: Output
+    TargetNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    TargetPortName: Input
+  - BaseNodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
+    BasePortName: Output
+    TargetNodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
+    TargetPortName: Input
+  - BaseNodeGuid: 9916fa84-30a7-4b60-9c52-6aa0264e336e
+    BasePortName: Output
+    TargetNodeGuid: c7be0cb3-c5d5-4206-b41d-51cfb3128920
+    TargetPortName: Input
   - BaseNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
     BasePortName: d7d4887f-a48e-4fa2-a9ca-698674802f3f
     TargetNodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
@@ -76,10 +80,6 @@ MonoBehaviour:
   - BaseNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
     BasePortName: ebe3aad5-27e5-4b54-af0e-3ffbbeb5a747
     TargetNodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
-    TargetPortName: Input
-  - BaseNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
-    BasePortName: Continue
-    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
     TargetPortName: Input
   - BaseNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
     BasePortName: Continue
@@ -100,6 +100,114 @@ MonoBehaviour:
   - BaseNodeGuid: 0fc53153-dcad-401d-9481-460266414f5e
     BasePortName: 4f8b52c4-8ea1-4939-bcb7-80ce60aedc36
     TargetNodeGuid: 0e9b3253-8198-4c09-816e-612014060fe5
+    TargetPortName: Input
+  - BaseNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    BasePortName: Continue
+    TargetNodeGuid: 3d163431-873c-4d83-aaa0-4aab2feb36f5
+    TargetPortName: Input
+  - BaseNodeGuid: 348eae8e-cd72-4d51-877d-93d1e6e141bd
+    BasePortName: Output
+    TargetNodeGuid: 24ee1e21-b7b8-479e-8c23-e007e52d075c
+    TargetPortName: Input
+  - BaseNodeGuid: c7be0cb3-c5d5-4206-b41d-51cfb3128920
+    BasePortName: Output
+    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
+    TargetPortName: Input
+  - BaseNodeGuid: b507bbd4-0cd8-4f81-8fed-0e28b85cdfa7
+    BasePortName: Output
+    TargetNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
+    TargetPortName: Input
+  - BaseNodeGuid: bb8b06ee-51db-4338-bb4f-e3caf57a9fd6
+    BasePortName: Output
+    TargetNodeGuid: 201f2ac7-bcd2-4c9a-bd48-38d9c9729e99
+    TargetPortName: Input
+  - BaseNodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
+    BasePortName: Output
+    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
+    TargetPortName: Input
+  - BaseNodeGuid: 3d163431-873c-4d83-aaa0-4aab2feb36f5
+    BasePortName: Output
+    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
+    TargetPortName: Input
+  - BaseNodeGuid: 24ee1e21-b7b8-479e-8c23-e007e52d075c
+    BasePortName: True
+    TargetNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    TargetPortName: Input
+  - BaseNodeGuid: 24ee1e21-b7b8-479e-8c23-e007e52d075c
+    BasePortName: False
+    TargetNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
+    TargetPortName: Input
+  - BaseNodeGuid: 4e9241e4-627e-4b6f-96e3-9d28795b6a3a
+    BasePortName: Output
+    TargetNodeGuid: bb8b06ee-51db-4338-bb4f-e3caf57a9fd6
+    TargetPortName: Input
+  - BaseNodeGuid: 0e9b3253-8198-4c09-816e-612014060fe5
+    BasePortName: Output
+    TargetNodeGuid: a1fbdda5-3873-4e3a-9c97-aed0b7cafa32
+    TargetPortName: Input
+  - BaseNodeGuid: bdc51d75-f299-450e-86b2-654652124953
+    BasePortName: Output
+    TargetNodeGuid: 075041e5-2a81-4dd7-98c6-bc26fc9f368b
+    TargetPortName: Input
+  - BaseNodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
+    BasePortName: Output
+    TargetNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    TargetPortName: Input
+  - BaseNodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
+    BasePortName: Output
+    TargetNodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
+    TargetPortName: Input
+  - BaseNodeGuid: 9916fa84-30a7-4b60-9c52-6aa0264e336e
+    BasePortName: Output
+    TargetNodeGuid: c7be0cb3-c5d5-4206-b41d-51cfb3128920
+    TargetPortName: Input
+  - BaseNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
+    BasePortName: d7d4887f-a48e-4fa2-a9ca-698674802f3f
+    TargetNodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
+    TargetPortName: Input
+  - BaseNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
+    BasePortName: a272c8b0-6e47-4fe4-9a99-40eb3470b8ec
+    TargetNodeGuid: 9916fa84-30a7-4b60-9c52-6aa0264e336e
+    TargetPortName: Input
+  - BaseNodeGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
+    BasePortName: ebe3aad5-27e5-4b54-af0e-3ffbbeb5a747
+    TargetNodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
+    TargetPortName: Input
+  - BaseNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
+    BasePortName: Continue
+    TargetNodeGuid: 0fc53153-dcad-401d-9481-460266414f5e
+    TargetPortName: Input
+  - BaseNodeGuid: e0caaab2-0d0a-439f-948e-3a8a0c5312e0
+    BasePortName: Continue
+    TargetNodeGuid: b507bbd4-0cd8-4f81-8fed-0e28b85cdfa7
+    TargetPortName: Input
+  - BaseNodeGuid: 0fc53153-dcad-401d-9481-460266414f5e
+    BasePortName: 598dfe84-6923-494b-95cd-f4db39b61bac
+    TargetNodeGuid: 4e9241e4-627e-4b6f-96e3-9d28795b6a3a
+    TargetPortName: Input
+  - BaseNodeGuid: 0fc53153-dcad-401d-9481-460266414f5e
+    BasePortName: 9f70b257-2531-4039-8a41-7b8c1f739ee1
+    TargetNodeGuid: bdc51d75-f299-450e-86b2-654652124953
+    TargetPortName: Input
+  - BaseNodeGuid: 0fc53153-dcad-401d-9481-460266414f5e
+    BasePortName: 4f8b52c4-8ea1-4939-bcb7-80ce60aedc36
+    TargetNodeGuid: 0e9b3253-8198-4c09-816e-612014060fe5
+    TargetPortName: Input
+  - BaseNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    BasePortName: 5fbfd6c0-a00f-468d-94f1-8d26f3b2530b
+    TargetNodeGuid: a726d4c6-0fbd-4a5e-9fbf-95bf94318fc7
+    TargetPortName: Input
+  - BaseNodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    BasePortName: 114f2ff8-5b9f-4cff-a6ed-597cd0937e35
+    TargetNodeGuid: 2201d461-1d06-4cb4-a3b2-55c18023bb6a
+    TargetPortName: Input
+  - BaseNodeGuid: 2201d461-1d06-4cb4-a3b2-55c18023bb6a
+    BasePortName: Output
+    TargetNodeGuid: 3d163431-873c-4d83-aaa0-4aab2feb36f5
+    TargetPortName: Input
+  - BaseNodeGuid: a726d4c6-0fbd-4a5e-9fbf-95bf94318fc7
+    BasePortName: Output
+    TargetNodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
     TargetPortName: Input
   EndDatas:
   - NodeGuid: 075041e5-2a81-4dd7-98c6-bc26fc9f368b
@@ -131,19 +239,6 @@ MonoBehaviour:
     EventData_BoolModifiers: []
     Container_DialogueEventSOs:
     - GameEvent: {fileID: 11400000, guid: 077a6f6e1a8e128429c24e148fb245d2, type: 2}
-  - NodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
-    Position: {x: 1964.6666, y: 556.6667}
-    EventData_StringModifiers: []
-    EventData_FloatModifiers: []
-    EventData_IntModifiers:
-    - VariableSO: {fileID: 11400000, guid: af8f9f066a52196438fd671766785294, type: 2}
-      Value:
-        Value: 100
-      EventType:
-        Value: 4
-    EventData_BoolModifiers: []
-    Container_DialogueEventSOs:
-    - GameEvent: {fileID: 11400000, guid: 0bd1e45983d368040857143c0f8dde44, type: 2}
   - NodeGuid: b507bbd4-0cd8-4f81-8fed-0e28b85cdfa7
     Position: {x: 514.6667, y: -83.333336}
     EventData_StringModifiers: []
@@ -175,6 +270,27 @@ MonoBehaviour:
     Container_DialogueEventSOs:
     - GameEvent: {fileID: 11400000, guid: 0bd1e45983d368040857143c0f8dde44, type: 2}
     - GameEvent: {fileID: 11400000, guid: 077a6f6e1a8e128429c24e148fb245d2, type: 2}
+  - NodeGuid: 254fd84d-5b37-4825-a5b6-ba1498755dae
+    Position: {x: 1964.6666, y: 569.3334}
+    EventData_StringModifiers: []
+    EventData_FloatModifiers: []
+    EventData_IntModifiers:
+    - VariableSO: {fileID: 11400000, guid: af8f9f066a52196438fd671766785294, type: 2}
+      Value:
+        Value: 100
+      EventType:
+        Value: 4
+    EventData_BoolModifiers: []
+    Container_DialogueEventSOs:
+    - GameEvent: {fileID: 11400000, guid: 0bd1e45983d368040857143c0f8dde44, type: 2}
+  - NodeGuid: 3d163431-873c-4d83-aaa0-4aab2feb36f5
+    Position: {x: 2272.6667, y: 54}
+    EventData_StringModifiers: []
+    EventData_FloatModifiers: []
+    EventData_IntModifiers: []
+    EventData_BoolModifiers: []
+    Container_DialogueEventSOs:
+    - GameEvent: {fileID: 11400000, guid: 8eabe637a43ed1247b3af2a471dbfe76, type: 2}
   BranchDatas:
   - NodeGuid: 24ee1e21-b7b8-479e-8c23-e007e52d075c
     Position: {x: -394, y: 308}
@@ -250,53 +366,6 @@ MonoBehaviour:
     - PortGuid: d7d4887f-a48e-4fa2-a9ca-698674802f3f
       InputGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
       OutputGuid: b02411ed-29f8-4b8a-862b-12176fb6db81
-  - NodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
-    Position: {x: 1902.6666, y: 74.666664}
-    DialogueData_Names: []
-    DialogueData_Texts:
-    - ID:
-        Value: 1
-      GuidID:
-        Value: a23c8bba-57e1-42db-8a3c-312dee24b71f
-      Text:
-      - LanguageType: 1
-        LanguageGenericType: ok?
-      - LanguageType: 2
-        LanguageGenericType: OK?
-      - LanguageType: 3
-        LanguageGenericType: Okay?
-      - LanguageType: 4
-        LanguageGenericType: ok?
-      - LanguageType: 5
-        LanguageGenericType: d'accord?
-      - LanguageType: 6
-        LanguageGenericType: ok?
-      - LanguageType: 7
-        LanguageGenericType: labi?
-      AudioClips:
-      - LanguageType: 1
-        LanguageGenericType: {fileID: 8300000, guid: a285a6fd2104b50499aca3a110f6a74c,
-          type: 3}
-      - LanguageType: 2
-        LanguageGenericType: {fileID: 0}
-      - LanguageType: 3
-        LanguageGenericType: {fileID: 0}
-      - LanguageType: 4
-        LanguageGenericType: {fileID: 0}
-      - LanguageType: 5
-        LanguageGenericType: {fileID: 0}
-      - LanguageType: 6
-        LanguageGenericType: {fileID: 0}
-      - LanguageType: 7
-        LanguageGenericType: {fileID: 0}
-    DialogueData_Imagess:
-    - ID:
-        Value: 0
-      Sprite_Left:
-        Value: {fileID: 0}
-      Sprite_Right:
-        Value: {fileID: 21300000, guid: c3f660ceb67f9ea46ae25b233a4967c7, type: 3}
-    DialogueData_Ports: []
   - NodeGuid: 8deedf5e-8f4c-49ff-bb3a-ac903d3b3ffd
     Position: {x: 2632, y: 202}
     DialogueData_Names:
@@ -529,131 +598,60 @@ MonoBehaviour:
     - PortGuid: 598dfe84-6923-494b-95cd-f4db39b61bac
       InputGuid: 4e9241e4-627e-4b6f-96e3-9d28795b6a3a
       OutputGuid: 0fc53153-dcad-401d-9481-460266414f5e
+  - NodeGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    Position: {x: 1652.6666, y: 34.666664}
+    DialogueData_Names: []
+    DialogueData_Texts:
+    - ID:
+        Value: 1
+      GuidID:
+        Value: a23c8bba-57e1-42db-8a3c-312dee24b71f
+      Text:
+      - LanguageType: 1
+        LanguageGenericType: ok?
+      - LanguageType: 2
+        LanguageGenericType: OK?
+      - LanguageType: 3
+        LanguageGenericType: Okay?
+      - LanguageType: 4
+        LanguageGenericType: ok?
+      - LanguageType: 5
+        LanguageGenericType: d'accord?
+      - LanguageType: 6
+        LanguageGenericType: ok?
+      - LanguageType: 7
+        LanguageGenericType: labi?
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 8300000, guid: a285a6fd2104b50499aca3a110f6a74c,
+          type: 3}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+    DialogueData_Imagess:
+    - ID:
+        Value: 0
+      Sprite_Left:
+        Value: {fileID: 0}
+      Sprite_Right:
+        Value: {fileID: 21300000, guid: c3f660ceb67f9ea46ae25b233a4967c7, type: 3}
+    DialogueData_Ports:
+    - PortGuid: 114f2ff8-5b9f-4cff-a6ed-597cd0937e35
+      InputGuid: 2201d461-1d06-4cb4-a3b2-55c18023bb6a
+      OutputGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
+    - PortGuid: 5fbfd6c0-a00f-468d-94f1-8d26f3b2530b
+      InputGuid: a726d4c6-0fbd-4a5e-9fbf-95bf94318fc7
+      OutputGuid: 309d3731-a3a8-4b30-9311-4ea4dc432769
   ChoiceDatas:
-  - NodeGuid: 9916fa84-30a7-4b60-9c52-6aa0264e336e
-    Position: {x: 1346.6666, y: 396}
-    ChoiceStateTypes:
-      Value: 2
-    Text:
-    - LanguageType: 1
-      LanguageGenericType: i pay to color you
-    - LanguageType: 2
-      LanguageGenericType: "i zahlen Sie zu f\xE4rben"
-    - LanguageType: 3
-      LanguageGenericType: Jeg betaler at farve dig
-    - LanguageType: 4
-      LanguageGenericType: i Tu colorando redde ei
-    - LanguageType: 5
-      LanguageGenericType: je paie pour vous couleur
-    - LanguageType: 6
-      LanguageGenericType: ho pagato per colorare voi
-    - LanguageType: 7
-      LanguageGenericType: "man ir j\u0101maks\u0101, lai kr\u0101su jums"
-    AudioClips:
-    - LanguageType: 1
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 2
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 3
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 4
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 5
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 6
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 7
-      LanguageGenericType: {fileID: 0}
-    EventData_StringConditions: []
-    EventData_FloatConditions: []
-    EventData_IntConditions:
-    - VariableSO: {fileID: 11400000, guid: af8f9f066a52196438fd671766785294, type: 2}
-      Value:
-        Value: 50
-      EventType:
-        Value: 4
-    EventData_BoolConditions: []
-  - NodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
-    Position: {x: 1346.6666, y: 284}
-    ChoiceStateTypes:
-      Value: 1
-    Text:
-    - LanguageType: 1
-      LanguageGenericType: not most
-    - LanguageType: 2
-      LanguageGenericType: nicht die meisten
-    - LanguageType: 3
-      LanguageGenericType: ikke de fleste
-    - LanguageType: 4
-      LanguageGenericType: nec plus
-    - LanguageType: 5
-      LanguageGenericType: pas plus
-    - LanguageType: 6
-      LanguageGenericType: non la maggior parte
-    - LanguageType: 7
-      LanguageGenericType: ne pats
-    AudioClips:
-    - LanguageType: 1
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 2
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 3
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 4
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 5
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 6
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 7
-      LanguageGenericType: {fileID: 0}
-    EventData_StringConditions: []
-    EventData_FloatConditions: []
-    EventData_IntConditions: []
-    EventData_BoolConditions: []
-  - NodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
-    Position: {x: 1346.6666, y: 556.6667}
-    ChoiceStateTypes:
-      Value: 1
-    Text:
-    - LanguageType: 1
-      LanguageGenericType: i pay to color me!
-    - LanguageType: 2
-      LanguageGenericType: "i bezahlen mich zu f\xE4rben!"
-    - LanguageType: 3
-      LanguageGenericType: Jeg betaler til at farve mig!
-    - LanguageType: 4
-      LanguageGenericType: I ad lanas redde mihi!
-    - LanguageType: 5
-      LanguageGenericType: je paie pour moi la couleur!
-    - LanguageType: 6
-      LanguageGenericType: ho pagato per colorare me!
-    - LanguageType: 7
-      LanguageGenericType: "man ir j\u0101maks\u0101, lai kr\u0101su mani!"
-    AudioClips:
-    - LanguageType: 1
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 2
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 3
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 4
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 5
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 6
-      LanguageGenericType: {fileID: 0}
-    - LanguageType: 7
-      LanguageGenericType: {fileID: 0}
-    EventData_StringConditions: []
-    EventData_FloatConditions: []
-    EventData_IntConditions:
-    - VariableSO: {fileID: 11400000, guid: af8f9f066a52196438fd671766785294, type: 2}
-      Value:
-        Value: 100
-      EventType:
-        Value: 4
-    EventData_BoolConditions: []
   - NodeGuid: 4e9241e4-627e-4b6f-96e3-9d28795b6a3a
     Position: {x: 3365.3333, y: 432}
     ChoiceStateTypes:
@@ -749,6 +747,206 @@ MonoBehaviour:
       LanguageGenericType: possiamo ricominciare da capo?
     - LanguageType: 7
       LanguageGenericType: "m\u0113s varam s\u0101kt no jauna?"
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+    EventData_FloatConditions: []
+    EventData_IntConditions: []
+    EventData_BoolConditions: []
+  - NodeGuid: 985560e3-1e02-4acd-9740-c26a89534ac6
+    Position: {x: 1346.6666, y: 264.66666}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: not most
+    - LanguageType: 2
+      LanguageGenericType: nicht die meisten
+    - LanguageType: 3
+      LanguageGenericType: ikke de fleste
+    - LanguageType: 4
+      LanguageGenericType: nec plus
+    - LanguageType: 5
+      LanguageGenericType: pas plus
+    - LanguageType: 6
+      LanguageGenericType: non la maggior parte
+    - LanguageType: 7
+      LanguageGenericType: ne pats
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+    EventData_FloatConditions: []
+    EventData_IntConditions: []
+    EventData_BoolConditions: []
+  - NodeGuid: 0d97e2a0-d28f-4b66-93f6-f5ebf29720ad
+    Position: {x: 1346.6666, y: 569.3334}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: i pay to color me!
+    - LanguageType: 2
+      LanguageGenericType: "i bezahlen mich zu f\xE4rben!"
+    - LanguageType: 3
+      LanguageGenericType: Jeg betaler til at farve mig!
+    - LanguageType: 4
+      LanguageGenericType: I ad lanas redde mihi!
+    - LanguageType: 5
+      LanguageGenericType: je paie pour moi la couleur!
+    - LanguageType: 6
+      LanguageGenericType: ho pagato per colorare me!
+    - LanguageType: 7
+      LanguageGenericType: "man ir j\u0101maks\u0101, lai kr\u0101su mani!"
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+    EventData_FloatConditions: []
+    EventData_IntConditions:
+    - VariableSO: {fileID: 11400000, guid: af8f9f066a52196438fd671766785294, type: 2}
+      Value:
+        Value: 100
+      EventType:
+        Value: 4
+    EventData_BoolConditions: []
+  - NodeGuid: 9916fa84-30a7-4b60-9c52-6aa0264e336e
+    Position: {x: 1346.6666, y: 396}
+    ChoiceStateTypes:
+      Value: 2
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: i pay to color you
+    - LanguageType: 2
+      LanguageGenericType: "i zahlen Sie zu f\xE4rben"
+    - LanguageType: 3
+      LanguageGenericType: Jeg betaler at farve dig
+    - LanguageType: 4
+      LanguageGenericType: i Tu colorando redde ei
+    - LanguageType: 5
+      LanguageGenericType: je paie pour vous couleur
+    - LanguageType: 6
+      LanguageGenericType: ho pagato per colorare voi
+    - LanguageType: 7
+      LanguageGenericType: "man ir j\u0101maks\u0101, lai kr\u0101su jums"
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+    EventData_FloatConditions: []
+    EventData_IntConditions:
+    - VariableSO: {fileID: 11400000, guid: af8f9f066a52196438fd671766785294, type: 2}
+      Value:
+        Value: 50
+      EventType:
+        Value: 4
+    EventData_BoolConditions: []
+  - NodeGuid: a726d4c6-0fbd-4a5e-9fbf-95bf94318fc7
+    Position: {x: 1952.6666, y: 201.33334}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: Skip Video
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: 
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+    EventData_FloatConditions: []
+    EventData_IntConditions: []
+    EventData_BoolConditions: []
+  - NodeGuid: 2201d461-1d06-4cb4-a3b2-55c18023bb6a
+    Position: {x: 1952.6666, y: 54.666664}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: Play Video
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: 
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
     AudioClips:
     - LanguageType: 1
       LanguageGenericType: {fileID: 0}
