@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEngine;
 
 namespace KasperDev.ModularComponents
@@ -59,3 +61,4 @@ namespace KasperDev.ModularComponents
         }
     }
 }
+#endif

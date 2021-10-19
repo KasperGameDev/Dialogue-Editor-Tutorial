@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEngine;
 
 namespace KasperDev.Events
@@ -20,3 +22,4 @@ namespace KasperDev.Events
         }
     }
 }
+#endif

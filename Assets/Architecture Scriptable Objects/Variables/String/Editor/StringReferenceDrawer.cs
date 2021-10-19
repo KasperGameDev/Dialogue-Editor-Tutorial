@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEngine;
 
@@ -60,3 +62,4 @@ namespace KasperDev.ModularComponents
         }
     }
 }
+#endif
