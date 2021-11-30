@@ -1,0 +1,17 @@
+.ChoiceLabel{
+	font-size: 15px;
+	padding-top:0px;
+	padding-left:1px;
+}
+
+.enumHide{
+	width:	70px;
+}
+
+.node #title{
+	background-color: #CF995F;
+}
+
+.node #title #title-label{
+	color: #000000;
+}

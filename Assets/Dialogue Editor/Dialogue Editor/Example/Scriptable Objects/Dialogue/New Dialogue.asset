@@ -1,0 +1,810 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a69ff5ed214494b835d86b8438ac53, type: 3}
+  m_Name: New Dialogue
+  m_EditorClassIdentifier: 
+  participatingCharacters: 1
+  NodeLinkDatas:
+  - BaseNodeGuid: 39da1d3b-c56a-4f2e-a75a-cff81b7fa6bf
+    BasePortName: Output
+    TargetNodeGuid: a054e82f-42ae-4b9b-b104-88f8bd3c00c0
+    TargetPortName: Input
+  - BaseNodeGuid: 26651b7d-c33f-420c-9a51-df470a57ec45
+    BasePortName: Output
+    TargetNodeGuid: c9e3f51c-62d1-4c4a-b1ba-e4209f3828fd
+    TargetPortName: Input
+  - BaseNodeGuid: a054e82f-42ae-4b9b-b104-88f8bd3c00c0
+    BasePortName: False
+    TargetNodeGuid: 40d1f1b7-9bd7-4c4e-8954-4509b1b710f5
+    TargetPortName: Input
+  - BaseNodeGuid: a054e82f-42ae-4b9b-b104-88f8bd3c00c0
+    BasePortName: True
+    TargetNodeGuid: b245c55d-4b9f-4d19-9411-8ead228602e5
+    TargetPortName: Input
+  - BaseNodeGuid: 04b59663-ba3d-4203-8718-b6626307dd02
+    BasePortName: Output
+    TargetNodeGuid: e47c8dee-b465-4664-a699-cd064c4e04fa
+    TargetPortName: Input
+  - BaseNodeGuid: 9e4ee8f5-c557-4d9b-9581-67d87ecc0850
+    BasePortName: Output
+    TargetNodeGuid: 76fefc11-44d6-499d-bf94-9e0534c70f09
+    TargetPortName: Input
+  - BaseNodeGuid: 40d1f1b7-9bd7-4c4e-8954-4509b1b710f5
+    BasePortName: Continue
+    TargetNodeGuid: d2eda8cb-669a-4185-a664-efbd759d11df
+    TargetPortName: Input
+  - BaseNodeGuid: b245c55d-4b9f-4d19-9411-8ead228602e5
+    BasePortName: Continue
+    TargetNodeGuid: 1169f5c3-73e5-4079-b052-f84bafeca6b8
+    TargetPortName: 
+  - BaseNodeGuid: d3eb0873-5ab5-40d3-960d-69d13f7143d5
+    BasePortName: Continue
+    TargetNodeGuid: c72dd8b9-546d-43c6-ad73-5dee94ab4dd1
+    TargetPortName: Input
+  - BaseNodeGuid: d2eda8cb-669a-4185-a664-efbd759d11df
+    BasePortName: Continue
+    TargetNodeGuid: c95e8698-fa89-4ed1-b696-57d0afde963e
+    TargetPortName: Input
+  - BaseNodeGuid: c95e8698-fa89-4ed1-b696-57d0afde963e
+    BasePortName: Continue
+    TargetNodeGuid: d3eb0873-5ab5-40d3-960d-69d13f7143d5
+    TargetPortName: Input
+  - BaseNodeGuid: c72dd8b9-546d-43c6-ad73-5dee94ab4dd1
+    BasePortName: Continue
+    TargetNodeGuid: 1169f5c3-73e5-4079-b052-f84bafeca6b8
+    TargetPortName: 
+  - BaseNodeGuid: e47c8dee-b465-4664-a699-cd064c4e04fa
+    BasePortName: Continue
+    TargetNodeGuid: 26651b7d-c33f-420c-9a51-df470a57ec45
+    TargetPortName: Input
+  - BaseNodeGuid: 76fefc11-44d6-499d-bf94-9e0534c70f09
+    BasePortName: Continue
+    TargetNodeGuid: 26651b7d-c33f-420c-9a51-df470a57ec45
+    TargetPortName: Input
+  - BaseNodeGuid: 1169f5c3-73e5-4079-b052-f84bafeca6b8
+    BasePortName: 2befcef0-3868-46c6-a1a7-e6f0bad6da95
+    TargetNodeGuid: 04b59663-ba3d-4203-8718-b6626307dd02
+    TargetPortName: Input
+  - BaseNodeGuid: 1169f5c3-73e5-4079-b052-f84bafeca6b8
+    BasePortName: 0b03bc34-5891-4e66-84bd-f325c20b6133
+    TargetNodeGuid: 9e4ee8f5-c557-4d9b-9581-67d87ecc0850
+    TargetPortName: Input
+  EndDatas:
+  - NodeGuid: c9e3f51c-62d1-4c4a-b1ba-e4209f3828fd
+    Position: {x: 3570.6667, y: 468.66666}
+    EndNodeType:
+      Value: 1
+  StartDatas:
+  - NodeGuid: 39da1d3b-c56a-4f2e-a75a-cff81b7fa6bf
+    Position: {x: -629.3333, y: 21.999998}
+  EventDatas:
+  - NodeGuid: 26651b7d-c33f-420c-9a51-df470a57ec45
+    Position: {x: 3140, y: 468.66666}
+    EventData_StringModifiers:
+    - StringEventText:
+        Value: spokeToCharacter
+      Number:
+        Value: 0
+      StringEventModifierType:
+        Value: 1
+    Container_DialogueEventSOs: []
+  BranchDatas:
+  - NodeGuid: a054e82f-42ae-4b9b-b104-88f8bd3c00c0
+    Position: {x: -405.33334, y: 21.999998}
+    trueGuidNode: b245c55d-4b9f-4d19-9411-8ead228602e5
+    falseGuidNode: 40d1f1b7-9bd7-4c4e-8954-4509b1b710f5
+    EventData_StringConditions:
+    - StringEventText:
+        Value: spoketocharacter
+      Number:
+        Value: 0
+      StringEventConditionType:
+        Value: 1
+  DialogueDatas:
+  - NodeGuid: 40d1f1b7-9bd7-4c4e-8954-4509b1b710f5
+    Position: {x: 42.666668, y: 451.3333}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 1fe94847-4760-47e3-9635-5d242c0a34ee
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: 'Hey Player, How are you Holding up? '
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 148ccbe7-1223-469f-8f0e-dc074ca6dfde
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 0
+  - NodeGuid: b245c55d-4b9f-4d19-9411-8ead228602e5
+    Position: {x: 42.666668, y: -377.33334}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 94aee7ff-c240-480d-8346-27136e9b3bf3
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Ahh, you're Back!. Sorry about that Joke earlier.
+            I don't know what I was thinking!
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: a577d312-6699-4302-8cf4-46413f482384
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    - ID:
+        Value: 1
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 2b893215-d080-459e-ac61-b3fd5788010d
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Anyway, how can I help?
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: c1aedfe1-34cb-42ce-8998-bc64185f0566
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 0
+  - NodeGuid: d3eb0873-5ab5-40d3-960d-69d13f7143d5
+    Position: {x: 1218.6666, y: 451.3333}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 3471ddd8-f34f-4d91-a86c-08178be7c566
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Too Soon Michael. Too Soon.
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 3575c67b-4488-4308-ab71-69bacbe13ede
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 2216522833041260627, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 1
+  - NodeGuid: c95e8698-fa89-4ed1-b696-57d0afde963e
+    Position: {x: 834, y: 450.66666}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 483bd48e-ddc3-4f3f-a55f-c3262bb91809
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Not too great man. You know Fiona lost her brother
+            in all that Mess. She hasn't stopped crying .
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: e9e25a14-70af-4717-bdc6-096e1d949a5d
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    - ID:
+        Value: 1
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 9b69536d-19aa-462c-97da-53c7c7142daa
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: 'It has taken a heavy Toll on all of us. We don''t
+            even have enough food here to feed all of us. '
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 94dffac8-d21b-4a5b-9adb-7461a3355a29
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: You know non of us are meat eaters, and suddenly there
+            is plenty of that to Go around. Heh ....
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 819b9d08-253e-4648-8592-5055495ecbf8
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 0
+  - NodeGuid: c72dd8b9-546d-43c6-ad73-5dee94ab4dd1
+    Position: {x: 1567.3334, y: 451.3333}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: 1d0fc963-0e14-4eb5-a8cc-1ec61f272ab9
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Yeah, Thought so.
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 252533eb-15f1-4079-a81c-5e8473cd9e6a
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    - ID:
+        Value: 1
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: c9091f8b-1d4c-444c-9619-5923d0047da0
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Any Way what can I doyou for?
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 8fa1e43c-ddfe-43d6-89a1-d414be257f60
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 0}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 0
+  - NodeGuid: e47c8dee-b465-4664-a699-cd064c4e04fa
+    Position: {x: 2729.3333, y: 128.66667}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: b68a91eb-0e89-4363-bca3-7c9d6f306b70
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: I could help with That. Talk to Freddie in the back!
+            Glad I can finally be useful.
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 7187f1f1-e826-4e8d-8c46-141d2bb3dc05
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 0
+  - NodeGuid: 76fefc11-44d6-499d-bf94-9e0534c70f09
+    Position: {x: 2729.3333, y: 604}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: b3d85045-a5d0-4cfa-9c46-05f93abd5d18
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Thank you Bro, Have a good one!
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 3941b1c5-1be3-4847-9d42-5b0c17089f4b
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 1016822017519547986, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 0
+  - NodeGuid: d2eda8cb-669a-4185-a664-efbd759d11df
+    Position: {x: 490.66666, y: 451.3333}
+    DialogueData_Texts:
+    - ID:
+        Value: 0
+      sentence:
+      - ID:
+          Value: 0
+        volumeType:
+          Value: 3
+        GuidID:
+          Value: aed81eb3-2819-47ba-bc9e-793d615f3625
+        Text:
+        - LanguageType: 1
+          LanguageGenericType: Better than most people in here with us to be honest.
+            You?
+        - LanguageType: 2
+          LanguageGenericType: 
+        - LanguageType: 3
+          LanguageGenericType: 
+        - LanguageType: 4
+          LanguageGenericType: 
+        - LanguageType: 5
+          LanguageGenericType: 
+        - LanguageType: 6
+          LanguageGenericType: 
+        - LanguageType: 7
+          LanguageGenericType: 
+        - LanguageType: 8
+          LanguageGenericType: 
+      GuidID:
+        Value: 002b301f-098d-425a-852f-635815644221
+      AudioClips:
+      - LanguageType: 1
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 2
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 3
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 4
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 5
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 6
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 7
+        LanguageGenericType: {fileID: 0}
+      - LanguageType: 8
+        LanguageGenericType: {fileID: 0}
+      Sprite_Left:
+        Value: {fileID: 2216522833041260627, guid: 13e25e082ea6f7b4cb92b36010a4bbde, type: 3}
+      Sprite_Right:
+        Value: {fileID: 0}
+    DialogueData_Character:
+      Character: 1
+  ChoiceConnectorDatas:
+  - NodeGuid: 1169f5c3-73e5-4079-b052-f84bafeca6b8
+    Position: {x: 1916, y: -377.33334}
+    DialogueData_Ports:
+    - PortGuid: 2befcef0-3868-46c6-a1a7-e6f0bad6da95
+      InputGuid: 04b59663-ba3d-4203-8718-b6626307dd02
+      OutputGuid: 1169f5c3-73e5-4079-b052-f84bafeca6b8
+    - PortGuid: 0b03bc34-5891-4e66-84bd-f325c20b6133
+      InputGuid: 9e4ee8f5-c557-4d9b-9581-67d87ecc0850
+      OutputGuid: 1169f5c3-73e5-4079-b052-f84bafeca6b8
+  ChoiceDatas:
+  - NodeGuid: 04b59663-ba3d-4203-8718-b6626307dd02
+    Position: {x: 2312.6667, y: -259.33334}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: Looking For someone who want to trade some rations, Do
+        you Know anyone?
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: 
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
+    - LanguageType: 8
+      LanguageGenericType: 
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 8
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+  - NodeGuid: 9e4ee8f5-c557-4d9b-9581-67d87ecc0850
+    Position: {x: 2312.6667, y: -109.333336}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: Nothing At all just checking on my friend!
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: 
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
+    - LanguageType: 8
+      LanguageGenericType: 
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 8
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []

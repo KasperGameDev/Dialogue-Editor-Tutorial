@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Walk
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: -7783352145768754180, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.083333336
+      value: {fileID: -653734076315246015, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.16666667
+      value: {fileID: 8145223915125478225, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.25
+      value: {fileID: -3652506248610171568, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.33333334
+      value: {fileID: -3591348268714213598, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.41666666
+      value: {fileID: -6614658290848387085, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.5
+      value: {fileID: 7567631178334577327, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.5833333
+      value: {fileID: -5385083421023466997, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.6666667
+      value: {fileID: -3060030538017633438, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.75
+      value: {fileID: 7431460425322969120, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - time: 0.8333333
+      value: {fileID: 8350659681822779701, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 6388306403231435324, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.083333336
+      value: {fileID: 2849830775694710174, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.16666667
+      value: {fileID: 3343310396781179766, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.25
+      value: {fileID: 1568645447090302841, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.33333334
+      value: {fileID: 3091314535440550719, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.41666666
+      value: {fileID: 8177286865483976602, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.5
+      value: {fileID: 1862271072575832140, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.5833333
+      value: {fileID: 1945718975887397394, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.6666667
+      value: {fileID: -1302358372513243581, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.75
+      value: {fileID: -1110543219367969946, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - time: 0.8333333
+      value: {fileID: 2103685103352024300, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    attribute: m_Sprite
+    path: WeaponController/StaplerGun
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: -1302358372513243581, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.083333336
+      value: {fileID: -1110543219367969946, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.16666667
+      value: {fileID: 2103685103352024300, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.25
+      value: {fileID: -1016249034882521238, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.33333334
+      value: {fileID: 1535769226898521154, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.41666666
+      value: {fileID: 6584193893791400695, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.5
+      value: {fileID: -8367073714208192199, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.5833333
+      value: {fileID: 412365877098098293, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.6666667
+      value: {fileID: 7299162310738309039, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.75
+      value: {fileID: 8634773833184331278, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - time: 0.8333333
+      value: {fileID: 863009378074913357, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    attribute: m_Sprite
+    path: WeaponController/TennisBallLauncher
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2802310938
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2755011638
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: -7783352145768754180, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: -653734076315246015, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: 8145223915125478225, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: -3652506248610171568, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: -3591348268714213598, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: -6614658290848387085, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: 7567631178334577327, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: -5385083421023466997, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: -3060030538017633438, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: 7431460425322969120, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: 8350659681822779701, guid: 4a7f13956c9635f4ca680cc1a1d02a64, type: 3}
+    - {fileID: 6388306403231435324, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 2849830775694710174, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 3343310396781179766, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 1568645447090302841, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 3091314535440550719, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 8177286865483976602, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 1862271072575832140, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 1945718975887397394, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: -1302358372513243581, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: -1110543219367969946, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: 2103685103352024300, guid: a053b4e066455354fb05dd2dcf4b69d1, type: 3}
+    - {fileID: -1302358372513243581, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: -1110543219367969946, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: 2103685103352024300, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: -1016249034882521238, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: 1535769226898521154, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: 6584193893791400695, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: -8367073714208192199, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: 412365877098098293, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: 7299162310738309039, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: 8634773833184331278, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+    - {fileID: 863009378074913357, guid: 53b2362dd8b91334b9d56d209f932a26, type: 3}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 0.9166666
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events: []
