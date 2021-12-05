@@ -1,0 +1,32 @@
+.node #title{
+	background-color: #CF995F;
+}
+
+.node #title #title-label{
+	color: #000000;
+}
+
+
+.TopBox{
+	flex-direction: row;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.LabelText{
+	margin-right:auto;
+	margin-top: 5px;
+	font-size: 13px;
+}
+
+
+.MoveBtn{
+	margin-left:auto;
+	padding: 1px;
+	background-color: rgba(0, 0, 0, 0);	
+}
+
+.MoveBtn:hover{
+	background-color: grey;	
+}
+
+
