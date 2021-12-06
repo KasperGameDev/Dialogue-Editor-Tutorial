@@ -1,0 +1,17 @@
+{
+    "name": "Dialogue.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3624aa9a14264d34d876e8fcf870f5f2",
+        "GUID:87a493615af626b4286260bfe6790027"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

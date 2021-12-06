@@ -1,0 +1,45 @@
+.LabelText{
+	margin-right:auto;
+	font-size: 13px;
+	-unity-text-align: middle-middle;
+	width:auto;
+	height:20px;
+	color: grey;
+	padding-left: 10px;
+	flex-direction: row;
+}
+
+.enumHide{
+	width:	70px;
+}
+
+.node #title{
+	background-color: #CF995F;
+}
+
+.node #title #title-label{
+	color: #000000;
+}
+
+.TextBox, .AudioClip {
+	flex-direction: row;
+	width: 460px;
+	padding: 5px;
+}
+
+.enumHide{
+	flex-direction: row;
+	width: 460px;
+	padding: 5px;
+}
+
+.BoxCol{
+	flex-direction: column;
+	padding: 5px;
+	height: auto;
+}
+
+Box{
+	background-color: rgb(50, 50, 50);
+	margin:1px;
+}

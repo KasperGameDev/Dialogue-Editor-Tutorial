@@ -1,0 +1,148 @@
+.node #title{
+	background-color: #2D4E44;
+}
+
+.node #title #title-label{
+	color: white;
+}
+
+.TopBox{
+	flex-direction: row;
+	background-color: rgba(0, 0, 0, 0);
+	min-height: 25px;
+}
+
+.LabelText{
+	margin-right:auto;
+	font-size: 13px;
+	-unity-text-align: upper-left;
+	width:auto;
+}
+
+.HelperText{
+	margin-top: 10px;
+	font-size: 8px;
+	-unity-text-align: middle-left;
+	color: white;
+}
+
+
+.MoveBtn{
+	margin-left:auto;
+	padding: 1px;
+	background-color: rgba(0, 0, 0, 0);	
+}
+
+.MoveBtn:hover{
+	background-color: grey;	
+}
+
+.BtnBox{
+	flex-direction: row;
+	background-color: rgba(0, 0, 0, 0);	
+}
+
+
+.BoxRow{
+	flex-direction: row;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0);	
+}
+
+/* ----------------- Name -----------------*/
+.CharacterNameBox, .CharacterNameBox Box{
+	background-color: #2D4E44;
+	padding: 5px;
+}
+
+.CharacterName{
+	width:260px;
+	white-space: normal;
+}
+
+/* ----------------- Text -----------------*/
+
+.TextColor{
+	color: #0E1116;
+}
+
+.TextBox {
+	width:260px;
+}
+
+.TextBoxContainer {
+	background-color: rgb(50, 50, 50);
+	padding: 10px;
+}
+
+.TextBoxContainer{
+	border-color: #5C5C5C;
+	border-width: 4px;
+	margin: 1px;
+}
+
+.Toggle{
+	height: 45px;
+	overflow:hidden;
+}
+
+.hidden{
+	display: none;
+}
+.SentenceBoxContainer, .SentenceBoxContainer Box {
+	background-color: : #5C5C5C;
+	padding: 10px;
+}
+
+.SentenceBoxContainer .TopBox {
+	background-color: : #5C5C5C;
+	padding: 1px;
+}
+
+.SentenceBoxContainer .MoveBtn, .SentenceBoxContainer Box{
+	color: white;
+}
+
+/* ----------------- Images -----------------*/
+.ImageColor{
+	color: #4D7EA8;
+}
+
+.ImagePreviewRight{
+	margin-left:auto;
+	padding: 5px;
+	width: 110px;
+	padding-bottom: 0px;
+}
+
+.ImagePreviewLeft{
+	margin-right:auto;
+	padding: 5px;
+	padding-bottom: 0px;
+	width: 110px;
+}
+
+.ImagePreview{
+	height:	100px;
+	width:	100px;
+}
+
+.SpriteRight{
+	margin-left:auto;
+	width: 100px;
+}
+
+.SpriteLeft{
+
+	width: 100px;
+	margin-right:auto;
+}
+
+/* ----------------- Error -----------------*/
+.Error{
+	border-color: orange;
+}
+
+.TextBox.Error{
+	border-width: 2px;
+}

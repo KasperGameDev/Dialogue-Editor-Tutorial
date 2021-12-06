@@ -1,0 +1,86 @@
+.node #title{
+	background-color: rgb(29,115,57);
+}
+
+#node-border{
+	background-color: rgb(0,0,0);
+}
+
+.Label{
+	margin-top:5px;
+	margin-left:4px;
+	font-size: 15px;
+}
+
+.PortName{
+	display:none;
+}
+
+#node-border #title{
+	height: 30px;
+}
+
+/* ------------------------------------------- Reusable ------------------------------------ */
+
+.BoxRow{
+	flex-direction: row;
+}
+
+.removeBtn{
+	margin-left:auto;
+	padding: 1px;
+	background-color: rgba(0, 0, 0, 0);	
+}
+
+.removeBtn:hover{
+	background-color: grey;	
+}
+
+.unity-text-field__placeholder > .unity-base-text-field__input {
+    color: #969696;
+}
+
+.TextBox{
+	width:260px;
+	white-space: normal;
+}
+
+.AudioClip{
+}
+
+.Hide{
+	display:none;
+}
+.Show{
+	display:Flex;
+}
+
+/* ------------------------------------------- StringEvent ------------------------------------ */
+
+.StringEventBox{
+	flex-direction: row;
+	padding:5px;
+}
+
+.StringEventBoxfloatField{
+
+}
+
+.StringEventText{
+	min-width:150px;
+	max-width:150px;
+	height: 20px;
+}
+
+.StringEventInt{
+	min-width:40px;
+}
+
+.StringEventEnum{
+	width:125px;
+	height: 20px;
+}
+
+Box {
+	background-color: #0E1116;
+}

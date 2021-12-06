@@ -1,0 +1,13 @@
+.nameOfDialougeContainer
+{
+	margin-top: 3px;
+	margin-left: 5px;
+	padding-right: 5px;
+}
+
+Button {
+	padding: 5px;
+	margin: 0;
+	border-width: 0;
+	border-radius: 0;
+}
