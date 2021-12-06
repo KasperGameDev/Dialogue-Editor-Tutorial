@@ -458,9 +458,22 @@ namespace DialogueEditor.Dialogue.Editor
                 {
                     tempNode.AddScriptableEvent(item);
                 }
+
                 foreach (EventData_StringModifier item in node.EventData_StringModifiers)
                 {
                     tempNode.AddStringEvent(item);
+                }
+                foreach (EventData_FloatModifier item in node.EventData_FloatModifiers)
+                {
+                    tempNode.AddFloatEvent(item);
+                }
+                foreach (EventData_IntModifier item in node.EventData_IntModifiers)
+                {
+                    tempNode.AddIntEvent(item);
+                }
+                foreach (EventData_BoolModifier item in node.EventData_BoolModifiers)
+                {
+                    tempNode.AddBoolEvent(item);
                 }
 
                 tempNode.LoadValueInToField();

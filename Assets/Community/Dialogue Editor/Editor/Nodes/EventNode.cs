@@ -96,7 +96,7 @@ namespace DialogueEditor.Dialogue.Editor
             boxContainer.Add(objectField);
             boxContainer.Add(btn);
 
-            mainContainer.Add(boxContainer);
+            extensionContainer.Add(boxContainer);
             RefreshExpandedState();
         }
     }
