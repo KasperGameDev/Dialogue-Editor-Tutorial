@@ -1,7 +1,7 @@
 .LabelText{
 	margin-right:auto;
 	font-size: 13px;
-	-unity-text-align: middle-middle;
+	-unity-text-align: middle-center;
 	width:auto;
 	height:20px;
 	color: grey;
