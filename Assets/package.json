@@ -1,5 +1,5 @@
 {
-  "name": "com.DialogueEditor.DialogueEditor",
+  "name": "com.dialogueeditor.dialogueeditor",
   "version": "0.0.1",
   "displayName": "Dialogue Editor",
   "description": "This tool makes use of Unity Scriptable Objects ,Graphview and TextMeshPro, to allow game developers to easily create dynamic text between characters, which can have in game consequences to the state of the game, all from an easy to use UI Interface.",
@@ -8,12 +8,11 @@
   "documentationUrl": "https://github.com/KasperGameDev/Dialogue-Editor-Tutorial/tree/Community_Contribute#readme",
   "dependencies": {
      "com.unity.collab-proxy": "1.11.2",
-     "com.unity.ide.rider": "2.0.7",
-     "com.unity.ide.visualstudio": "2.0.11",
+     "com.unity.ide.rider": "3.0.7",
+     "com.unity.ide.visualstudio": "2.0.12",
      "com.unity.ide.vscode": "1.2.4",
      "com.unity.test-framework": "1.1.29",
      "com.unity.textmeshpro": "3.0.6",
-     "com.unity.timeline": "1.4.8",
      "com.unity.ugui": "1.0.0",
      "com.unity.modules.ai": "1.0.0",
      "com.unity.modules.androidjni": "1.0.0",
@@ -26,11 +25,8 @@
      "com.unity.modules.imgui": "1.0.0",
      "com.unity.modules.jsonserialize": "1.0.0",
      "com.unity.modules.particlesystem": "1.0.0",
-     "com.unity.modules.physics": "1.0.0",
      "com.unity.modules.physics2d": "1.0.0",
      "com.unity.modules.screencapture": "1.0.0",
-     "com.unity.modules.terrain": "1.0.0",
-     "com.unity.modules.terrainphysics": "1.0.0",
      "com.unity.modules.tilemap": "1.0.0",
      "com.unity.modules.ui": "1.0.0",
      "com.unity.modules.uielements": "1.0.0",
@@ -50,5 +46,10 @@
   "author": {
     "name": "KasperGameDev, NevilleKitala",
     "url": "https://github.com/KasperGameDev/Dialogue-Editor-Tutorial/blob/Community_Contribute/"
-  }
+  },
+  {
+   "displayName": "Dialogue Editor Scripts",
+   "description": "Scripts For easy manipulation of out Dialogue Editor",
+   "path": "Samples~/Scripts"
+}
 }
