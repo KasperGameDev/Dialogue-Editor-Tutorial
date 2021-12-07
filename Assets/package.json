@@ -46,10 +46,5 @@
   "author": {
     "name": "KasperGameDev, NevilleKitala",
     "url": "https://github.com/KasperGameDev/Dialogue-Editor-Tutorial/blob/Community_Contribute/"
-  },
-  {
-   "displayName": "Dialogue Editor Scripts",
-   "description": "Scripts For easy manipulation of out Dialogue Editor",
-   "path": "Samples~/Scripts"
-}
+  }
 }
