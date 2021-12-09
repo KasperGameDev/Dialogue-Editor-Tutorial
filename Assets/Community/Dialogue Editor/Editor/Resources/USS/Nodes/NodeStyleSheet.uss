@@ -22,8 +22,32 @@
 
 /* ------------------------------------------- Reusable ------------------------------------ */
 
+
+.TopBox{
+	flex-direction: row;
+	background-color: rgba(0, 0, 0, 0);
+	min-height: 25px;
+}
+
+.MoveBtn{
+	padding: 1px;
+	background-color: rgba(0, 0, 0, 0);	
+}
+
+.MoveBtn:hover{
+	background-color: grey;	
+}
+
+.BtnBox{
+	flex-direction: row;
+	background-color: rgba(0, 0, 0, 0);	
+}
+
+
 .BoxRow{
 	flex-direction: row;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0);	
 }
 
 .removeBtn{
@@ -58,16 +82,14 @@
 /* ------------------------------------------- StringEvent ------------------------------------ */
 
 .StringEventBox{
-	flex-direction: row;
-	padding:5px;
-}
-
-.StringEventBoxfloatField{
-
+	flex-direction: col;
+	background-color: rgb(50, 50, 50);
+	border-color: #5C5C5C;
+	border-width: 4px;
 }
 
 .StringEventText{
-	min-width:150px;
+	min-width:100px;
 	max-width:150px;
 	height: 20px;
 }
@@ -82,5 +104,5 @@
 }
 
 Box {
-	background-color: #0E1116;
+	background-color: rgb(50, 50, 50);
 }

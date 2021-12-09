@@ -214,13 +214,13 @@
             {
                 case IntDialogueEventConditionType.Equals:
                     return IntCondition_Equals(item);
-                case IntDialogueEventConditionType.EqualsAndBiggerIn:
+                case IntDialogueEventConditionType.EqualsAndBigger:
                     return IntCondition_EqualsAndBigger(item);
-                case IntDialogueEventConditionType.EqualsAndSmallerIn:
+                case IntDialogueEventConditionType.EqualsAndSmaller:
                     return IntCondition_EqualsAndSmaller(item);
-                case IntDialogueEventConditionType.BiggerIn:
+                case IntDialogueEventConditionType.Bigger:
                     return IntCondition_Bigger(item);
-                case IntDialogueEventConditionType.SmallerIn:
+                case IntDialogueEventConditionType.Smaller:
                     return IntCondition_Smaller(item);
                 default:
                     return false;

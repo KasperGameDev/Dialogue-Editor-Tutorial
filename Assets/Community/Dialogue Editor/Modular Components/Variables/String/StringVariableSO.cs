@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace DialogueEditor.ModularComponents
@@ -33,6 +34,31 @@ namespace DialogueEditor.ModularComponents
         public void ApplyChange(StringVariableSO amount)
         {
             _value += amount.Value;
+        }
+
+        public static StringVariableSO NewString()
+        {
+            string path = EditorUtility.SaveFilePanelInProject(
+            "Create a new Dialogue Actor",
+            "<Fill String Variable Name Here>.asset",
+            "asset",
+            "");
+
+            StringVariableSO newString = ScriptableObject.CreateInstance<StringVariableSO>();
+            EditorUtility.SetDirty(newString);
+
+            if (path.Length != 0)
+            {
+                AssetDatabase.CreateAsset(newString, path);
+
+                AssetDatabase.SaveAssets();
+
+                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
+
+                return newString;
+            }
+            else
+                return null;
         }
     }
 }

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace DialogueEditor.ModularComponents
@@ -29,6 +30,33 @@ namespace DialogueEditor.ModularComponents
         public void SetValue(BoolVariableSO value)
         {
             Value = value.Value;
+        }
+
+        public static BoolVariableSO NewBool()
+        {
+            string path = EditorUtility.SaveFilePanelInProject(
+            "Create a new Dialogue Actor",
+            "<Fill Bool Variable Name Here>.asset",
+            "asset",
+            "");
+
+            BoolVariableSO newBool = ScriptableObject.CreateInstance<BoolVariableSO>();
+            EditorUtility.SetDirty(newBool);
+
+            if (path.Length != 0)
+            {
+                AssetDatabase.CreateAsset(newBool, path);
+
+                AssetDatabase.SaveAssets();
+
+                newBool.SetValue(true);
+
+                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
+
+                return newBool;
+            }
+            else
+                return null;
         }
     }
 }

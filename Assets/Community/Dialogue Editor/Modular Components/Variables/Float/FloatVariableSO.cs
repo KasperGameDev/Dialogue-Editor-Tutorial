@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace DialogueEditor.ModularComponents
 {
@@ -33,6 +34,31 @@ namespace DialogueEditor.ModularComponents
         public void ApplyChange(FloatVariableSO amount)
         {
             _value += amount.Value;
+        }
+
+        public static FloatVariableSO NewFloat()
+        {
+            string path = EditorUtility.SaveFilePanelInProject(
+            "Create a new Dialogue Actor",
+            "<Fill Float Variable Name Here>.asset",
+            "asset",
+            "");
+
+            FloatVariableSO newFloat = ScriptableObject.CreateInstance<FloatVariableSO>();
+            EditorUtility.SetDirty(newFloat);
+
+            if (path.Length != 0)
+            {
+                AssetDatabase.CreateAsset(newFloat, path);
+
+                AssetDatabase.SaveAssets();
+
+                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
+
+                return newFloat;
+            }
+            else
+                return null;
         }
     }
 }

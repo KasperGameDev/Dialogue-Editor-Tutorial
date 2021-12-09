@@ -356,7 +356,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_StringVariableCondition(EventData_StringCondition inputStringVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_StringVariableCondition(EventData_StringCondition inputStringVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -369,6 +369,16 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputStringVariableSO.VariableSO = value.newValue as StringVariableSO;
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputStringVariableSO.VariableSO);
 
@@ -386,7 +396,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_FloatVariableCondition(EventData_FloatCondition inputFloatVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_FloatVariableCondition(EventData_FloatCondition inputFloatVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -399,6 +409,16 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputFloatVariableSO.VariableSO = value.newValue as FloatVariableSO;
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputFloatVariableSO.VariableSO);
 
@@ -416,7 +436,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_IntVariableCondition(EventData_IntCondition inputIntVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_IntVariableCondition(EventData_IntCondition inputIntVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -429,6 +449,16 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputIntVariableSO.VariableSO = value.newValue as IntVariableSO;
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputIntVariableSO.VariableSO);
 
@@ -446,7 +476,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_BoolVariableCondition(EventData_BoolCondition inputBoolVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_BoolVariableCondition(EventData_BoolCondition inputBoolVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -459,7 +489,18 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputBoolVariableSO.VariableSO = value.newValue as BoolVariableSO;
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
+
             objectField.SetValueWithoutNotify(inputBoolVariableSO.VariableSO);
 
             // Set uss class for stylesheet.
@@ -1258,13 +1299,14 @@ namespace DialogueEditor.Dialogue.Editor
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
 
+            Button addActor = GetNewButton(" + ", "MoveBtn");
+
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
             // Text.
             //TextField textField = GetNewTextField(tmpStringEventCondition.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_StringVariableCondition(tmpStringEventCondition, "String Event", "StringEventText");
+            ObjectField objectField = GetNewObjectField_StringVariableCondition(tmpStringEventCondition, addActor, removeActor, "String Event", "StringEventText");
 
             // ID number.
             //TextField floatField = GetNewTextField(tmpStringEventCondition.Text, "String Event", "StringEventText");
@@ -1276,23 +1318,46 @@ namespace DialogueEditor.Dialogue.Editor
             Action tmp = () => { }/*ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField)*/;
             // EnumField String Event Condition
             enumField = GetNewEnumField_StringEventConditionType(tmpStringEventCondition.EventType, tmp, "StringEventEnum");
-            // Run the show and hide.
-            //ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField);
+            if (tmpStringEventCondition.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
+            addActor.clicked += () =>
+            {
+                objectField.value = StringVariableSO.NewString();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
                 stringEventCondition.Remove(tmpStringEventCondition);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            boxfloatField.Add(textField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+            boolbox.Add(textField);
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
@@ -1319,13 +1384,15 @@ namespace DialogueEditor.Dialogue.Editor
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
+
+            Button addActor = GetNewButton(" + ", "MoveBtn");
+
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
 
             // Text.
             //TextField textField = GetNewTextField(tmpStringEventCondition.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_FloatVariableCondition(tmpFloatEventCondition, "String Event", "StringEventText");
+            ObjectField objectField = GetNewObjectField_FloatVariableCondition(tmpFloatEventCondition, addActor, removeActor, "String Event", "StringEventText");
 
             // ID number.
             FloatField floatField = GetNewFloatField(tmpFloatEventCondition.Value, "StringEventText");
@@ -1338,22 +1405,47 @@ namespace DialogueEditor.Dialogue.Editor
             // EnumField String Event Condition
             enumField = GetNewEnumField_FloatEventConditionType(tmpFloatEventCondition.EventType, tmp, "StringEventEnum");
             // Run the show and hide.
-            //ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField);
+
+            if (tmpFloatEventCondition.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
+            addActor.clicked += () =>
+            {
+                objectField.value = FloatVariableSO.NewFloat();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
                 floatEventCondition.Remove(tmpFloatEventCondition);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            boxfloatField.Add(floatField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+            boolbox.Add(floatField);
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
@@ -1364,7 +1456,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// </summary>
         /// <param name="stringEventCondition">The List<EventData_StringCondition> that EventData_StringCondition should be added to.</param>
         /// <param name="stringEvent">EventData_StringCondition that should be use.</param>
-        protected void AddIntConditionEventBuild(List<EventData_IntCondition> floatEventCondition, EventData_IntCondition floatEvent = null)
+        protected void AddIntConditionEventBuild(List<EventData_IntCondition> intEventCondition, EventData_IntCondition floatEvent = null)
         {
             EventData_IntCondition tmpFloatEventCondition = new EventData_IntCondition();
 
@@ -1376,110 +1468,155 @@ namespace DialogueEditor.Dialogue.Editor
                 tmpFloatEventCondition.EventType.Value = floatEvent.EventType.Value;
             }
 
-            floatEventCondition.Add(tmpFloatEventCondition);
+            intEventCondition.Add(tmpFloatEventCondition);
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
 
-            // Text.
-            //TextField textField = GetNewTextField(tmpStringEventCondition.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_IntVariableCondition(tmpFloatEventCondition, "String Event", "StringEventText");
+            Button addActor = GetNewButton(" + ", "MoveBtn");
 
-            // ID number.
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
+
+            ObjectField objectField = GetNewObjectField_IntVariableCondition(tmpFloatEventCondition, addActor, removeActor, "String Event", "StringEventText");
+
             IntegerField floatField = GetNewIntegerField(tmpFloatEventCondition.Value, "StringEventText");
-            //TextField textField = GetNewTextField(tmpFloatEventCondition.Value, "String Event", "StringEventText");
 
-            // Check for StringEventType and add the proper one.
             EnumField enumField = null;
-            // String Event Condition
-            Action tmp = () => { }/*ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField)*/;
+
+            /*ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField)*/
+            Action tmp = () => { };
             // EnumField String Event Condition
             enumField = GetNewEnumField_IntEventConditionType(tmpFloatEventCondition.EventType, tmp, "StringEventEnum");
             // Run the show and hide.
-            //ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField);
+
+            if (tmpFloatEventCondition.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
+            addActor.clicked += () =>
+            {
+                objectField.value = IntVariableSO.NewInt();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
-                floatEventCondition.Remove(tmpFloatEventCondition);
+                intEventCondition.Remove(tmpFloatEventCondition);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            boxfloatField.Add(floatField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+            boolbox.Add(floatField);
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
         }
 
         /// <summary>
-        /// Add String Condition Event to UI element.
+        /// Add String Condition Branch to UI element.
         /// </summary>
         /// <param name="stringEventCondition">The List<EventData_StringCondition> that EventData_StringCondition should be added to.</param>
         /// <param name="stringEvent">EventData_StringCondition that should be use.</param>
-        protected void AddBoolConditionEventBuild(List<EventData_BoolCondition> floatEventCondition, EventData_BoolCondition floatEvent = null)
+        protected void AddBoolConditionEventBuild(List<EventData_BoolCondition> boolEventCondition, EventData_BoolCondition BoolCondition = null)
         {
-            EventData_BoolCondition tmpFloatEventCondition = new EventData_BoolCondition();
+            EventData_BoolCondition tmpBoolEventCondition = new EventData_BoolCondition();
 
             // If we paramida value is not null we load in values.
-            if (floatEvent != null)
+            if (BoolCondition != null)
             {
-                tmpFloatEventCondition.VariableSO = floatEvent.VariableSO;
-                tmpFloatEventCondition.Value.Value = floatEvent.Value.Value;
-                tmpFloatEventCondition.EventType.Value = floatEvent.EventType.Value;
+                tmpBoolEventCondition.VariableSO = BoolCondition.VariableSO;
+                tmpBoolEventCondition.Value.Value = BoolCondition.Value.Value;
+                tmpBoolEventCondition.EventType.Value = BoolCondition.EventType.Value;
             }
 
-            floatEventCondition.Add(tmpFloatEventCondition);
+            boolEventCondition.Add(tmpBoolEventCondition);
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
 
-            // Text.
-            //TextField textField = GetNewTextField(tmpStringEventCondition.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_BoolVariableCondition(tmpFloatEventCondition, "String Event", "StringEventText");
+            Button addActor = GetNewButton(" + ", "MoveBtn");
 
-            // ID number.
-            //IntegerField floatField = GetNewIntegerField(tmpFloatEventCondition.Value, "StringEventText");
-            //TextField textField = GetNewTextField(tmpFloatEventCondition.Value, "String Event", "StringEventText");
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
 
-            // Check for StringEventType and add the proper one.
+            ObjectField objectField = GetNewObjectField_BoolVariableCondition(tmpBoolEventCondition, addActor, removeActor, "String Event", "");
+
+
+            addActor.clicked += () =>
+            {
+                objectField.value = BoolVariableSO.NewBool();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
+
+            if (tmpBoolEventCondition.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
             EnumField enumField = null;
-            // String Event Condition
-            Action tmp = () => { }/*ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField)*/;
-            // EnumField String Event Condition
-            enumField = GetNewEnumField_BoolEventConditionType(tmpFloatEventCondition.EventType, tmp, "StringEventEnum");
+
+            /*ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField)*/
+            Action tmp = () => { };
+            enumField = GetNewEnumField_BoolEventConditionType(tmpBoolEventCondition.EventType, tmp, "StringEventEnum");
             // Run the show and hide.
-            //ShowHide_StringEventConditionType(tmpStringEventCondition.StringEventConditionType.Value, boxfloatField);
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
-                floatEventCondition.Remove(tmpFloatEventCondition);
+                boolEventCondition.Remove(tmpBoolEventCondition);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            //boxfloatField.Add(floatField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
         }
+
         /// <summary>
         /// hid and show the UI element
         /// </summary>
