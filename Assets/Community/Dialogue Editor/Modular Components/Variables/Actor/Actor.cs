@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,36 @@ namespace DialogueEditor.ModularComponents
         [Header("Charcater Details")]
         public string characterName;
         public ActorType actorType;
+
+        public static Actor NewActor()
+        {
+            string path = EditorUtility.SaveFilePanelInProject(
+            "Create a new Dialogue Actor",
+            "<Fill Actor Name Here>.asset",
+            "asset",
+            "");
+
+            Actor newActor = ScriptableObject.CreateInstance<Actor>();
+            EditorUtility.SetDirty(newActor);
+
+            if (path.Length != 0)
+            {
+                AssetDatabase.CreateAsset(newActor, path);
+
+                AssetDatabase.SaveAssets();
+
+                newActor.characterName = newActor.name;
+                newActor.actorType = ActorType.NPC;
+
+                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
+
+                return newActor;
+            }
+            else
+                return null;
+        }
     }
+
 
     public enum ActorType
     {

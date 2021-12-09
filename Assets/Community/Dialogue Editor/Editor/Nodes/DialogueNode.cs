@@ -380,7 +380,7 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                characterField.value = newActor();
+                characterField.value = Actor.NewActor();
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -509,49 +509,6 @@ namespace DialogueEditor.Dialogue.Editor
         }
         #endregion
 
-        public Actor newActor()
-        {
-            DialogueContainerSO currentDialogueContainer = (editorWindow as DialogueEditorWindow).currentDialogueContainer;
-
-            if ((AssetDatabase.GetAssetPath(currentDialogueContainer).Equals("")) || (AssetDatabase.GetAssetPath(currentDialogueContainer).Equals(null)))
-            {
-                editorWindow.SaveAs();
-            }
-            else
-            {
-                editorWindow.Save();
-            };
-
-            if (!AssetDatabase.GetAssetPath(currentDialogueContainer).Length.Equals(0))
-            {
-                string path = EditorUtility.SaveFilePanelInProject(
-            "Create a new Dialogue Actor",
-            "<Fill Actor Name Here>.asset",
-            "asset",
-            "");
-
-            Actor newActor = ScriptableObject.CreateInstance<Actor>();
-            EditorUtility.SetDirty(newActor);
-
-                if (path.Length != 0)
-                {
-                    AssetDatabase.CreateAsset(newActor, path);
-
-                    AssetDatabase.SaveAssets();
-
-                    newActor.characterName = newActor.name;
-
-                    EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
-
-                    return newActor;
-                }
-                else
-                    return null;
-            }
-            else
-                return null;
-            
-        }
         public override void ReloadLanguage()
         {
             base.ReloadLanguage();
