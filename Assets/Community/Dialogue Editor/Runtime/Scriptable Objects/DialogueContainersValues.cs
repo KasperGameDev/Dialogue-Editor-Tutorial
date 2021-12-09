@@ -259,5 +259,13 @@ namespace DialogueEditor.Dialogue
         public Container_BoolEventConditionType EventType = new Container_BoolEventConditionType();
     }
     #endregion
+
+    #region Actor
+    [System.Serializable]
+    public class Container_Actor
+    {
+        public Actor actor;
+    }
+    #endregion
 }
 

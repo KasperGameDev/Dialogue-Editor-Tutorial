@@ -166,7 +166,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Will save the current changes to dialogue container.
         /// </summary>
-        private void Save()
+        public void Save()
         {
             if (currentDialogueContainer != null)
             {
@@ -174,14 +174,11 @@ namespace DialogueEditor.Dialogue.Editor
             }
         }
 
-        private void SaveAs()
+        public void SaveAs()
         {
-            if (currentDialogueContainer != null)
-            {
-                Language(LanguageType.English);
-                nameOfDialougeContainer.text = "Name:   " + currentDialogueContainer.name;
-                saveAndLoad.SaveAs();
-            }
+            Language(LanguageType.English);
+            saveAndLoad.SaveAs(currentDialogueContainer);
+            nameOfDialougeContainer.text = "Name:   " + currentDialogueContainer.name;
         }
 
         /// <summary>

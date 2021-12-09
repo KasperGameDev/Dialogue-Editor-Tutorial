@@ -66,14 +66,14 @@ namespace DialogueEditor.Dialogue.Editor
             AddBoolModifierEventBuild(eventData.EventData_BoolModifiers, BoolEvent);
         }
 
-        public void AddScriptableEvent(Container_DialogueEventSO paramidaEventScriptableObjectData = null)
+        public void AddScriptableEvent(Container_DialogueEventSO eventScriptableObjectData = null)
         {
             Container_DialogueEventSO tmpGameEventSO = new Container_DialogueEventSO();
 
-            // If we paramida value is not null we load in values.
-            if (paramidaEventScriptableObjectData != null)
+            // If value is not null we load in values.
+            if (eventScriptableObjectData != null)
             {
-                tmpGameEventSO.GameEvent = paramidaEventScriptableObjectData.GameEvent;
+                tmpGameEventSO.GameEvent = eventScriptableObjectData.GameEvent;
             }
             eventData.Container_DialogueEventSOs.Add(tmpGameEventSO);
 

@@ -469,6 +469,46 @@ namespace DialogueEditor.Dialogue.Editor
             return objectField;
         }
 
+        /// <summary>
+        /// Get a new ObjectField with a Container_Actor as the Object.
+        /// </summary>
+        /// <param name="inputActor">Container_DialogueEventSO that need to be set in to the ObjectField</param>
+        /// <param name="USS01">USS class add to the UI element</param>
+        /// <param name="USS02">USS class add to the UI element</param>
+        /// <returns></returns>
+        protected ObjectField GetNewObjectField_Actor(Container_Actor inputActor, Button add, Button remove, string USS01 = "", string USS02 = "")
+        {
+            ObjectField objectField = new ObjectField()
+            {
+                objectType = typeof(Actor),
+                allowSceneObjects = false,
+                value = inputActor.actor,
+            };
+
+            // When we change the variable from graph view.
+            objectField.RegisterValueChangedCallback(value =>
+            {
+                inputActor.actor = value.newValue as Actor;
+                if(inputActor.actor == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
+            });
+            objectField.SetValueWithoutNotify(inputActor.actor);
+
+            // Set uss class for stylesheet.
+            objectField.AddToClassList(USS01);
+            objectField.AddToClassList(USS02);
+
+            return objectField;
+        }
+
         // Enum's --------------------------------------------------------------------------
 
         /// <summary>

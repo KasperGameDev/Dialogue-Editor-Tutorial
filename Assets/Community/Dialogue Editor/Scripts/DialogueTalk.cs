@@ -192,7 +192,7 @@ namespace DialogueEditor.Dialogue.Scripts
             if(characterSpeaking)
                 dialogueController.ShowDialogueUI(characterSpeaking, false);
 
-            characterSpeaking = participatingCharacters.Find((x) => x.characterName.ToLower() == nodeData.DialogueData_Character.Value.ToLower());
+            characterSpeaking = participatingCharacters.Find((x) => x.actor == nodeData.DialogueData_Character.actor);
 
             baseContainers = new List<DialogueData_BaseContainer>();
             baseContainers.AddRange(nodeData.DialogueData_Texts);
@@ -237,7 +237,7 @@ namespace DialogueEditor.Dialogue.Scripts
                         dialogueController.SetRightImage(characterSpeaking, tmp.Sprite_Right.Value);
 
                     dialogueController.SetDynamicText(characterSpeaking, paragraph);
-                    dialogueController.SetName(characterSpeaking, characterSpeaking.characterName);
+                    dialogueController.SetName(characterSpeaking, characterSpeaking.actor.characterName);
                     PlayAudio(tmp.AudioClips.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
                     Buttons();
                     dialogueController.ShowDialogueUI(characterSpeaking, true);

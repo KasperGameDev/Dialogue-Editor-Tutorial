@@ -1,3 +1,4 @@
+using DialogueEditor.ModularComponents;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,7 +7,8 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     [Header("Charcater Details")]
-    public string characterName;
+    //public string characterName;
+    public Actor actor;
 
     [SerializeField] public GameObject dialogueUI;
 
@@ -30,10 +32,4 @@ public class Character : MonoBehaviour
 
     [Header("interactable")]
     [SerializeField] public Color textInteractableColor;
-}
-
-public enum CharacterTyper
-{
-    Player,
-    NPC
 }

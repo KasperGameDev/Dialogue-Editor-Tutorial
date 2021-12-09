@@ -19,53 +19,45 @@ namespace DialogueEditor.Dialogue.Editor
             this.graphView = graphView;
         }
 
-        public void SaveAs()
+        public void SaveAs(DialogueContainerSO DialogueContainerSO)
         {
-            DialogueContainerSO DialogueContainerSO = ScriptableObject.CreateInstance<DialogueContainerSO>();
+            if (!ValidateDialogueObject())
+                return;
             SaveEdges(DialogueContainerSO);
             SaveNodes(DialogueContainerSO);
 
 
-            string path = EditorUtility.SaveFilePanel(
+            string path = EditorUtility.SaveFilePanelInProject(
             "Save new Converation",
-            "/Assets/Conversations/",
-            "NewDialogueObject.asset",
-            "asset");
+            "DialogueObject",
+            "asset",
+            "Create New Dialogue Object");
 
-            if (path.Contains(Application.dataPath))
-            {
-
+            if (DialogueContainerSO != null) {
                 EditorUtility.SetDirty(DialogueContainerSO);
-                if (path.Length != 0)
-                    AssetDatabase.CreateAsset(DialogueContainerSO, $"Assets{path.Substring(Application.dataPath.Length)}");
 
-                AssetDatabase.SaveAssets();
-                Debug.Log($"<color=green>Error: </color>Saved succesfully to {Application.dataPath}/.....");
+                if (path.Length != 0)
+                {
+                    AssetDatabase.CreateAsset(DialogueContainerSO, path);
+
+                    AssetDatabase.SaveAssets();
+                    EditorUtility.DisplayDialog("Success", "You're Dialogue is Saved!", "OK");
+                }
+                else
+                {
+                    EditorUtility.DisplayDialog("Canceled", "You're Save was Canceled", "OK");
+                }
             }
-            else if(!path.Equals(null) && !path.Equals(""))
-                Debug.Log($"<color=red>Error: </color>You must Save the Dialogue Object in this Project! Save your File under {Application.dataPath}/.....");
+            else
+                EditorUtility.DisplayDialog("Canceled", "You're Dialogue Object is missing. Might you have Deleted it Accidentally? Restart the Dialogue tool, or restore you're scriptable Object", "OK");
+
         }
 
         public void Save(DialogueContainerSO DialogueContainerSO)
         {
-
-            Debug.Log($"Validating Dialogue Object ... ");
-
-            if (nodes.Find(x => x is StartNode) != null)
-            {
-
-                Debug.Log($"<color=green>Has Start Node: </color>");
-            }
-            else
-                Debug.Log($"<color=red>Has No Start Node: </color>");
-
-            if (nodes.Find(x => x is EndNode) != null)
-            {
-
-                Debug.Log($"<color=green>Has End Node: </color>");
-            }
-            else
-                Debug.Log($"<color=red>Has No End Node: </color>");
+            if (!ValidateDialogueObject())
+                return;
+            EditorUtility.ClearProgressBar();
 
             SaveEdges(DialogueContainerSO);
             SaveNodes(DialogueContainerSO);
@@ -161,7 +153,7 @@ namespace DialogueEditor.Dialogue.Editor
                 node.DialogueData.Dialogue_BaseContainers[i].ID.Value = i;
             }
 
-            dialogueData.DialogueData_Character.Value = node.DialogueData.DialogueData_Character.Value;
+            dialogueData.DialogueData_Character.actor = node.DialogueData.DialogueData_Character.actor;
 
             foreach (DialogueData_BaseContainer baseContainer in node.DialogueData.Dialogue_BaseContainers)
             {
@@ -569,8 +561,8 @@ namespace DialogueEditor.Dialogue.Editor
                 tempNode.NodeGuid = node.NodeGuid;
 
                 List<DialogueData_BaseContainer> data_BaseContainer = new List<DialogueData_BaseContainer>();
-                tempNode.characterField.value = node.DialogueData_Character.Value;
-                tempNode.DialogueData.DialogueData_Character.Value = node.DialogueData_Character.Value;
+                tempNode.characterField.value = node.DialogueData_Character.actor;
+                tempNode.DialogueData.DialogueData_Character.actor = node.DialogueData_Character.actor;
                 data_BaseContainer.AddRange(node.DialogueData_Texts);
 
                 data_BaseContainer.Sort(delegate (DialogueData_BaseContainer x, DialogueData_BaseContainer y)
@@ -655,6 +647,45 @@ namespace DialogueEditor.Dialogue.Editor
         #endregion
 
         #region validate
+        private bool ValidateDialogueObject()
+        {
+            float validation = 0;
+            string validationText = "Start Node";
+            bool valid = false;
+
+            EditorUtility.DisplayProgressBar("Validating Dialogue Object", validationText, validation);
+
+            if (nodes.Find(x => x is StartNode) != null)
+            {
+
+                validation = 0.5f;
+                validationText = "End Node";
+                valid = true;
+            }
+            else
+            {
+
+                EditorUtility.ClearProgressBar();
+                EditorUtility.DisplayDialog("Error!", "Start Node Required in this Dialogue", "OK");
+            }
+
+            if (nodes.Find(x => x is EndNode) != null)
+            {
+
+                validation = 1f;
+                validationText = "Validation Completed";
+                valid = true;
+            }
+            else
+            {
+
+                EditorUtility.ClearProgressBar();
+                EditorUtility.DisplayDialog("Error!", "End Node Required in this Dialogue", "OK");
+            }
+
+            EditorUtility.ClearProgressBar();
+            return valid;
+        }
         private void ValidateDialogueNode(DialogueNode node)
         {
             bool warn = false;

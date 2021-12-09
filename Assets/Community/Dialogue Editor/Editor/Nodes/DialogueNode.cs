@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DialogueEditor.ModularComponents;
+using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -16,7 +18,7 @@ namespace DialogueEditor.Dialogue.Editor
         protected Vector2 dialogueNodeSize = new Vector2(200, 500);
 
         private List<Box> boxs = new List<Box>();
-        public TextField characterField;
+        public ObjectField characterField;
 
         public DialogueNode() { }
 
@@ -336,44 +338,12 @@ namespace DialogueEditor.Dialogue.Editor
             boxContainer.Add(ImagesBox);
         }
 
-        public void AddCharacter(Container_String character, Box boxContainer, string labelName)
-        {
-
-            Container_String tmpCharacter = new Container_String();
-
-            if (character != null)
-            {
-                tmpCharacter.Value = character.Value;
-            }
-            dialogueData.DialogueData_Character = tmpCharacter;
-
-            // Container of all object.
-            Box objectContainer = new Box();
-            objectContainer.AddToClassList("CharacterBox");
-
-
-            // Label Name
-            Label label_texts = GetNewLabel(labelName, "LabelText");
-
-            // Scriptable Object Event.
-            characterField = GetNewTextField(tmpCharacter, "Character Name");
-
-            Label helper_texts = GetNewLabel("Same as the Character Name on Character Script", "HelperText");
-
-            // Add it to the box
-
-            objectContainer.Add(label_texts);
-            objectContainer.Add(characterField);
-            objectContainer.Add(helper_texts);
-            boxContainer.Add(objectContainer);
-        }
-
         public void CharacterName()
         {
-            Container_String tmpCharacter = new Container_String();
+            Container_Actor tmpCharacter = new Container_Actor();
             if (this.DialogueData.DialogueData_Character != null)
             {
-                tmpCharacter.Value = DialogueData.DialogueData_Character.Value;
+                tmpCharacter.actor = DialogueData.DialogueData_Character.actor;
             }
             //DialogueData.Dialogue_BaseContainers.Add(dialogue_character);
             DialogueData.DialogueData_Character = tmpCharacter;
@@ -381,15 +351,58 @@ namespace DialogueEditor.Dialogue.Editor
             Box boxContainer = new Box();
             boxContainer.AddToClassList("CharacterNameBox");
 
-            //AddLabelAndIncreaseDecreaseButton(tmpCharacter, boxContainer, "Name", "NameColor");
-            //AddTextField_CharacterName(dialogue_Name, boxContainer);
-            AddCharacter(tmpCharacter, boxContainer, "Current Character Name");
+            AddScriptableActor(tmpCharacter, boxContainer);
 
             extensionContainer.Add(boxContainer);
         }
 
-        // ------------------------------------------------------------------------------------------
+        public void AddScriptableActor(Container_Actor actorData, Box boxContainer)
+        {
+            Container_Actor tempActor = new Container_Actor();
 
+            Box buttonsBox = new Box();
+            buttonsBox.AddToClassList("BtnBox");
+
+            Button addActor = GetNewButton(" + ", "MoveBtn");
+
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
+
+            // If value is not null we load in values.
+            if (actorData != null)
+            {
+                tempActor.actor = actorData.actor;
+            }
+            DialogueData.DialogueData_Character = (tempActor);
+
+            // Scriptable Object Event.
+            characterField = GetNewObjectField_Actor(tempActor, addActor, removeActor, "CharacterName");
+
+
+            addActor.clicked += () =>
+            {
+                characterField.value = newActor();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                characterField.value = null;
+                RefreshExpandedState();
+            };
+
+            // Add it to the box
+            if (actorData.actor != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+            boxContainer.Add(characterField);
+            buttonsBox.Add(addActor);
+            buttonsBox.Add(removeActor);
+            boxContainer.Add(buttonsBox);
+            extensionContainer.Add(boxContainer);
+            RefreshExpandedState();
+        }
+        // ------------------------------------------------------------------------------------------
+        #region BoxMovement
         private void MoveBox(DialogueData_BaseContainer container, bool moveUp)
         {
             List<DialogueData_BaseContainer> tmpDialogue_BaseContainers = new List<DialogueData_BaseContainer>();
@@ -494,7 +507,51 @@ namespace DialogueEditor.Dialogue.Editor
                 }
             }
         }
+        #endregion
 
+        public Actor newActor()
+        {
+            DialogueContainerSO currentDialogueContainer = (editorWindow as DialogueEditorWindow).currentDialogueContainer;
+
+            if ((AssetDatabase.GetAssetPath(currentDialogueContainer).Equals("")) || (AssetDatabase.GetAssetPath(currentDialogueContainer).Equals(null)))
+            {
+                editorWindow.SaveAs();
+            }
+            else
+            {
+                editorWindow.Save();
+            };
+
+            if (!AssetDatabase.GetAssetPath(currentDialogueContainer).Length.Equals(0))
+            {
+                string path = EditorUtility.SaveFilePanelInProject(
+            "Create a new Dialogue Actor",
+            "<Fill Actor Name Here>.asset",
+            "asset",
+            "");
+
+            Actor newActor = ScriptableObject.CreateInstance<Actor>();
+            EditorUtility.SetDirty(newActor);
+
+                if (path.Length != 0)
+                {
+                    AssetDatabase.CreateAsset(newActor, path);
+
+                    AssetDatabase.SaveAssets();
+
+                    newActor.characterName = newActor.name;
+
+                    EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
+
+                    return newActor;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+            
+        }
         public override void ReloadLanguage()
         {
             base.ReloadLanguage();
