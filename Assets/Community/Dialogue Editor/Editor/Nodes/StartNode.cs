@@ -17,13 +17,13 @@ namespace DialogueEditor.Dialogue.Editor
             StyleSheet styleSheet = Resources.Load<StyleSheet>("USS/Nodes/StartNodeStyleSheet");
             styleSheets.Add(styleSheet);
 
-            title = "Start";
             SetPosition(new Rect(position, defaultNodeSize));
             nodeGuid = Guid.NewGuid().ToString();
 
-            AddOutputPort("Output", Color.cyan, Port.Capacity.Single);
+            AddOutputPort("Start", Color.cyan, Port.Capacity.Single);
 
             RefreshExpandedState();
+            mainContainer.Remove(titleContainer);
             RefreshPorts();
         }
     }

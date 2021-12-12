@@ -6,14 +6,14 @@ using UnityEngine.UIElements;
 
 namespace DialogueEditor.Dialogue.Editor
 {
-    public class EndNode : BaseNode
+    public class RestartNode : BaseNode
     {
-        private EndData endData = new EndData();
-        public EndData EndData { get => endData; set => endData = value; }
+        private RestartData restartData = new RestartData();
+        public RestartData RestartData { get => restartData; set => restartData = value; }
 
-        public EndNode() { }
+        public RestartNode() { }
 
-        public EndNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
+        public RestartNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
         {
             base.editorWindow = editorWindow;
             base.graphView = graphView;
@@ -23,6 +23,7 @@ namespace DialogueEditor.Dialogue.Editor
 
             SetPosition(new Rect(position, defaultNodeSize));
             nodeGuid = Guid.NewGuid().ToString();
+
 
             mainContainer.Remove(titleContainer);
             topContainer.Remove(outputContainer);

@@ -82,10 +82,10 @@
 /* ------------------------------------------- StringEvent ------------------------------------ */
 
 .StringEventBox{
-	flex-direction: col;
 	background-color: rgb(50, 50, 50);
 	border-color: #5C5C5C;
-	border-width: 4px;
+	border-width: 2px;
+	margin: 0.5px;
 }
 
 .StringEventText{

@@ -7,14 +7,14 @@
     public class DialogueMathCalculatorModifier
     {
         #region String
-        public void StringModifier(EventData_StringModifier item)
+        public void StringModifier(ModifierData_String item)
         {
             switch (item.EventType.Value)
             {
-                case StringDialogueEventModifierType.Add:
+                case StringDialogueModifierType.Add:
                     StringModifier_Add(item);
                     break;
-                case StringDialogueEventModifierType.Subtract:
+                case StringDialogueModifierType.Subtract:
                     StringModifier_Subtract(item);
                     break;
                 default:
@@ -23,26 +23,26 @@
 
         }
 
-        private void StringModifier_Add(EventData_StringModifier item)
+        private void StringModifier_Add(ModifierData_String item)
         {
             item.VariableSO.Value += item.Value.Value;
         }
 
-        private void StringModifier_Subtract(EventData_StringModifier item)
+        private void StringModifier_Subtract(ModifierData_String item)
         {
             item.VariableSO.Value.Replace(item.Value.Value, "");
         }
         #endregion
 
         #region Float
-        public void FloatModifier(EventData_FloatModifier item)
+        public void FloatModifier(ModifierData_Float item)
         {
             switch (item.EventType.Value)
             {
-                case FloatDialogueEventModifierType.Add:
+                case FloatDialogueModifierType.Add:
                     FloatModifier_Add(item);
                     break;
-                case FloatDialogueEventModifierType.Subtract:
+                case FloatDialogueModifierType.Subtract:
                     FloatModifier_Subtract(item);
                     break;
                 default:
@@ -50,13 +50,13 @@
             }
         }
 
-        private void FloatModifier_Add(EventData_FloatModifier item)
+        private void FloatModifier_Add(ModifierData_Float item)
         {
             item.VariableSO.Value += item.Value.Value;
 
         }
 
-        private void FloatModifier_Subtract(EventData_FloatModifier item)
+        private void FloatModifier_Subtract(ModifierData_Float item)
         {
             item.VariableSO.Value -= item.Value.Value;
         }
@@ -64,14 +64,14 @@
         #endregion
 
         #region Int
-        public void IntModifier(EventData_IntModifier item)
+        public void IntModifier(ModifierData_Int item)
         {
             switch (item.EventType.Value)
             {
-                case IntDialogueEventModifierType.Add:
+                case IntDialogueModifierType.Add:
                     IntModifier_Add(item);
                     break;
-                case IntDialogueEventModifierType.Subtract:
+                case IntDialogueModifierType.Subtract:
                     IntModifier_Subtract(item);
                     break;
                 default:
@@ -79,13 +79,13 @@
             }
         }
 
-        private void IntModifier_Add(EventData_IntModifier item)
+        private void IntModifier_Add(ModifierData_Int item)
         {
             item.VariableSO.Value += item.Value.Value;
 
         }
 
-        private void IntModifier_Subtract(EventData_IntModifier item)
+        private void IntModifier_Subtract(ModifierData_Int item)
         {
             item.VariableSO.Value -= item.Value.Value;
         }
@@ -94,14 +94,14 @@
         #endregion
 
         #region Bool
-        public void BoolModifier(EventData_BoolModifier item)
+        public void BoolModifier(ModifierData_Bool item)
         {
             switch (item.EventType.Value)
             {
-                case BoolDialogueEventModifierType.SetTrue:
+                case BoolDialogueModifierType.SetTrue:
                     BoolModifier_SetTrue(item);
                     break;
-                case BoolDialogueEventModifierType.SetFalse:
+                case BoolDialogueModifierType.SetFalse:
                     BoolModifier_SetFalse(item);
                     break;
                 default:
@@ -109,13 +109,13 @@
             }
         }
 
-        private void BoolModifier_SetTrue(EventData_BoolModifier item)
+        private void BoolModifier_SetTrue(ModifierData_Bool item)
         {
             item.VariableSO.Value = true;
 
         }
 
-        private void BoolModifier_SetFalse(EventData_BoolModifier item)
+        private void BoolModifier_SetFalse(ModifierData_Bool item)
         {
             item.VariableSO.Value = false;
         }

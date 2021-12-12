@@ -17,7 +17,7 @@
 }
 
 .node #title{
-	background-color: #AB3933;
+	background-color: #B5505A;
 }
 
 .node #title #title-label{

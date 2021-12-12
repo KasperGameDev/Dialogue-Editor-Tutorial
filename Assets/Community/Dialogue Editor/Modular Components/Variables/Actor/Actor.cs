@@ -10,6 +10,8 @@ namespace DialogueEditor.ModularComponents
         public string characterName;
         public ActorType actorType;
 
+        public bool actorSpeaking = false;
+
         public static Actor NewActor()
         {
             string path = EditorUtility.SaveFilePanelInProject(

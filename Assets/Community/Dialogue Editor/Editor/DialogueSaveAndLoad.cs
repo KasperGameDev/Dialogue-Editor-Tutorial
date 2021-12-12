@@ -65,10 +65,10 @@ namespace DialogueEditor.Dialogue.Editor
             EditorUtility.SetDirty(DialogueContainerSO);
             AssetDatabase.SaveAssets();
 
-            Debug.Log($"<color=green>Success: </color>Saved succesfully!");
+            EditorUtility.DisplayDialog("Success", "You're Dialogue is Saved!", "OK");
         }
 
-        public void Load(DialogueContainerSO DialogueContainerSO)
+            public void Load(DialogueContainerSO DialogueContainerSO)
         {
             ClearGraph();
             GenerateNodes(DialogueContainerSO);
@@ -99,12 +99,13 @@ namespace DialogueEditor.Dialogue.Editor
         private void SaveNodes(DialogueContainerSO DialogueContainerSO)
         {
             DialogueContainerSO.EventDatas.Clear();
-            DialogueContainerSO.EndDatas.Clear();
-            DialogueContainerSO.StartDatas.Clear();
+            DialogueContainerSO.ModifierDatas.Clear();
             DialogueContainerSO.BranchDatas.Clear();
             DialogueContainerSO.DialogueDatas.Clear();
             DialogueContainerSO.ChoiceDatas.Clear();
             DialogueContainerSO.ChoiceConnectorDatas.Clear();
+            DialogueContainerSO.RepeatDatas.Clear();
+            DialogueContainerSO.RestartDatas.Clear();
 
             nodes.ForEach(node =>
             {
@@ -114,10 +115,10 @@ namespace DialogueEditor.Dialogue.Editor
                         DialogueContainerSO.DialogueDatas.Add(SaveNodeData(dialogueNode));
                         break;
                     case StartNode startNode:
-                        DialogueContainerSO.StartDatas.Add(SaveNodeData(startNode));
+                        DialogueContainerSO.StartData = SaveNodeData(startNode);
                         break;
                     case EndNode endNode:
-                        DialogueContainerSO.EndDatas.Add(SaveNodeData(endNode));
+                        DialogueContainerSO.EndData = SaveNodeData(endNode);
                         break;
                     case EventNode eventNode:
                         DialogueContainerSO.EventDatas.Add(SaveNodeData(eventNode));
@@ -125,8 +126,17 @@ namespace DialogueEditor.Dialogue.Editor
                     case BranchNode branchNode:
                         DialogueContainerSO.BranchDatas.Add(SaveNodeData(branchNode));
                         break;
+                    case ModifierNode modifierNode:
+                        DialogueContainerSO.ModifierDatas.Add(SaveNodeData(modifierNode));
+                        break;
                     case ChoiceNode choiceNode:
                         DialogueContainerSO.ChoiceDatas.Add(SaveNodeData(choiceNode));
+                        break;
+                    case RepeatNode repeatNode:
+                        DialogueContainerSO.RepeatDatas.Add(SaveNodeData(repeatNode));
+                        break;
+                    case RestartNode restartNode:
+                        DialogueContainerSO.RestartDatas.Add(SaveNodeData(restartNode));
                         break;
                     case ChoiceConnectorNode choiceConnectorNode:
                         DialogueContainerSO.ChoiceConnectorDatas.Add(SaveNodeData(choiceConnectorNode));
@@ -229,7 +239,31 @@ namespace DialogueEditor.Dialogue.Editor
                 NodeGuid = node.NodeGuid,
                 Position = node.GetPosition().position,
             };
-            nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
+            //nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
+
+            return nodeData;
+        }
+
+        private RestartData SaveNodeData(RestartNode node)
+        {
+            RestartData nodeData = new RestartData()
+            {
+                NodeGuid = node.NodeGuid,
+                Position = node.GetPosition().position,
+            };
+            //nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
+
+            return nodeData;
+        }
+
+        private RepeatData SaveNodeData(RepeatNode node)
+        {
+            RepeatData nodeData = new RepeatData()
+            {
+                NodeGuid = node.NodeGuid,
+                Position = node.GetPosition().position,
+            };
+            //nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
 
             return nodeData;
         }
@@ -248,45 +282,57 @@ namespace DialogueEditor.Dialogue.Editor
                 nodeData.Container_DialogueEventSOs.Add(dialogueEvent);
             }
 
-            // Save String Event
-            foreach (EventData_StringModifier stringEvents in node.EventData.EventData_StringModifiers)
+            return nodeData;
+        }
+
+
+        private ModifierData SaveNodeData(ModifierNode node)
+        {
+            ModifierData nodeData = new ModifierData()
             {
-                EventData_StringModifier tmp = new EventData_StringModifier();
+                NodeGuid = node.NodeGuid,
+                Position = node.GetPosition().position,
+            };
+
+            // Save String Event
+            foreach (ModifierData_String stringEvents in node.ModifierData.ModifierData_Strings)
+            {
+                ModifierData_String tmp = new ModifierData_String();
                 tmp.Value.Value = stringEvents.Value.Value;
                 tmp.VariableSO = stringEvents.VariableSO;
                 tmp.EventType.Value = stringEvents.EventType.Value;
 
-                nodeData.EventData_StringModifiers.Add(tmp);
+                nodeData.ModifierData_Strings.Add(tmp);
             }
 
-            foreach (EventData_FloatModifier FloatEvents in node.EventData.EventData_FloatModifiers)
+            foreach (ModifierData_Float FloatEvents in node.ModifierData.ModifierData_Floats)
             {
-                EventData_FloatModifier tmp = new EventData_FloatModifier();
+                ModifierData_Float tmp = new ModifierData_Float();
                 tmp.Value.Value = FloatEvents.Value.Value;
                 tmp.VariableSO = FloatEvents.VariableSO;
                 tmp.EventType.Value = FloatEvents.EventType.Value;
 
-                nodeData.EventData_FloatModifiers.Add(tmp);
+                nodeData.ModifierData_Floats.Add(tmp);
             }
 
-            foreach (EventData_IntModifier IntEvents in node.EventData.EventData_IntModifiers)
+            foreach (ModifierData_Int IntEvents in node.ModifierData.ModifierData_Ints)
             {
-                EventData_IntModifier tmp = new EventData_IntModifier();
+                ModifierData_Int tmp = new ModifierData_Int();
                 tmp.Value.Value = IntEvents.Value.Value;
                 tmp.VariableSO = IntEvents.VariableSO;
                 tmp.EventType.Value = IntEvents.EventType.Value;
 
-                nodeData.EventData_IntModifiers.Add(tmp);
+                nodeData.ModifierData_Ints.Add(tmp);
             }
 
-            foreach (EventData_BoolModifier BoolEvents in node.EventData.EventData_BoolModifiers)
+            foreach (ModifierData_Bool BoolEvents in node.ModifierData.ModifierData_Bools)
             {
-                EventData_BoolModifier tmp = new EventData_BoolModifier();
+                ModifierData_Bool tmp = new ModifierData_Bool();
                 tmp.Value.Value = BoolEvents.Value.Value;
                 tmp.VariableSO = BoolEvents.VariableSO;
                 tmp.EventType.Value = BoolEvents.EventType.Value;
 
-                nodeData.EventData_BoolModifiers.Add(tmp);
+                nodeData.ModifierData_Bools.Add(tmp);
             }
 
             return nodeData;
@@ -420,25 +466,27 @@ namespace DialogueEditor.Dialogue.Editor
 
         private void GenerateNodes(DialogueContainerSO dialogueContainer)
         {
+
+            graphView.startNode = graphView.CreateStartNode(Vector2.zero);
+
+            graphView.endNode = graphView.CreateEndNode(Vector2.right * 500)
+                ;
             // Start
-            foreach (StartData node in dialogueContainer.StartDatas)
+            if (dialogueContainer.StartData.NodeGuid != null)
             {
-                StartNode tempNode = graphView.CreateStartNode(node.Position);
-                tempNode.NodeGuid = node.NodeGuid;
-
-                graphView.AddElement(tempNode);
+                graphView.startNode.NodeGuid = dialogueContainer.StartData.NodeGuid;
+                graphView.startNode.SetPosition(new Rect(dialogueContainer.StartData.Position, new Vector2(200, 250)));
             }
 
-            // End Node 
-            foreach (EndData node in dialogueContainer.EndDatas)
+            // Start
+            if (dialogueContainer.EndData.NodeGuid != null)
             {
-                EndNode tempNode = graphView.CreateEndNode(node.Position);
-                tempNode.NodeGuid = node.NodeGuid;
-                tempNode.EndData.EndNodeType.Value = node.EndNodeType.Value;
-
-                tempNode.LoadValueInToField();
-                graphView.AddElement(tempNode);
+                graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
+                graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 250)));
             }
+
+            graphView.AddElement(graphView.startNode);
+            graphView.AddElement(graphView.endNode);
 
             // Event Node
             foreach (EventData node in dialogueContainer.EventDatas)
@@ -451,21 +499,31 @@ namespace DialogueEditor.Dialogue.Editor
                     tempNode.AddScriptableEvent(item);
                 }
 
-                foreach (EventData_StringModifier item in node.EventData_StringModifiers)
+                tempNode.LoadValueInToField();
+                graphView.AddElement(tempNode);
+            }
+
+            // Event Node
+            foreach (ModifierData node in dialogueContainer.ModifierDatas)
+            {
+                ModifierNode tempNode = graphView.CreateModifierNode(node.Position);
+                tempNode.NodeGuid = node.NodeGuid;
+
+                foreach (ModifierData_String item in node.ModifierData_Strings)
                 {
-                    tempNode.AddStringEvent(item);
+                    tempNode.AddStringModifier(item);
                 }
-                foreach (EventData_FloatModifier item in node.EventData_FloatModifiers)
+                foreach (ModifierData_Float item in node.ModifierData_Floats)
                 {
-                    tempNode.AddFloatEvent(item);
+                    tempNode.AddFloatModifier(item);
                 }
-                foreach (EventData_IntModifier item in node.EventData_IntModifiers)
+                foreach (ModifierData_Int item in node.ModifierData_Ints)
                 {
-                    tempNode.AddIntEvent(item);
+                    tempNode.AddIntModifier(item);
                 }
-                foreach (EventData_BoolModifier item in node.EventData_BoolModifiers)
+                foreach (ModifierData_Bool item in node.ModifierData_Bools)
                 {
-                    tempNode.AddBoolEvent(item);
+                    tempNode.AddBoolModifier(item);
                 }
 
                 tempNode.LoadValueInToField();

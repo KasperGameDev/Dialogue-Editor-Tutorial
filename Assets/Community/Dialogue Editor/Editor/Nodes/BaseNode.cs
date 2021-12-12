@@ -206,7 +206,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_GameEvent(Container_DialogueEventSO inputDialogueEventSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_GameEvent(Container_DialogueEventSO inputDialogueEventSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -219,6 +219,16 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputDialogueEventSO.GameEvent = value.newValue as GameEventSO;
+                if (inputDialogueEventSO.GameEvent.name == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputDialogueEventSO.GameEvent);
 
@@ -232,11 +242,11 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Get a new ObjectField with a StringVariableSO as the Object.
         /// </summary>
-        /// <param name="inputStringVariableSO">EventData_StringModifier that need to be set in to the ObjectField</param>
+        /// <param name="inputStringVariableSO">ModifierData_String that need to be set in to the ObjectField</param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_StringVariableModifier(EventData_StringModifier inputStringVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_StringVariableModifier(ModifierData_String inputStringVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -249,6 +259,16 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputStringVariableSO.VariableSO = value.newValue as StringVariableSO;
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputStringVariableSO.VariableSO);
 
@@ -262,11 +282,11 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Get a new ObjectField with a FloatVariableSO as the Object.
         /// </summary>
-        /// <param name="inputFloatVariableSO">EventData_FloatModifier that need to be set in to the ObjectField</param>
+        /// <param name="inputFloatVariableSO">ModifierData_Float that need to be set in to the ObjectField</param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_FloatVariableModifier(EventData_FloatModifier inputFloatVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_FloatVariableModifier(ModifierData_Float inputFloatVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -279,6 +299,16 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputFloatVariableSO.VariableSO = value.newValue as FloatVariableSO;
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputFloatVariableSO.VariableSO);
 
@@ -292,11 +322,11 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Get a new ObjectField with a IntVariableSO as the Object.
         /// </summary>
-        /// <param name="inputIntVariableSO">EventData_IntModifier that need to be set in to the ObjectField</param>
+        /// <param name="inputIntVariableSO">ModifierData_Int that need to be set in to the ObjectField</param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_IntVariableModifier(EventData_IntModifier inputIntVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_IntVariableModifier(ModifierData_Int inputIntVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -308,7 +338,17 @@ namespace DialogueEditor.Dialogue.Editor
             // When we change the variable from graph view.
             objectField.RegisterValueChangedCallback(value =>
             {
-                inputIntVariableSO.VariableSO = value.newValue as IntVariableSO;
+                inputIntVariableSO.VariableSO = value.newValue as IntVariableSO; 
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputIntVariableSO.VariableSO);
 
@@ -326,7 +366,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_BoolVariableModifier(EventData_BoolModifier inputBoolVariableSO, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_BoolVariableModifier(ModifierData_Bool inputBoolVariableSO, Button add, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -339,6 +379,16 @@ namespace DialogueEditor.Dialogue.Editor
             objectField.RegisterValueChangedCallback(value =>
             {
                 inputBoolVariableSO.VariableSO = value.newValue as BoolVariableSO;
+                if (value.newValue == null)
+                {
+                    add.SetEnabled(true);
+                    remove.SetEnabled(false);
+                }
+                else
+                {
+                    add.SetEnabled(false);
+                    remove.SetEnabled(true);
+                }
             });
             objectField.SetValueWithoutNotify(inputBoolVariableSO.VariableSO);
 
@@ -352,7 +402,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Get a new ObjectField with a StringVariableSO as the Object.
         /// </summary>
-        /// <param name="inputStringVariableSO">EventData_StringModifier that need to be set in to the ObjectField</param>
+        /// <param name="inputStringVariableSO">ModifierData_String that need to be set in to the ObjectField</param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
@@ -392,7 +442,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Get a new ObjectField with a FloatVariableSO as the Object.
         /// </summary>
-        /// <param name="inputFloatVariableSO">EventData_FloatModifier that need to be set in to the ObjectField</param>
+        /// <param name="inputFloatVariableSO">ModifierData_Float that need to be set in to the ObjectField</param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
@@ -432,7 +482,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Get a new ObjectField with a FloatVariableSO as the Object.
         /// </summary>
-        /// <param name="inputFloatVariableSO">EventData_FloatModifier that need to be set in to the ObjectField</param>
+        /// <param name="inputFloatVariableSO">ModifierData_Float that need to be set in to the ObjectField</param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
@@ -583,44 +633,14 @@ namespace DialogueEditor.Dialogue.Editor
         }
 
         /// <summary>
-        /// Get a new EnumField where the emum is EndNodeType.
+        /// Get a new EnumField where the emum is StringModifierType.
         /// </summary>
-        /// <param name="enumType">Container_EndNodeType that need to be set in to the EnumField</param>
-        /// <param name="USS01">USS class add to the UI element</param>
-        /// <param name="USS02">USS class add to the UI element</param>
-        /// <returns></returns>
-        protected EnumField GetNewEnumField_EndNodeType(Container_EndNodeType enumType, string USS01 = "", string USS02 = "")
-        {
-            EnumField enumField = new EnumField()
-            {
-                value = enumType.Value
-            };
-            enumField.Init(enumType.Value);
-
-            // When we change the variable from graph view.
-            enumField.RegisterValueChangedCallback((value) =>
-            {
-                enumType.Value = (EndNodeType)value.newValue;
-            });
-            enumField.SetValueWithoutNotify(enumType.Value);
-
-            // Set uss class for stylesheet.
-            enumField.AddToClassList(USS01);
-            enumField.AddToClassList(USS02);
-
-            enumType.EnumField = enumField;
-            return enumField;
-        }
-
-        /// <summary>
-        /// Get a new EnumField where the emum is StringEventModifierType.
-        /// </summary>
-        /// <param name="enumType">Container_StringEventModifierType that need to be set in to the EnumField</param>
+        /// <param name="enumType">Container_StringModifierType that need to be set in to the EnumField</param>
         /// <param name="action"></param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected EnumField GetNewEnumField_StringEventModifierType(Container_StringEventModifierType enumType, Action action, string USS01 = "", string USS02 = "")
+        protected EnumField GetNewEnumField_StringModifierType(Container_StringModifierType enumType, Action action, string USS01 = "", string USS02 = "")
         {
             EnumField enumField = new EnumField()
             {
@@ -631,7 +651,7 @@ namespace DialogueEditor.Dialogue.Editor
             // When we change the variable from graph view.
             enumField.RegisterValueChangedCallback((value) =>
             {
-                enumType.Value = (StringDialogueEventModifierType)value.newValue;
+                enumType.Value = (StringDialogueModifierType)value.newValue;
                 action?.Invoke();
             });
             enumField.SetValueWithoutNotify(enumType.Value);
@@ -644,14 +664,14 @@ namespace DialogueEditor.Dialogue.Editor
             return enumField;
         }
         /// <summary>
-        /// Get a new EnumField where the emum is StringEventModifierType.
+        /// Get a new EnumField where the emum is StringModifierType.
         /// </summary>
-        /// <param name="enumType">Container_StringEventModifierType that need to be set in to the EnumField</param>
+        /// <param name="enumType">Container_StringModifierType that need to be set in to the EnumField</param>
         /// <param name="action"></param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected EnumField GetNewEnumField_FloatEventModifierType(Container_FloatEventModifierType enumType, Action action, string USS01 = "", string USS02 = "")
+        protected EnumField GetNewEnumField_FloatModifierType(Container_FloatModifierType enumType, Action action, string USS01 = "", string USS02 = "")
         {
             EnumField enumField = new EnumField()
             {
@@ -662,7 +682,7 @@ namespace DialogueEditor.Dialogue.Editor
             // When we change the variable from graph view.
             enumField.RegisterValueChangedCallback((value) =>
             {
-                enumType.Value = (FloatDialogueEventModifierType)value.newValue;
+                enumType.Value = (FloatDialogueModifierType)value.newValue;
                 action?.Invoke();
             });
             enumField.SetValueWithoutNotify(enumType.Value);
@@ -676,14 +696,14 @@ namespace DialogueEditor.Dialogue.Editor
         }
 
         /// <summary>
-        /// Get a new EnumField where the emum is StringEventModifierType.
+        /// Get a new EnumField where the emum is StringModifierType.
         /// </summary>
-        /// <param name="enumType">Container_StringEventModifierType that need to be set in to the EnumField</param>
+        /// <param name="enumType">Container_StringModifierType that need to be set in to the EnumField</param>
         /// <param name="action"></param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected EnumField GetNewEnumField_IntEventModifierType(Container_IntEventModifierType enumType, Action action, string USS01 = "", string USS02 = "")
+        protected EnumField GetNewEnumField_IntModifierType(Container_IntModifierType enumType, Action action, string USS01 = "", string USS02 = "")
         {
             EnumField enumField = new EnumField()
             {
@@ -694,7 +714,7 @@ namespace DialogueEditor.Dialogue.Editor
             // When we change the variable from graph view.
             enumField.RegisterValueChangedCallback((value) =>
             {
-                enumType.Value = (IntDialogueEventModifierType)value.newValue;
+                enumType.Value = (IntDialogueModifierType)value.newValue;
                 action?.Invoke();
             });
             enumField.SetValueWithoutNotify(enumType.Value);
@@ -708,14 +728,14 @@ namespace DialogueEditor.Dialogue.Editor
         }
 
         /// <summary>
-        /// Get a new EnumField where the emum is StringEventModifierType.
+        /// Get a new EnumField where the emum is StringModifierType.
         /// </summary>
-        /// <param name="enumType">Container_StringEventModifierType that need to be set in to the EnumField</param>
+        /// <param name="enumType">Container_StringModifierType that need to be set in to the EnumField</param>
         /// <param name="action"></param>
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected EnumField GetNewEnumField_BoolEventModifierType(Container_BoolEventModifierType enumType, Action action, string USS01 = "", string USS02 = "")
+        protected EnumField GetNewEnumField_BoolModifierType(Container_BoolModifierType enumType, Action action, string USS01 = "", string USS02 = "")
         {
             EnumField enumField = new EnumField()
             {
@@ -726,7 +746,7 @@ namespace DialogueEditor.Dialogue.Editor
             // When we change the variable from graph view.
             enumField.RegisterValueChangedCallback((value) =>
             {
-                enumType.Value = (BoolDialogueEventModifierType)value.newValue;
+                enumType.Value = (BoolDialogueModifierType)value.newValue;
                 action?.Invoke();
             });
             enumField.SetValueWithoutNotify(enumType.Value);
@@ -1029,61 +1049,86 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Add String Modifier Event to UI element.
         /// </summary>
-        /// <param name="stringEventModifier">The List<EventData_StringModifier> that EventData_StringModifier should be added to.</param>
-        /// <param name="stringEvent">EventData_StringModifier that should be use.</param>
-        protected void AddStringModifierEventBuild(List<EventData_StringModifier> stringEventModifier, EventData_StringModifier stringEvent = null)
+        /// <param name="stringModifier">The List<ModifierData_String> that ModifierData_String should be added to.</param>
+        /// <param name="stringEvent">ModifierData_String that should be use.</param>
+        protected void AddStringModifierBuild(List<ModifierData_String> stringModifier, ModifierData_String stringEvent = null)
         {
-            EventData_StringModifier tmpStringEventModifier = new EventData_StringModifier();
+            ModifierData_String tmpStringModifier = new ModifierData_String();
 
             // If we paramida value is not null we load in values.
             if (stringEvent != null)
             {
-                tmpStringEventModifier.VariableSO = stringEvent.VariableSO;
-                tmpStringEventModifier.Value.Value = stringEvent.Value.Value;
-                tmpStringEventModifier.EventType.Value = stringEvent.EventType.Value;
+                tmpStringModifier.VariableSO = stringEvent.VariableSO;
+                tmpStringModifier.Value.Value = stringEvent.Value.Value;
+                tmpStringModifier.EventType.Value = stringEvent.EventType.Value;
             }
 
-            stringEventModifier.Add(tmpStringEventModifier);
+            stringModifier.Add(tmpStringModifier);
+
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
 
+            Button addActor = GetNewButton(" + ", "MoveBtn");
+
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
             // Text.
-            //TextField textField = GetNewTextField(tmpStringEventModifier.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_StringVariableModifier(tmpStringEventModifier, "String Event", "StringEventText");
+            //TextField textField = GetNewTextField(tmpStringEventCondition.StringEventText, "String Event", "StringEventText");
+            ObjectField objectField = GetNewObjectField_StringVariableModifier(tmpStringModifier, addActor, removeActor, "String Event", "StringEventText");
 
             // ID number.
-            //FloatField floatField = GetNewFloatField(tmpStringEventModifier.Text, "StringEventInt");
-            TextField textField = GetNewTextField(tmpStringEventModifier.Value, "String Event", "StringEventText");
+            //FloatField floatField = GetNewFloatField(tmpStringModifier.Text, "StringEventInt");
+            TextField textField = GetNewTextField(tmpStringModifier.Value, "String Event", "StringEventText");
 
             // TODO: Delete maby?
             // Check for StringEventType and add the proper one.
             //EnumField enumField = null;
 
             // String Event Modifier
-            Action tmp = () => { }/*ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField)*/;
+            Action tmp = () => { }/*ShowHide_StringModifierType(tmpStringModifier.StringModifierType.Value, boxfloatField)*/;
             // EnumField String Event Modifier
-            EnumField enumField = GetNewEnumField_StringEventModifierType(tmpStringEventModifier.EventType, tmp, "StringEventEnum");
-            // Run the show and hide.
-            //ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField);
+            EnumField enumField = GetNewEnumField_StringModifierType(tmpStringModifier.EventType, tmp, "StringEventEnum");
+            if (tmpStringModifier.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
+            addActor.clicked += () =>
+            {
+                objectField.value = StringVariableSO.NewString();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
-                stringEventModifier.Remove(tmpStringEventModifier);
+                stringModifier.Remove(tmpStringModifier);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            boxfloatField.Add(textField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+            boolbox.Add(textField);
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
@@ -1092,61 +1137,86 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Add String Modifier Event to UI element.
         /// </summary>
-        /// <param name="stringEventModifier">The List<EventData_StringModifier> that EventData_StringModifier should be added to.</param>
-        /// <param name="stringEvent">EventData_StringModifier that should be use.</param>
-        protected void AddFloatModifierEventBuild(List<EventData_FloatModifier> stringEventModifier, EventData_FloatModifier stringEvent = null)
+        /// <param name="stringModifier">The List<ModifierData_String> that ModifierData_String should be added to.</param>
+        /// <param name="stringEvent">ModifierData_String that should be use.</param>
+        protected void AddFloatModifierBuild(List<ModifierData_Float> stringModifier, ModifierData_Float stringEvent = null)
         {
-            EventData_FloatModifier tmpStringEventModifier = new EventData_FloatModifier();
+            ModifierData_Float tmpStringModifier = new ModifierData_Float();
 
             // If we paramida value is not null we load in values.
             if (stringEvent != null)
             {
-                tmpStringEventModifier.VariableSO = stringEvent.VariableSO;
-                tmpStringEventModifier.Value.Value = stringEvent.Value.Value;
-                tmpStringEventModifier.EventType.Value = stringEvent.EventType.Value;
+                tmpStringModifier.VariableSO = stringEvent.VariableSO;
+                tmpStringModifier.Value.Value = stringEvent.Value.Value;
+                tmpStringModifier.EventType.Value = stringEvent.EventType.Value;
             }
 
-            stringEventModifier.Add(tmpStringEventModifier);
+            stringModifier.Add(tmpStringModifier);
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
+
+            Button addActor = GetNewButton(" + ", "MoveBtn");
+
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
 
             // Text.
-            //TextField textField = GetNewTextField(tmpStringEventModifier.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_FloatVariableModifier(tmpStringEventModifier, "String Event", "StringEventText");
+            //TextField textField = GetNewTextField(tmpStringModifier.StringEventText, "String Event", "StringEventText");
+            ObjectField objectField = GetNewObjectField_FloatVariableModifier(tmpStringModifier, addActor, removeActor, "String Event", "StringEventText");
 
             // ID number.
-            //FloatField floatField = GetNewFloatField(tmpStringEventModifier.Text, "StringEventInt");
-            FloatField textField = GetNewFloatField(tmpStringEventModifier.Value, "String Event", "StringEventText");
+            //FloatField floatField = GetNewFloatField(tmpStringModifier.Text, "StringEventInt");
+            FloatField textField = GetNewFloatField(tmpStringModifier.Value, "String Event", "StringEventText");
 
             // TODO: Delete maby?
             // Check for StringEventType and add the proper one.
             //EnumField enumField = null;
 
             // String Event Modifier
-            Action tmp = () => { }/*ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField)*/;
+            Action tmp = () => { }/*ShowHide_StringModifierType(tmpStringModifier.StringModifierType.Value, boxfloatField)*/;
             // EnumField String Event Modifier
-            EnumField enumField = GetNewEnumField_FloatEventModifierType(tmpStringEventModifier.EventType, tmp, "StringEventEnum");
-            // Run the show and hide.
-            //ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField);
+            EnumField enumField = GetNewEnumField_FloatModifierType(tmpStringModifier.EventType, tmp, "StringEventEnum");
+            if (tmpStringModifier.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
+            addActor.clicked += () =>
+            {
+                objectField.value = StringVariableSO.NewString();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
-                stringEventModifier.Remove(tmpStringEventModifier);
+                stringModifier.Remove(tmpStringModifier);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            boxfloatField.Add(textField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+            boolbox.Add(textField);
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
@@ -1155,61 +1225,87 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Add String Modifier Event to UI element. 
         /// </summary>
-        /// <param name="stringEventModifier">The List<EventData_StringModifier> that EventData_StringModifier should be added to.</param>
-        /// <param name="stringEvent">EventData_StringModifier that should be use.</param>
-        protected void AddIntModifierEventBuild(List<EventData_IntModifier> stringEventModifier, EventData_IntModifier stringEvent = null)
+        /// <param name="stringModifier">The List<ModifierData_String> that ModifierData_String should be added to.</param>
+        /// <param name="stringEvent">ModifierData_String that should be use.</param>
+        protected void AddIntModifierBuild(List<ModifierData_Int> stringModifier, ModifierData_Int stringEvent = null)
         {
-            EventData_IntModifier tmpStringEventModifier = new EventData_IntModifier();
+            ModifierData_Int tmpStringModifier = new ModifierData_Int();
 
             // If we paramida value is not null we load in values.
             if (stringEvent != null)
             {
-                tmpStringEventModifier.VariableSO = stringEvent.VariableSO;
-                tmpStringEventModifier.Value.Value = stringEvent.Value.Value;
-                tmpStringEventModifier.EventType.Value = stringEvent.EventType.Value;
+                tmpStringModifier.VariableSO = stringEvent.VariableSO;
+                tmpStringModifier.Value.Value = stringEvent.Value.Value;
+                tmpStringModifier.EventType.Value = stringEvent.EventType.Value;
             }
 
-            stringEventModifier.Add(tmpStringEventModifier);
+            stringModifier.Add(tmpStringModifier);
+
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
+
+            Button addActor = GetNewButton(" + ", "MoveBtn");
+
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
 
             // Text.
-            //TextField textField = GetNewTextField(tmpStringEventModifier.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_IntVariableModifier(tmpStringEventModifier, "StringEventText");
+            //TextField textField = GetNewTextField(tmpStringModifier.StringEventText, "String Event", "StringEventText");
+            ObjectField objectField = GetNewObjectField_IntVariableModifier(tmpStringModifier, addActor, removeActor, "StringEventText");
 
             // ID number.
-            //FloatField floatField = GetNewFloatField(tmpStringEventModifier.Text, "StringEventInt");
-            IntegerField textField = GetNewIntegerField(tmpStringEventModifier.Value, "StringEventText");
+            //FloatField floatField = GetNewFloatField(tmpStringModifier.Text, "StringEventInt");
+            IntegerField textField = GetNewIntegerField(tmpStringModifier.Value, "StringEventText");
 
             // TODO: Delete maby?
             // Check for StringEventType and add the proper one.
             //EnumField enumField = null;
 
             // String Event Modifier
-            Action tmp = () => { }/*ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField)*/;
+            Action tmp = () => { }/*ShowHide_StringModifierType(tmpStringModifier.StringModifierType.Value, boxfloatField)*/;
             // EnumField String Event Modifier
-            EnumField enumField = GetNewEnumField_IntEventModifierType(tmpStringEventModifier.EventType, tmp, "StringEventEnum");
-            // Run the show and hide.
-            //ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField);
+            EnumField enumField = GetNewEnumField_IntModifierType(tmpStringModifier.EventType, tmp, "StringEventEnum");
+            if (tmpStringModifier.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
+            addActor.clicked += () =>
+            {
+                objectField.value = StringVariableSO.NewString();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
-                stringEventModifier.Remove(tmpStringEventModifier);
+                stringModifier.Remove(tmpStringModifier);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            boxfloatField.Add(textField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+            boolbox.Add(textField);
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
@@ -1218,61 +1314,76 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Add String Modifier Event to UI element. 
         /// </summary>
-        /// <param name="stringEventModifier">The List<EventData_StringModifier> that EventData_StringModifier should be added to.</param>
-        /// <param name="stringEvent">EventData_StringModifier that should be use.</param>
-        protected void AddBoolModifierEventBuild(List<EventData_BoolModifier> stringEventModifier, EventData_BoolModifier stringEvent = null)
+        /// <param name="stringModifier">The List<ModifierData_String> that ModifierData_String should be added to.</param>
+        /// <param name="stringEvent">ModifierData_String that should be use.</param>
+        protected void AddBoolModifierBuild(List<ModifierData_Bool> stringModifier, ModifierData_Bool stringEvent = null)
         {
-            EventData_BoolModifier tmpStringEventModifier = new EventData_BoolModifier();
+            ModifierData_Bool tmpStringModifier = new ModifierData_Bool();
 
             // If we paramida value is not null we load in values.
             if (stringEvent != null)
             {
-                tmpStringEventModifier.VariableSO = stringEvent.VariableSO;
-                tmpStringEventModifier.Value.Value = stringEvent.Value.Value;
-                tmpStringEventModifier.EventType.Value = stringEvent.EventType.Value;
+                tmpStringModifier.VariableSO = stringEvent.VariableSO;
+                tmpStringModifier.Value.Value = stringEvent.Value.Value;
+                tmpStringModifier.EventType.Value = stringEvent.EventType.Value;
             }
 
-            stringEventModifier.Add(tmpStringEventModifier);
+            stringModifier.Add(tmpStringModifier);
+
 
             // Container of all object.
             Box boxContainer = new Box();
-            Box boxfloatField = new Box();
             boxContainer.AddToClassList("StringEventBox");
-            boxfloatField.AddToClassList("StringEventBoxfloatField");
 
-            // Text.
-            //TextField textField = GetNewTextField(tmpStringEventModifier.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_BoolVariableModifier(tmpStringEventModifier, "String Event", "StringEventText");
+            Button addActor = GetNewButton(" + ", "MoveBtn");
 
-            // ID number.
-            //FloatField floatField = GetNewFloatField(tmpStringEventModifier.Text, "StringEventInt");
+            Button removeActor = GetNewButton(" - ", "MoveBtn");
 
-
-            // TODO: Delete maby?
-            // Check for StringEventType and add the proper one.
-            //EnumField enumField = null;
+            ObjectField objectField = GetNewObjectField_BoolVariableModifier(tmpStringModifier, addActor, removeActor, "String Event", "StringEventText");
 
             // String Event Modifier
-            Action tmp = () => { }/*ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField)*/;
-            // EnumField String Event Modifier
-            EnumField enumField = GetNewEnumField_BoolEventModifierType(tmpStringEventModifier.EventType, tmp, "StringEventEnum");
-            // Run the show and hide.
-            //ShowHide_StringEventModifierType(tmpStringEventModifier.StringEventModifierType.Value, boxfloatField);
+            Action tmp = () => { }/*ShowHide_StringModifierType(tmpStringModifier.StringModifierType.Value, boxfloatField)*/;
+
+            EnumField enumField = GetNewEnumField_BoolModifierType(tmpStringModifier.EventType, tmp, "StringEventEnum");
+            if (tmpStringModifier.VariableSO != null)
+                addActor.SetEnabled(false);
+            else
+                removeActor.SetEnabled(false);
+
+            addActor.clicked += () =>
+            {
+                objectField.value = StringVariableSO.NewString();
+                RefreshExpandedState();
+            };
+            removeActor.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
+            };
 
             // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
+            Button btn = GetNewButton(" × ", "removeBtn");
             btn.clicked += () =>
             {
-                stringEventModifier.Remove(tmpStringEventModifier);
+                stringModifier.Remove(tmpStringModifier);
                 DeleteBox(boxContainer);
             };
 
+            Box topbox = new Box();
+            topbox.AddToClassList("TopBox");
+            topbox.Add(btn);
+
             // Add it to the box
-            boxContainer.Add(objectField);
-            boxContainer.Add(enumField);
-            //boxfloatField.Add(textField);
-            boxContainer.Add(boxfloatField);
-            boxContainer.Add(btn);
+            Box boolbox = new Box();
+            boolbox.AddToClassList("BoxRow");
+            boxContainer.Add(topbox);
+            boolbox.Add(objectField);
+            boolbox.Add(enumField);
+            boolbox.Add(addActor);
+            boolbox.Add(removeActor);
+
+            boxContainer.Add(topbox);
+            boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
@@ -1620,11 +1731,11 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// hid and show the UI element
         /// </summary>
-        /// <param name="value">StringEventModifierType</param>
+        /// <param name="value">StringModifierType</param>
         /// <param name="boxContainer">The Box that will be hidden or shown</param>
-        private void ShowHide_StringEventModifierType(StringDialogueEventModifierType value, Box boxContainer)
+        private void ShowHide_StringModifierType(StringDialogueModifierType value, Box boxContainer)
         {
-            if (value == StringDialogueEventModifierType.Add || value == StringDialogueEventModifierType.Add)
+            if (value == StringDialogueModifierType.Add || value == StringDialogueModifierType.Add)
             {
                 ShowHide(false, boxContainer);
             }

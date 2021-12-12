@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace DialogueEditor.Events
@@ -58,5 +59,30 @@ namespace DialogueEditor.Events
             }
         }
         #endregion
+
+        public static GameEventSO NewEvent()
+        {
+            string path = EditorUtility.SaveFilePanelInProject(
+            "Create a new Dialogue Actor",
+            "<Fill Dialogue Event Name Here>.asset",
+            "asset",
+            "");
+
+            GameEventSO newEvent = ScriptableObject.CreateInstance<GameEventSO>();
+            EditorUtility.SetDirty(newEvent);
+
+            if (path.Length != 0)
+            {
+                AssetDatabase.CreateAsset(newEvent, path);
+
+                AssetDatabase.SaveAssets();
+
+                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
+
+                return newEvent;
+            }
+            else
+                return null;
+        }
     }
 }

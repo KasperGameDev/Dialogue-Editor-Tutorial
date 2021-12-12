@@ -1,6 +1,6 @@
 namespace DialogueEditor.Dialogue
 {
-    public enum FloatDialogueEventModifierType
+    public enum FloatDialogueModifierType
     {
 
         Add = 3,

@@ -1,4 +1,4 @@
-.node #title{
+.main, .input{
 	background-color: #785964;
 }
 

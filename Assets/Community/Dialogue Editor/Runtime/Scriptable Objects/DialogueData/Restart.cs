@@ -1,7 +1,7 @@
 ﻿namespace DialogueEditor.Dialogue
 {
     [System.Serializable]
-    public class EndData : BaseData
+    public class RestartData : BaseData
     {
     }
 }

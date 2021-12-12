@@ -6,14 +6,14 @@ using UnityEngine.UIElements;
 
 namespace DialogueEditor.Dialogue.Editor
 {
-    public class EndNode : BaseNode
+    public class RepeatNode : BaseNode
     {
-        private EndData endData = new EndData();
-        public EndData EndData { get => endData; set => endData = value; }
+        private RepeatData repeatData = new RepeatData();
+        public RepeatData RepeatData { get => repeatData; set => repeatData = value; }
 
-        public EndNode() { }
+        public RepeatNode() { }
 
-        public EndNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
+        public RepeatNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
         {
             base.editorWindow = editorWindow;
             base.graphView = graphView;

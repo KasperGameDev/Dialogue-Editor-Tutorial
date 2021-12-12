@@ -48,10 +48,15 @@ namespace DialogueEditor.Dialogue.Scripts
 
         public void StartDialogue()
         {
-            if(dialogueContainerSO.StartDatas[0] != null)
-                CheckNodeType(GetNextNode(dialogueContainerSO.StartDatas[0]));
+            if(dialogueContainerSO.StartData != null)
+                CheckNodeType(GetNextNode(dialogueContainerSO.StartData));
             else
                 Debug.Log($"<color=red>Error: </color>Your Dialogue Object Must have a start Node.");
+
+            foreach(Character character in participatingCharacters)
+            {
+                character.actor.actorSpeaking = true;
+            }
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
@@ -83,7 +88,7 @@ namespace DialogueEditor.Dialogue.Scripts
 
         private void RunNode(StartData nodeData)
         {
-            CheckNodeType(GetNextNode(dialogueContainerSO.StartDatas[0]));
+            CheckNodeType(GetNextNode(dialogueContainerSO.StartData));
         }
 
         private void RunNode(BranchData nodeData)
@@ -136,19 +141,28 @@ namespace DialogueEditor.Dialogue.Scripts
                     item.GameEvent.Raise();
                 }
             }
-            foreach (EventData_StringModifier item in nodeData.EventData_StringModifiers)
+            nextNodeCheck = () =>
+            {
+                CheckNodeType(GetNextNode(nodeData));
+            };
+            runCheck = true;
+        }
+
+        private void RunNode(ModifierData nodeData)
+        {
+            foreach (ModifierData_String item in nodeData.ModifierData_Strings)
             {
                 DMCModifier.StringModifier(item);
             }
-            foreach (EventData_FloatModifier item in nodeData.EventData_FloatModifiers)
+            foreach (ModifierData_Float item in nodeData.ModifierData_Floats)
             {
                 DMCModifier.FloatModifier(item);
             }
-            foreach (EventData_IntModifier item in nodeData.EventData_IntModifiers)
+            foreach (ModifierData_Int item in nodeData.ModifierData_Ints)
             {
                 DMCModifier.IntModifier(item);
             }
-            foreach (EventData_BoolModifier item in nodeData.EventData_BoolModifiers)
+            foreach (ModifierData_Bool item in nodeData.ModifierData_Bools)
             {
                 DMCModifier.BoolModifier(item);
             }
@@ -161,27 +175,32 @@ namespace DialogueEditor.Dialogue.Scripts
 
         private void RunNode(EndData nodeData)
         {
-            switch (nodeData.EndNodeType.Value)
+            if (characterSpeaking != null)
+                dialogueController.ShowDialogueUI(characterSpeaking, false);
+
+            foreach (Character character in participatingCharacters)
             {
-                case EndNodeType.End:
-                    if(characterSpeaking != null)
-                        dialogueController.ShowDialogueUI(characterSpeaking, false);
-                    break;
-                case EndNodeType.Repeat:
-                    nextNodeCheck = () =>
-                    {
-                        CheckNodeType(GetNodeByGuid(currentDialogueNodeData.NodeGuid));
-                    }; runCheck = true;
-                    break;
-                case EndNodeType.RetrunToStart:
-                    nextNodeCheck = () =>
-                    {
-                        CheckNodeType(GetNextNode(dialogueContainer.StartDatas[0]));
-                    }; runCheck = true;
-                    break;
-                default:
-                    break;
+                character.actor.actorSpeaking = false;
             }
+
+        }
+
+        private void RunNode(RepeatData nodeData)
+        {
+            nextNodeCheck = () =>
+            {
+                CheckNodeType(GetNodeByGuid(currentDialogueNodeData.NodeGuid));
+            }; 
+            runCheck = true;
+        }
+
+        private void RunNode(RestartData nodeData)
+        {
+            nextNodeCheck = () =>
+            {
+                CheckNodeType(GetNodeByGuid(currentDialogueNodeData.NodeGuid));
+            };
+            runCheck = true;
         }
 
         private void RunNode(DialogueData nodeData)
@@ -269,7 +288,6 @@ namespace DialogueEditor.Dialogue.Scripts
             dialogueController.SetButtons(dialogueButtonContainers);
             dialogueController.ShowDialogueUI(characterSpeaking, true);
         }
-
 
         private void PlayAudio(AudioClip audioClip)
         {

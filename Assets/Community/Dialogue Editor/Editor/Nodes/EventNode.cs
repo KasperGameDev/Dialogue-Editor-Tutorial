@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DialogueEditor.Events;
+using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -38,32 +39,8 @@ namespace DialogueEditor.Dialogue.Editor
             menu.text = "Add Event";
 
             menu.menu.AppendAction("Game Event Scriptable Object", new Action<DropdownMenuAction>(x => AddScriptableEvent()));
-            menu.menu.AppendAction("String Event Modifier", new Action<DropdownMenuAction>(x => AddStringEvent()));
-            menu.menu.AppendAction("Float Event Modifier", new Action<DropdownMenuAction>(x => AddFloatEvent()));
-            menu.menu.AppendAction("Int Event Modifier", new Action<DropdownMenuAction>(x => AddIntEvent()));
-            menu.menu.AppendAction("Bool Event Modifier", new Action<DropdownMenuAction>(x => AddBoolEvent()));
 
             titleContainer.Add(menu);
-        }
-
-        public void AddStringEvent(EventData_StringModifier stringEvent = null)
-        {
-            AddStringModifierEventBuild(eventData.EventData_StringModifiers, stringEvent);
-        }
-
-        public void AddFloatEvent(EventData_FloatModifier FloatEvent = null)
-        {
-            AddFloatModifierEventBuild(eventData.EventData_FloatModifiers, FloatEvent);
-        }
-
-        public void AddIntEvent(EventData_IntModifier IntEvent = null)
-        {
-            AddIntModifierEventBuild(eventData.EventData_IntModifiers, IntEvent);
-        }
-
-        public void AddBoolEvent(EventData_BoolModifier BoolEvent = null)
-        {
-            AddBoolModifierEventBuild(eventData.EventData_BoolModifiers, BoolEvent);
         }
 
         public void AddScriptableEvent(Container_DialogueEventSO eventScriptableObjectData = null)
@@ -76,26 +53,47 @@ namespace DialogueEditor.Dialogue.Editor
                 tmpGameEventSO.GameEvent = eventScriptableObjectData.GameEvent;
             }
             eventData.Container_DialogueEventSOs.Add(tmpGameEventSO);
-
-            // Container of all object.
             Box boxContainer = new Box();
             boxContainer.AddToClassList("EventBox");
 
-            // Scriptable Object Event.
-            ObjectField objectField = GetNewObjectField_GameEvent(tmpGameEventSO, "EventObject");
+            Box buttonsBox = new Box();
+            buttonsBox.AddToClassList("BtnBox");
 
-            // Remove button.
-            Button btn = GetNewButton(" - ", "removeBtn");
-            btn.clicked += () =>
+            Button add = GetNewButton(" + ", "MoveBtn");
+
+            Button remove = GetNewButton(" - ", "MoveBtn");
+
+            // Scriptable Object Event.
+            ObjectField objectField = GetNewObjectField_GameEvent(tmpGameEventSO, add, remove, "EventObject");
+
+            add.clicked += () =>
             {
-                DeleteBox(boxContainer);
-                EventData.Container_DialogueEventSOs.Remove(tmpGameEventSO);
+                objectField.value = GameEventSO.NewEvent();
+                RefreshExpandedState();
+            };
+            remove.clicked += () =>
+            {
+                objectField.value = null;
+                RefreshExpandedState();
             };
 
             // Add it to the box
+            if (eventScriptableObjectData != null)
+            {
+                if (eventScriptableObjectData.GameEvent != null)
+                    add.SetEnabled(false);
+                else
+                    remove.SetEnabled(false);
+            }
+            else
+            {
+                add.SetEnabled(true);
+                remove.SetEnabled(false);
+            }
             boxContainer.Add(objectField);
-            boxContainer.Add(btn);
-
+            buttonsBox.Add(add);
+            buttonsBox.Add(remove);
+            boxContainer.Add(buttonsBox);
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
         }

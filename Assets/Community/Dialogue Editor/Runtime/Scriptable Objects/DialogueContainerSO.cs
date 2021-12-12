@@ -11,9 +11,12 @@ namespace DialogueEditor.Dialogue
         public int participatingCharacters;
         public List<NodeLinkData> NodeLinkDatas = new List<NodeLinkData>();
 
-        public List<EndData> EndDatas = new List<EndData>();
-        public List<StartData> StartDatas = new List<StartData>();
+        public EndData EndData = new EndData();
+        public StartData StartData = new StartData();
+        public List<RestartData> RestartDatas = new List<RestartData>();
+        public List<RepeatData> RepeatDatas = new List<RepeatData>();
         public List<EventData> EventDatas = new List<EventData>();
+        public List<ModifierData> ModifierDatas = new List<ModifierData>();
         public List<BranchData> BranchDatas = new List<BranchData>();
         public List<DialogueData> DialogueDatas = new List<DialogueData>();
         public List<ChoiceConnectorData> ChoiceConnectorDatas = new List<ChoiceConnectorData>();
@@ -24,9 +27,12 @@ namespace DialogueEditor.Dialogue
             get
             {
                 List<BaseData> tmp = new List<BaseData>();
-                tmp.AddRange(EndDatas);
-                tmp.AddRange(StartDatas);
+                tmp.Add(EndData);
+                tmp.Add(StartData);
+                tmp.AddRange(RepeatDatas);
+                tmp.AddRange(RestartDatas);
                 tmp.AddRange(EventDatas);
+                tmp.AddRange(ModifierDatas);
                 tmp.AddRange(BranchDatas);
                 tmp.AddRange(DialogueDatas);
                 tmp.AddRange(ChoiceConnectorDatas);

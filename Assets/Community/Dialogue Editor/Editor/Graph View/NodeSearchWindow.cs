@@ -29,8 +29,9 @@ namespace DialogueEditor.Dialogue.Editor
             AddNodeSearch("Choice Connector",new ChoiceConnectorNode()),
             AddNodeSearch("Branch",new BranchNode()),
             AddNodeSearch("Event",new EventNode()),
-            AddNodeSearch("Start",new StartNode()),
-            AddNodeSearch("End",new EndNode()),
+            AddNodeSearch("Modifier",new ModifierNode()),
+            AddNodeSearch("Restart",new RestartNode()),
+            AddNodeSearch("Repeat",new RepeatNode()),
         };
 
             return tree;
@@ -63,17 +64,20 @@ namespace DialogueEditor.Dialogue.Editor
         {
             switch (searchTreeEntry.userData)
             {
-                case StartNode node:
-                    graphView.AddElement(graphView.CreateStartNode(position));
-                    return true;
                 case DialogueNode node:
                     graphView.AddElement(graphView.CreateDialogueNode(position));
                     return true;
                 case EventNode node:
                     graphView.AddElement(graphView.CreateEventNode(position));
                     return true;
-                case EndNode node:
-                    graphView.AddElement(graphView.CreateEndNode(position));
+                case ModifierNode node:
+                    graphView.AddElement(graphView.CreateModifierNode(position));
+                    return true;
+                case RepeatNode node:
+                    graphView.AddElement(graphView.CreateRepeatNode(position));
+                    return true;
+                case RestartNode node:
+                    graphView.AddElement(graphView.CreateRestartNode(position));
                     return true;
                 case BranchNode node:
                     graphView.AddElement(graphView.CreateBranchNode(position));

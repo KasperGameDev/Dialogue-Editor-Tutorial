@@ -1,9 +1,9 @@
-
 namespace DialogueEditor.Dialogue
 {
-    public enum IntDialogueEventModifierType
+    public enum StringDialogueModifierType
     {
         Add = 3,
         Subtract = 4,
     }
 }
+

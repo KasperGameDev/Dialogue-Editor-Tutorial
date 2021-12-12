@@ -1,6 +1,6 @@
 namespace DialogueEditor.Dialogue
 {
-    public enum BoolDialogueEventModifierType
+    public enum BoolDialogueModifierType
     {
         SetTrue = 1,
         SetFalse = 2,

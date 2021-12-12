@@ -11,7 +11,9 @@ namespace DialogueEditor.Dialogue.Editor
         private string graphViewStyleSheet = "USS/GraphView/GraphViewStyleSheet";   // Name of the graph view style sheet.
         private DialogueEditorWindow editorWindow;
         private NodeSearchWindow searchWindow;
-        private Blackboard blackboard;
+
+        public StartNode startNode;
+        public EndNode endNode;
 
         public DialogueGraphView(DialogueEditorWindow editorWindow)
         {
@@ -34,7 +36,18 @@ namespace DialogueEditor.Dialogue.Editor
             Insert(0, grid);
             grid.StretchToParentSize();
 
+            InitialiseGraph();
+        }
+
+        public void InitialiseGraph()
+        {
             AddSearchWindow();
+        }
+
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            if(!(evt.target is StartNode || evt.target is EndNode))
+                base.BuildContextualMenu(evt);
         }
 
         /// <summary>
@@ -113,6 +126,36 @@ namespace DialogueEditor.Dialogue.Editor
         public EventNode CreateEventNode(Vector2 position)
         {
             return new EventNode(position, editorWindow, this);
+        }
+
+        /// <summary>
+        /// Make new Modifier Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>Event Node</returns>
+        public ModifierNode CreateModifierNode(Vector2 position)
+        {
+            return new ModifierNode(position, editorWindow, this);
+        }
+
+        /// <summary>
+        /// Make new Restart Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>End Node</returns>
+        public RestartNode CreateRestartNode(Vector2 position)
+        {
+            return new RestartNode(position, editorWindow, this);
+        }
+
+        /// <summary>
+        /// Make new Repeat Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>End Node</returns>
+        public RepeatNode CreateRepeatNode(Vector2 position)
+        {
+            return new RepeatNode(position, editorWindow, this);
         }
 
         /// <summary>

@@ -60,23 +60,14 @@ namespace DialogueEditor.Dialogue
         public ChoiceStateType Value = ChoiceStateType.Hide;
     }
 
-    [System.Serializable]
-    public class Container_EndNodeType
-    {
-#if UNITY_EDITOR
-        public EnumField EnumField;
-#endif
-        public EndNodeType Value = EndNodeType.End;
-    }
-
     #region String Event
     [System.Serializable]
-    public class Container_StringEventModifierType
+    public class Container_StringModifierType
     {
 #if UNITY_EDITOR
         public EnumField EnumField;
 #endif
-        public StringDialogueEventModifierType Value;
+        public StringDialogueModifierType Value;
     }
 
     [System.Serializable]
@@ -91,12 +82,12 @@ namespace DialogueEditor.Dialogue
 
     #region Float Event
     [System.Serializable]
-    public class Container_FloatEventModifierType
+    public class Container_FloatModifierType
     {
 #if UNITY_EDITOR
         public EnumField EnumField;
 #endif
-        public FloatDialogueEventModifierType Value;
+        public FloatDialogueModifierType Value;
     }
 
     [System.Serializable]
@@ -111,12 +102,12 @@ namespace DialogueEditor.Dialogue
 
     #region Int Event
     [System.Serializable]
-    public class Container_IntEventModifierType
+    public class Container_IntModifierType
     {
 #if UNITY_EDITOR
         public EnumField EnumField;
 #endif
-        public IntDialogueEventModifierType Value;
+        public IntDialogueModifierType Value;
     }
 
     [System.Serializable]
@@ -131,12 +122,12 @@ namespace DialogueEditor.Dialogue
 
     #region Bool Event
     [System.Serializable]
-    public class Container_BoolEventModifierType
+    public class Container_BoolModifierType
     {
 #if UNITY_EDITOR
         public EnumField EnumField;
 #endif
-        public BoolDialogueEventModifierType Value;
+        public BoolDialogueModifierType Value;
     }
 
     [System.Serializable]
@@ -178,12 +169,12 @@ namespace DialogueEditor.Dialogue
 
     #region String
     [System.Serializable]
-    public class EventData_StringModifier
+    public class ModifierData_String
     {
         public StringVariableSO VariableSO;
         public Container_String Value = new Container_String();
 
-        public Container_StringEventModifierType EventType = new Container_StringEventModifierType();
+        public Container_StringModifierType EventType = new Container_StringModifierType();
     }
 
 
@@ -199,12 +190,12 @@ namespace DialogueEditor.Dialogue
 
     #region Float
     [System.Serializable]
-    public class EventData_FloatModifier
+    public class ModifierData_Float
     {
         public FloatVariableSO VariableSO;
         public Container_Float Value = new Container_Float();
 
-        public Container_FloatEventModifierType EventType = new Container_FloatEventModifierType();
+        public Container_FloatModifierType EventType = new Container_FloatModifierType();
     }
 
 
@@ -220,12 +211,12 @@ namespace DialogueEditor.Dialogue
 
     #region Int
     [System.Serializable]
-    public class EventData_IntModifier
+    public class ModifierData_Int
     {
         public IntVariableSO VariableSO;
         public Container_Int Value = new Container_Int();
 
-        public Container_IntEventModifierType EventType = new Container_IntEventModifierType();
+        public Container_IntModifierType EventType = new Container_IntModifierType();
     }
 
 
@@ -241,12 +232,12 @@ namespace DialogueEditor.Dialogue
 
     #region Bool
     [System.Serializable]
-    public class EventData_BoolModifier
+    public class ModifierData_Bool
     {
         public BoolVariableSO VariableSO;
         public Container_Bool Value = new Container_Bool();
 
-        public Container_BoolEventModifierType EventType = new Container_BoolEventModifierType();
+        public Container_BoolModifierType EventType = new Container_BoolModifierType();
     }
 
 
