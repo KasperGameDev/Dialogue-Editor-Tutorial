@@ -6,7 +6,7 @@ A Unity Dialogue Editor
 
 ## Dialogue-Editor
 
-![](https://i.imgur.com/jMExZVI.png)
+![](https://i.imgur.com/2yzJFRH.png)
 
 This Dialogue editor is built by [Kasper-dev](https://github.com/KasperGameDev/Dialogue-Editor-Tutorial/tree/Community_Contribute), and is open to Contribution from the community.
 This editor was built for a tutorial series by Kasper dev which you can find [here](https://youtube.com/playlist?list=PLOZ3CbLbuxPwQvkDMBiIe4v1pTwAE380z)
