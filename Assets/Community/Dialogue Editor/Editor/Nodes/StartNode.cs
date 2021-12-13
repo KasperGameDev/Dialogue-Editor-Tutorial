@@ -84,6 +84,7 @@ namespace DialogueEditor.Dialogue.Editor
             btn.clicked += () =>
             {
                 StartData.ParticipatingActors.Remove(tempActor);
+                editorWindow.QuickSave();
                 DeleteBox(boxContainer);
             };
 

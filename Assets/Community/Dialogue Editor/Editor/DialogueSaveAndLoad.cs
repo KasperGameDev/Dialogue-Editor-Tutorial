@@ -18,6 +18,24 @@ namespace DialogueEditor.Dialogue.Editor
         {
             this.graphView = graphView;
         }
+        public void QuickSaveAndLoad(DialogueContainerSO DialogueContainerSO)
+        {
+            SaveEdges(DialogueContainerSO);
+            edges.ForEach(edge => graphView.RemoveElement(edge));
+
+            DialogueContainerSO.DialogueDatas.Clear();
+
+            foreach (BaseNode node in nodes)
+            {
+                if (node is DialogueNode)
+                {
+                    DialogueContainerSO.DialogueDatas.Add(SaveNodeData(node as DialogueNode));
+                    graphView.RemoveElement(node);
+                }
+            }
+            GenerateNodes(DialogueContainerSO.DialogueDatas);
+            ConnectNodes(DialogueContainerSO);
+        }
 
         public void SaveAs(DialogueContainerSO DialogueContainerSO)
         {
@@ -68,7 +86,7 @@ namespace DialogueEditor.Dialogue.Editor
             EditorUtility.DisplayDialog("Success", "You're Dialogue is Saved!", "OK");
         }
 
-            public void Load(DialogueContainerSO DialogueContainerSO)
+        public void Load(DialogueContainerSO DialogueContainerSO)
         {
             ClearGraph();
             GenerateNodes(DialogueContainerSO);
@@ -286,7 +304,6 @@ namespace DialogueEditor.Dialogue.Editor
             return nodeData;
         }
 
-
         private ModifierData SaveNodeData(ModifierNode node)
         {
             ModifierData nodeData = new ModifierData()
@@ -477,25 +494,33 @@ namespace DialogueEditor.Dialogue.Editor
                 if (dialogueContainer.StartData.NodeGuid.Length > 0)
                     graphView.startNode.NodeGuid = dialogueContainer.StartData.NodeGuid;
                 graphView.startNode.SetPosition(new Rect(dialogueContainer.StartData.Position, new Vector2(200, 250)));
-                foreach(Container_Actor actor in dialogueContainer.StartData.ParticipatingActors)
+                foreach (Container_Actor actor in dialogueContainer.StartData.ParticipatingActors)
                 {
                     graphView.startNode.AddScriptableActor(actor);
                 }
             }
+            graphView.AddElement(graphView.startNode);
 
             // End
             if (dialogueContainer.EndData != null)
             {
-                if(dialogueContainer.EndData.NodeGuid.Length > 0)
+                if (dialogueContainer.EndData.NodeGuid.Length > 0)
                     graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
                 graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 1500)));
             }
-
-            graphView.AddElement(graphView.startNode);
             graphView.AddElement(graphView.endNode);
 
-            // Event Node
-            foreach (EventData node in dialogueContainer.EventDatas)
+            GenerateNodes(dialogueContainer.EventDatas);
+            GenerateNodes(dialogueContainer.BranchDatas);
+            GenerateNodes(dialogueContainer.ModifierDatas);
+            GenerateNodes(dialogueContainer.ChoiceConnectorDatas);
+            GenerateNodes(dialogueContainer.ChoiceDatas);
+            GenerateNodes(dialogueContainer.DialogueDatas);
+        }
+
+        // Event Node
+        private void GenerateNodes(List<EventData> eventDatas) {
+            foreach (EventData node in eventDatas)
             {
                 EventNode tempNode = graphView.CreateEventNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;
@@ -508,9 +533,13 @@ namespace DialogueEditor.Dialogue.Editor
                 tempNode.LoadValueInToField();
                 graphView.AddElement(tempNode);
             }
+        }
 
+        // Modifier Node
+        private void GenerateNodes(List<ModifierData> modifierDatas)
+        {
             // Event Node
-            foreach (ModifierData node in dialogueContainer.ModifierDatas)
+            foreach (ModifierData node in modifierDatas)
             {
                 ModifierNode tempNode = graphView.CreateModifierNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;
@@ -535,9 +564,12 @@ namespace DialogueEditor.Dialogue.Editor
                 tempNode.LoadValueInToField();
                 graphView.AddElement(tempNode);
             }
+        }
 
-            // Branch Node
-            foreach (BranchData node in dialogueContainer.BranchDatas)
+        // Branch Node
+        private void GenerateNodes(List<BranchData> branchDatas)
+        {
+            foreach (BranchData node in branchDatas)
             {
                 BranchNode tempNode = graphView.CreateBranchNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;
@@ -566,9 +598,12 @@ namespace DialogueEditor.Dialogue.Editor
                 tempNode.ReloadLanguage();
                 graphView.AddElement(tempNode);
             }
+        }
 
-            // Choice Node
-            foreach (ChoiceData node in dialogueContainer.ChoiceDatas)
+        // Choice Node
+        private void GenerateNodes(List<ChoiceData> choiceDatas)
+        {
+            foreach (ChoiceData node in choiceDatas)
             {
                 ChoiceNode tempNode = graphView.CreateChoiceNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;
@@ -617,16 +652,17 @@ namespace DialogueEditor.Dialogue.Editor
                 tempNode.ReloadLanguage();
                 graphView.AddElement(tempNode);
             }
+        }
 
-            // Dialogue Node
-            foreach (DialogueData node in dialogueContainer.DialogueDatas)
+        // Dialogue Node
+        private void GenerateNodes(List<DialogueData> dialogueDatas) {
+            foreach (DialogueData node in dialogueDatas)
             {
-                DialogueNode tempNode = graphView.CreateDialogueNode(node.Position);
+                DialogueNode tempNode = graphView.CreateDialogueNode(node.Position, node.DialogueData_Character);
                 tempNode.NodeGuid = node.NodeGuid;
 
                 List<DialogueData_BaseContainer> data_BaseContainer = new List<DialogueData_BaseContainer>();
-                //tempNode.characterField.value = node.DialogueData_Character.actor;
-                //tempNode.DialogueData.DialogueData_Character.actor = node.DialogueData_Character.actor;
+              
                 data_BaseContainer.AddRange(node.DialogueData_Texts);
 
                 data_BaseContainer.Sort(delegate (DialogueData_BaseContainer x, DialogueData_BaseContainer y)
@@ -650,8 +686,12 @@ namespace DialogueEditor.Dialogue.Editor
                 tempNode.ReloadLanguage();
                 graphView.AddElement(tempNode);
             }
+        }
 
-            foreach (ChoiceConnectorData node in dialogueContainer.ChoiceConnectorDatas)
+        // Choice Connector Node
+        private void GenerateNodes(List<ChoiceConnectorData> choiceConnectorDatas)
+        {
+            foreach (ChoiceConnectorData node in choiceConnectorDatas)
             {
                 ChoiceConnectorNode tempNode = graphView.CreateChoiceConnectorNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;

@@ -16,7 +16,7 @@ MonoBehaviour:
   NodeLinkDatas:
   - BaseNodeGuid: 7767d3f2-aaf0-47a9-b3f7-997b8d595a4d
     BasePortName: Output
-    TargetNodeGuid: 9daf31cd-b91a-4096-9e6c-d4705dbd6cf2
+    TargetNodeGuid: 01ae63ea-f110-47a8-87d3-da67baf7fb5f
     TargetPortName: Input
   - BaseNodeGuid: 9daf31cd-b91a-4096-9e6c-d4705dbd6cf2
     BasePortName: Continue
@@ -24,13 +24,14 @@ MonoBehaviour:
     TargetPortName: End
   EndData:
     NodeGuid: 09d4b2aa-dd1f-4f89-a8e5-98a1be756031
-    Position: {x: 458, y: -4.000001}
+    Position: {x: 458, y: -4.666667}
   StartData:
     NodeGuid: 7767d3f2-aaf0-47a9-b3f7-997b8d595a4d
-    Position: {x: -415.33334, y: -34}
+    Position: {x: -438, y: -34}
     ParticipatingActors:
     - actor: {fileID: 11400000, guid: 2e188bb3d15277046a7ab6379efc2b99, type: 2}
     - actor: {fileID: 11400000, guid: 7a9ce7ceab18b1d49bbc3baadf471811, type: 2}
+    - actor: {fileID: 11400000, guid: 0011a7b32f13a874094f9aa71e54aabd, type: 2}
   RestartDatas: []
   RepeatDatas: []
   EventDatas:
@@ -45,7 +46,12 @@ MonoBehaviour:
   ModifierDatas:
   - NodeGuid: b84ddaf2-0a75-46b6-8539-206dd6c6ecd6
     Position: {x: 40, y: 113.333336}
-    ModifierData_Strings: []
+    ModifierData_Strings:
+    - VariableSO: {fileID: 0}
+      Value:
+        Value: 
+      EventType:
+        Value: 0
     ModifierData_Floats: []
     ModifierData_Ints: []
     ModifierData_Bools:
@@ -69,16 +75,21 @@ MonoBehaviour:
       EventType:
         Value: 0
   DialogueDatas:
-  - NodeGuid: 9daf31cd-b91a-4096-9e6c-d4705dbd6cf2
-    Position: {x: 40, y: -34}
-    DialogueData_Texts: []
-    DialogueData_Character:
-      actor: {fileID: 0}
   - NodeGuid: 01ae63ea-f110-47a8-87d3-da67baf7fb5f
     Position: {x: 40, y: -188}
     DialogueData_Texts: []
     DialogueData_Character:
-      actor: {fileID: 0}
+      actor: {fileID: 11400000, guid: 7a9ce7ceab18b1d49bbc3baadf471811, type: 2}
+  - NodeGuid: 2f02cd02-1625-443f-b4cc-371de6acb072
+    Position: {x: 472.66666, y: -117.333336}
+    DialogueData_Texts: []
+    DialogueData_Character:
+      actor: {fileID: 11400000, guid: 0011a7b32f13a874094f9aa71e54aabd, type: 2}
+  - NodeGuid: 9daf31cd-b91a-4096-9e6c-d4705dbd6cf2
+    Position: {x: 40, y: -34}
+    DialogueData_Texts: []
+    DialogueData_Character:
+      actor: {fileID: 11400000, guid: 2e188bb3d15277046a7ab6379efc2b99, type: 2}
   ChoiceConnectorDatas: []
   ChoiceDatas: []
   ContextDatas: []

@@ -590,6 +590,7 @@ namespace DialogueEditor.Dialogue.Editor
                     add.SetEnabled(false);
                     remove.SetEnabled(true);
                 }
+                editorWindow.QuickSave();
             });
             objectField.SetValueWithoutNotify(inputActor.actor);
 
@@ -611,7 +612,10 @@ namespace DialogueEditor.Dialogue.Editor
         {
             PopupField<Actor> popupField;
             if ( participatingActor.Count > 0)
-                popupField = new PopupField<Actor>(participatingActor, 0);
+                if(participatingActor.Contains(inputActor.actor))
+                    popupField = new PopupField<Actor>(participatingActor, inputActor.actor);
+                else
+                    popupField = new PopupField<Actor>(participatingActor, 0);
             else
                 popupField = new PopupField<Actor>();
 

@@ -174,6 +174,14 @@ namespace DialogueEditor.Dialogue.Editor
             }
         }
 
+        public void QuickSave()
+        {
+            if (currentDialogueContainer != null)
+            {
+                saveAndLoad.QuickSaveAndLoad(currentDialogueContainer);
+            }
+        }
+
         public void SaveAs()
         {
             Language(LanguageType.English);

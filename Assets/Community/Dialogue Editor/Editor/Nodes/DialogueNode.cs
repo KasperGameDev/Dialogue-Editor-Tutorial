@@ -23,7 +23,7 @@ namespace DialogueEditor.Dialogue.Editor
 
         public DialogueNode() { }
 
-        public DialogueNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView)
+        public DialogueNode(Vector2 position, DialogueEditorWindow editorWindow, DialogueGraphView graphView, Container_Actor actor = null)
         {
             base.editorWindow = editorWindow;
             base.graphView = graphView;
@@ -42,7 +42,7 @@ namespace DialogueEditor.Dialogue.Editor
             TopContainer();
 
             ReloadActors();
-            CharacterName();
+            CharacterName(actor);
             RefreshExpandedState();
         }
 
@@ -340,14 +340,14 @@ namespace DialogueEditor.Dialogue.Editor
             boxContainer.Add(ImagesBox);
         }
 
-        public void CharacterName()
+        public void CharacterName(Container_Actor actor)
         {
             Container_Actor tmpCharacter = new Container_Actor();
-            if (this.DialogueData.DialogueData_Character != null)
+            if (actor != null)
             {
-                tmpCharacter.actor = DialogueData.DialogueData_Character.actor;
+                tmpCharacter.actor = actor.actor;
             }
-            //DialogueData.Dialogue_BaseContainers.Add(dialogue_character);
+
             DialogueData.DialogueData_Character = tmpCharacter;
 
             Box boxContainer = new Box();
@@ -359,7 +359,6 @@ namespace DialogueEditor.Dialogue.Editor
 
         public void AddScriptableActor(Container_Actor actor)
         {
-            Container_Actor tmpActor = new Container_Actor();
             Box boxContainer = new Box();
             boxContainer.AddToClassList("EventBox");
 
@@ -367,7 +366,7 @@ namespace DialogueEditor.Dialogue.Editor
             buttonsBox.AddToClassList("BtnBox");
 
             // Scriptable Object Event.
-            PopupField<Actor> popupfieldField = GetNewPopupField_Actor(list, tmpActor, "EventObject");
+            PopupField<Actor> popupfieldField = GetNewPopupField_Actor(list, actor, "EventObject");
             boxContainer.Add(popupfieldField);
             boxContainer.Add(buttonsBox);
             extensionContainer.Add(boxContainer);

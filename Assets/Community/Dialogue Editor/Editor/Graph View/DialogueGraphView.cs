@@ -164,9 +164,9 @@ namespace DialogueEditor.Dialogue.Editor
         /// </summary>
         /// <param name="position">position of where to place the node</param>
         /// <returns>Dialogue Node</returns>
-        public DialogueNode CreateDialogueNode(Vector2 position)
+        public DialogueNode CreateDialogueNode(Vector2 position, Container_Actor actor = null)
         {
-            DialogueNode newDialogueNode = new DialogueNode(position, editorWindow, this);
+            DialogueNode newDialogueNode = new DialogueNode(position, editorWindow, this, actor);
             dialogueNodes.Add(newDialogueNode);
             return newDialogueNode;
         }
