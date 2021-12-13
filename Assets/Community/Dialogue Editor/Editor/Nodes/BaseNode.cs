@@ -600,6 +600,34 @@ namespace DialogueEditor.Dialogue.Editor
             return objectField;
         }
 
+        /// <summary>
+        /// Get a new PopupFieldField with a Container_Actor as the Object.
+        /// </summary>
+        /// <param name="inputActor">Container_DialogueEventSO that need to be set in to the ObjectField</param>
+        /// <param name="USS01">USS class add to the UI element</param>
+        /// <param name="USS02">USS class add to the UI element</param>
+        /// <returns></returns>
+        protected PopupField<Actor> GetNewPopupField_Actor(List<Actor> participatingActor, Container_Actor inputActor, string USS01 = "", string USS02 = "")
+        {
+            PopupField<Actor> popupField;
+            if ( participatingActor.Count > 0)
+                popupField = new PopupField<Actor>(participatingActor, 0);
+            else
+                popupField = new PopupField<Actor>();
+
+            popupField.RegisterCallback<ChangeEvent<Actor>>((value) =>
+            {
+                inputActor.actor = value.newValue;
+            });
+            //popupField.SetValueWithoutNotify(inputActor.actor);
+
+            // Set uss class for stylesheet.
+            popupField.AddToClassList(USS01);
+            popupField.AddToClassList(USS02);
+
+            return popupField;
+        }
+
         // Enum's --------------------------------------------------------------------------
 
         /// <summary>
@@ -1113,21 +1141,15 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
             boolbox.Add(textField);
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
@@ -1201,21 +1223,15 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
             boolbox.Add(textField);
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
@@ -1290,21 +1306,15 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
             boolbox.Add(textField);
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
@@ -1369,20 +1379,14 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
@@ -1453,21 +1457,15 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
             boolbox.Add(textField);
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
@@ -1541,21 +1539,15 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
             boolbox.Add(floatField);
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
@@ -1625,21 +1617,15 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
             boolbox.Add(floatField);
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);
@@ -1707,21 +1693,15 @@ namespace DialogueEditor.Dialogue.Editor
                 DeleteBox(boxContainer);
             };
 
-            Box topbox = new Box();
-            topbox.AddToClassList("TopBox");
-            topbox.Add(btn);
-
             // Add it to the box
             Box boolbox = new Box();
             boolbox.AddToClassList("BoxRow");
-            boxContainer.Add(topbox);
+            boolbox.Add(btn);
             boolbox.Add(objectField);
             boolbox.Add(enumField);
 
             boolbox.Add(addActor);
             boolbox.Add(removeActor);
-
-            boxContainer.Add(topbox);
             boxContainer.Add(boolbox);
 
             extensionContainer.Add(boxContainer);

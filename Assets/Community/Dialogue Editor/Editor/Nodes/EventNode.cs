@@ -90,6 +90,17 @@ namespace DialogueEditor.Dialogue.Editor
                 add.SetEnabled(true);
                 remove.SetEnabled(false);
             }
+
+
+            // Remove button.
+            Button btn = GetNewButton(" × ", "removeBtn");
+            btn.clicked += () =>
+            {
+                eventData.Container_DialogueEventSOs.Remove(tmpGameEventSO);
+                DeleteBox(boxContainer);
+            };
+
+            boxContainer.Add(btn);
             boxContainer.Add(objectField);
             buttonsBox.Add(add);
             buttonsBox.Add(remove);

@@ -21,6 +21,7 @@ namespace DialogueEditor.Dialogue
         public List<DialogueData> DialogueDatas = new List<DialogueData>();
         public List<ChoiceConnectorData> ChoiceConnectorDatas = new List<ChoiceConnectorData>();
         public List<ChoiceData> ChoiceDatas = new List<ChoiceData>();
+        public List<ContextData> ContextDatas = new List<ContextData>();
 
         public List<BaseData> AllDatas
         {

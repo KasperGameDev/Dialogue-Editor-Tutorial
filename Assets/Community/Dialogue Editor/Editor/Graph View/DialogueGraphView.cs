@@ -14,6 +14,7 @@ namespace DialogueEditor.Dialogue.Editor
 
         public StartNode startNode;
         public EndNode endNode;
+        public List<DialogueNode> dialogueNodes = new List<DialogueNode>();
 
         public DialogueGraphView(DialogueEditorWindow editorWindow)
         {
@@ -165,7 +166,9 @@ namespace DialogueEditor.Dialogue.Editor
         /// <returns>Dialogue Node</returns>
         public DialogueNode CreateDialogueNode(Vector2 position)
         {
-            return new DialogueNode(position, editorWindow, this);
+            DialogueNode newDialogueNode = new DialogueNode(position, editorWindow, this);
+            dialogueNodes.Add(newDialogueNode);
+            return newDialogueNode;
         }
 
         public ChoiceConnectorNode CreateChoiceConnectorNode(Vector2 position)

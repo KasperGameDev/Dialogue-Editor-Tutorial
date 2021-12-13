@@ -1,4 +1,4 @@
-.extension, .output{
+.node #title{
 	background-color: #785964;
 }
 

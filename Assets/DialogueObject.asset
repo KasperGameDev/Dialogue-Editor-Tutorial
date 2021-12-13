@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1629788f7913a24b94885aa16836fff, type: 3}
+  m_Name: DialogueObject
+  m_EditorClassIdentifier: 
+  participatingCharacters: 0
+  NodeLinkDatas:
+  - BaseNodeGuid: 7767d3f2-aaf0-47a9-b3f7-997b8d595a4d
+    BasePortName: Output
+    TargetNodeGuid: 9daf31cd-b91a-4096-9e6c-d4705dbd6cf2
+    TargetPortName: Input
+  - BaseNodeGuid: 9daf31cd-b91a-4096-9e6c-d4705dbd6cf2
+    BasePortName: Continue
+    TargetNodeGuid: 09d4b2aa-dd1f-4f89-a8e5-98a1be756031
+    TargetPortName: End
+  EndData:
+    NodeGuid: 09d4b2aa-dd1f-4f89-a8e5-98a1be756031
+    Position: {x: 458, y: -4.000001}
+  StartData:
+    NodeGuid: 7767d3f2-aaf0-47a9-b3f7-997b8d595a4d
+    Position: {x: -415.33334, y: -34}
+    ParticipatingActors:
+    - actor: {fileID: 11400000, guid: 2e188bb3d15277046a7ab6379efc2b99, type: 2}
+    - actor: {fileID: 11400000, guid: 7a9ce7ceab18b1d49bbc3baadf471811, type: 2}
+  RestartDatas: []
+  RepeatDatas: []
+  EventDatas:
+  - NodeGuid: 3e5b0765-c967-4100-ade7-8f4efbf29f84
+    Position: {x: 40, y: 463.3333}
+    Container_DialogueEventSOs:
+    - GameEvent: {fileID: 0}
+  - NodeGuid: 12e280ca-3dc1-46a9-b796-b8c31aca13ab
+    Position: {x: 40, y: 610.6667}
+    Container_DialogueEventSOs:
+    - GameEvent: {fileID: 0}
+  ModifierDatas:
+  - NodeGuid: b84ddaf2-0a75-46b6-8539-206dd6c6ecd6
+    Position: {x: 40, y: 113.333336}
+    ModifierData_Strings: []
+    ModifierData_Floats: []
+    ModifierData_Ints: []
+    ModifierData_Bools:
+    - VariableSO: {fileID: 0}
+      Value:
+        Value: 0
+      EventType:
+        Value: 0
+  BranchDatas:
+  - NodeGuid: 59cca72b-f879-4c95-b2b5-031700334a9d
+    Position: {x: 40, y: 296}
+    trueGuidNode: 
+    falseGuidNode: 
+    EventData_StringConditions: []
+    EventData_FloatConditions: []
+    EventData_IntConditions: []
+    EventData_BoolConditions:
+    - VariableSO: {fileID: 0}
+      Value:
+        Value: 0
+      EventType:
+        Value: 0
+  DialogueDatas:
+  - NodeGuid: 9daf31cd-b91a-4096-9e6c-d4705dbd6cf2
+    Position: {x: 40, y: -34}
+    DialogueData_Texts: []
+    DialogueData_Character:
+      actor: {fileID: 0}
+  - NodeGuid: 01ae63ea-f110-47a8-87d3-da67baf7fb5f
+    Position: {x: 40, y: -188}
+    DialogueData_Texts: []
+    DialogueData_Character:
+      actor: {fileID: 0}
+  ChoiceConnectorDatas: []
+  ChoiceDatas: []
+  ContextDatas: []

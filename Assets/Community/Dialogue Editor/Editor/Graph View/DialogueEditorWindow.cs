@@ -153,7 +153,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <summary>
         /// Will load in current selected dialogue container.
         /// </summary>
-        private void Load()
+        public void Load()
         {
             if (currentDialogueContainer != null)
             {

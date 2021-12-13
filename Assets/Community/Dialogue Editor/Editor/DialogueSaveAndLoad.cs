@@ -228,6 +228,7 @@ namespace DialogueEditor.Dialogue.Editor
                 NodeGuid = node.NodeGuid,
                 Position = node.GetPosition().position,
             };
+            nodeData.ParticipatingActors.AddRange(node.StartData.ParticipatingActors);
 
             return nodeData;
         }
@@ -468,21 +469,26 @@ namespace DialogueEditor.Dialogue.Editor
         {
 
             graphView.startNode = graphView.CreateStartNode(Vector2.zero);
+            graphView.endNode = graphView.CreateEndNode(Vector2.right * 500);
 
-            graphView.endNode = graphView.CreateEndNode(Vector2.right * 500)
-                ;
             // Start
-            if (dialogueContainer.StartData.NodeGuid != null)
+            if (dialogueContainer.StartData != null)
             {
-                graphView.startNode.NodeGuid = dialogueContainer.StartData.NodeGuid;
+                if (dialogueContainer.StartData.NodeGuid.Length > 0)
+                    graphView.startNode.NodeGuid = dialogueContainer.StartData.NodeGuid;
                 graphView.startNode.SetPosition(new Rect(dialogueContainer.StartData.Position, new Vector2(200, 250)));
+                foreach(Container_Actor actor in dialogueContainer.StartData.ParticipatingActors)
+                {
+                    graphView.startNode.AddScriptableActor(actor);
+                }
             }
 
-            // Start
-            if (dialogueContainer.EndData.NodeGuid != null)
+            // End
+            if (dialogueContainer.EndData != null)
             {
-                graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
-                graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 250)));
+                if(dialogueContainer.EndData.NodeGuid.Length > 0)
+                    graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
+                graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 1500)));
             }
 
             graphView.AddElement(graphView.startNode);
@@ -530,7 +536,7 @@ namespace DialogueEditor.Dialogue.Editor
                 graphView.AddElement(tempNode);
             }
 
-            // Breach Node
+            // Branch Node
             foreach (BranchData node in dialogueContainer.BranchDatas)
             {
                 BranchNode tempNode = graphView.CreateBranchNode(node.Position);
@@ -619,8 +625,8 @@ namespace DialogueEditor.Dialogue.Editor
                 tempNode.NodeGuid = node.NodeGuid;
 
                 List<DialogueData_BaseContainer> data_BaseContainer = new List<DialogueData_BaseContainer>();
-                tempNode.characterField.value = node.DialogueData_Character.actor;
-                tempNode.DialogueData.DialogueData_Character.actor = node.DialogueData_Character.actor;
+                //tempNode.characterField.value = node.DialogueData_Character.actor;
+                //tempNode.DialogueData.DialogueData_Character.actor = node.DialogueData_Character.actor;
                 data_BaseContainer.AddRange(node.DialogueData_Texts);
 
                 data_BaseContainer.Sort(delegate (DialogueData_BaseContainer x, DialogueData_BaseContainer y)

@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1629788f7913a24b94885aa16836fff, type: 3}
+  m_Name: New Dialogue
+  m_EditorClassIdentifier: 
+  participatingCharacters: 0
+  NodeLinkDatas:
+  - BaseNodeGuid: eb9e7ce5-a844-4cb8-91fb-37c62b1453ce
+    BasePortName: Output
+    TargetNodeGuid: 5245434e-b6ad-4f9b-83e6-cc638de8b0a8
+    TargetPortName: Input
+  - BaseNodeGuid: 5245434e-b6ad-4f9b-83e6-cc638de8b0a8
+    BasePortName: Continue
+    TargetNodeGuid: 52ec718e-dcee-4b05-8eaf-8c247bd2d036
+    TargetPortName: 
+  - BaseNodeGuid: 52ec718e-dcee-4b05-8eaf-8c247bd2d036
+    BasePortName: 3a486b36-496d-4ffb-992c-241dc67cac3e
+    TargetNodeGuid: 7a43c877-d7b9-4d52-ad2e-6d29f998bcee
+    TargetPortName: Input
+  - BaseNodeGuid: 7a43c877-d7b9-4d52-ad2e-6d29f998bcee
+    BasePortName: Output
+    TargetNodeGuid: 6ff7d2a5-c455-4652-8e08-60e84300ce39
+    TargetPortName: End
+  EndData:
+    NodeGuid: 6ff7d2a5-c455-4652-8e08-60e84300ce39
+    Position: {x: 1275.3333, y: 280.66666}
+  StartData:
+    NodeGuid: eb9e7ce5-a844-4cb8-91fb-37c62b1453ce
+    Position: {x: 0, y: 0}
+    ParticipatingActors:
+    - actor: {fileID: 11400000, guid: 8750fb91b4b53cf4da2d67528cc2313a, type: 2}
+    - actor: {fileID: 11400000, guid: 2e188bb3d15277046a7ab6379efc2b99, type: 2}
+    - actor: {fileID: 11400000, guid: 2e188bb3d15277046a7ab6379efc2b99, type: 2}
+  RestartDatas: []
+  RepeatDatas: []
+  EventDatas: []
+  ModifierDatas: []
+  BranchDatas: []
+  DialogueDatas:
+  - NodeGuid: 5245434e-b6ad-4f9b-83e6-cc638de8b0a8
+    Position: {x: 194.66667, y: 117.333336}
+    DialogueData_Texts: []
+    DialogueData_Character:
+      actor: {fileID: 0}
+  ChoiceConnectorDatas:
+  - NodeGuid: 52ec718e-dcee-4b05-8eaf-8c247bd2d036
+    Position: {x: 526, y: 154.66667}
+    DialogueData_Ports:
+    - PortGuid: 3a486b36-496d-4ffb-992c-241dc67cac3e
+      InputGuid: 7a43c877-d7b9-4d52-ad2e-6d29f998bcee
+      OutputGuid: 52ec718e-dcee-4b05-8eaf-8c247bd2d036
+  ChoiceDatas:
+  - NodeGuid: 7a43c877-d7b9-4d52-ad2e-6d29f998bcee
+    Position: {x: 691.3334, y: 250.00002}
+    ChoiceStateTypes:
+      Value: 1
+    Text:
+    - LanguageType: 1
+      LanguageGenericType: 
+    - LanguageType: 2
+      LanguageGenericType: 
+    - LanguageType: 3
+      LanguageGenericType: 
+    - LanguageType: 4
+      LanguageGenericType: 
+    - LanguageType: 5
+      LanguageGenericType: 
+    - LanguageType: 6
+      LanguageGenericType: 
+    - LanguageType: 7
+      LanguageGenericType: 
+    - LanguageType: 8
+      LanguageGenericType: 
+    AudioClips:
+    - LanguageType: 1
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 2
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 3
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 4
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 5
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 6
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 7
+      LanguageGenericType: {fileID: 0}
+    - LanguageType: 8
+      LanguageGenericType: {fileID: 0}
+    EventData_StringConditions: []
+    EventData_FloatConditions: []
+    EventData_IntConditions: []
+    EventData_BoolConditions: []
+  ContextDatas: []

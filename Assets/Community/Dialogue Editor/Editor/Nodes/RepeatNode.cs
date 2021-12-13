@@ -26,7 +26,7 @@ namespace DialogueEditor.Dialogue.Editor
 
             mainContainer.Remove(titleContainer);
             topContainer.Remove(outputContainer);
-            AddInputPort("End", Color.cyan, Port.Capacity.Multi);
+            AddInputPort("Repeat", Color.cyan, Port.Capacity.Multi);
         }
     }
 }

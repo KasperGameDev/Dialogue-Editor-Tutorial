@@ -257,6 +257,16 @@ namespace DialogueEditor.Dialogue
     {
         public Actor actor;
     }
+
+    [System.Serializable]
+    public class Container_SelectActor
+    {
+#if UNITY_EDITOR
+        public PopupField<Actor> PopupField;
+#endif
+        public Container_Actor Actor;
+    }
+
     #endregion
 }
 

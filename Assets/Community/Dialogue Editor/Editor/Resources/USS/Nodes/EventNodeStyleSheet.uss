@@ -1,19 +1,5 @@
-.EventBox{
-	flex-direction: row;
-	padding: 10px;
-	border-color: #5C5C5C;
-	border-width: 4px;
-	margin: 1px;
-	padding: 5px;
-	background-color: rgb(50, 50, 50);
-}
-
 .EventBox Button{
 	align-self: flex-end;
-}
-
-.EventObject{
-	min-width: 310px;
 }
 
 .node #title{

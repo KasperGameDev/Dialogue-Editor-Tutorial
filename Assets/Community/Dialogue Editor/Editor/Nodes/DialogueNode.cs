@@ -14,6 +14,7 @@ namespace DialogueEditor.Dialogue.Editor
         private DialogueData dialogueData = new DialogueData();
         public DialogueData DialogueData { get => dialogueData; set => dialogueData = value; }
 
+        List<Actor> list= new List<Actor>();
 
         protected Vector2 dialogueNodeSize = new Vector2(200, 500);
 
@@ -40,6 +41,7 @@ namespace DialogueEditor.Dialogue.Editor
 
             TopContainer();
 
+            ReloadActors();
             CharacterName();
             RefreshExpandedState();
         }
@@ -350,53 +352,23 @@ namespace DialogueEditor.Dialogue.Editor
 
             Box boxContainer = new Box();
             boxContainer.AddToClassList("CharacterNameBox");
-
-            AddScriptableActor(tmpCharacter, boxContainer);
+            AddScriptableActor(tmpCharacter);
 
             extensionContainer.Add(boxContainer);
         }
 
-        public void AddScriptableActor(Container_Actor actorData, Box boxContainer)
+        public void AddScriptableActor(Container_Actor actor)
         {
-            Container_Actor tempActor = new Container_Actor();
+            Container_Actor tmpActor = new Container_Actor();
+            Box boxContainer = new Box();
+            boxContainer.AddToClassList("EventBox");
 
             Box buttonsBox = new Box();
             buttonsBox.AddToClassList("BtnBox");
 
-            Button addActor = GetNewButton(" + ", "MoveBtn");
-
-            Button removeActor = GetNewButton(" - ", "MoveBtn");
-
-            // If value is not null we load in values.
-            if (actorData != null)
-            {
-                tempActor.actor = actorData.actor;
-            }
-            DialogueData.DialogueData_Character = (tempActor);
-
             // Scriptable Object Event.
-            characterField = GetNewObjectField_Actor(tempActor, addActor, removeActor, "CharacterName");
-
-
-            addActor.clicked += () =>
-            {
-                characterField.value = Actor.NewActor();
-                RefreshExpandedState();
-            };
-            removeActor.clicked += () =>
-            {
-                characterField.value = null;
-                RefreshExpandedState();
-            };
-
-            // Add it to the box
-            if (actorData.actor != null)
-                addActor.SetEnabled(false);
-            else
-                removeActor.SetEnabled(false);
-            boxContainer.Add(characterField);
-            buttonsBox.Add(addActor);
-            buttonsBox.Add(removeActor);
+            PopupField<Actor> popupfieldField = GetNewPopupField_Actor(list, tmpActor, "EventObject");
+            boxContainer.Add(popupfieldField);
             boxContainer.Add(buttonsBox);
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();
@@ -517,6 +489,16 @@ namespace DialogueEditor.Dialogue.Editor
         public override void LoadValueInToField()
         {
 
+        }
+
+        public void ReloadActors()
+        {
+            List<Container_Actor> participatingActors = graphView.startNode.StartData.ParticipatingActors;
+
+            foreach (Container_Actor choice in participatingActors)
+            {
+                list.Add(choice.actor);
+            }
         }
     }
 }
