@@ -12,7 +12,7 @@ namespace DialogueEditor.Dialogue.Scripts
         private DialogueController dialogueController;
         private AudioSource audioSource;
 
-        [SerializeField] DialogueContainerSO dialogueContainerSO;
+        // [SerializeField] DialogueContainerSO dialogueContainerSO;
         [SerializeField] List<Speaker> participatingSpeakers;
 
         private DialogueData currentDialogueNodeData;
