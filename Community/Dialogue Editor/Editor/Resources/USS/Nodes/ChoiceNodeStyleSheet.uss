@@ -1,16 +1,8 @@
 .LabelText{
-	margin-right:auto;
 	font-size: 13px;
-	-unity-text-align: middle-center;
-	width:auto;
 	height:20px;
 	color: grey;
 	padding-left: 10px;
-	flex-direction: row;
-}
-
-.enumHide{
-	width:	70px;
 }
 
 .node #title{
@@ -28,8 +20,8 @@
 }
 
 .enumHide{
-	flex-direction: row;
-	width: 460px;
+	flex-direction: column;
+	width: 70%;
 	padding: 5px;
 }
 

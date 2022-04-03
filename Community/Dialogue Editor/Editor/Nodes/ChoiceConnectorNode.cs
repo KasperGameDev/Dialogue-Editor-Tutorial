@@ -49,7 +49,7 @@ namespace DialogueEditor.Dialogue.Editor
         {
             Button btn = new Button()
             {
-                text = " + ",
+                text = " Add ",
             };
             btn.AddToClassList("TopBtn");
 

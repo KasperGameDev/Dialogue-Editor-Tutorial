@@ -12,7 +12,8 @@ namespace DialogueEditor.Dialogue.Scripts
         private DialogueController dialogueController;
         private AudioSource audioSource;
 
-        // [SerializeField] DialogueContainerSO dialogueContainerSO;
+        [SerializeField] bool useButtons = false;
+
         [SerializeField] List<Speaker> participatingSpeakers;
 
         private DialogueData currentDialogueNodeData;
@@ -30,6 +31,7 @@ namespace DialogueEditor.Dialogue.Scripts
         private Action nextNodeCheck;
         private bool runCheck;
 
+        public UnityAction nextActionListener;
         private void Awake()
         {
             participatingSpeakers.Add(GetComponent<Speaker>());
@@ -258,7 +260,8 @@ namespace DialogueEditor.Dialogue.Scripts
                     dialogueController.SetDynamicText(speakerSpeaking, paragraph);
                     dialogueController.SetName(speakerSpeaking, speakerSpeaking.actor.speakerName);
                     PlayAudio(tmp.AudioClips.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
-                    Buttons();
+                    nextActionListener = null;
+                    Next();
                     dialogueController.ShowDialogueUI(speakerSpeaking, true);
                     break;
                 }
@@ -296,20 +299,24 @@ namespace DialogueEditor.Dialogue.Scripts
             audioSource.Play();
         }
 
-        private void Buttons()
+        private void Next()
         {
             if (currentIndex == baseContainers.Count)
             {
                 UnityAction unityAction = null;
                 unityAction += () => CheckNodeType(GetNextNode(currentDialogueNodeData));
-                dialogueController.SetContinue(speakerSpeaking, unityAction);
+                
+                if(useButtons)
+                    dialogueController.SetContinue(speakerSpeaking, unityAction);
             }
 
             else
             {
                 UnityAction unityAction = null;
                 unityAction += () => DialogueToDo();
-                dialogueController.SetContinue(speakerSpeaking, unityAction);
+                
+                if(useButtons)
+                    dialogueController.SetContinue(speakerSpeaking, unityAction);
             }
         }
 

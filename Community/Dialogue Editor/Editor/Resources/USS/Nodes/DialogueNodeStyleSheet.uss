@@ -93,8 +93,8 @@
 }
 
 .ImagePreview{
-	height:	100px;
-	width:	100px;
+	height:	50px;
+	width: 100px;
 }
 
 .SpriteRight{
@@ -103,7 +103,6 @@
 }
 
 .SpriteLeft{
-
 	width: 100px;
 	margin-right:auto;
 }
