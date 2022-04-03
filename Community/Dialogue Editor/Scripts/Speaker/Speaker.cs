@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Speaker : MonoBehaviour
 {
-    [Header("Charcater Details")]
-    //public string characterName;
+    [Header("Speaker Details")]
+    //public string speakerName;
     public Actor actor;
 
     [SerializeField] public GameObject dialogueUI;

@@ -10,7 +10,7 @@ namespace DialogueEditor.Dialogue
     {
         public List<DialogueData_BaseContainer> Dialogue_BaseContainers { get; set; } = new List<DialogueData_BaseContainer>();
         public List<DialogueData_Text> DialogueData_Texts = new List<DialogueData_Text>();
-        public Container_Actor DialogueData_Character = new Container_Actor();
+        public Container_Actor DialogueData_Speaker = new Container_Actor();
     }
 
     [System.Serializable]

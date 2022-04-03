@@ -92,9 +92,9 @@ namespace DialogueEditor.Dialogue.Editor
         {
             // default(treat as null)
             None,
-            // processing a character which is out of quotes 
+            // processing a speaker which is out of quotes 
             OutQuote,
-            // processing a character which is in quotes
+            // processing a speaker which is in quotes
             InQuote
         }
 
@@ -132,7 +132,7 @@ namespace DialogueEditor.Dialogue.Editor
                     requireTrimLineHead = false;
                 }
 
-                // finalize when c is the last character
+                // finalize when c is the last speaker
                 if ((i + 1) == len)
                 {
                     // final char
@@ -155,7 +155,7 @@ namespace DialogueEditor.Dialogue.Editor
                         case ParsingMode.OutQuote:
                             if (c == ',')
                             {
-                                // if the final character is comma, add an empty cell
+                                // if the final speaker is comma, add an empty cell
                                 // next col
                                 cols.Add(buffer.ToString());
                                 cols.Add(string.Empty);
@@ -177,7 +177,7 @@ namespace DialogueEditor.Dialogue.Editor
                     }
                 }
 
-                // the next character
+                // the next speaker
                 char n = src[i + 1];
 
                 switch (mode)

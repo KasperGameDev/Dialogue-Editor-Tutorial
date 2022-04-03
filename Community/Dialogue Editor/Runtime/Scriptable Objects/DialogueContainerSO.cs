@@ -8,7 +8,7 @@ namespace DialogueEditor.Dialogue
     public class DialogueContainerSO : ScriptableObject
     {
 
-        public int participatingCharacters;
+        public int participatingSpeakers;
         public List<NodeLinkData> NodeLinkDatas = new List<NodeLinkData>();
 
         public EndData EndData = new EndData();

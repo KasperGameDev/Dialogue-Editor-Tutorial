@@ -19,7 +19,7 @@ namespace DialogueEditor.Dialogue.Editor
         protected Vector2 dialogueNodeSize = new Vector2(200, 500);
 
         private List<Box> boxs = new List<Box>();
-        public ObjectField characterField;
+        public ObjectField speakerField;
 
         public DialogueNode() { }
 
@@ -42,7 +42,7 @@ namespace DialogueEditor.Dialogue.Editor
             TopContainer();
 
             ReloadActors();
-            CharacterName(actor);
+            SpeakerName(actor);
             RefreshExpandedState();
         }
 
@@ -340,19 +340,19 @@ namespace DialogueEditor.Dialogue.Editor
             boxContainer.Add(ImagesBox);
         }
 
-        public void CharacterName(Container_Actor actor)
+        public void SpeakerName(Container_Actor actor)
         {
-            Container_Actor tmpCharacter = new Container_Actor();
+            Container_Actor tmpSpeaker = new Container_Actor();
             if (actor != null)
             {
-                tmpCharacter.actor = actor.actor;
+                tmpSpeaker.actor = actor.actor;
             }
 
-            DialogueData.DialogueData_Character = tmpCharacter;
+            DialogueData.DialogueData_Speaker = tmpSpeaker;
 
             Box boxContainer = new Box();
-            boxContainer.AddToClassList("CharacterNameBox");
-            AddScriptableActor(tmpCharacter);
+            boxContainer.AddToClassList("SpeakerNameBox");
+            AddScriptableActor(tmpSpeaker);
 
             extensionContainer.Add(boxContainer);
         }

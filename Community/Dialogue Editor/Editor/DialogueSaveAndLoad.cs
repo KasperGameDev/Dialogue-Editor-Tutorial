@@ -181,7 +181,7 @@ namespace DialogueEditor.Dialogue.Editor
                 node.DialogueData.Dialogue_BaseContainers[i].ID.Value = i;
             }
 
-            dialogueData.DialogueData_Character.actor = node.DialogueData.DialogueData_Character.actor;
+            dialogueData.DialogueData_Speaker.actor = node.DialogueData.DialogueData_Speaker.actor;
 
             foreach (DialogueData_BaseContainer baseContainer in node.DialogueData.Dialogue_BaseContainers)
             {
@@ -486,7 +486,7 @@ namespace DialogueEditor.Dialogue.Editor
         {
 
             graphView.startNode = graphView.CreateStartNode(Vector2.zero);
-            graphView.endNode = graphView.CreateEndNode(Vector2.right * 500);
+            graphView.endNode = graphView.CreateEndNode(Vector2.right);
 
             // Start
             if (dialogueContainer.StartData != null)
@@ -658,7 +658,7 @@ namespace DialogueEditor.Dialogue.Editor
         private void GenerateNodes(List<DialogueData> dialogueDatas) {
             foreach (DialogueData node in dialogueDatas)
             {
-                DialogueNode tempNode = graphView.CreateDialogueNode(node.Position, node.DialogueData_Character);
+                DialogueNode tempNode = graphView.CreateDialogueNode(node.Position, node.DialogueData_Speaker);
                 tempNode.NodeGuid = node.NodeGuid;
 
                 List<DialogueData_BaseContainer> data_BaseContainer = new List<DialogueData_BaseContainer>();

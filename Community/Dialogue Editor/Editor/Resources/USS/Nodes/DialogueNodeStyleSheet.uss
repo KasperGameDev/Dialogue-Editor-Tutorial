@@ -21,13 +21,13 @@
 }
 
 /* ----------------- Name -----------------*/
-.CharacterNameBox{
+.SpeakerNameBox{
 	flex-direction: row;
 	background-color: #2D4E44;
 	padding: 5px;
 }
 
-.CharacterName{
+.SpeakerName{
 	-unity-text-align: middle-center;
 	width:260px;
 	white-space: normal;

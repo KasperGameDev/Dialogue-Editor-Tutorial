@@ -40,7 +40,7 @@ namespace DialogueEditor.Dialogue.Editor
             ToolbarMenu menu = new ToolbarMenu();
             menu.text = "Add Actor";
 
-            menu.menu.AppendAction("Add Character", new Action<DropdownMenuAction>(x => AddScriptableActor()));
+            menu.menu.AppendAction("Add Speaker", new Action<DropdownMenuAction>(x => AddScriptableActor()));
 
             titleContainer.Add(menu);
         }
@@ -66,16 +66,16 @@ namespace DialogueEditor.Dialogue.Editor
             StartData.ParticipatingActors.Add(tempActor);
 
             // Scriptable Object Event.
-            ObjectField characterField = GetNewObjectField_Actor(tempActor, addActor, removeActor, "EventObject");
+            ObjectField speakerField = GetNewObjectField_Actor(tempActor, addActor, removeActor, "EventObject");
 
             addActor.clicked += () =>
             {
-                characterField.value = Actor.NewActor();
+                speakerField.value = Actor.NewActor();
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
             {
-                characterField.value = null;
+                speakerField.value = null;
                 RefreshExpandedState();
             };
 
@@ -99,7 +99,7 @@ namespace DialogueEditor.Dialogue.Editor
             else
                 removeActor.SetEnabled(false);
             boxContainer.Add(btn);
-            boxContainer.Add(characterField);
+            boxContainer.Add(speakerField);
             buttonsBox.Add(addActor);
             buttonsBox.Add(removeActor);
             boxContainer.Add(buttonsBox);

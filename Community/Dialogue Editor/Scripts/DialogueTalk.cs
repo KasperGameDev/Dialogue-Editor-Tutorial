@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace DialogueEditor.Dialogue.Scripts
 {
-    [RequireComponent(typeof(Character))]
+    [RequireComponent(typeof(Speaker))]
     [RequireComponent(typeof(AudioSource))]
     public class DialogueTalk : DialogueGetData
     {
@@ -13,7 +13,7 @@ namespace DialogueEditor.Dialogue.Scripts
         private AudioSource audioSource;
 
         [SerializeField] DialogueContainerSO dialogueContainerSO;
-        [SerializeField] List<Character> participatingCharacters;
+        [SerializeField] List<Speaker> participatingSpeakers;
 
         private DialogueData currentDialogueNodeData;
         private DialogueData lastDialogueNodeData;
@@ -22,17 +22,17 @@ namespace DialogueEditor.Dialogue.Scripts
         private DialogueMathCalculatorModifier DMCModifier = new DialogueMathCalculatorModifier();
 
         private List<DialogueData_BaseContainer> baseContainers;
-        //private Container_DialogueCharacter dialogueData_Character;
+        //private Container_DialogueSpeaker dialogueData_Speaker;
 
         private int currentIndex = 0;
-        private Character characterSpeaking;
+        private Speaker speakerSpeaking;
 
         private Action nextNodeCheck;
         private bool runCheck;
 
         private void Awake()
         {
-            participatingCharacters.Add(GetComponent<Character>());
+            participatingSpeakers.Add(GetComponent<Speaker>());
             audioSource = GetComponent<AudioSource>();
             dialogueController = new DialogueController();
         }
@@ -53,9 +53,9 @@ namespace DialogueEditor.Dialogue.Scripts
             else
                 Debug.Log($"<color=red>Error: </color>Your Dialogue Object Must have a start Node.");
 
-            foreach(Character character in participatingCharacters)
+            foreach(Speaker speaker in participatingSpeakers)
             {
-                character.actor.actorSpeaking = true;
+                speaker.actor.actorSpeaking = true;
             }
         }
 
@@ -175,12 +175,12 @@ namespace DialogueEditor.Dialogue.Scripts
 
         private void RunNode(EndData nodeData)
         {
-            if (characterSpeaking != null)
-                dialogueController.ShowDialogueUI(characterSpeaking, false);
+            if (speakerSpeaking != null)
+                dialogueController.ShowDialogueUI(speakerSpeaking, false);
 
-            foreach (Character character in participatingCharacters)
+            foreach (Speaker speaker in participatingSpeakers)
             {
-                character.actor.actorSpeaking = false;
+                speaker.actor.actorSpeaking = false;
             }
 
         }
@@ -208,10 +208,10 @@ namespace DialogueEditor.Dialogue.Scripts
             //Debug.Log("Dialogue Node");
             currentDialogueNodeData = nodeData;
 
-            if(characterSpeaking)
-                dialogueController.ShowDialogueUI(characterSpeaking, false);
+            if(speakerSpeaking)
+                dialogueController.ShowDialogueUI(speakerSpeaking, false);
 
-            characterSpeaking = participatingCharacters.Find((x) => x.actor == nodeData.DialogueData_Character.actor);
+            speakerSpeaking = participatingSpeakers.Find((x) => x.actor == nodeData.DialogueData_Speaker.actor);
 
             baseContainers = new List<DialogueData_BaseContainer>();
             baseContainers.AddRange(nodeData.DialogueData_Texts);
@@ -251,15 +251,15 @@ namespace DialogueEditor.Dialogue.Scripts
                     }
 
                     if (tmp.Sprite_Left.Value)
-                        dialogueController.SetLeftImage(characterSpeaking, tmp.Sprite_Left.Value);
+                        dialogueController.SetLeftImage(speakerSpeaking, tmp.Sprite_Left.Value);
                     if (tmp.Sprite_Right.Value)
-                        dialogueController.SetRightImage(characterSpeaking, tmp.Sprite_Right.Value);
+                        dialogueController.SetRightImage(speakerSpeaking, tmp.Sprite_Right.Value);
 
-                    dialogueController.SetDynamicText(characterSpeaking, paragraph);
-                    dialogueController.SetName(characterSpeaking, characterSpeaking.actor.characterName);
+                    dialogueController.SetDynamicText(speakerSpeaking, paragraph);
+                    dialogueController.SetName(speakerSpeaking, speakerSpeaking.actor.speakerName);
                     PlayAudio(tmp.AudioClips.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
                     Buttons();
-                    dialogueController.ShowDialogueUI(characterSpeaking, true);
+                    dialogueController.ShowDialogueUI(speakerSpeaking, true);
                     break;
                 }
             }
@@ -269,7 +269,7 @@ namespace DialogueEditor.Dialogue.Scripts
         private void RunNode(ChoiceConnectorData nodeData)
         {
 
-            dialogueController.ShowDialogueUI(characterSpeaking, false);
+            dialogueController.ShowDialogueUI(speakerSpeaking, false);
             List<DialogueButtonContainer> dialogueButtonContainers = new List<DialogueButtonContainer>();
             foreach (DialogueData_Port port in nodeData.DialogueData_Ports)
             {
@@ -278,15 +278,15 @@ namespace DialogueEditor.Dialogue.Scripts
 
             if (dialogueButtonContainers.Count > 0)
             {
-                characterSpeaking = participatingCharacters.Find(
+                speakerSpeaking = participatingSpeakers.Find(
                     (x) => x.tag.ToLower().Equals(("player"))
                 );
 
-                dialogueController.SetText(characterSpeaking, "");
+                dialogueController.SetText(speakerSpeaking, "");
 
             }
             dialogueController.SetButtons(dialogueButtonContainers);
-            dialogueController.ShowDialogueUI(characterSpeaking, true);
+            dialogueController.ShowDialogueUI(speakerSpeaking, true);
         }
 
         private void PlayAudio(AudioClip audioClip)
@@ -302,14 +302,14 @@ namespace DialogueEditor.Dialogue.Scripts
             {
                 UnityAction unityAction = null;
                 unityAction += () => CheckNodeType(GetNextNode(currentDialogueNodeData));
-                dialogueController.SetContinue(characterSpeaking, unityAction);
+                dialogueController.SetContinue(speakerSpeaking, unityAction);
             }
 
             else
             {
                 UnityAction unityAction = null;
                 unityAction += () => DialogueToDo();
-                dialogueController.SetContinue(characterSpeaking, unityAction);
+                dialogueController.SetContinue(speakerSpeaking, unityAction);
             }
         }
 

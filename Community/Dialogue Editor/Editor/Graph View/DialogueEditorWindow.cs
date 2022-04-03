@@ -155,12 +155,12 @@ namespace DialogueEditor.Dialogue.Editor
         /// </summary>
         public void Load()
         {
-            if (currentDialogueContainer != null)
-            {
+            // if (currentDialogueContainer != null)
+            // {
                 Language(LanguageType.English);
-                nameOfDialougeContainer.text = "Name:   " + currentDialogueContainer.name;
+                nameOfDialougeContainer.text = "Name:   " + currentDialogueContainer?.name;
                 saveAndLoad.Load(currentDialogueContainer);
-            }
+            // }
         }
 
         /// <summary>
