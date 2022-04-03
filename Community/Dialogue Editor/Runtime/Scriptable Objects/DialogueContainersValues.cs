@@ -3,7 +3,7 @@ using DialogueEditor.Events;
 using DialogueEditor.ModularComponents;
 
 #if UNITY_EDITOR
-using UnityEditor.UIElements;
+
 #endif
 
 namespace DialogueEditor.Dialogue
@@ -55,7 +55,7 @@ namespace DialogueEditor.Dialogue
     public class Container_ChoiceStateType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public ChoiceStateType Value = ChoiceStateType.Hide;
     }
@@ -65,7 +65,7 @@ namespace DialogueEditor.Dialogue
     public class Container_StringModifierType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public StringDialogueModifierType Value;
     }
@@ -74,7 +74,7 @@ namespace DialogueEditor.Dialogue
     public class Container_StringEventConditionType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public StringDialogueEventConditionType Value;
     }
@@ -85,7 +85,7 @@ namespace DialogueEditor.Dialogue
     public class Container_FloatModifierType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public FloatDialogueModifierType Value;
     }
@@ -94,7 +94,7 @@ namespace DialogueEditor.Dialogue
     public class Container_FloatEventConditionType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public FloatDialogueEventConditionType Value;
     }
@@ -105,7 +105,7 @@ namespace DialogueEditor.Dialogue
     public class Container_IntModifierType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public IntDialogueModifierType Value;
     }
@@ -114,7 +114,7 @@ namespace DialogueEditor.Dialogue
     public class Container_IntEventConditionType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public IntDialogueEventConditionType Value;
     }
@@ -125,7 +125,7 @@ namespace DialogueEditor.Dialogue
     public class Container_BoolModifierType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public BoolDialogueModifierType Value;
     }
@@ -134,7 +134,7 @@ namespace DialogueEditor.Dialogue
     public class Container_BoolEventConditionType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public BoolDialogueEventConditionType Value;
     }
@@ -144,7 +144,7 @@ namespace DialogueEditor.Dialogue
     public class Container_FloatType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public StringDialogueEventConditionType Value;
     }
@@ -153,7 +153,7 @@ namespace DialogueEditor.Dialogue
     public class Container_VolumeType
     {
 #if UNITY_EDITOR
-        public EnumField EnumField;
+        public UnityEngine.UIElements.EnumField EnumField;
 #endif
         public VolumeType Value = VolumeType.Neutral;
     }
@@ -262,7 +262,7 @@ namespace DialogueEditor.Dialogue
     public class Container_SelectActor
     {
 #if UNITY_EDITOR
-        public PopupField<Actor> PopupField;
+        public UnityEngine.UIElements.PopupField<Actor> PopupField;
 #endif
         public Container_Actor Actor;
     }
