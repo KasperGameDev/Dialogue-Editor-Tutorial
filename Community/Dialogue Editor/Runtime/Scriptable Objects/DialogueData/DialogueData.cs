@@ -8,9 +8,8 @@ namespace DialogueEditor.Dialogue
     [System.Serializable]
     public class DialogueData : BaseData
     {
-        public List<DialogueData_BaseContainer> Dialogue_BaseContainers { get; set; } = new List<DialogueData_BaseContainer>();
-        public List<DialogueData_Text> DialogueData_Texts = new List<DialogueData_Text>();
-        public Container_Actor DialogueData_Speaker = new Container_Actor();
+        public DialogueData_Text DialogueData_Text = new DialogueData_Text();
+        public Container_Actor DialogueData_DialogueAssets = new Container_Actor();
     }
 
     [System.Serializable]
@@ -19,8 +18,9 @@ namespace DialogueEditor.Dialogue
         public Container_Int ID = new Container_Int();
     }
 
+// Sentences are displayed at once per paragraph
     [System.Serializable]
-    public class DialogueData_Sentence : DialogueData_BaseContainer
+    public class DialogueData_Sentence
     {
 #if UNITY_EDITOR
         public TextField TextField { get; set; }

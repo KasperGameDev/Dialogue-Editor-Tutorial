@@ -27,6 +27,20 @@ namespace DialogueEditor.Dialogue.Editor
             mainContainer.Remove(titleContainer);
             topContainer.Remove(outputContainer);
             AddInputPort("End", Color.cyan, Port.Capacity.Multi);
+            MakeMainContainer();
+        }
+
+        private void MakeMainContainer()
+        {
+            EnumField enumField = GetNewEnumField_EndNodeType(endData.EndNodeType);
+
+            mainContainer.Add(enumField);
+        }
+
+        public override void LoadValueInToField()
+        {
+            if (EndData.EndNodeType.EnumField != null)
+                EndData.EndNodeType.EnumField.SetValueWithoutNotify(EndData.EndNodeType.Value);
         }
     }
 }

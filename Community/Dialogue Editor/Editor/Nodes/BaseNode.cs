@@ -664,6 +664,37 @@ namespace DialogueEditor.Dialogue.Editor
             return enumField;
         }
 
+        
+        /// <summary>
+        /// Get a new EnumField where the emum is EndNodeType.
+        /// </summary>
+        /// <param name="enumType">Container_EndNodeType that need to be set in to the EnumField</param>
+        /// <param name="USS01">USS class add to the UI element</param>
+        /// <param name="USS02">USS class add to the UI element</param>
+        /// <returns></returns>
+        protected EnumField GetNewEnumField_EndNodeType(Container_EndNodeType enumType, string USS01 = "", string USS02 = "")
+        {
+            EnumField enumField = new EnumField()
+            {
+                value = enumType.Value
+            };
+            enumField.Init(enumType.Value);
+
+            // When we change the variable from graph view.
+            enumField.RegisterValueChangedCallback((value) =>
+            {
+                enumType.Value = (EndNodeType)value.newValue;
+            });
+            enumField.SetValueWithoutNotify(enumType.Value);
+
+            // Set uss class for stylesheet.
+            enumField.AddToClassList(USS01);
+            enumField.AddToClassList(USS02);
+
+            enumType.EnumField = enumField;
+            return enumField;
+        }
+
         /// <summary>
         /// Get a new EnumField where the emum is StringModifierType.
         /// </summary>

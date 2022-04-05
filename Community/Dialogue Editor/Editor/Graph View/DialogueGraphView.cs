@@ -140,40 +140,15 @@ namespace DialogueEditor.Dialogue.Editor
         }
 
         /// <summary>
-        /// Make new Restart Node and set it's position.
-        /// </summary>
-        /// <param name="position">position of where to place the node</param>
-        /// <returns>End Node</returns>
-        public RestartNode CreateRestartNode(Vector2 position)
-        {
-            return new RestartNode(position, editorWindow, this);
-        }
-
-        /// <summary>
-        /// Make new Repeat Node and set it's position.
-        /// </summary>
-        /// <param name="position">position of where to place the node</param>
-        /// <returns>End Node</returns>
-        public RepeatNode CreateRepeatNode(Vector2 position)
-        {
-            return new RepeatNode(position, editorWindow, this);
-        }
-
-        /// <summary>
         /// Make new Dialogue Node and set it's position.
         /// </summary>
         /// <param name="position">position of where to place the node</param>
         /// <returns>Dialogue Node</returns>
-        public DialogueNode CreateDialogueNode(Vector2 position, Container_Actor actor = null)
+        public DialogueNode CreateDialogueNode(Vector2 position, Container_Actor actor = null, DialogueData_Text text = null)
         {
-            DialogueNode newDialogueNode = new DialogueNode(position, editorWindow, this, actor);
+            DialogueNode newDialogueNode = new DialogueNode(position, editorWindow, this, actor, text);
             dialogueNodes.Add(newDialogueNode);
             return newDialogueNode;
-        }
-
-        public ChoiceConnectorNode CreateChoiceConnectorNode(Vector2 position)
-        {
-            return new ChoiceConnectorNode(position, editorWindow, this);
         }
 
         /// <summary>
@@ -184,16 +159,6 @@ namespace DialogueEditor.Dialogue.Editor
         public BranchNode CreateBranchNode(Vector2 position)
         {
             return new BranchNode(position, editorWindow, this);
-        }
-
-        /// <summary>
-        /// Make new Choice Node and set it's position.
-        /// </summary>
-        /// <param name="position">position of where to place the node</param>
-        /// <returns>Choice Node</returns>
-        public ChoiceNode CreateChoiceNode(Vector2 position)
-        {
-            return new ChoiceNode(position, editorWindow, this);
         }
     }
 }

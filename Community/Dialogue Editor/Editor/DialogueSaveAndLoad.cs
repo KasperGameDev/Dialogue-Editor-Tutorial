@@ -23,17 +23,17 @@ namespace DialogueEditor.Dialogue.Editor
             SaveEdges(DialogueContainerSO);
             edges.ForEach(edge => graphView.RemoveElement(edge));
 
-            DialogueContainerSO.DialogueDatas.Clear();
+            DialogueContainerSO.DialogueData.Clear();
 
             foreach (BaseNode node in nodes)
             {
                 if (node is DialogueNode)
                 {
-                    DialogueContainerSO.DialogueDatas.Add(SaveNodeData(node as DialogueNode));
+                    DialogueContainerSO.DialogueData.Add(SaveNodeData(node as DialogueNode));
                     graphView.RemoveElement(node);
                 }
             }
-            GenerateNodes(DialogueContainerSO.DialogueDatas);
+            GenerateNodes(DialogueContainerSO.DialogueData);
             ConnectNodes(DialogueContainerSO);
         }
 
@@ -96,7 +96,7 @@ namespace DialogueEditor.Dialogue.Editor
         #region Save
         private void SaveEdges(DialogueContainerSO DialogueContainerSO)
         {
-            DialogueContainerSO.NodeLinkDatas.Clear();
+            DialogueContainerSO.NodeLinkData.Clear();
 
             Edge[] connectedEdges = edges.Where(edge => edge.input.node != null).ToArray();
             for (int i = 0; i < connectedEdges.Count(); i++)
@@ -104,7 +104,7 @@ namespace DialogueEditor.Dialogue.Editor
                 BaseNode outputNode = (BaseNode)connectedEdges[i].output.node;
                 BaseNode inputNode = connectedEdges[i].input.node as BaseNode;
 
-                DialogueContainerSO.NodeLinkDatas.Add(new NodeLinkData
+                DialogueContainerSO.NodeLinkData.Add(new NodeLinkData
                 {
                     BaseNodeGuid = outputNode.NodeGuid,
                     BasePortName = connectedEdges[i].output.portName,
@@ -116,21 +116,17 @@ namespace DialogueEditor.Dialogue.Editor
 
         private void SaveNodes(DialogueContainerSO DialogueContainerSO)
         {
-            DialogueContainerSO.EventDatas.Clear();
-            DialogueContainerSO.ModifierDatas.Clear();
-            DialogueContainerSO.BranchDatas.Clear();
-            DialogueContainerSO.DialogueDatas.Clear();
-            DialogueContainerSO.ChoiceDatas.Clear();
-            DialogueContainerSO.ChoiceConnectorDatas.Clear();
-            DialogueContainerSO.RepeatDatas.Clear();
-            DialogueContainerSO.RestartDatas.Clear();
+            DialogueContainerSO.EventData.Clear();
+            DialogueContainerSO.ModifierData.Clear();
+            DialogueContainerSO.BranchData.Clear();
+            DialogueContainerSO.DialogueData.Clear();
 
             nodes.ForEach(node =>
             {
                 switch (node)
                 {
                     case DialogueNode dialogueNode:
-                        DialogueContainerSO.DialogueDatas.Add(SaveNodeData(dialogueNode));
+                        DialogueContainerSO.DialogueData.Add(SaveNodeData(dialogueNode));
                         break;
                     case StartNode startNode:
                         DialogueContainerSO.StartData = SaveNodeData(startNode);
@@ -139,25 +135,13 @@ namespace DialogueEditor.Dialogue.Editor
                         DialogueContainerSO.EndData = SaveNodeData(endNode);
                         break;
                     case EventNode eventNode:
-                        DialogueContainerSO.EventDatas.Add(SaveNodeData(eventNode));
+                        DialogueContainerSO.EventData.Add(SaveNodeData(eventNode));
                         break;
                     case BranchNode branchNode:
-                        DialogueContainerSO.BranchDatas.Add(SaveNodeData(branchNode));
+                        DialogueContainerSO.BranchData.Add(SaveNodeData(branchNode));
                         break;
                     case ModifierNode modifierNode:
-                        DialogueContainerSO.ModifierDatas.Add(SaveNodeData(modifierNode));
-                        break;
-                    case ChoiceNode choiceNode:
-                        DialogueContainerSO.ChoiceDatas.Add(SaveNodeData(choiceNode));
-                        break;
-                    case RepeatNode repeatNode:
-                        DialogueContainerSO.RepeatDatas.Add(SaveNodeData(repeatNode));
-                        break;
-                    case RestartNode restartNode:
-                        DialogueContainerSO.RestartDatas.Add(SaveNodeData(restartNode));
-                        break;
-                    case ChoiceConnectorNode choiceConnectorNode:
-                        DialogueContainerSO.ChoiceConnectorDatas.Add(SaveNodeData(choiceConnectorNode));
+                        DialogueContainerSO.ModifierData.Add(SaveNodeData(modifierNode));
                         break;
                     default:
                         break;
@@ -175,70 +159,20 @@ namespace DialogueEditor.Dialogue.Editor
                 Position = node.GetPosition().position,
             };
 
-            // Set ID
-            for (int i = 0; i < node.DialogueData.Dialogue_BaseContainers.Count; i++)
-            {
-                node.DialogueData.Dialogue_BaseContainers[i].ID.Value = i;
-            }
+            dialogueData.DialogueData_DialogueAssets.actor = node.DialogueData.DialogueData_DialogueAssets.actor;
 
-            dialogueData.DialogueData_Speaker.actor = node.DialogueData.DialogueData_Speaker.actor;
+            DialogueData_Text tmp = node.DialogueData.DialogueData_Text;
 
-            foreach (DialogueData_BaseContainer baseContainer in node.DialogueData.Dialogue_BaseContainers)
-            {
+            dialogueData.DialogueData_Text.GuidID = tmp.GuidID;
+            dialogueData.DialogueData_Text.sentence.AddRange(tmp.sentence);
+            dialogueData.DialogueData_Text.Sprite_Left = tmp.Sprite_Left;
+            dialogueData.DialogueData_Text.Sprite_Right = tmp.Sprite_Right;
 
-                // Text
-                if (baseContainer is DialogueData_Text)
-                {
-                    DialogueData_Text tmp = (baseContainer as DialogueData_Text);
-                    DialogueData_Text tmpData = new DialogueData_Text();
-
-                    tmpData.ID = tmp.ID;
-                    tmpData.GuidID = tmp.GuidID;
-                    tmpData.sentence.AddRange(tmp.sentence);
-                    tmpData.Sprite_Left = tmp.Sprite_Left;
-                    tmpData.Sprite_Right = tmp.Sprite_Right;
-
-                    tmpData.AudioClips = tmp.AudioClips;
-
-                    dialogueData.DialogueData_Texts.Add(tmpData);
-                }
-            }
+            dialogueData.DialogueData_Text.AudioClips = tmp.AudioClips;
 
             return dialogueData;
         }
-
-        private ChoiceConnectorData SaveNodeData(ChoiceConnectorNode node)
-        {
-            ChoiceConnectorData choiceConnectorData = new ChoiceConnectorData
-            {
-                NodeGuid = node.NodeGuid,
-                Position = node.GetPosition().position,
-            };
-
-            // Port
-            foreach (DialogueData_Port port in node.ChoiceConnectorData.DialogueData_Ports)
-            {
-                DialogueData_Port portData = new DialogueData_Port();
-
-                portData.OutputGuid = string.Empty;
-                portData.InputGuid = string.Empty;
-                portData.PortGuid = port.PortGuid;
-
-                foreach (Edge edge in edges)
-                {
-                    if (edge.output.portName == port.PortGuid)
-                    {
-                        portData.OutputGuid = (edge.output.node as BaseNode).NodeGuid;
-                        portData.InputGuid = (edge.input.node as BaseNode).NodeGuid;
-                    }
-                }
-
-                choiceConnectorData.DialogueData_Ports.Add(portData);
-            }
-
-            return choiceConnectorData;
-        }
-
+        
         private StartData SaveNodeData(StartNode node)
         {
             StartData nodeData = new StartData()
@@ -254,30 +188,6 @@ namespace DialogueEditor.Dialogue.Editor
         private EndData SaveNodeData(EndNode node)
         {
             EndData nodeData = new EndData()
-            {
-                NodeGuid = node.NodeGuid,
-                Position = node.GetPosition().position,
-            };
-            //nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
-
-            return nodeData;
-        }
-
-        private RestartData SaveNodeData(RestartNode node)
-        {
-            RestartData nodeData = new RestartData()
-            {
-                NodeGuid = node.NodeGuid,
-                Position = node.GetPosition().position,
-            };
-            //nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
-
-            return nodeData;
-        }
-
-        private RepeatData SaveNodeData(RepeatNode node)
-        {
-            RepeatData nodeData = new RepeatData()
             {
                 NodeGuid = node.NodeGuid,
                 Position = node.GetPosition().position,
@@ -414,60 +324,6 @@ namespace DialogueEditor.Dialogue.Editor
             return nodeData;
         }
 
-        private ChoiceData SaveNodeData(ChoiceNode node)
-        {
-            ChoiceData nodeData = new ChoiceData()
-            {
-                NodeGuid = node.NodeGuid,
-                Position = node.GetPosition().position,
-
-                Text = node.ChoiceData.Text,
-                AudioClips = node.ChoiceData.AudioClips,
-            };
-            nodeData.ChoiceStateTypes.Value = node.ChoiceData.ChoiceStateTypes.Value;
-
-            foreach (EventData_StringCondition stringEvents in node.ChoiceData.EventData_StringConditions)
-            {
-                EventData_StringCondition tmp = new EventData_StringCondition();
-                tmp.VariableSO = stringEvents.VariableSO;
-                tmp.Value.Value = stringEvents.Value.Value;
-                tmp.EventType.Value = stringEvents.EventType.Value;
-
-                nodeData.EventData_StringConditions.Add(tmp);
-            }
-
-            foreach (EventData_FloatCondition FloatEvents in node.ChoiceData.EventData_FloatConditions)
-            {
-                EventData_FloatCondition tmp = new EventData_FloatCondition();
-                tmp.VariableSO = FloatEvents.VariableSO;
-                tmp.Value.Value = FloatEvents.Value.Value;
-                tmp.EventType.Value = FloatEvents.EventType.Value;
-
-                nodeData.EventData_FloatConditions.Add(tmp);
-            }
-
-            foreach (EventData_IntCondition IntEvents in node.ChoiceData.EventData_IntConditions)
-            {
-                EventData_IntCondition tmp = new EventData_IntCondition();
-                tmp.VariableSO = IntEvents.VariableSO;
-                tmp.Value.Value = IntEvents.Value.Value;
-                tmp.EventType.Value = IntEvents.EventType.Value;
-
-                nodeData.EventData_IntConditions.Add(tmp);
-            }
-
-            foreach (EventData_BoolCondition BoolEvents in node.ChoiceData.EventData_BoolConditions)
-            {
-                EventData_BoolCondition tmp = new EventData_BoolCondition();
-                tmp.VariableSO = BoolEvents.VariableSO;
-                tmp.Value.Value = BoolEvents.Value.Value;
-                tmp.EventType.Value = BoolEvents.EventType.Value;
-
-                nodeData.EventData_BoolConditions.Add(tmp);
-            }
-
-            return nodeData;
-        }
         #endregion
 
         #region Load
@@ -510,17 +366,15 @@ namespace DialogueEditor.Dialogue.Editor
             }
             graphView.AddElement(graphView.endNode);
 
-            GenerateNodes(dialogueContainer.EventDatas);
-            GenerateNodes(dialogueContainer.BranchDatas);
-            GenerateNodes(dialogueContainer.ModifierDatas);
-            GenerateNodes(dialogueContainer.ChoiceConnectorDatas);
-            GenerateNodes(dialogueContainer.ChoiceDatas);
-            GenerateNodes(dialogueContainer.DialogueDatas);
+            GenerateNodes(dialogueContainer.EventData);
+            GenerateNodes(dialogueContainer.BranchData);
+            GenerateNodes(dialogueContainer.ModifierData);
+            GenerateNodes(dialogueContainer.DialogueData);
         }
 
         // Event Node
-        private void GenerateNodes(List<EventData> eventDatas) {
-            foreach (EventData node in eventDatas)
+        private void GenerateNodes(List<EventData> eventData) {
+            foreach (EventData node in eventData)
             {
                 EventNode tempNode = graphView.CreateEventNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;
@@ -536,10 +390,10 @@ namespace DialogueEditor.Dialogue.Editor
         }
 
         // Modifier Node
-        private void GenerateNodes(List<ModifierData> modifierDatas)
+        private void GenerateNodes(List<ModifierData> modifierData)
         {
             // Event Node
-            foreach (ModifierData node in modifierDatas)
+            foreach (ModifierData node in modifierData)
             {
                 ModifierNode tempNode = graphView.CreateModifierNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;
@@ -567,9 +421,9 @@ namespace DialogueEditor.Dialogue.Editor
         }
 
         // Branch Node
-        private void GenerateNodes(List<BranchData> branchDatas)
+        private void GenerateNodes(List<BranchData> branchData)
         {
-            foreach (BranchData node in branchDatas)
+            foreach (BranchData node in branchData)
             {
                 BranchNode tempNode = graphView.CreateBranchNode(node.Position);
                 tempNode.NodeGuid = node.NodeGuid;
@@ -600,111 +454,17 @@ namespace DialogueEditor.Dialogue.Editor
             }
         }
 
-        // Choice Node
-        private void GenerateNodes(List<ChoiceData> choiceDatas)
-        {
-            foreach (ChoiceData node in choiceDatas)
-            {
-                ChoiceNode tempNode = graphView.CreateChoiceNode(node.Position);
-                tempNode.NodeGuid = node.NodeGuid;
-
-                tempNode.ChoiceData.ChoiceStateTypes.Value = node.ChoiceStateTypes.Value;
-
-                foreach (LanguageGeneric<string> dataText in node.Text)
-                {
-                    foreach (LanguageGeneric<string> editorText in tempNode.ChoiceData.Text)
-                    {
-                        if (editorText.LanguageType == dataText.LanguageType)
-                        {
-                            editorText.LanguageGenericType = dataText.LanguageGenericType;
-                        }
-                    }
-                }
-                foreach (LanguageGeneric<AudioClip> dataAudioClip in node.AudioClips)
-                {
-                    foreach (LanguageGeneric<AudioClip> editorAudioClip in tempNode.ChoiceData.AudioClips)
-                    {
-                        if (editorAudioClip.LanguageType == dataAudioClip.LanguageType)
-                        {
-                            editorAudioClip.LanguageGenericType = dataAudioClip.LanguageGenericType;
-                        }
-                    }
-                }
-
-                foreach (EventData_StringCondition item in node.EventData_StringConditions)
-                {
-                    tempNode.AddStringCondition(item);
-                }
-                foreach (EventData_FloatCondition item in node.EventData_FloatConditions)
-                {
-                    tempNode.AddFloatCondition(item);
-                }
-                foreach (EventData_IntCondition item in node.EventData_IntConditions)
-                {
-                    tempNode.AddIntCondition(item);
-                }
-                foreach (EventData_BoolCondition item in node.EventData_BoolConditions)
-                {
-                    tempNode.AddBoolCondition(item);
-                }
-
-                tempNode.LoadValueInToField();
-                tempNode.ReloadLanguage();
-                graphView.AddElement(tempNode);
-            }
-        }
-
         // Dialogue Node
-        private void GenerateNodes(List<DialogueData> dialogueDatas) {
-            foreach (DialogueData node in dialogueDatas)
+        private void GenerateNodes(List<DialogueData> dialogueData) {
+            foreach (DialogueData node in dialogueData)
             {
-                DialogueNode tempNode = graphView.CreateDialogueNode(node.Position, node.DialogueData_Speaker);
+                DialogueNode tempNode = graphView.CreateDialogueNode(node.Position, node.DialogueData_DialogueAssets, node.DialogueData_Text);
                 tempNode.NodeGuid = node.NodeGuid;
-
-                List<DialogueData_BaseContainer> data_BaseContainer = new List<DialogueData_BaseContainer>();
-              
-                data_BaseContainer.AddRange(node.DialogueData_Texts);
-
-                data_BaseContainer.Sort(delegate (DialogueData_BaseContainer x, DialogueData_BaseContainer y)
-                {
-                    return x.ID.Value.CompareTo(y.ID.Value);
-                });
-
-                foreach (DialogueData_BaseContainer data in data_BaseContainer)
-                {
-                    switch (data)
-                    {
-                        case DialogueData_Text Text:
-                            tempNode.TextLine(Text);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
+                
                 tempNode.LoadValueInToField();
                 tempNode.ReloadLanguage();
                 graphView.AddElement(tempNode);
-            }
-        }
 
-        // Choice Connector Node
-        private void GenerateNodes(List<ChoiceConnectorData> choiceConnectorDatas)
-        {
-            foreach (ChoiceConnectorData node in choiceConnectorDatas)
-            {
-                ChoiceConnectorNode tempNode = graphView.CreateChoiceConnectorNode(node.Position);
-                tempNode.NodeGuid = node.NodeGuid;
-
-                foreach (DialogueData_Port port in node.DialogueData_Ports)
-                {
-                    ChoiceNode choiceNode = graphView.Query<ChoiceNode>().Where(choice => choice.NodeGuid == port.InputGuid).First();
-                    tempNode.AddChoicePort(tempNode, choiceNode, true, port);
-                }
-
-                tempNode.LoadValueInToField();
-                tempNode.ReloadLanguage();
-                graphView.AddElement(tempNode);
             }
         }
 
@@ -713,7 +473,7 @@ namespace DialogueEditor.Dialogue.Editor
             // Make connection for all node.
             for (int i = 0; i < nodes.Count; i++)
             {
-                List<NodeLinkData> connections = dialogueContainer.NodeLinkDatas.Where(edge => edge.BaseNodeGuid == nodes[i].NodeGuid).ToList();
+                List<NodeLinkData> connections = dialogueContainer.NodeLinkData.Where(edge => edge.BaseNodeGuid == nodes[i].NodeGuid).ToList();
 
                 List<Port> allOutputPorts = nodes[i].outputContainer.Children().Where(x => x is Port).Cast<Port>().ToList();
 
@@ -793,31 +553,24 @@ namespace DialogueEditor.Dialogue.Editor
         private void ValidateDialogueNode(DialogueNode node)
         {
             bool warn = false;
-            foreach (DialogueData_Text baseContainer in node.DialogueData.Dialogue_BaseContainers)
+            foreach (DialogueData_Sentence sentence in node.DialogueData.DialogueData_Text.sentence)
             {
-                foreach (DialogueData_Sentence sentence in baseContainer.sentence)
+                sentence.TextField.parent.parent.RemoveFromClassList("Error");
+                sentence.TextField.parent.RemoveFromClassList("Error");
+                sentence.TextField.RemoveFromClassList("Error");
+
+
+                if ((sentence.TextField.value == null || sentence.TextField.value == "" || sentence.TextField.value == "Dialogue Text"))
                 {
-                    sentence.TextField.parent.parent.RemoveFromClassList("Error");
-                    sentence.TextField.parent.RemoveFromClassList("Error");
-                    sentence.TextField.RemoveFromClassList("Error");
-
-
-                    if ((sentence.TextField.value == null || sentence.TextField.value == "" || sentence.TextField.value == "Dialogue Text"))
-                    {
-                        sentence.TextField.parent.parent.AddToClassList("Error");
-                        sentence.TextField.parent.AddToClassList("Error");
-                        sentence.TextField.AddToClassList("Error");
-                        warn = true;
-                    }
+                    sentence.TextField.parent.parent.AddToClassList("Error");
+                    sentence.TextField.parent.AddToClassList("Error");
+                    sentence.TextField.AddToClassList("Error");
+                    warn = true;
                 }
-
-
             }
 
             if(warn)
                 Debug.Log($"<color=orange>Warning: </color>You have empty dialogue boxes! Fill these in for complete dialogue!");
-
-
         }
         #endregion
     }

@@ -24,17 +24,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
             {
-                foreach (DialogueData nodeData in dialogueContainer.DialogueDatas)
+                foreach (DialogueData nodeData in dialogueContainer.DialogueData)
                 {
-                    foreach (DialogueData_Text textData in nodeData.DialogueData_Texts)
-                    {
-                        LoadInToDialogueNodeText(result, headers, textData);
-                    }
-                }
-
-                foreach (ChoiceData nodeData in dialogueContainer.ChoiceDatas)
-                {
-                    LoadInToChoiceNode(result, headers, nodeData);
+                    LoadInToDialogueNodeText(result, headers, nodeData.DialogueData_Text);
                 }
 
                 EditorUtility.SetDirty(dialogueContainer);
@@ -65,26 +57,6 @@ namespace DialogueEditor.Dialogue.Editor
             }
         }
 
-        private void LoadInToChoiceNode(List<List<string>> result, List<string> headers, ChoiceData nodeData)
-        {
-            foreach (List<string> line in result)
-            {
-                if (line[1] == nodeData.NodeGuid)
-                {
-                    for (int i = 0; i < line.Count; i++)
-                    {
-                        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-                        {
-                            if (headers[i] == languageType.ToString())
-                            {
-                                nodeData.Text.Find(x => x.LanguageType == languageType).LanguageGenericType = line[i];
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         // Made By furukazu 
         // Thanks furukazu!
         // flag for processing a CSV
@@ -92,9 +64,9 @@ namespace DialogueEditor.Dialogue.Editor
         {
             // default(treat as null)
             None,
-            // processing a speaker which is out of quotes 
+            // processing a dialogueAssets which is out of quotes 
             OutQuote,
-            // processing a speaker which is in quotes
+            // processing a dialogueAssets which is in quotes
             InQuote
         }
 
@@ -132,7 +104,7 @@ namespace DialogueEditor.Dialogue.Editor
                     requireTrimLineHead = false;
                 }
 
-                // finalize when c is the last speaker
+                // finalize when c is the last dialogueAssets
                 if ((i + 1) == len)
                 {
                     // final char
@@ -155,7 +127,7 @@ namespace DialogueEditor.Dialogue.Editor
                         case ParsingMode.OutQuote:
                             if (c == ',')
                             {
-                                // if the final speaker is comma, add an empty cell
+                                // if the final dialogueAssets is comma, add an empty cell
                                 // next col
                                 cols.Add(buffer.ToString());
                                 cols.Add(string.Empty);
@@ -177,7 +149,7 @@ namespace DialogueEditor.Dialogue.Editor
                     }
                 }
 
-                // the next speaker
+                // the next dialogueAssets
                 char n = src[i + 1];
 
                 switch (mode)

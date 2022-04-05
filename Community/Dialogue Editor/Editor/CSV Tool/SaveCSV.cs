@@ -24,42 +24,23 @@ namespace DialogueEditor.Dialogue.Editor
 
             foreach (DialogueContainerSO dialogueContainer in dialogueContainers)
             {
-                foreach (DialogueData nodeData in dialogueContainer.DialogueDatas)
+                foreach (DialogueData nodeData in dialogueContainer.DialogueData)
                 {
-                    foreach (DialogueData_Text textData in nodeData.DialogueData_Texts)
-                    {
-                        List<string> texts = new List<string>();
-
-                        texts.Add(dialogueContainer.name);
-                        texts.Add(nodeData.NodeGuid);
-                        texts.Add(textData.GuidID.Value);
-
-                        foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
-                        {
-                            foreach (DialogueData_Sentence sentence in textData.sentence)
-                            {
-                                string tmp = sentence.Text.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
-                                texts.Add($"\"{tmp}\"");
-                            }
-                            
-                        }
-
-                        AppendToFile(texts);
-                    }
-                }
-
-                foreach (ChoiceData nodeData in dialogueContainer.ChoiceDatas)
-                {
+                    DialogueData_Text textData = nodeData.DialogueData_Text;
                     List<string> texts = new List<string>();
 
                     texts.Add(dialogueContainer.name);
                     texts.Add(nodeData.NodeGuid);
-                    texts.Add("Choice Dont have Text ID");
+                    texts.Add(textData.GuidID.Value);
 
                     foreach (LanguageType languageType in (LanguageType[])Enum.GetValues(typeof(LanguageType)))
                     {
-                        string tmp = nodeData.Text.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
-                        texts.Add($"\"{tmp}\"");
+                        foreach (DialogueData_Sentence sentence in textData.sentence)
+                        {
+                            string tmp = sentence.Text.Find(language => language.LanguageType == languageType).LanguageGenericType.Replace("\"", "\"\"");
+                            texts.Add($"\"{tmp}\"");
+                        }
+                        
                     }
 
                     AppendToFile(texts);

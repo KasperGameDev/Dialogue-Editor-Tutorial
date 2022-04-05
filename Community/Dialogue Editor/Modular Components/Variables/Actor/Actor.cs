@@ -6,8 +6,8 @@ namespace DialogueEditor.ModularComponents
     [CreateAssetMenu(fileName = "new Dialogue Actor", menuName = "Dialogue Editor/Modular Components/Variable/Dialogue Actor", order = 1)]
     public class Actor : ScriptableObject
     {
-        [Header("Speaker Details")]
-        public string speakerName;
+        [Header("DialogueAssets Details")]
+        public string dialogueAssetsName;
         public ActorType actorType;
 
         public bool actorSpeaking = false;
@@ -29,7 +29,7 @@ namespace DialogueEditor.ModularComponents
 
                 AssetDatabase.SaveAssets();
 
-                newActor.speakerName = newActor.name;
+                newActor.dialogueAssetsName = newActor.name;
                 newActor.actorType = ActorType.NPC;
 
                 EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");

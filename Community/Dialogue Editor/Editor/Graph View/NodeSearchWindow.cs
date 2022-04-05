@@ -21,18 +21,15 @@ namespace DialogueEditor.Dialogue.Editor
         public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
         {
             List<SearchTreeEntry> tree = new List<SearchTreeEntry>
-        {
-            new SearchTreeGroupEntry(new GUIContent("Dialogue Editor"),0),
-            //new SearchTreeGroupEntry(new GUIContent("Dialogue Node"),1),
+            {
+                new SearchTreeGroupEntry(new GUIContent("Dialogue Editor"),0),
+                //new SearchTreeGroupEntry(new GUIContent("Dialogue Node"),1),
 
-            AddNodeSearch("Dialogue",new DialogueNode()),
-            AddNodeSearch("Choice Connector",new ChoiceConnectorNode()),
-            AddNodeSearch("Branch",new BranchNode()),
-            AddNodeSearch("Event",new EventNode()),
-            AddNodeSearch("Modifier",new ModifierNode()),
-            AddNodeSearch("Restart",new RestartNode()),
-            AddNodeSearch("Repeat",new RepeatNode()),
-        };
+                AddNodeSearch("Dialogue",new DialogueNode()),
+                AddNodeSearch("Branch",new BranchNode()),
+                AddNodeSearch("Event",new EventNode()),
+                AddNodeSearch("Modifier",new ModifierNode()),
+            };
 
             return tree;
         }
@@ -73,17 +70,8 @@ namespace DialogueEditor.Dialogue.Editor
                 case ModifierNode node:
                     graphView.AddElement(graphView.CreateModifierNode(position));
                     return true;
-                case RepeatNode node:
-                    graphView.AddElement(graphView.CreateRepeatNode(position));
-                    return true;
-                case RestartNode node:
-                    graphView.AddElement(graphView.CreateRestartNode(position));
-                    return true;
                 case BranchNode node:
                     graphView.AddElement(graphView.CreateBranchNode(position));
-                    return true;
-                case ChoiceConnectorNode node:
-                    graphView.AddElement(graphView.CreateChoiceConnectorNode(position));
                     return true;
                 default:
                     break;

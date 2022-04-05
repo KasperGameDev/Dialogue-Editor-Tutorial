@@ -1,44 +1,60 @@
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using DialogueEditor.Dialogue.Scripts;
 
 namespace DialogueEditor.Dialogue.Scripts
 {
-    public class DialogueController
+    public class DialogueController: MonoBehaviour
     {
+        public static DialogueController _instance;
+        public bool finish = true;
 
-        bool revealText = false;
-        bool animateText = false;
+        public float timer = 0;
+        public float timerThreshold = 0.05f;
+        public TextMeshProUGUI text;
+        public int totalVisibleCharacters;
+        public int counter = 0;
 
-        public DialogueController(bool revealText = false, bool animateText = false)
-        {
-            this.revealText = revealText;
-            this.animateText = animateText;
-        }
-        public void ShowDialogueUI(Speaker speaker, bool show)
-        {
-            speaker.dialogueUI.SetActive(show);
-        }
-
-        public void SetText(Speaker speaker, string text)
-        {
-            speaker.textBox.GetComponent<TextMeshProUGUI>().text += text;
+        public static DialogueController Instance{
+            get {
+                if(_instance is null)
+                    Debug.LogError("DialogueController is not in the Scene: Add The dialogue Assets Prefab to your Scene");
+                return _instance;
+            }
         }
 
-        public void SetDynamicText(Speaker speaker, List <Sentence> paragraph)
+        private void Awake() {
+            _instance = this;
+        }
+        
+        public void ShowDialogueUI(bool show)
         {
+            DialogueAssets.Instance.dialogueUI.SetActive(show);
+        }
+
+        public void SetText(string text)
+        {
+            DialogueAssets.Instance.textBox.GetComponent<TextMeshProUGUI>().text += text;
+        }
+
+        public void SetDynamicText(List <Sentence> paragraph)
+        {
+            text = DialogueAssets.Instance.textBox.GetComponent<TextMeshProUGUI>();
+            finish = false;
+            text.maxVisibleCharacters = 0;
             
-            TextMeshProUGUI text = speaker.textBox.GetComponent<TextMeshProUGUI>();
+            totalVisibleCharacters = 0;
+            counter = 0;
             text.text = "";
             for (int i = 0; i < paragraph.Count; i++)
             {
-                
+                totalVisibleCharacters += paragraph[i].sentence.Length;
                 switch(paragraph[i].volume){
                     case VolumeType.Neutral:
-                        SetText(speaker, paragraph[i].sentence);
+                        SetText(paragraph[i].sentence);
                         break;
                     case VolumeType.Shout:
                         text.text += $"<color=#b63c35>{paragraph[i].sentence}</color>";
@@ -57,70 +73,34 @@ namespace DialogueEditor.Dialogue.Scripts
                         break;
                 }
             }
+            finish = false;
         }
 
-        public void SetName(Speaker speaker, string text)
+
+        public void SetName(string text)
         {
-            speaker.textName.GetComponent<TextMeshProUGUI>().text = text;
+            DialogueAssets.Instance.textName.GetComponent<TextMeshProUGUI>().text = text;
         }
 
-        public void SetLeftImage(Speaker speaker, Sprite leftImage)
+        public void SetLeftImage(Sprite leftImage)
         {
             if (leftImage != null)
-                speaker.leftImage.sprite = leftImage;
+                DialogueAssets.Instance.leftImage.sprite = leftImage;
         }
 
-        public void SetRightImage(Speaker speaker, Sprite rightImage)
+        public void SetRightImage(Sprite rightImage)
         {
 
             if (rightImage != null)
-                speaker.rightImage.sprite = rightImage;
+                DialogueAssets.Instance.rightImage.sprite = rightImage;
         }
 
-        public void HideButtons()
+        
+        public void SetContinue(UnityAction unityAction)
         {
-            Speaker speaker = GameObject.FindGameObjectWithTag("Player").GetComponent<Speaker>();
-            speaker.buttons.ForEach(button => button.gameObject.SetActive(false));
-            speaker.buttonContinue.gameObject.SetActive(false);
-        }
-
-        public void SetButtons(List<DialogueButtonContainer> dialogueButtonContainers)
-        {
-            Speaker speaker = GameObject.FindGameObjectWithTag("Player").GetComponent<Speaker>();
-            HideButtons();
-
-            for (int i = 0; i < dialogueButtonContainers.Count; i++)
-            {
-                speaker.buttons[i].onClick = new Button.ButtonClickedEvent();
-                speaker.buttons[i].interactable = true;
-                speaker.buttons[i].GetComponent<TextMeshProUGUI>().color = speaker.textInteractableColor;
-
-                if (dialogueButtonContainers[i].ConditionCheck || dialogueButtonContainers[i].ChoiceState == ChoiceStateType.GrayOut)
-                {
-                    speaker.buttons[i].GetComponent<TextMeshProUGUI>().text = $"{i + 1}: " + dialogueButtonContainers[i].Text;
-                    speaker.buttons[i].gameObject.SetActive(true);
-
-                    if (!dialogueButtonContainers[i].ConditionCheck)
-                    {
-                        speaker.buttons[i].interactable = false;
-                        speaker.buttons[i].GetComponent<TextMeshProUGUI>().color = speaker.textDisableColor;
-                        var colors = speaker.buttons[i].colors;
-                        colors.disabledColor = speaker.buttonDisableColor;
-                        speaker.buttons[i].colors = colors;
-                    }
-                    else
-                    {
-                        speaker.buttons[i].onClick.AddListener(dialogueButtonContainers[i].UnityAction);
-                    }
-                }
-            }
-        }
-
-        public void SetContinue(Speaker speaker, UnityAction unityAction)
-        {
-            speaker.buttonContinue.onClick = new Button.ButtonClickedEvent();
-            speaker.buttonContinue.onClick.AddListener(unityAction);
-            speaker.buttonContinue.gameObject.SetActive(true);
+            DialogueAssets.Instance.buttonContinue.onClick = new Button.ButtonClickedEvent();
+            DialogueAssets.Instance.buttonContinue.onClick.AddListener(unityAction);
+            DialogueAssets.Instance.buttonContinue.gameObject.SetActive(true);
         }
     }
 
