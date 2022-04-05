@@ -192,7 +192,7 @@ namespace DialogueEditor.Dialogue.Editor
                 NodeGuid = node.NodeGuid,
                 Position = node.GetPosition().position,
             };
-            //nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
+            nodeData.EndNodeType.Value = node.EndData.EndNodeType.Value;
 
             return nodeData;
         }
@@ -360,10 +360,12 @@ namespace DialogueEditor.Dialogue.Editor
             // End
             if (dialogueContainer.EndData != null)
             {
-                if (dialogueContainer.EndData.NodeGuid.Length > 0)
-                    graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
+                graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
+                graphView.endNode.EndData.EndNodeType.Value = dialogueContainer.EndData.EndNodeType.Value;
+                graphView.endNode.LoadValueInToField();
                 graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 1500)));
             }
+
             graphView.AddElement(graphView.endNode);
 
             GenerateNodes(dialogueContainer.EventData);
