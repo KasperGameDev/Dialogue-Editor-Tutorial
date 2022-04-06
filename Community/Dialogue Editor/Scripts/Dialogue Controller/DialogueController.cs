@@ -29,6 +29,11 @@ namespace DialogueEditor.Dialogue.Scripts
         private void Awake() {
             _instance = this;
         }
+
+        private void Start() 
+        {    
+            finish = true;
+        }
         
         public void ShowDialogueUI(bool show)
         {
@@ -43,8 +48,6 @@ namespace DialogueEditor.Dialogue.Scripts
         public void SetDynamicText(List <Sentence> paragraph)
         {
             text = DialogueAssets.Instance.textBox.GetComponent<TextMeshProUGUI>();
-            text.maxVisibleCharacters = 0;
-            
             totalVisibleCharacters = 0;
             counter = 0;
             text.text = "";
