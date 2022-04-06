@@ -71,6 +71,15 @@ namespace DialogueEditor.Dialogue.Scripts
                 Debug.Log($"<color=red>Error: </color>Your Dialogue Object Must have a start Node.");
         }
 
+        public void StopDialogue()
+        {
+            DialogueController.Instance.ShowDialogueUI(false);
+            DialogueController.Instance.SetName("");
+            DialogueController.Instance.text.text = "";
+            DialogueController.Instance.SetContinue(null);
+            DialogueController.Instance.finish = true;
+        }
+
         private void CheckNodeType(BaseData _baseNodeData)
         {
             switch (_baseNodeData)
