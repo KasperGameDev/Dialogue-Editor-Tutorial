@@ -35,7 +35,7 @@ namespace DialogueEditor.Dialogue.Scripts
             }
         }
 
-        private void FixedUpdate() {
+        private void LateUpdate() {
             if(!DialogueController.Instance.finish){
                 if(DialogueController.Instance.timer > DialogueController.Instance.timerThreshold) 
                 {
