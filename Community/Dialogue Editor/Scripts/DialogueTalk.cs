@@ -36,7 +36,7 @@ namespace DialogueEditor.Dialogue.Scripts
         }
 
         private void LateUpdate() {
-            if(!DialogueController.Instance.finish){
+            if(DialogueController.Instance.finish == false){
                 if(DialogueController.Instance.timer > DialogueController.Instance.timerThreshold) 
                 {
                     DialogueController.Instance.counter ++;
@@ -46,12 +46,13 @@ namespace DialogueEditor.Dialogue.Scripts
                 DialogueController.Instance.text.maxVisibleCharacters = DialogueController.Instance.counter;
 
                 DialogueController.Instance.timer += Time.deltaTime;
+            }
 
-                
-                if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters)
-                {
-                    Next();
-                }
+            
+            if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters)
+            {
+                Next();
+                DialogueController.Instance.finish = true;
             }
         }
 
