@@ -344,34 +344,37 @@ namespace DialogueEditor.Dialogue.Editor
             graphView.startNode = graphView.CreateStartNode(Vector2.zero);
             graphView.endNode = graphView.CreateEndNode(Vector2.right);
 
-            // Start
-            if (dialogueContainer.StartData != null)
+            if (dialogueContainer != null)
             {
-                if (dialogueContainer.StartData.NodeGuid.Length > 0)
-                    graphView.startNode.NodeGuid = dialogueContainer.StartData.NodeGuid;
-                graphView.startNode.SetPosition(new Rect(dialogueContainer.StartData.Position, new Vector2(200, 250)));
-                foreach (Container_Actor actor in dialogueContainer.StartData.ParticipatingActors)
+                // Start
+                if (dialogueContainer.StartData.NodeGuid != null)
                 {
-                    graphView.startNode.AddScriptableActor(actor);
+                    if (dialogueContainer.StartData.NodeGuid.Length > 0)
+                        graphView.startNode.NodeGuid = dialogueContainer.StartData.NodeGuid;
+                    graphView.startNode.SetPosition(new Rect(dialogueContainer.StartData.Position, new Vector2(200, 250)));
+                    foreach (Container_Actor actor in dialogueContainer.StartData.ParticipatingActors)
+                    {
+                        graphView.startNode.AddScriptableActor(actor);
+                    }
                 }
+                graphView.AddElement(graphView.startNode);
+
+                // End
+                if (dialogueContainer.EndData != null)
+                {
+                    graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
+                    graphView.endNode.EndData.EndNodeType.Value = dialogueContainer.EndData.EndNodeType.Value;
+                    graphView.endNode.LoadValueInToField();
+                    graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 1500)));
+                }
+
+                graphView.AddElement(graphView.endNode);
+
+                GenerateNodes(dialogueContainer.EventData);
+                GenerateNodes(dialogueContainer.BranchData);
+                GenerateNodes(dialogueContainer.ModifierData);
+                GenerateNodes(dialogueContainer.DialogueData);
             }
-            graphView.AddElement(graphView.startNode);
-
-            // End
-            if (dialogueContainer.EndData != null)
-            {
-                graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
-                graphView.endNode.EndData.EndNodeType.Value = dialogueContainer.EndData.EndNodeType.Value;
-                graphView.endNode.LoadValueInToField();
-                graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 1500)));
-            }
-
-            graphView.AddElement(graphView.endNode);
-
-            GenerateNodes(dialogueContainer.EventData);
-            GenerateNodes(dialogueContainer.BranchData);
-            GenerateNodes(dialogueContainer.ModifierData);
-            GenerateNodes(dialogueContainer.DialogueData);
         }
 
         // Event Node
