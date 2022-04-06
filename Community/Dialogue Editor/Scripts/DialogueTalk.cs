@@ -69,7 +69,9 @@ namespace DialogueEditor.Dialogue.Scripts
             DialogueController.Instance.SetName("");
             DialogueController.Instance.text.text = "";
             DialogueController.Instance.SetContinue(null);
-            DialogueController.Instance.finish = true;
+            DialogueController.Instance.finish = false;
+            DialogueController.Instance.counter = 0;
+            DialogueController.Instance.totalVisibleCharacters = 0;
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
