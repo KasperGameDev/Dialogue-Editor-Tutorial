@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -35,24 +36,19 @@ namespace DialogueEditor.Dialogue.Scripts
             }
         }
 
-        private void LateUpdate() {
-            if(DialogueController.Instance.finish == false){
-                if(DialogueController.Instance.timer > DialogueController.Instance.timerThreshold) 
-                {
-                    DialogueController.Instance.counter ++;
-                    DialogueController.Instance.timer = 0;
-                }
+        private IEnumerator Teletype(float waitTime) {
+            while(DialogueController.Instance.finish == false){
+                DialogueController.Instance.counter ++;
                 
                 DialogueController.Instance.text.maxVisibleCharacters = DialogueController.Instance.counter;
 
-                DialogueController.Instance.timer += Time.deltaTime;
-            }
+                if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters)
+                {
+                    Next();
+                    DialogueController.Instance.finish = true;
+                }
 
-            
-            if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters)
-            {
-                Next();
-                DialogueController.Instance.finish = true;
+                yield return new WaitForSeconds(waitTime);
             }
         }
 
@@ -248,6 +244,7 @@ namespace DialogueEditor.Dialogue.Scripts
             DialogueController.Instance.ShowDialogueUI(true);
             DialogueController.Instance.SetDynamicText(parsedParagraph);
 
+            StartCoroutine(Teletype(0.05f));
         }
 
         private void PlayAudio(AudioClip audioClip)
