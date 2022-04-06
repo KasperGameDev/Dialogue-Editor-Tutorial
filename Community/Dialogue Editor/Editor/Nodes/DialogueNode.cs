@@ -318,8 +318,13 @@ namespace DialogueEditor.Dialogue.Editor
 
             // Scriptable Object Event.
             PopupField<Actor> popupfieldField = GetNewPopupField_Actor(list, actor, "EventObject");
-            if(list.IndexOf(actor.actor) < 0 ){
-                DialogueData.DialogueData_DialogueAssets.actor = list[0];
+
+            if(list.Count > 0)
+            {
+                if(list.IndexOf(actor.actor) < 0 )
+                {
+                    DialogueData.DialogueData_DialogueAssets.actor = list[0];
+                }
             }
 
             popupfieldField.RegisterValueChangedCallback(value => {
