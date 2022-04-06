@@ -5,13 +5,10 @@ using UnityEngine.Events;
 
 namespace DialogueEditor.Dialogue.Scripts
 {
-    // [RequireComponent(typeof(DialogueAssets))]
     [RequireComponent(typeof(AudioSource))]
     public class DialogueTalk : DialogueGetData
     {
         private AudioSource audioSource;
-
-        // [SerializeField] List<DialogueAssets> participatingDialogueAssetss;
 
         private DialogueData currentDialogueNodeData;
         private DialogueData lastDialogueNodeData;
@@ -20,17 +17,12 @@ namespace DialogueEditor.Dialogue.Scripts
         private DialogueMathCalculatorModifier DMCModifier = new DialogueMathCalculatorModifier();
 
         private List<DialogueData_Sentence> paragraph;
-        //private Container_DialogueDialogueAssets dialogueData_DialogueAssets;
-
-        private int currentIndex = 0;
-        // private DialogueAssets DialogueAssets.Instance;
 
         private Action nextNodeCheck;
         private bool runCheck;
 
         private void Awake()
         {
-            // participatingDialogueAssetss.Add(GetComponent<DialogueAssets>());
             audioSource = GetComponent<AudioSource>();
         }
 
@@ -217,7 +209,6 @@ namespace DialogueEditor.Dialogue.Scripts
 
         private void RunNode(DialogueData nodeData)
         {
-            //Debug.Log("Dialogue Node");
             currentDialogueNodeData = nodeData;
 
             DialogueController.Instance.ShowDialogueUI(false);
@@ -226,8 +217,6 @@ namespace DialogueEditor.Dialogue.Scripts
             else
                 paragraph = new List<DialogueData_Sentence>();
             paragraph.AddRange(nodeData.DialogueData_Text.sentence);
-
-            currentIndex = 0;
             
             DialogueController.Instance.SetName(nodeData.DialogueData_DialogueAssets.actor.dialogueAssetsName);
             DialogueToDo();
@@ -245,12 +234,12 @@ namespace DialogueEditor.Dialogue.Scripts
                 parsedParagraph.Add(currentSentence);
             }
 
-            // if (tmp.Sprite_Left.Value)
-            //     DialogueController.Instance.SetLeftImage(tmp.Sprite_Left.Value);
-            // if (tmp.Sprite_Right.Value)
-            //     DialogueController.Instance.SetRightImage(tmp.Sprite_Right.Value);
+            if (currentDialogueNodeData.DialogueData_Text.Sprite_Left.Value)
+                DialogueController.Instance.SetLeftImage(currentDialogueNodeData.DialogueData_Text.Sprite_Left.Value);
+            if (currentDialogueNodeData.DialogueData_Text.Sprite_Right.Value)
+                DialogueController.Instance.SetRightImage(currentDialogueNodeData.DialogueData_Text.Sprite_Right.Value);
 
-            // PlayAudio(tmp.AudioClips.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
+            PlayAudio(currentDialogueNodeData.DialogueData_Text.AudioClips.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
              DialogueController.Instance.SetContinue(null);
             Finish();
             DialogueController.Instance.ShowDialogueUI(true);

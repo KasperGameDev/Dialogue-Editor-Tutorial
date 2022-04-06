@@ -19,8 +19,6 @@ public class DialogueAssets : MonoBehaviour
     private void Awake() {
         _instance = this;
     }
-    
-    bool ChoiceState = false;
 
     [Header("DialogueAssets Details")]
     [SerializeField] public GameObject dialogueUI;
