@@ -37,10 +37,6 @@ namespace DialogueEditor.Dialogue.Scripts
 
         private void LateUpdate() {
             if(DialogueController.Instance.text.maxVisibleCharacters < DialogueController.Instance.totalVisibleCharacters){
-                if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters + 1)
-                {
-                    Next();
-                }
 
                 if(DialogueController.Instance.timer > DialogueController.Instance.timerThreshold) 
                 {
@@ -52,6 +48,11 @@ namespace DialogueEditor.Dialogue.Scripts
 
                 DialogueController.Instance.timer += Time.deltaTime;
 
+                
+                if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters + 1)
+                {
+                    Next();
+                }
             }
         }
 
@@ -67,6 +68,7 @@ namespace DialogueEditor.Dialogue.Scripts
         {
             DialogueController.Instance.ShowDialogueUI(false);
             DialogueController.Instance.SetContinue(null);
+            DialogueController.Instance.text = new TMPro.TextMeshProUGUI();
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
