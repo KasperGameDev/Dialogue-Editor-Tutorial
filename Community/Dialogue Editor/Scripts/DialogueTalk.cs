@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -36,19 +35,23 @@ namespace DialogueEditor.Dialogue.Scripts
             }
         }
 
-        private IEnumerator Teletype(float waitTime) {
-            while(DialogueController.Instance.finish == false){
-                DialogueController.Instance.counter ++;
-                
-                DialogueController.Instance.text.maxVisibleCharacters = DialogueController.Instance.counter;
-
+        private void LateUpdate() {
+            if(DialogueController.Instance.finish == false){
                 if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters)
                 {
                     Next();
-                    DialogueController.Instance.finish = true;
                 }
 
-                yield return new WaitForSeconds(waitTime);
+                if(DialogueController.Instance.timer > DialogueController.Instance.timerThreshold) 
+                {
+                    DialogueController.Instance.counter ++;
+                    DialogueController.Instance.timer = 0;
+                }
+                
+                DialogueController.Instance.text.maxVisibleCharacters = DialogueController.Instance.counter;
+
+                DialogueController.Instance.timer += Time.deltaTime;
+
             }
         }
 
@@ -66,9 +69,9 @@ namespace DialogueEditor.Dialogue.Scripts
             DialogueController.Instance.SetName("");
             DialogueController.Instance.text.text = "";
             DialogueController.Instance.SetContinue(null);
-            DialogueController.Instance.finish = false;
+            DialogueController.Instance.finish = true;
             DialogueController.Instance.counter = 0;
-            DialogueController.Instance.totalVisibleCharacters = 0;
+            DialogueController.Instance.totalVisibleCharacters = 100;
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
@@ -244,7 +247,6 @@ namespace DialogueEditor.Dialogue.Scripts
             DialogueController.Instance.ShowDialogueUI(true);
             DialogueController.Instance.SetDynamicText(parsedParagraph);
 
-            StartCoroutine(Teletype(0.05f));
         }
 
         private void PlayAudio(AudioClip audioClip)
