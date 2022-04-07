@@ -66,12 +66,7 @@ namespace DialogueEditor.Dialogue.Scripts
         public void StopDialogue()
         {
             DialogueController.Instance.ShowDialogueUI(false);
-            DialogueController.Instance.SetName("");
-            DialogueController.Instance.text.text = "";
             DialogueController.Instance.SetContinue(null);
-            DialogueController.Instance.counter = 0;
-            DialogueController.Instance.text.maxVisibleCharacters = 0;
-            DialogueController.Instance.totalVisibleCharacters = 0;
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
