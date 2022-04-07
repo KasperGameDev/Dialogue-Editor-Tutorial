@@ -68,7 +68,8 @@ namespace DialogueEditor.Dialogue.Scripts
         {
             DialogueController.Instance.ShowDialogueUI(false);
             DialogueController.Instance.SetContinue(null);
-            DialogueController.Instance.text = new TMPro.TextMeshProUGUI();
+            DialogueController.Instance.text.text = null;
+            DialogueController.Instance.text.textInfo.Clear();
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
