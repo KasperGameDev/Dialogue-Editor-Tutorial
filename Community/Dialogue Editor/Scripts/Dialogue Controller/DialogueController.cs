@@ -47,6 +47,7 @@ namespace DialogueEditor.Dialogue.Scripts
 
         public void SetDynamicText(List <Sentence> paragraph)
         {
+            finish = true;
             text = DialogueAssets.Instance.textBox.GetComponent<TextMeshProUGUI>();
             totalVisibleCharacters = 0;
             counter = 0;
@@ -76,6 +77,8 @@ namespace DialogueEditor.Dialogue.Scripts
                 }
             }
             finish = false;
+            text.maxVisibleCharacters = 0;
+
         }
 
 
