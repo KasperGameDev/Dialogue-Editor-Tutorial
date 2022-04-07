@@ -10,8 +10,6 @@ namespace DialogueEditor.Dialogue.Scripts
     public class DialogueController: MonoBehaviour
     {
         public static DialogueController _instance;
-        public bool finish = true;
-
         public float timer = 0;
         public float timerThreshold = 0.05f;
         public TextMeshProUGUI text;
@@ -29,11 +27,6 @@ namespace DialogueEditor.Dialogue.Scripts
         private void Awake() {
             _instance = this;
         }
-
-        private void Start() 
-        {    
-            finish = true;
-        }
         
         public void ShowDialogueUI(bool show)
         {
@@ -47,7 +40,6 @@ namespace DialogueEditor.Dialogue.Scripts
 
         public void SetDynamicText(List <Sentence> paragraph)
         {
-            finish = true;
             text = DialogueAssets.Instance.textBox.GetComponent<TextMeshProUGUI>();
             totalVisibleCharacters = 0;
             counter = 0;
@@ -76,7 +68,6 @@ namespace DialogueEditor.Dialogue.Scripts
                         break;
                 }
             }
-            finish = false;
             text.maxVisibleCharacters = 0;
 
         }

@@ -36,8 +36,8 @@ namespace DialogueEditor.Dialogue.Scripts
         }
 
         private void LateUpdate() {
-            if(DialogueController.Instance.finish == false){
-                if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters)
+            if(DialogueController.Instance.text.maxVisibleCharacters < DialogueController.Instance.totalVisibleCharacters){
+                if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters + 1)
                 {
                     Next();
                 }
@@ -69,7 +69,6 @@ namespace DialogueEditor.Dialogue.Scripts
             DialogueController.Instance.SetName("");
             DialogueController.Instance.text.text = "";
             DialogueController.Instance.SetContinue(null);
-            DialogueController.Instance.finish = true;
             DialogueController.Instance.counter = 0;
             DialogueController.Instance.totalVisibleCharacters = 100;
         }
@@ -258,7 +257,6 @@ namespace DialogueEditor.Dialogue.Scripts
 
         private void Next()
         {
-            DialogueController.Instance.finish = true;
             UnityAction unityAction = null;
             unityAction += () => GetNext();
             DialogueController.Instance.SetContinue(unityAction);
@@ -274,7 +272,6 @@ namespace DialogueEditor.Dialogue.Scripts
 
         void GetFinish()
         {
-            DialogueController.Instance.finish = true;
             DialogueController.Instance.text.maxVisibleCharacters = DialogueController.Instance.text.textInfo.characterCount;
             Next();
         }
