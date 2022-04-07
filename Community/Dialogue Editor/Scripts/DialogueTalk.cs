@@ -70,7 +70,8 @@ namespace DialogueEditor.Dialogue.Scripts
             DialogueController.Instance.text.text = "";
             DialogueController.Instance.SetContinue(null);
             DialogueController.Instance.counter = 0;
-            DialogueController.Instance.totalVisibleCharacters = 100;
+            DialogueController.Instance.text.maxVisibleCharacters = 0;
+            DialogueController.Instance.totalVisibleCharacters = 0;
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
@@ -266,7 +267,7 @@ namespace DialogueEditor.Dialogue.Scripts
         {
             DialogueController.Instance.counter = 0;
             DialogueController.Instance.timer = 0;
-            DialogueController.Instance.totalVisibleCharacters = 100;
+            DialogueController.Instance.totalVisibleCharacters = 0;
             CheckNodeType(GetNextNode(currentDialogueNodeData));
         }
 
