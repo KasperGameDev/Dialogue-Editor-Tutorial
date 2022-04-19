@@ -10,11 +10,17 @@ namespace DialogueEditor.Dialogue.Editor
         private DialogueEditorWindow editorWindow;
         private DialogueGraphView graphView;
 
+        private Texture2D iconImage;
 
         public void Configure(DialogueEditorWindow editorWindow, DialogueGraphView graphView)
         {
             this.editorWindow = editorWindow;
             this.graphView = graphView;
+
+
+            iconImage = new Texture2D(1, 1);
+            iconImage.SetPixel(0, 0, new Color(0, 0, 0, 0));
+            iconImage.Apply();
         }
 
 
@@ -29,6 +35,7 @@ namespace DialogueEditor.Dialogue.Editor
                 AddNodeSearch("Branch",new BranchNode()),
                 AddNodeSearch("Event",new EventNode()),
                 AddNodeSearch("Modifier",new ModifierNode()),
+                AddNodeSearch("Choice Connector",new ChoiceConnectorNode()),
             };
 
             return tree;
@@ -72,6 +79,9 @@ namespace DialogueEditor.Dialogue.Editor
                     return true;
                 case BranchNode node:
                     graphView.AddElement(graphView.CreateBranchNode(position));
+                    return true;
+                case ChoiceConnectorNode node:
+                    graphView.AddElement(graphView.CreateChoiceConnectorNode(position));
                     return true;
                 default:
                     break;

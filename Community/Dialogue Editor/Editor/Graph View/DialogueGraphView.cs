@@ -160,5 +160,19 @@ namespace DialogueEditor.Dialogue.Editor
         {
             return new BranchNode(position, editorWindow, this);
         }
+
+        /// <summary>
+        /// Make new Choice Node and set it's position.
+        /// </summary>
+        /// <param name="position">position of where to place the node</param>
+        /// <returns>Choice Node</returns>
+        public ChoiceNode CreateChoiceNode(Vector2 position)
+        {
+            return new ChoiceNode(position, editorWindow, this);
+        }
+        public ChoiceConnectorNode CreateChoiceConnectorNode(Vector2 position)
+        {
+            return new ChoiceConnectorNode(position, editorWindow, this);
+        }
     }
 }

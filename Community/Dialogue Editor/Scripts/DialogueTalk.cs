@@ -91,6 +91,9 @@ namespace DialogueEditor.Dialogue.Scripts
                 case BranchData nodeData:
                     RunNode(nodeData);
                     break;
+                case ChoiceConnectorData nodeData:
+                    RunNode(nodeData);
+                    break;
                 default:
                     break;
             }
@@ -220,6 +223,81 @@ namespace DialogueEditor.Dialogue.Scripts
             
             DialogueController.Instance.SetName(nodeData.DialogueData_DialogueAssets.actor.dialogueAssetsName);
             DialogueToDo();
+        }
+
+        private void RunNode(ChoiceConnectorData nodeData)
+        {
+
+            DialogueController.Instance.ShowDialogueUI(false);
+            List<DialogueButtonContainer> dialogueButtonContainers = new List<DialogueButtonContainer>();
+            foreach (DialogueData_Port port in nodeData.DialogueData_Ports)
+            {
+                ChoiceCheck(port.InputGuid, dialogueButtonContainers);
+            }
+
+            if (dialogueButtonContainers.Count > 0)
+            {
+                DialogueController.Instance.SetText("");
+
+            }
+            //DialogueController.Instance.SetButtons(dialogueButtonContainers);
+            DialogueController.Instance.ShowDialogueUI(true);
+        }
+
+        private void ChoiceCheck(string guidID, List<DialogueButtonContainer> dialogueButtonContainers)
+        {
+            BaseData asd = GetNodeByGuid(guidID);
+            ChoiceData choiceNode = GetNodeByGuid(guidID) as ChoiceData;
+            DialogueButtonContainer dialogueButtonContainer = new DialogueButtonContainer();
+
+            bool checkBranch = true;
+
+            foreach (EventData_StringCondition item in choiceNode.EventData_StringConditions)
+            {
+                if (!DMCCondition.StringCondition(item))
+                {
+                    checkBranch = false;
+                    break;
+                }
+            }
+            foreach (EventData_FloatCondition item in choiceNode.EventData_FloatConditions)
+            {
+                if (!DMCCondition.FloatCondition(item))
+                {
+                    checkBranch = false;
+                    break;
+                }
+            }
+            foreach (EventData_IntCondition item in choiceNode.EventData_IntConditions)
+            {
+                if (!DMCCondition.IntCondition(item))
+                {
+                    checkBranch = false;
+                    break;
+                }
+            }
+            foreach (EventData_BoolCondition item in choiceNode.EventData_BoolConditions)
+            {
+                if (!DMCCondition.BoolCondition(item))
+                {
+                    checkBranch = false;
+                    break;
+                }
+            }
+
+            UnityAction unityAction = null;
+            unityAction += () =>
+            {
+                nextNodeCheck = () => { CheckNodeType(GetNextNode(choiceNode)); };
+                runCheck = true;
+            };
+
+            dialogueButtonContainer.ChoiceState = choiceNode.ChoiceStateTypes.Value;
+            dialogueButtonContainer.Text = choiceNode.Text.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType;
+            dialogueButtonContainer.UnityAction = unityAction;
+            dialogueButtonContainer.ConditionCheck = checkBranch;
+
+            dialogueButtonContainers.Add(dialogueButtonContainer);
         }
 
         private void DialogueToDo()
