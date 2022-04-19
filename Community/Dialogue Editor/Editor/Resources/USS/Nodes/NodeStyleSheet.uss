@@ -30,12 +30,11 @@
 }
 
 .MoveBtn{
-	padding: 1px;
 	background-color: rgba(0, 0, 0, 0);	
 }
 
 .MoveBtn:hover{
-	background-color: grey;	
+	color: grey;	
 }
 
 .BtnBox{
@@ -46,7 +45,7 @@
 
 .BoxRow{
 	flex-direction: row;
-	padding: 5px;
+	padding: 2.5px;
 	background-color: rgba(0, 0, 0, 0);	
 }
 
@@ -109,12 +108,11 @@ Box {
 
 .EventBox{
 	flex-direction: row;
-	padding: 10px;
 	border-color: #5C5C5C;
 	border-width: 4px;
-	margin: 1px;
 	padding: 5px;
 	background-color: rgb(50, 50, 50);
+	margin-bottom: 1px;
 }
 
 .EventObject{

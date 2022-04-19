@@ -5,3 +5,14 @@
 .node #title #title-label{
 	color: white;
 }
+
+.BoxRow{
+	align-self: flex-end;
+	Padding: 1px;
+	margin: 1px;
+}
+
+.BtnBox{
+	padding: 0px;
+	margin: 0px;
+}

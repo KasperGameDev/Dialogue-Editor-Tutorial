@@ -60,6 +60,16 @@ namespace DialogueEditor.Dialogue
         public ChoiceStateType Value = ChoiceStateType.Hide;
     }
 
+    [System.Serializable]
+    public class Container_EndNodeType
+    {
+#if UNITY_EDITOR
+        public UnityEngine.UIElements.EnumField EnumField;
+#endif
+        public EndNodeType Value = EndNodeType.End;
+    }
+
+
     #region String Event
     [System.Serializable]
     public class Container_StringModifierType

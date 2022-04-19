@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -28,7 +30,7 @@ namespace DialogueEditor.Dialogue.Editor
             nodeGuid = Guid.NewGuid().ToString();               // Set Guid ID
 
             // Add standard ports.
-            AddInputPort("Input", Color.yellow, Port.Capacity.Multi);
+            Port inputPort = AddInputPort("Input", Color.yellow, Port.Capacity.Multi);
             AddOutputPort("Output", Color.cyan, Port.Capacity.Single);
 
             TopButton();
@@ -42,35 +44,14 @@ namespace DialogueEditor.Dialogue.Editor
             ToolbarMenu Menu = new ToolbarMenu();
             Menu.text = "Add Condition";
 
-            Menu.menu.AppendAction("String Event Condition", new Action<DropdownMenuAction>(x => AddStringCondition()));
-            Menu.menu.AppendAction("Float Event Condition", new Action<DropdownMenuAction>(x => AddFloatCondition()));
-            Menu.menu.AppendAction("Int Event Condition", new Action<DropdownMenuAction>(x => AddIntCondition()));
-            Menu.menu.AppendAction("Bool Event Condition", new Action<DropdownMenuAction>(x => AddBoolCondition()));
+            Menu.menu.AppendAction("String Event Condition", new Action<DropdownMenuAction>(x => AddCondition()));
 
             titleButtonContainer.Add(Menu);
         }
 
-        public void AddStringCondition(EventData_StringCondition stringEvent = null)
+        public void AddCondition(EventData_StringCondition stringEvent = null)
         {
             AddStringConditionEventBuild(ChoiceData.EventData_StringConditions, stringEvent);
-            ShowHideChoiceEnum();
-        }
-
-        public void AddFloatCondition(EventData_FloatCondition FloatEvent = null)
-        {
-            AddFloatConditionEventBuild(ChoiceData.EventData_FloatConditions, FloatEvent);
-            ShowHideChoiceEnum();
-        }
-
-        public void AddIntCondition(EventData_IntCondition IntEvent = null)
-        {
-            AddIntConditionEventBuild(ChoiceData.EventData_IntConditions, IntEvent);
-            ShowHideChoiceEnum();
-        }
-
-        public void AddBoolCondition(EventData_BoolCondition stringEvent = null)
-        {
-            AddBoolConditionEventBuild(ChoiceData.EventData_BoolConditions, stringEvent);
             ShowHideChoiceEnum();
         }
 
@@ -93,26 +74,24 @@ namespace DialogueEditor.Dialogue.Editor
             // Reaload the current selected language
             ReloadLanguage();
 
-            extensionContainer.Add(boxContainer);
+            mainContainer.Add(boxContainer);
         }
 
         private void ChoiceStateEnum()
         {
             choiceStateEnumBox = new Box();
-            choiceStateEnumBox.AddToClassList("BoxCol");
+            choiceStateEnumBox.AddToClassList("BoxRow");
             ShowHideChoiceEnum();
 
             // Make fields.
-            Label enumLabel = GetNewLabel("If the condition is not met", "LabelText");
+            Label enumLabel = GetNewLabel("If the condition is not met", "ChoiceLabel");
             EnumField choiceStateEnumField = GetNewEnumField_ChoiceStateType(ChoiceData.ChoiceStateTypes, "enumHide");
 
             // Add fields to box.
             choiceStateEnumBox.Add(choiceStateEnumField);
             choiceStateEnumBox.Add(enumLabel);
 
-            extensionContainer.Add(choiceStateEnumBox);
-
-            RefreshExpandedState();
+            mainContainer.Add(choiceStateEnumBox);
         }
 
         protected override void DeleteBox(Box boxContainer)
@@ -123,11 +102,7 @@ namespace DialogueEditor.Dialogue.Editor
 
         private void ShowHideChoiceEnum()
         {
-            int total = ChoiceData.EventData_StringConditions.Count
-                + ChoiceData.EventData_FloatConditions.Count
-                + ChoiceData.EventData_IntConditions.Count
-                + ChoiceData.EventData_BoolConditions.Count;
-            ShowHide(total > 0, choiceStateEnumBox);
+            ShowHide(ChoiceData.EventData_StringConditions.Count > 0, choiceStateEnumBox);
         }
 
         public override void ReloadLanguage()

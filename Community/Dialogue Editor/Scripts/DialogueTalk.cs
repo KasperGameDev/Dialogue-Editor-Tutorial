@@ -5,16 +5,10 @@ using UnityEngine.Events;
 
 namespace DialogueEditor.Dialogue.Scripts
 {
-    [RequireComponent(typeof(Speaker))]
     [RequireComponent(typeof(AudioSource))]
     public class DialogueTalk : DialogueGetData
     {
-        private DialogueController dialogueController;
         private AudioSource audioSource;
-
-        [SerializeField] bool useButtons = false;
-
-        [SerializeField] List<Speaker> participatingSpeakers;
 
         private DialogueData currentDialogueNodeData;
         private DialogueData lastDialogueNodeData;
@@ -22,21 +16,14 @@ namespace DialogueEditor.Dialogue.Scripts
         private DialogueMathCalculatorCondition DMCCondition = new DialogueMathCalculatorCondition();
         private DialogueMathCalculatorModifier DMCModifier = new DialogueMathCalculatorModifier();
 
-        private List<DialogueData_BaseContainer> baseContainers;
-        //private Container_DialogueSpeaker dialogueData_Speaker;
-
-        private int currentIndex = 0;
-        private Speaker speakerSpeaking;
+        private List<DialogueData_Sentence> paragraph;
 
         private Action nextNodeCheck;
         private bool runCheck;
 
-        public UnityAction nextActionListener;
         private void Awake()
         {
-            participatingSpeakers.Add(GetComponent<Speaker>());
             audioSource = GetComponent<AudioSource>();
-            dialogueController = new DialogueController();
         }
 
         private void Update()
@@ -48,17 +35,41 @@ namespace DialogueEditor.Dialogue.Scripts
             }
         }
 
+        private void LateUpdate() {
+            if(DialogueController.Instance.text.maxVisibleCharacters < DialogueController.Instance.totalVisibleCharacters){
+
+                if(DialogueController.Instance.timer > DialogueController.Instance.timerThreshold) 
+                {
+                    DialogueController.Instance.counter ++;
+                    DialogueController.Instance.timer = 0;
+                }
+                
+                DialogueController.Instance.text.maxVisibleCharacters = DialogueController.Instance.counter;
+
+                DialogueController.Instance.timer += Time.deltaTime;
+
+                
+                if(DialogueController.Instance.counter > DialogueController.Instance.totalVisibleCharacters + 1)
+                {
+                    Next();
+                }
+            }
+        }
+
         public void StartDialogue()
         {
             if(dialogueContainerSO.StartData != null)
                 CheckNodeType(GetNextNode(dialogueContainerSO.StartData));
             else
                 Debug.Log($"<color=red>Error: </color>Your Dialogue Object Must have a start Node.");
+        }
 
-            foreach(Speaker speaker in participatingSpeakers)
-            {
-                speaker.actor.actorSpeaking = true;
-            }
+        public void StopDialogue()
+        {
+            DialogueController.Instance.ShowDialogueUI(false);
+            DialogueController.Instance.SetContinue(null);
+            DialogueController.Instance.text.text = null;
+            DialogueController.Instance.text.textInfo.Clear();
         }
 
         private void CheckNodeType(BaseData _baseNodeData)
@@ -177,102 +188,47 @@ namespace DialogueEditor.Dialogue.Scripts
 
         private void RunNode(EndData nodeData)
         {
-            if (speakerSpeaking != null)
-                dialogueController.ShowDialogueUI(speakerSpeaking, false);
-
-            foreach (Speaker speaker in participatingSpeakers)
+            switch (nodeData.EndNodeType.Value)
             {
-                speaker.actor.actorSpeaking = false;
+                case EndNodeType.End:
+                    DialogueController.Instance.ShowDialogueUI(false);
+                    break;
+                case EndNodeType.Repeat:
+                    nextNodeCheck = () =>
+                    {
+                        CheckNodeType(GetNodeByGuid(currentDialogueNodeData.NodeGuid));
+                    }; runCheck = true;
+                    break;
+                case EndNodeType.ReturnToStart:
+                    nextNodeCheck = () =>
+                    {
+                        CheckNodeType(GetNextNode(dialogueContainerSO.StartData));
+                    }; runCheck = true;
+                    break;
+                default:
+                    break;
             }
-
-        }
-
-        private void RunNode(RepeatData nodeData)
-        {
-            nextNodeCheck = () =>
-            {
-                CheckNodeType(GetNodeByGuid(currentDialogueNodeData.NodeGuid));
-            }; 
-            runCheck = true;
-        }
-
-        private void RunNode(RestartData nodeData)
-        {
-            nextNodeCheck = () =>
-            {
-                CheckNodeType(GetNodeByGuid(currentDialogueNodeData.NodeGuid));
-            };
-            runCheck = true;
         }
 
         private void RunNode(DialogueData nodeData)
         {
-            //Debug.Log("Dialogue Node");
             currentDialogueNodeData = nodeData;
 
-            if(speakerSpeaking)
-                dialogueController.ShowDialogueUI(speakerSpeaking, false);
-
-            speakerSpeaking = participatingSpeakers.Find((x) => x.actor == nodeData.DialogueData_Speaker.actor);
-
-            baseContainers = new List<DialogueData_BaseContainer>();
-            baseContainers.AddRange(nodeData.DialogueData_Texts);
-
-            currentIndex = 0;
-
-            baseContainers.Sort(delegate (DialogueData_BaseContainer x, DialogueData_BaseContainer y)
-            {
-                return x.ID.Value.CompareTo(y.ID.Value);
-            });
-
+            DialogueController.Instance.ShowDialogueUI(false);
+            if(paragraph != null)
+                paragraph.Clear();
+            else
+                paragraph = new List<DialogueData_Sentence>();
+            paragraph.AddRange(nodeData.DialogueData_Text.sentence);
+            
+            DialogueController.Instance.SetName(nodeData.DialogueData_DialogueAssets.actor.dialogueAssetsName);
             DialogueToDo();
-        }
-
-        private void DialogueToDo()
-        {
-            dialogueController.HideButtons();
-
-            for (int i = currentIndex; i < baseContainers.Count; i++)
-            {
-                //Debug.Log(i);
-                currentIndex = i + 1;
-                if (baseContainers[i] is DialogueData_Text)
-                {
-                    DialogueData_Text tmp = baseContainers[i] as DialogueData_Text;
-                    //Debug.Log(LanguageController.Instance.Language);
-                    //Debug.Log(tmp);
-                    List<Sentence> paragraph = new List<Sentence>();
-
-                    foreach (DialogueData_Sentence sentence in tmp.sentence)
-                    {
-                        Sentence currentSentence = new Sentence();
-                        currentSentence.sentence = " " + sentence.Text.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType;
-                        currentSentence.volume = sentence.volumeType.Value;
-
-                        paragraph.Add(currentSentence);
-                    }
-
-                    if (tmp.Sprite_Left.Value)
-                        dialogueController.SetLeftImage(speakerSpeaking, tmp.Sprite_Left.Value);
-                    if (tmp.Sprite_Right.Value)
-                        dialogueController.SetRightImage(speakerSpeaking, tmp.Sprite_Right.Value);
-
-                    dialogueController.SetDynamicText(speakerSpeaking, paragraph);
-                    dialogueController.SetName(speakerSpeaking, speakerSpeaking.actor.speakerName);
-                    PlayAudio(tmp.AudioClips.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
-                    nextActionListener = null;
-                    Next();
-                    dialogueController.ShowDialogueUI(speakerSpeaking, true);
-                    break;
-                }
-            }
-
         }
 
         private void RunNode(ChoiceConnectorData nodeData)
         {
 
-            dialogueController.ShowDialogueUI(speakerSpeaking, false);
+            DialogueController.Instance.ShowDialogueUI(false);
             List<DialogueButtonContainer> dialogueButtonContainers = new List<DialogueButtonContainer>();
             foreach (DialogueData_Port port in nodeData.DialogueData_Ports)
             {
@@ -281,43 +237,11 @@ namespace DialogueEditor.Dialogue.Scripts
 
             if (dialogueButtonContainers.Count > 0)
             {
-                speakerSpeaking = participatingSpeakers.Find(
-                    (x) => x.tag.ToLower().Equals(("player"))
-                );
-
-                dialogueController.SetText(speakerSpeaking, "");
+                DialogueController.Instance.SetText("");
 
             }
-            dialogueController.SetButtons(dialogueButtonContainers);
-            dialogueController.ShowDialogueUI(speakerSpeaking, true);
-        }
-
-        private void PlayAudio(AudioClip audioClip)
-        {
-            audioSource.Stop();
-            audioSource.clip = audioClip;
-            audioSource.Play();
-        }
-
-        private void Next()
-        {
-            if (currentIndex == baseContainers.Count)
-            {
-                UnityAction unityAction = null;
-                unityAction += () => CheckNodeType(GetNextNode(currentDialogueNodeData));
-                
-                if(useButtons)
-                    dialogueController.SetContinue(speakerSpeaking, unityAction);
-            }
-
-            else
-            {
-                UnityAction unityAction = null;
-                unityAction += () => DialogueToDo();
-                
-                if(useButtons)
-                    dialogueController.SetContinue(speakerSpeaking, unityAction);
-            }
+            //DialogueController.Instance.SetButtons(dialogueButtonContainers);
+            DialogueController.Instance.ShowDialogueUI(true);
         }
 
         private void ChoiceCheck(string guidID, List<DialogueButtonContainer> dialogueButtonContainers)
@@ -376,5 +300,65 @@ namespace DialogueEditor.Dialogue.Scripts
             dialogueButtonContainers.Add(dialogueButtonContainer);
         }
 
+        private void DialogueToDo()
+        {
+            List<Sentence> parsedParagraph = new List<Sentence>();
+            foreach (DialogueData_Sentence sentence in paragraph)
+            {
+                Sentence currentSentence = new Sentence();
+                currentSentence.sentence = " " + sentence.Text.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType;
+                currentSentence.volume = sentence.volumeType.Value;
+
+                parsedParagraph.Add(currentSentence);
+            }
+
+            if (currentDialogueNodeData.DialogueData_Text.Sprite_Left.Value)
+                DialogueController.Instance.SetLeftImage(currentDialogueNodeData.DialogueData_Text.Sprite_Left.Value);
+            if (currentDialogueNodeData.DialogueData_Text.Sprite_Right.Value)
+                DialogueController.Instance.SetRightImage(currentDialogueNodeData.DialogueData_Text.Sprite_Right.Value);
+
+            PlayAudio(currentDialogueNodeData.DialogueData_Text.AudioClips.Find(text => text.LanguageType == LanguageController.Instance.Language).LanguageGenericType);
+             DialogueController.Instance.SetContinue(null);
+            Finish();
+            DialogueController.Instance.ShowDialogueUI(true);
+            DialogueController.Instance.SetDynamicText(parsedParagraph);
+
+        }
+
+        private void PlayAudio(AudioClip audioClip)
+        {
+            audioSource.Stop();
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+
+        private void Next()
+        {
+            UnityAction unityAction = null;
+            unityAction += () => GetNext();
+            DialogueController.Instance.SetContinue(unityAction);
+        }
+
+        void GetNext()
+        {
+            DialogueController.Instance.counter = 0;
+            DialogueController.Instance.timer = 0;
+            DialogueController.Instance.totalVisibleCharacters = 0;
+            CheckNodeType(GetNextNode(currentDialogueNodeData));
+        }
+
+        void GetFinish()
+        {
+            DialogueController.Instance.text.maxVisibleCharacters = DialogueController.Instance.text.textInfo.characterCount;
+            Next();
+        }
+
+        private void Finish()
+        {  
+            UnityAction unityAction = null;
+            unityAction += () => GetFinish();
+
+            DialogueController.Instance.SetContinue(unityAction);
+        }
     }
 }

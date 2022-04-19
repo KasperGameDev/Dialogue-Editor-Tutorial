@@ -21,13 +21,13 @@
 }
 
 /* ----------------- Name -----------------*/
-.SpeakerNameBox{
+.DialogueAssetsNameBox{
 	flex-direction: row;
 	background-color: #2D4E44;
 	padding: 5px;
 }
 
-.SpeakerName{
+.DialogueAssetsName{
 	-unity-text-align: middle-center;
 	width:260px;
 	white-space: normal;
@@ -61,18 +61,21 @@
 }
 .SentenceBoxContainer, .SentenceBoxContainer Box {
 	background-color: : #5C5C5C;
-	padding: 10px;
+	padding: 0px 10px 10px;
 }
 
 .SentenceBoxContainer .TopBox {
 	background-color: : #5C5C5C;
-	padding: 1px;
+	padding: 2.5px;
 }
 
 .SentenceBoxContainer .MoveBtn, .SentenceBoxContainer Box{
 	color: white;
 }
 
+.SentenceTitle{
+	align: middle;
+}
 /* ----------------- Images -----------------*/
 .ImageColor{
 	color: #4D7EA8;

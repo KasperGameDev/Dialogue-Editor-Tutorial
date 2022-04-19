@@ -40,7 +40,7 @@ namespace DialogueEditor.Dialogue.Editor
             ToolbarMenu menu = new ToolbarMenu();
             menu.text = "Add Actor";
 
-            menu.menu.AppendAction("Add Speaker", new Action<DropdownMenuAction>(x => AddScriptableActor()));
+            menu.menu.AppendAction("Add Actor", new Action<DropdownMenuAction>(x => AddScriptableActor()));
 
             titleContainer.Add(menu);
         }
@@ -66,42 +66,39 @@ namespace DialogueEditor.Dialogue.Editor
             StartData.ParticipatingActors.Add(tempActor);
 
             // Scriptable Object Event.
-            ObjectField speakerField = GetNewObjectField_Actor(tempActor, addActor, removeActor, "EventObject");
+            ObjectField dialogueAssetsField = GetNewObjectField_Actor(tempActor, addActor, removeActor, "EventObject");
 
             addActor.clicked += () =>
             {
-                speakerField.value = Actor.NewActor();
+                dialogueAssetsField.value = Actor.NewActor();
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
             {
-                speakerField.value = null;
+                dialogueAssetsField.value = null;
                 RefreshExpandedState();
             };
 
             // Remove button.
-            Button btn = GetNewButton(" × ", "removeBtn");
-            btn.clicked += () =>
+            Button deleteActor = GetNewButton(" × ", "MoveBtn");
+            deleteActor.clicked += () =>
             {
                 StartData.ParticipatingActors.Remove(tempActor);
                 editorWindow.QuickSave();
                 DeleteBox(boxContainer);
             };
 
-            // Add it to the box
-            Box boolbox = new Box();
-            boolbox.AddToClassList("BoxRow");
-            boolbox.Add(btn);
 
             // Add it to the box
             if (actorData != null)
                 addActor.SetEnabled(false);
             else
                 removeActor.SetEnabled(false);
-            boxContainer.Add(btn);
-            boxContainer.Add(speakerField);
             buttonsBox.Add(addActor);
             buttonsBox.Add(removeActor);
+            buttonsBox.Add(deleteActor);
+
+            boxContainer.Add(dialogueAssetsField);
             boxContainer.Add(buttonsBox);
             extensionContainer.Add(boxContainer);
             RefreshExpandedState();

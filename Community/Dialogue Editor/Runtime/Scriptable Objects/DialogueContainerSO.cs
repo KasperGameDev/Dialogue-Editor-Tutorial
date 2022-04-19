@@ -8,36 +8,30 @@ namespace DialogueEditor.Dialogue
     public class DialogueContainerSO : ScriptableObject
     {
 
-        public int participatingSpeakers;
-        public List<NodeLinkData> NodeLinkDatas = new List<NodeLinkData>();
+        public int participatingDialogueAssetss;
+        public List<NodeLinkData> NodeLinkData = new List<NodeLinkData>();
 
         public EndData EndData = new EndData();
         public StartData StartData = new StartData();
-        public List<RestartData> RestartDatas = new List<RestartData>();
-        public List<RepeatData> RepeatDatas = new List<RepeatData>();
-        public List<EventData> EventDatas = new List<EventData>();
-        public List<ModifierData> ModifierDatas = new List<ModifierData>();
-        public List<BranchData> BranchDatas = new List<BranchData>();
-        public List<DialogueData> DialogueDatas = new List<DialogueData>();
-        public List<ChoiceConnectorData> ChoiceConnectorDatas = new List<ChoiceConnectorData>();
-        public List<ChoiceData> ChoiceDatas = new List<ChoiceData>();
-        public List<ContextData> ContextDatas = new List<ContextData>();
-
-        public List<BaseData> AllDatas
+        public List<EventData> EventData = new List<EventData>();
+        public List<ModifierData> ModifierData = new List<ModifierData>();
+        public List<BranchData> BranchData = new List<BranchData>();
+        public List<DialogueData> DialogueData = new List<DialogueData>();
+        public List<ChoiceData> ChoiceData = new List<ChoiceData>();
+        public List<ChoiceConnectorData> ChoiceConnectorData = new List<ChoiceConnectorData>();
+        public List<BaseData> AllData
         {
             get
             {
                 List<BaseData> tmp = new List<BaseData>();
                 tmp.Add(EndData);
                 tmp.Add(StartData);
-                tmp.AddRange(RepeatDatas);
-                tmp.AddRange(RestartDatas);
-                tmp.AddRange(EventDatas);
-                tmp.AddRange(ModifierDatas);
-                tmp.AddRange(BranchDatas);
-                tmp.AddRange(DialogueDatas);
-                tmp.AddRange(ChoiceConnectorDatas);
-                tmp.AddRange(ChoiceDatas);
+                tmp.AddRange(EventData);
+                tmp.AddRange(ModifierData);
+                tmp.AddRange(BranchData);
+                tmp.AddRange(DialogueData);
+                tmp.AddRange(ChoiceData);
+                tmp.AddRange(ChoiceConnectorData);
 
                 return tmp;
             }
