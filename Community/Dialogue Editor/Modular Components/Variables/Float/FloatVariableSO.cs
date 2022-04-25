@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace DialogueEditor.ModularComponents
 {
-    [CreateAssetMenu(fileName = "Float Dialogue Variable", menuName = "Dialogue Editor/Modular Components/Variable/Float Variable", order = 1)]
     public class FloatVariableSO : ScriptableObject
     {
 #if UNITY_EDITOR
@@ -36,29 +35,23 @@ namespace DialogueEditor.ModularComponents
             _value += amount.Value;
         }
 
-        public static FloatVariableSO NewFloat()
+        public static FloatVariableSO NewFloat(ScriptableObject so)
         {
-            string path = EditorUtility.SaveFilePanelInProject(
-            "Create a new Dialogue Actor",
-            "<Fill Float Variable Name Here>.asset",
-            "asset",
-            "");
-
-            FloatVariableSO newFloat = ScriptableObject.CreateInstance<FloatVariableSO>();
-            EditorUtility.SetDirty(newFloat);
-
-            if (path.Length != 0)
+            string name = EditorInputDialogue.Show("New Float Variable", "Please Enter Variable Name", "");
+            if (string.IsNullOrEmpty(name))
             {
-                AssetDatabase.CreateAsset(newFloat, path);
-
-                AssetDatabase.SaveAssets();
-
-                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
-
-                return newFloat;
+                EditorUtility.DisplayDialog("Canceled", "You're variable was not Created. It had no name", "OK");
+                return null;
             }
             else
-                return null;
+            {
+
+                FloatVariableSO newFloat = ScriptableObject.CreateInstance<FloatVariableSO>();
+                newFloat.name = name;
+                EditorUtility.SetDirty(newFloat);
+                AssetDatabase.AddObjectToAsset(newFloat, so);
+                    return newFloat;
+                }
         }
     }
 }

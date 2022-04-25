@@ -86,12 +86,6 @@ namespace DialogueEditor.Dialogue.Editor
             EditorUtility.DisplayDialog("Success", "You're Dialogue is Saved!", "OK");
         }
 
-        public void Load(DialogueContainerSO DialogueContainerSO)
-        {
-            ClearGraph();
-            GenerateNodes(DialogueContainerSO);
-            ConnectNodes(DialogueContainerSO);
-        }
 
         #region Save
         private void SaveEdges(DialogueContainerSO DialogueContainerSO)
@@ -393,6 +387,13 @@ namespace DialogueEditor.Dialogue.Editor
 
         #region Load
 
+        public void Load(DialogueContainerSO DialogueContainerSO)
+        {
+            ClearGraph();
+            GenerateNodes(DialogueContainerSO);
+            ConnectNodes(DialogueContainerSO);
+        }
+
         private void ClearGraph()
         {
             edges.ForEach(edge => graphView.RemoveElement(edge));
@@ -407,7 +408,7 @@ namespace DialogueEditor.Dialogue.Editor
         {
 
             graphView.startNode = graphView.CreateStartNode(Vector2.zero);
-            graphView.endNode = graphView.CreateEndNode(Vector2.right);
+            graphView.endNode = graphView.CreateEndNode(Vector2.right * 100);
 
             if (dialogueContainer != null)
             {
@@ -416,6 +417,8 @@ namespace DialogueEditor.Dialogue.Editor
                 {
                     if (dialogueContainer.StartData.NodeGuid.Length > 0)
                         graphView.startNode.NodeGuid = dialogueContainer.StartData.NodeGuid;
+                    else
+                        dialogueContainer.StartData.Position = Vector2.left * 150;
                     graphView.startNode.SetPosition(new Rect(dialogueContainer.StartData.Position, new Vector2(200, 250)));
                     foreach (Container_Actor actor in dialogueContainer.StartData.ParticipatingActors)
                     {
@@ -427,7 +430,10 @@ namespace DialogueEditor.Dialogue.Editor
                 // End
                 if (dialogueContainer.EndData != null)
                 {
-                    graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
+                    if (dialogueContainer.StartData.NodeGuid.Length > 0)
+                        graphView.endNode.NodeGuid = dialogueContainer.EndData.NodeGuid;
+                    else
+                        dialogueContainer.EndData.Position = Vector2.right * 150;
                     graphView.endNode.EndData.EndNodeType.Value = dialogueContainer.EndData.EndNodeType.Value;
                     graphView.endNode.LoadValueInToField();
                     graphView.endNode.SetPosition(new Rect(dialogueContainer.EndData.Position, new Vector2(200, 1500)));

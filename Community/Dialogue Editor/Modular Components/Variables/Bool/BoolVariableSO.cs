@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace DialogueEditor.ModularComponents
 {
-    [CreateAssetMenu(fileName = "Dialogue Bool Variable", menuName = "Dialogue Editor/Modular Components/Variable/Bool Variable", order = 1)]
     public class BoolVariableSO : ScriptableObject
     {
 #if UNITY_EDITOR
@@ -32,31 +31,24 @@ namespace DialogueEditor.ModularComponents
             Value = value.Value;
         }
 
-        public static BoolVariableSO NewBool()
+        public static BoolVariableSO NewBool(ScriptableObject so)
         {
-            string path = EditorUtility.SaveFilePanelInProject(
-            "Create a new Dialogue Actor",
-            "<Fill Bool Variable Name Here>.asset",
-            "asset",
-            "");
-
-            BoolVariableSO newBool = ScriptableObject.CreateInstance<BoolVariableSO>();
-            EditorUtility.SetDirty(newBool);
-
-            if (path.Length != 0)
+            string name = EditorInputDialogue.Show("New Bool Variable", "Please Enter Variable Name", "");
+            if (string.IsNullOrEmpty(name))
             {
-                AssetDatabase.CreateAsset(newBool, path);
-
-                AssetDatabase.SaveAssets();
-
-                newBool.SetValue(true);
-
-                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
-
-                return newBool;
+                EditorUtility.DisplayDialog("Canceled", "You're variable was not Created. It had no name", "OK");
+                return null;
             }
             else
-                return null;
+            {
+
+                BoolVariableSO newBool = ScriptableObject.CreateInstance<BoolVariableSO>();
+                newBool.name = name;
+                EditorUtility.SetDirty(newBool);
+
+                AssetDatabase.AddObjectToAsset(newBool, so);
+                return newBool;
+            }
         }
     }
 }

@@ -1,10 +1,10 @@
+using DialogueEditor.ModularComponents;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace DialogueEditor.Events
 {
-    [CreateAssetMenu(fileName = "New Dialogue Game Event", menuName = "Dialogue Editor/Modular Components/Game Event", order = 0)]
     public class GameEventSO : ScriptableObject
     {
         #region FIELDS
@@ -60,20 +60,20 @@ namespace DialogueEditor.Events
         }
         #endregion
 
-        public static GameEventSO NewEvent()
+        public static GameEventSO NewEvent(ScriptableObject so)
         {
-            string path = EditorUtility.SaveFilePanelInProject(
-            "Create a new Dialogue Actor",
-            "<Fill Dialogue Event Name Here>.asset",
-            "asset",
-            "");
-
-            GameEventSO newEvent = ScriptableObject.CreateInstance<GameEventSO>();
-            EditorUtility.SetDirty(newEvent);
-
-            if (path.Length != 0)
+            string name = EditorInputDialogue.Show("New Game Event", "Please Enter Event Name", "");
+            if (string.IsNullOrEmpty(name))
             {
-                AssetDatabase.CreateAsset(newEvent, path);
+                EditorUtility.DisplayDialog("Canceled", "You're variable was not Created. It had no name", "OK");
+                return null;
+            }
+            else
+            {
+                GameEventSO newEvent = ScriptableObject.CreateInstance<GameEventSO>();
+                EditorUtility.SetDirty(newEvent);
+                newEvent.name = name;
+                AssetDatabase.AddObjectToAsset(newEvent, so);
 
                 AssetDatabase.SaveAssets();
 
@@ -81,8 +81,6 @@ namespace DialogueEditor.Events
 
                 return newEvent;
             }
-            else
-                return null;
         }
     }
 }

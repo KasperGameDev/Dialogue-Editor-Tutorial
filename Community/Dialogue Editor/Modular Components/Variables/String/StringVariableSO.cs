@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace DialogueEditor.ModularComponents
 {
-    [CreateAssetMenu(fileName = "String Variable", menuName = "Dialogue Editor/Modular Components/Variable/String Variable", order = 1)]
     public class StringVariableSO : ScriptableObject
     {
 #if UNITY_EDITOR
@@ -36,25 +35,19 @@ namespace DialogueEditor.ModularComponents
             _value += amount.Value;
         }
 
-        public static StringVariableSO NewString()
+        public static StringVariableSO NewString(ScriptableObject container)
         {
-            string path = EditorUtility.SaveFilePanelInProject(
-            "Create a new Dialogue Actor",
-            "<Fill String Variable Name Here>.asset",
-            "asset",
-            "");
+            string name = EditorInputDialogue.Show("New String Variable", "Please Enter Variable Name", "");
+            if (string.IsNullOrEmpty(name))
+                EditorUtility.DisplayDialog("Canceled", "You're variable was not Created. It had no name", "OK");
 
-            StringVariableSO newString = ScriptableObject.CreateInstance<StringVariableSO>();
-            EditorUtility.SetDirty(newString);
-
-            if (path.Length != 0)
+            if (!string.IsNullOrEmpty(name))
             {
-                AssetDatabase.CreateAsset(newString, path);
+                StringVariableSO newString = ScriptableObject.CreateInstance<StringVariableSO>();
+                newString.name = name;
+                EditorUtility.SetDirty(newString);
 
-                AssetDatabase.SaveAssets();
-
-                EditorUtility.DisplayDialog("Success", "Created a new actor!", "OK");
-
+                AssetDatabase.AddObjectToAsset(newString, container);
                 return newString;
             }
             else

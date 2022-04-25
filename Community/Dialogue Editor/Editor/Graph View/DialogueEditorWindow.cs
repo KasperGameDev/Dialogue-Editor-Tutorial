@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DialogueEditor.ModularComponents;
+using System;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEditor.UIElements;
@@ -14,7 +15,8 @@ namespace DialogueEditor.Dialogue.Editor
         private DialogueSaveAndLoad saveAndLoad;                                        // Reference to SaveAndLoad Class.
 
         private LanguageType selectedLanguage = LanguageType.English;                   // Current selected language in the dialogue editor window.
-        private ToolbarMenu languagesDropdownMenu;                                      // Languages toolbar menu in the top of dialogue editor window.
+        private ToolbarMenu languagesDropdownMenu;                   // Current selected language in the dialogue editor window.
+        private ToolbarMenu VariablesMenu;                                           // Languages toolbar menu in the top of dialogue editor window.
         private Label nameOfDialougeContainer;                                          // Name of the current open dialouge container.
         private string graphViewStyleSheet = "USS/EditorWindow/EditorWindowStyleSheet"; // Name of the graph view style sheet.
 
@@ -23,7 +25,6 @@ namespace DialogueEditor.Dialogue.Editor
         /// </summary>
         public LanguageType SelectedLanguage { get => selectedLanguage; set => selectedLanguage = value; }
 
-        [MenuItem("Tools/Dialogue Editor/ Dialogue Editor")]
         static void Init()
         {
             DialogueEditorWindow window = (DialogueEditorWindow)GetWindow(typeof(DialogueEditorWindow));
@@ -138,6 +139,61 @@ namespace DialogueEditor.Dialogue.Editor
                     languagesDropdownMenu.menu.AppendAction(language.ToString(), new Action<DropdownMenuAction>(x => Language(language)));
                 }
                 toolbar.Add(languagesDropdownMenu);
+            }
+
+            // Dropdown menu for languages.
+            {
+                VariablesMenu = new ToolbarMenu()
+                {
+                    text = "Dialogue variables"
+                };
+
+                VariablesMenu.menu.AppendAction("String Variable", new Action<DropdownMenuAction>
+                    (x =>
+                        {
+                            StringVariableSO stringVariable = StringVariableSO.NewString(currentDialogueContainer);
+                            currentDialogueContainer.variables.Add(stringVariable);
+                        }
+                    )
+                );
+
+                VariablesMenu.menu.AppendAction("Int Variable", new Action<DropdownMenuAction>
+                    (x =>
+                    {
+                        IntVariableSO intVariableSO = IntVariableSO.NewInt(currentDialogueContainer);
+                        currentDialogueContainer.variables.Add(intVariableSO);
+                    }
+                    )
+                );
+
+                VariablesMenu.menu.AppendAction("Bool Variable", new Action<DropdownMenuAction>
+                    (x =>
+                    {
+                        BoolVariableSO boolVariableSO = BoolVariableSO.NewBool(currentDialogueContainer);
+                        currentDialogueContainer.variables.Add(boolVariableSO);
+                    }
+                    )
+                );
+
+                VariablesMenu.menu.AppendAction("Float Variable", new Action<DropdownMenuAction>
+                    (x =>
+                    {
+                        FloatVariableSO floatVariableSO = FloatVariableSO.NewFloat(currentDialogueContainer);
+                        currentDialogueContainer.variables.Add(floatVariableSO);
+                    }
+                    )
+                );
+
+                VariablesMenu.menu.AppendAction("Actor Variable", new Action<DropdownMenuAction>
+                    (x =>
+                    {
+                        Actor actor = Actor.NewActor(currentDialogueContainer);
+                        currentDialogueContainer.variables.Add(actor);
+                    }
+                    )
+                );
+
+                toolbar.Add(VariablesMenu);
             }
 
             // Name of current DialigueContainer you have open.

@@ -68,7 +68,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             add.clicked += () =>
             {
-                objectField.value = GameEventSO.NewEvent();
+                GameEventSO newEvent = GameEventSO.NewEvent(editorWindow.currentDialogueContainer);
+                objectField.value = newEvent;
+                editorWindow.currentDialogueContainer.variables.Add(newEvent);
                 RefreshExpandedState();
             };
             remove.clicked += () =>

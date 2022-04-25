@@ -567,7 +567,7 @@ namespace DialogueEditor.Dialogue.Editor
         /// <param name="USS01">USS class add to the UI element</param>
         /// <param name="USS02">USS class add to the UI element</param>
         /// <returns></returns>
-        protected ObjectField GetNewObjectField_Actor(Container_Actor inputActor, Button add, Button remove, string USS01 = "", string USS02 = "")
+        protected ObjectField GetNewObjectField_Actor(Container_Actor inputActor, Button remove, string USS01 = "", string USS02 = "")
         {
             ObjectField objectField = new ObjectField()
             {
@@ -582,12 +582,10 @@ namespace DialogueEditor.Dialogue.Editor
                 inputActor.actor = value.newValue as Actor;
                 if(inputActor.actor == null)
                 {
-                    add.SetEnabled(true);
                     remove.SetEnabled(false);
                 }
                 else
                 {
-                    add.SetEnabled(false);
                     remove.SetEnabled(true);
                 }
                 editorWindow.QuickSave();
@@ -1138,11 +1136,11 @@ namespace DialogueEditor.Dialogue.Editor
             Button removeActor = GetNewButton(" - ", "MoveBtn");
             // Text.
             //TextField textField = GetNewTextField(tmpStringEventCondition.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_StringVariableModifier(tmpStringModifier, addActor, removeActor, "String Event", "StringEventText");
+            ObjectField objectField = GetNewObjectField_StringVariableModifier(tmpStringModifier, addActor, removeActor, "Modifier", "StringEventText");
 
             // ID number.
             //FloatField floatField = GetNewFloatField(tmpStringModifier.Text, "StringEventInt");
-            TextField textField = GetNewTextField(tmpStringModifier.Value, "String Event", "StringEventText");
+            TextField textField = GetNewTextField(tmpStringModifier.Value, "Modifier", "StringEventText");
 
             // TODO: Delete maby?
             // Check for StringEventType and add the proper one.
@@ -1159,7 +1157,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = StringVariableSO.NewString();
+                StringVariableSO value = StringVariableSO.NewString(editorWindow.currentDialogueContainer);
+                objectField.value = value;
+                editorWindow.currentDialogueContainer.variables.Add(value);
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -1219,19 +1219,14 @@ namespace DialogueEditor.Dialogue.Editor
             Button removeActor = GetNewButton(" - ", "MoveBtn");
 
             // Text.
-            //TextField textField = GetNewTextField(tmpStringModifier.StringEventText, "String Event", "StringEventText");
-            ObjectField objectField = GetNewObjectField_FloatVariableModifier(tmpStringModifier, addActor, removeActor, "String Event", "StringEventText");
+            ObjectField objectField = GetNewObjectField_FloatVariableModifier(tmpStringModifier, addActor, removeActor, "Modifier", "StringEventText");
 
             // ID number.
-            //FloatField floatField = GetNewFloatField(tmpStringModifier.Text, "StringEventInt");
-            FloatField textField = GetNewFloatField(tmpStringModifier.Value, "String Event", "StringEventText");
-
-            // TODO: Delete maby?
-            // Check for StringEventType and add the proper one.
-            //EnumField enumField = null;
+            FloatField textField = GetNewFloatField(tmpStringModifier.Value, "Modifier", "StringEventText");
 
             // String Event Modifier
-            Action tmp = () => { }/*ShowHide_StringModifierType(tmpStringModifier.StringModifierType.Value, boxfloatField)*/;
+            Action tmp = () => { };
+
             // EnumField String Event Modifier
             EnumField enumField = GetNewEnumField_FloatModifierType(tmpStringModifier.EventType, tmp, "StringEventEnum");
             if (tmpStringModifier.VariableSO != null)
@@ -1241,7 +1236,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = StringVariableSO.NewString();
+                StringVariableSO value = StringVariableSO.NewString(editorWindow.currentDialogueContainer);
+                objectField.value = value;
+                editorWindow.currentDialogueContainer.variables.Add(value);
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -1302,16 +1299,10 @@ namespace DialogueEditor.Dialogue.Editor
             Button removeActor = GetNewButton(" - ", "MoveBtn");
 
             // Text.
-            //TextField textField = GetNewTextField(tmpStringModifier.StringEventText, "String Event", "StringEventText");
             ObjectField objectField = GetNewObjectField_IntVariableModifier(tmpStringModifier, addActor, removeActor, "StringEventText");
 
             // ID number.
-            //FloatField floatField = GetNewFloatField(tmpStringModifier.Text, "StringEventInt");
             IntegerField textField = GetNewIntegerField(tmpStringModifier.Value, "StringEventText");
-
-            // TODO: Delete maby?
-            // Check for StringEventType and add the proper one.
-            //EnumField enumField = null;
 
             // String Event Modifier
             Action tmp = () => { }/*ShowHide_StringModifierType(tmpStringModifier.StringModifierType.Value, boxfloatField)*/;
@@ -1324,7 +1315,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = StringVariableSO.NewString();
+                StringVariableSO value = StringVariableSO.NewString(editorWindow.currentDialogueContainer);
+                objectField.value = value;
+                editorWindow.currentDialogueContainer.variables.Add(value);
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -1397,7 +1390,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = StringVariableSO.NewString();
+                StringVariableSO value = StringVariableSO.NewString(editorWindow.currentDialogueContainer);
+                objectField.value = value;
+                editorWindow.currentDialogueContainer.variables.Add(value);
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -1475,7 +1470,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = StringVariableSO.NewString();
+                StringVariableSO value = StringVariableSO.NewString(editorWindow.currentDialogueContainer);
+                objectField.value = value;
+                editorWindow.currentDialogueContainer.variables.Add(value);
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -1557,7 +1554,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = FloatVariableSO.NewFloat();
+                FloatVariableSO value = FloatVariableSO.NewFloat(editorWindow.currentDialogueContainer);
+                editorWindow.currentDialogueContainer.variables.Add(value);
+                objectField.value = value;
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -1635,7 +1634,9 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = IntVariableSO.NewInt();
+                IntVariableSO intVariableSO = IntVariableSO.NewInt(editorWindow.currentDialogueContainer);
+                editorWindow.currentDialogueContainer.variables.Add(intVariableSO);
+                objectField.value = intVariableSO;
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>
@@ -1699,7 +1700,7 @@ namespace DialogueEditor.Dialogue.Editor
 
             addActor.clicked += () =>
             {
-                objectField.value = BoolVariableSO.NewBool();
+                objectField.value = BoolVariableSO.NewBool(editorWindow.currentDialogueContainer);
                 RefreshExpandedState();
             };
             removeActor.clicked += () =>

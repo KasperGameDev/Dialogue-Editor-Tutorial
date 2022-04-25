@@ -54,8 +54,6 @@ namespace DialogueEditor.Dialogue.Editor
             Box buttonsBox = new Box();
             buttonsBox.AddToClassList("BtnBox");
 
-            Button addActor = GetNewButton(" + ", "MoveBtn");
-
             Button removeActor = GetNewButton(" - ", "MoveBtn");
 
             // If value is not null we load in values.
@@ -66,13 +64,8 @@ namespace DialogueEditor.Dialogue.Editor
             StartData.ParticipatingActors.Add(tempActor);
 
             // Scriptable Object Event.
-            ObjectField dialogueAssetsField = GetNewObjectField_Actor(tempActor, addActor, removeActor, "EventObject");
+            ObjectField dialogueAssetsField = GetNewObjectField_Actor(tempActor, removeActor, "EventObject");
 
-            addActor.clicked += () =>
-            {
-                dialogueAssetsField.value = Actor.NewActor();
-                RefreshExpandedState();
-            };
             removeActor.clicked += () =>
             {
                 dialogueAssetsField.value = null;
@@ -90,11 +83,8 @@ namespace DialogueEditor.Dialogue.Editor
 
 
             // Add it to the box
-            if (actorData != null)
-                addActor.SetEnabled(false);
-            else
+            if (actorData == null)
                 removeActor.SetEnabled(false);
-            buttonsBox.Add(addActor);
             buttonsBox.Add(removeActor);
             buttonsBox.Add(deleteActor);
 
